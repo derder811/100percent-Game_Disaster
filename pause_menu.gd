@@ -12,6 +12,7 @@ var original_scales := {}
 var fade_tween: Tween
 var is_paused := false
 var button_tweens := {}
+var button_float_tweens := {}
 
 func _center_layout() -> void:
 	if popup:
@@ -105,9 +106,36 @@ func _handle_hover(pos: Vector2) -> void:
 		elif b:
 			_animate_button(b, 1.0, 0.12)
 
+func _start_button_float(button: TextureButton, amplitude: float = 0.03, half_period: float = 0.9) -> void:
+	if not button:
+		return
+	var base_scale: Vector2 = original_scales.get(button, button.scale)
+	var ft: Tween = button_float_tweens.get(button)
+	if ft and ft.is_running():
+		ft.kill()
+	ft = create_tween()
+	ft.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	ft.tween_property(button, "scale", base_scale * (1.0 + amplitude), half_period).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	ft.tween_property(button, "scale", base_scale, half_period).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	ft.tween_callback(func():
+		if is_paused and button.visible:
+			_start_button_float(button, amplitude, half_period)
+	)
+	button_float_tweens[button] = ft
+
+func _stop_button_float(button: TextureButton) -> void:
+	var ft: Tween = button_float_tweens.get(button)
+	if ft and ft.is_running():
+		ft.kill()
+	button_float_tweens.erase(button)
+	if button:
+		var base_scale: Vector2 = original_scales.get(button, button.scale)
+		button.scale = base_scale
+
 func _animate_button(b: TextureButton, scale_factor: float, duration: float = 0.12) -> void:
 	if not b:
 		return
+	_stop_button_float(b)
 	var base_scale: Vector2 = original_scales.get(b, b.scale)
 	var t: Tween = button_tweens.get(b)
 	if t and t.is_running():
@@ -116,6 +144,10 @@ func _animate_button(b: TextureButton, scale_factor: float, duration: float = 0.
 	t.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	t.tween_property(b, "scale", base_scale * scale_factor, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	button_tweens[b] = t
+	t.tween_callback(func():
+		if is_paused and b and b.visible:
+			_start_button_float(b)
+	)
 
 func _handle_tap(pos: Vector2) -> void:
 	for b in [resume_button, exit_button]:
@@ -127,7 +159,6 @@ func _handle_tap(pos: Vector2) -> void:
 func _show_menu() -> void:
 	if background:
 		background.visible = true
-		# Show background immediately to avoid depending on paused tweens
 		background.modulate.a = 1.0
 	if popup:
 		popup.visible = true
@@ -136,8 +167,10 @@ func _show_menu() -> void:
 		menu_container.visible = true
 	if resume_button:
 		resume_button.visible = true
+		_start_button_float(resume_button)
 	if exit_button:
 		exit_button.visible = true
+		_start_button_float(exit_button)
 	_equalize_button_widths()
 	_center_layout()
 
@@ -149,8 +182,10 @@ func _hide_menu() -> void:
 	if background:
 		background.visible = false
 	if resume_button:
+		_stop_button_float(resume_button)
 		resume_button.visible = false
 	if exit_button:
+		_stop_button_float(exit_button)
 		exit_button.visible = false
 
 func _fade_in_menu() -> void:
@@ -182,11 +217,33 @@ func _input(event: InputEvent) -> void:
 		elif event is InputEventScreenTouch and event.pressed:
 			_handle_tap(event.position)
 
+func _animate_button_click(button: TextureButton, callback: Callable) -> void:
+	if not button:
+		callback.call()
+		return
+	_stop_button_float(button)
+	var base_scale: Vector2 = original_scales.get(button, button.scale)
+	var t: Tween = button_tweens.get(button)
+	if t and t.is_running():
+		t.kill()
+	t = create_tween()
+	t.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	t.tween_property(button, "scale", base_scale * 0.92, 0.08).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	t.tween_property(button, "scale", base_scale * 1.05, 0.10).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	t.tween_property(button, "scale", base_scale, 0.10).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	button_tweens[button] = t
+	await t.finished
+	callback.call()
+
 func _on_resume_pressed() -> void:
-	resume_game()
+	_animate_button_click(resume_button, func():
+		resume_game()
+	)
 
 func _on_exit_pressed() -> void:
-	_exit_to_main_menu()
+	_animate_button_click(exit_button, func():
+		_exit_to_main_menu()
+	)
 
 
 func pause_game() -> void:
