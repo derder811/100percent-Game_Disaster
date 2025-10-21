@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg5dh7380mxix"]
+
+[ext_resource type="Texture2D" uid="uid://ni68ikdjlgwb" path="res://asset/Furnitures/Faucet 3.0.png" id="1_xxeb7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xxeb7"]
+radius = 168.224
+height = 513.96
+
+[node name="Faucet3_0" type="Sprite2D"]
+scale = Vector2(0.0194567, 0.0178333)
+texture = ExtResource("1_xxeb7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+rotation = 1.56806
+shape = SubResource("CapsuleShape2D_xxeb7")

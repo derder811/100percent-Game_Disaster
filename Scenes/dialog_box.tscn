@@ -1,0 +1,96 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6gs0utdxtg5r"]
+
+[ext_resource type="Script" uid="uid://bhd1xtjwhxdgs" path="res://Scenes/dialog_box.gd" id="1_dialog_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dialog"]
+bg_color = Color(0.1, 0.1, 0.1, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="DialogBox" type="CanvasLayer" groups=["dialog_system"]]
+layer = 200
+script = ExtResource("1_dialog_script")
+
+[node name="DialogControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Background" type="Panel" parent="DialogControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -150.0
+offset_right = 300.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dialog")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -130.0
+offset_right = 280.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="DialogControl/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.8, 1)
+theme_override_font_sizes/font_size = 24
+text = "TIPS"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="DialogControl/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="DialogControl/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DialogLabel" type="RichTextLabel" parent="DialogControl/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "Dialog text will appear here..."
+fit_content = true
+horizontal_alignment = 1
+
+[node name="ButtonContainer" type="HBoxContainer" parent="DialogControl/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="NextButton" type="Button" parent="DialogControl/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Next(space)"
+
+[node name="CloseButton" type="Button" parent="DialogControl/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Close (Space)"

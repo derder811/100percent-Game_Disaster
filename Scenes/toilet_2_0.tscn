@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://tkrb31hi2pki"]
+
+[ext_resource type="Texture2D" uid="uid://bsho73c061s81" path="res://asset/Furnitures/Toilet 2.0.png" id="1_lsxsi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lsxsi"]
+size = Vector2(261.818, 440.45)
+
+[node name="Toilet2_0" type="Sprite2D"]
+scale = Vector2(0.06875, 0.0635714)
+texture = ExtResource("1_lsxsi")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 31.4607)
+shape = SubResource("RectangleShape2D_lsxsi")

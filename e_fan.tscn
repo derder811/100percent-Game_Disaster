@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://syisfjs6gwbf"]
+
+[ext_resource type="Texture2D" uid="uid://cihjrrah58ihe" path="res://asset/Furnitures/Fan.png" id="1_1fhqf"]
+[ext_resource type="PackedScene" uid="uid://d3v5enbqtirae" path="res://asset/Interaction/Interaction Area/interaction_area.tscn" id="2_1irgj"]
+[ext_resource type="Script" uid="uid://bcgwwtrgukco7" path="res://e_fan.gd" id="3_script"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1fdyj"]
+radius = 17.4187
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymkvi"]
+atlas = ExtResource("1_1fhqf")
+region = Rect2(0, 0, 1750, 1750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nj8df"]
+atlas = ExtResource("1_1fhqf")
+region = Rect2(1750, 0, 1750, 1750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fdyj"]
+atlas = ExtResource("1_1fhqf")
+region = Rect2(0, 1750, 1750, 1750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34w5w"]
+atlas = ExtResource("1_1fhqf")
+region = Rect2(1750, 1750, 1750, 1750)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cwhbi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymkvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nj8df")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fdyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34w5w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 91.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nj8df"]
+radius = 27.2618
+
+[node name="eFAN" type="StaticBody2D"]
+script = ExtResource("3_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1fdyj")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(0, -1.19209e-07)
+scale = Vector2(0.031467, 0.0208899)
+sprite_frames = SubResource("SpriteFrames_cwhbi")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_1irgj")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_nj8df")

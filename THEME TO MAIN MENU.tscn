@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b70homquu7n2w"]
+
+[ext_resource type="Texture2D" uid="uid://cedu6hr5vby6s" path="res://asset/Furnitures/Gemini_Generated_Image_ci3viici3viici3v.png" id="1_hi77f"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="GeminiGeneratedImageCi3Viici3Viici3v" type="Sprite2D" parent="."]
+position = Vector2(576, 325)
+scale = Vector2(1.12891, 0.630859)
+texture = ExtResource("1_hi77f")

@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://ci4x7kfmi2rx7"]
+
+[ext_resource type="Script" uid="uid://mh1hmsscnsn8" path="res://ice_cream_fridge.gd" id="1_7oci1"]
+[ext_resource type="Texture2D" uid="uid://dckwiomfhe713" path="res://earthquake Asset/Ice Cream Container.png" id="2_n6h05"]
+[ext_resource type="PackedScene" uid="uid://d3v5enbqtirae" path="res://asset/Interaction/Interaction Area/interaction_area.tscn" id="3_o8rqc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctmct"]
+size = Vector2(1095.74, 1447.33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rxg2"]
+size = Vector2(136, 210)
+
+[node name="Ice Cream Fridge" type="Area2D"]
+script = ExtResource("1_7oci1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5.00004, 1)
+scale = Vector2(0.0930881, 0.120221)
+texture = ExtResource("2_n6h05")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(10.7432, -49.9082)
+shape = SubResource("RectangleShape2D_ctmct")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, 8)
+shape = SubResource("RectangleShape2D_1rxg2")
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_o8rqc")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(6, 8)
+shape = SubResource("RectangleShape2D_1rxg2")

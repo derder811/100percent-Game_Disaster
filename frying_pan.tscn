@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cj4q0wlj47qeo"]
+
+[ext_resource type="Texture2D" uid="uid://qbfqutafhfyi" path="res://asset/Furnitures/Frying Pan.png" id="1_8iho2"]
+[ext_resource type="PackedScene" uid="uid://d3v5enbqtirae" path="res://asset/Interaction/Interaction Area/interaction_area.tscn" id="2_j71ua"]
+[ext_resource type="Script" uid="uid://vhosmtfvka8y" path="res://frying_pan.gd" id="2_ljoki"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_10015"]
+radius = 18.0278
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ljoki"]
+radius = 43.0
+
+[node name="FryingPan" type="StaticBody2D"]
+position = Vector2(529, 198)
+script = ExtResource("2_ljoki")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.99997, 2)
+scale = Vector2(0.04625, 0.05125)
+texture = ExtResource("1_8iho2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 2)
+shape = SubResource("CircleShape2D_10015")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_j71ua")]
+position = Vector2(-1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_ljoki")

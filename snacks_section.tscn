@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://rg8b05s17442"]
+
+[ext_resource type="Script" path="res://snacks_section.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://j3eg6fd01tsm" path="res://earthquake Asset/Snacks Section.png" id="1_02u87"]
+[ext_resource type="PackedScene" uid="uid://d3v5enbqtirae" path="res://asset/Interaction/Interaction Area/interaction_area.tscn" id="2_interaction"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctmct"]
+size = Vector2(407.035, 1300.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgrq0"]
+size = Vector2(121, 272)
+
+[node name="Snacks Section" type="Area2D"]
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.99991, -2.99997)
+scale = Vector2(0.199, 0.204576)
+texture = ExtResource("1_02u87")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(-2.51208, -24.441)
+shape = SubResource("RectangleShape2D_ctmct")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.5, -8)
+shape = SubResource("RectangleShape2D_lgrq0")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_interaction")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(4.5, -8)
+shape = SubResource("RectangleShape2D_lgrq0")

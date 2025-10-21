@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0ko7oy8w8sqy"]
+
+[ext_resource type="Script" uid="uid://daft2qdx3cqdd" path="res://canned_i_tem.gd" id="1_merjj"]
+[ext_resource type="Texture2D" uid="uid://b3dsfonpenfu2" path="res://asset/Furnitures/Stored Canned Goods.png" id="2_kpy3q"]
+[ext_resource type="Script" uid="uid://11m7rqbxye48" path="res://Item.gd" id="3_6n74x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jtnoj"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_merjj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jtnoj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 0)
+scale = Vector2(0.0104, 0.00980001)
+texture = ExtResource("2_kpy3q")
+script = ExtResource("3_6n74x")

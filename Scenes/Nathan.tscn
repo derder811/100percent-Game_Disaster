@@ -1,0 +1,200 @@
+[gd_scene load_steps=23 format=3 uid="uid://d356xsoo8fmtv"]
+
+[ext_resource type="Script" uid="uid://coyyb14hqnus3" path="res://Scenes/movements.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://cbqtqy2ya8oqf" path="res://asset/Characters/Teen Male sprite.png" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://bx21va8686o4h" path="res://asset/Interaction/Interaction Area/interaction_area.gd" id="3_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://bvn8x7y2m3k4l" path="res://Scenes/self_talk_system.tscn" id="4_self_talk"]
+[ext_resource type="PackedScene" uid="uid://dmu3k56xocdam" path="res://Bag.tscn" id="5_fkybt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
+size = Vector2(10, 20)
+
+[sub_resource type="Animation" id="Animation_fkybt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_x3wgy"]
+resource_name = "idle"
+length = 0.255
+loop_mode = 2
+
+[sub_resource type="Animation" id="Animation_3smsa"]
+resource_name = "stop "
+length = 0.05
+
+[sub_resource type="Animation" id="Animation_cvnsp"]
+resource_name = "walk_down"
+length = 0.91
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_vgqql"]
+resource_name = "walk_left"
+length = 0.6318
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.199529, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_6t5aa"]
+resource_name = "walk_right"
+length = 0.853
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_v0iea"]
+resource_name = "walk_up"
+length = 0.852
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [14, 15, 16, 17, 18]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x3wgy"]
+_data = {
+&"RESET": SubResource("Animation_fkybt"),
+&"idle": SubResource("Animation_x3wgy"),
+&"stop ": SubResource("Animation_3smsa"),
+&"walk_down": SubResource("Animation_cvnsp"),
+&"walk_left": SubResource("Animation_vgqql"),
+&"walk_right": SubResource("Animation_6t5aa"),
+&"walk_up": SubResource("Animation_v0iea")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3smsa"]
+animation = &"walk_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8erm5"]
+animation = &"walk_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f1ek2"]
+animation = &"walk_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tx1dd"]
+animation = &"walk_up"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_gymyn"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_3smsa")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_8erm5")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_f1ek2")
+blend_point_2/pos = Vector2(0, 1.1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_tx1dd")
+blend_point_3/pos = Vector2(0, -1.1)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cvnsp"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_pu2lt"]
+states/End/position = Vector2(523, 100)
+states/Start/position = Vector2(205, 100)
+states/walk/node = SubResource("AnimationNodeBlendSpace2D_gymyn")
+states/walk/position = Vector2(358, 100)
+transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_cvnsp")]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vgqql"]
+radius = 48.2597
+
+[node name="NAthan" type="CharacterBody2D"]
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_cvnsp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(498.5, 331)
+scale = Vector2(0.369792, 0.375)
+texture = ExtResource("1_v0iea")
+hframes = 19
+
+[node name="SelfTalkSystem" parent="." instance=ExtResource("4_self_talk")]
+position = Vector2(496, 347)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(499, 345)
+shape = SubResource("RectangleShape2D_cvnsp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_x3wgy")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_pu2lt")
+anim_player = NodePath("../AnimationPlayer")
+parameters/walk/blend_position = Vector2(0, 1)
+
+[node name="InteractionArea" type="Area2D" parent="."]
+position = Vector2(499, 333)
+script = ExtResource("3_6t5aa")
+metadata/_custom_type_script = "uid://bx21va8686o4h"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_vgqql")
+
+[node name="Bag" parent="." instance=ExtResource("5_fkybt")]
+custom_minimum_size = Vector2(90, 90)
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 138.0
+offset_top = 145.0
+offset_right = 228.0
+offset_bottom = 235.0
+grow_horizontal = 1
+grow_vertical = 1

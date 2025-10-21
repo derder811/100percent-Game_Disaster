@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://store_quest.gd" id="1_store_quest_script"]
+
+[node name="StoreQuest" type="Node"]
+script = ExtResource("1_store_quest_script")
+
+[node name="Quest UI" type="CanvasLayer" parent="."]
+layer = 50
+
+[node name="Quest Text Box" type="Panel" parent="Quest UI"]
+visible = false
+position = Vector2(24, 24)
+size = Vector2(420, 200)
+
+[node name="QuestContainer" type="VBoxContainer" parent="Quest UI/Quest Text Box"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 12.0
+offset_right = -14.0
+offset_bottom = -12.0
+
+[node name="HeaderContainer" type="HBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer"]
+
+[node name="ExclamationIcon" type="TextureRect" parent="Quest UI/Quest Text Box/QuestContainer/HeaderContainer"]
+custom_minimum_size = Vector2(24, 24)
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CurrentObjectiveLabel" type="Label" parent="Quest UI/Quest Text Box/QuestContainer/HeaderContainer"]
+text = "Store Quest"
+
+[node name="HSeparator" type="HSeparator" parent="Quest UI/Quest Text Box/QuestContainer"]
+
+[node name="Objectives" type="VBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer"]
+
+[node name="Objective1" type="HBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer/Objectives"]
+
+[node name="CheckBox1" type="CheckBox" parent="Quest UI/Quest Text Box/QuestContainer/Objectives/Objective1"]
+text = ""
+
+[node name="Label1" type="Label" parent="Quest UI/Quest Text Box/QuestContainer/Objectives/Objective1"]
+text = "Interact with the Ice Cream Fridge"
+
+[node name="Objective2" type="HBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer/Objectives"]
+
+[node name="CheckBox2" type="CheckBox" parent="Quest UI/Quest Text Box/QuestContainer/Objectives/Objective2"]
+text = ""
+
+[node name="Label2" type="Label" parent="Quest UI/Quest Text Box/QuestContainer/Objectives/Objective2"]
+text = "Interact with the Meat Fridge"
+
+[node name="Objective3" type="HBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer/Objectives"]
+
+[node name="CheckBox3" type="CheckBox" parent="Quest UI/Quest Text Box/QuestContainer/Objectives/Objective3"]
+text = ""
+
+[node name="Label3" type="Label" parent="Quest UI/Quest Text Box/QuestContainer/Objectives/Objective3"]
+text = "Interact with the Hotdog & Siopao Fridge"
+
+[node name="Objective4" type="HBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer/Objectives"]
+
+[node name="CheckBox4" type="CheckBox" parent="Quest UI/Quest Text Box/QuestContainer/Objectives/Objective4"]
+text = ""
+
+[node name="Label4" type="Label" parent="Quest UI/Quest Text Box/QuestContainer/Objectives/Objective4"]
+text = "Interact with the Slurpee Machine"
+
+[node name="ProgressLabel" type="Label" parent="Quest UI/Quest Text Box/QuestContainer"]
+text = "Quest Progress: 0/4"

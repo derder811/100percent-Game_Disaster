@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvn8x7y2m3k4l"]
+
+[ext_resource type="Script" uid="uid://jmj63j61k2fh" path="res://Scenes/self_talk_system.gd" id="1_self_talk"]
+
+[node name="SelfTalkSystem" type="Node2D"]
+position = Vector2(427, 180)
+script = ExtResource("1_self_talk")

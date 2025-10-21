@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5hgk0atpn0p2"]
+
+[ext_resource type="Texture2D" uid="uid://b00xnh2bn8416" path="res://GAME_SCENE/Candle.png" id="1_pqck8"]
+[ext_resource type="Script" uid="uid://bx21va8686o4h" path="res://asset/Interaction/Interaction Area/interaction_area.gd" id="2_wmlv8"]
+[ext_resource type="Script" uid="uid://dnp4myfxvnnw6" path="res://candle.gd" id="3_candle"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wmlv8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mouko"]
+radius = 7.79608
+height = 66.0
+
+[node name="candle" type="StaticBody2D"]
+script = ExtResource("3_candle")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_wmlv8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.05991e-06, -1.88499)
+scale = Vector2(0.0105889, 0.00903761)
+texture = ExtResource("1_pqck8")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_wmlv8")
+metadata/_custom_type_script = "uid://bx21va8686o4h"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, 21)
+shape = SubResource("CapsuleShape2D_mouko")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8m9n2p5q7r1s"]
+
+[ext_resource type="Texture2D" uid="uid://c1cv8dd1f0thl" path="res://asset/Furnitures/Trash Bin.png" id="1_trash"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trash"]
+size = Vector2(100, 150)
+
+[node name="TrashBin" type="Sprite2D"]
+texture = ExtResource("1_trash")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_trash")

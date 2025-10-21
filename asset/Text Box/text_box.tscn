@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo1gtc34l5em"]
+
+[ext_resource type="Texture2D" uid="uid://b5v6t4q4l3nel" path="res://asset/Furnitures/Self Talk Text Box.png" id="1_iqjc6"]
+[ext_resource type="Script" uid="uid://bens20sfd2p8w" path="res://asset/Text Box/text_box.gd" id="2_2412j"]
+
+[sub_resource type="Theme" id="Theme_7eawq"]
+
+[node name="NinePatchRect" type="NinePatchRect"]
+offset_left = 9.0
+offset_top = 18.0
+offset_right = 485.0
+offset_bottom = 230.0
+texture = ExtResource("1_iqjc6")
+script = ExtResource("2_2412j")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 36.0
+offset_right = -32.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_7eawq")
+theme_type_variation = &"TooltipLabel"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "text box"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AutoHideTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ContinueLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 52.0
+offset_top = -70.0
+offset_right = 202.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Click SPACE to continue"
+horizontal_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="AutoHideTimer" to="." method="_on_auto_hide_timer_timeout"]

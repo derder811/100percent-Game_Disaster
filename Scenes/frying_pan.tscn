@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7k4m8n1p9q2r"]
+
+[ext_resource type="Texture2D" uid="uid://qbfqutafhfyi" path="res://asset/Furnitures/Frying Pan.png" id="1_frying_pan"]
+[ext_resource type="PackedScene" uid="uid://d3v5enbqtirae" path="res://asset/Interaction/Interaction Area/interaction_area.tscn" id="2_interaction"]
+[ext_resource type="Script" uid="uid://vhosmtfvka8y" path="res://frying_pan.gd" id="3_script"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_frying_pan"]
+size = Vector2(100, 50)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_interaction"]
+radius = 98.4124
+
+[node name="FryingPan" type="Sprite2D"]
+texture = ExtResource("1_frying_pan")
+script = ExtResource("3_script")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_frying_pan")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_interaction")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_interaction")

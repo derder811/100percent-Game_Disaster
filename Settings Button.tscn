@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn78s64y0du1h"]
+
+[ext_resource type="Texture2D" uid="uid://d0udu6x5lfaki" path="res://asset/button/Settings Menu/Setting Button.png" id="1_db688"]
+[ext_resource type="Script" uid="uid://fala2ut7bwc2" path="res://settings_button.gd" id="2_script"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 600
+script = ExtResource("2_script")
+
+[node name="Settings Button" type="TextureButton" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -81.0
+offset_top = 16.0
+offset_right = 319.0
+offset_bottom = 416.0
+grow_horizontal = 0
+scale = Vector2(0.150966, 0.144612)
+texture_normal = ExtResource("1_db688")

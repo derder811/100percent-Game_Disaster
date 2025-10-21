@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxvn8ywxqhq0"]
+
+[ext_resource type="Script" path="res://test_item_dialogs.gd" id="1_test"]
+
+[node name="TestItemDialogs" type="Node2D"]
+script = ExtResource("1_test")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 800.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 16
+text = "Testing Item Dialog Boxes
+Press SPACE/ENTER to test powerbank dialog
+Check console for test results"
+horizontal_alignment = 1
+vertical_alignment = 1

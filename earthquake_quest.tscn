@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk1o2fplyxe85"]
+
+[ext_resource type="Script" uid="uid://d0aondh6ieujs" path="res://earthquake_quest.gd" id="1_earthquake_quest_script"]
+
+[node name="EarthquakeQuest" type="Node"]
+script = ExtResource("1_earthquake_quest_script")
+
+[node name="Quest UI" type="CanvasLayer" parent="."]
+layer = 50
+
+[node name="Earthquake Quest Box" type="Panel" parent="Quest UI"]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 444.0
+offset_bottom = 184.0
+
+[node name="QuestContainer" type="VBoxContainer" parent="Quest UI/Earthquake Quest Box"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 12.0
+offset_right = -14.0
+offset_bottom = -12.0
+
+[node name="HeaderContainer" type="HBoxContainer" parent="Quest UI/Earthquake Quest Box/QuestContainer"]
+layout_mode = 2
+
+[node name="HeaderLabel" type="Label" parent="Quest UI/Earthquake Quest Box/QuestContainer/HeaderContainer"]
+layout_mode = 2
+text = "Earthquake Quest"
+
+[node name="HSeparator" type="HSeparator" parent="Quest UI/Earthquake Quest Box/QuestContainer"]
+layout_mode = 2
+
+[node name="Objectives" type="VBoxContainer" parent="Quest UI/Earthquake Quest Box/QuestContainer"]
+layout_mode = 2
+
+[node name="Objective1" type="HBoxContainer" parent="Quest UI/Earthquake Quest Box/QuestContainer/Objectives"]
+layout_mode = 2
+
+[node name="CheckBox1" type="CheckBox" parent="Quest UI/Earthquake Quest Box/QuestContainer/Objectives/Objective1"]
+layout_mode = 2
+
+[node name="Label1" type="Label" parent="Quest UI/Earthquake Quest Box/QuestContainer/Objectives/Objective1"]
+layout_mode = 2
+text = "Hide under 3 tables (0/3)"
+
+[node name="Objective2" type="HBoxContainer" parent="Quest UI/Earthquake Quest Box/QuestContainer/Objectives"]
+layout_mode = 2
+
+[node name="CheckBox2" type="CheckBox" parent="Quest UI/Earthquake Quest Box/QuestContainer/Objectives/Objective2"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Quest UI/Earthquake Quest Box/QuestContainer/Objectives/Objective2"]
+layout_mode = 2
+text = "Go to exit"

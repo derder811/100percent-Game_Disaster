@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://clk87mhclewh2"]
+
+[ext_resource type="Texture2D" uid="uid://dlel13gvii1x7" path="res://asset/Furnitures/Table.png" id="1_jd0nb"]
+
+[node name="Table" type="Sprite2D"]
+scale = Vector2(0.0618, 0.0578572)
+texture = ExtResource("1_jd0nb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]

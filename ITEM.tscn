@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://m0x67hh66npn"]
+
+[ext_resource type="Script" uid="uid://11m7rqbxye48" path="res://item.gd" id="1_d55or"]
+[ext_resource type="Texture2D" uid="uid://7ynnxc5s4lk0" path="res://asset/Furnitures/Canned Goods.png" id="2_d55or"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hrhwk"]
+
+[node name="Item" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_d55or")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_hrhwk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.999998, -1)
+scale = Vector2(0.0117308, 0.0104286)
+texture = ExtResource("2_d55or")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

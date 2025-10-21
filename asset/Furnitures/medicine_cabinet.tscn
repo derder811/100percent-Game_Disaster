@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmdg4gn4wo3gm"]
+
+[ext_resource type="Texture2D" uid="uid://dksvdnqarlpm7" path="res://asset/Furnitures/Medicine Cabinet.png" id="1_vg0rx"]
+
+[node name="MedicineCabinet" type="Sprite2D"]
+scale = Vector2(0.072, 0.0583334)
+texture = ExtResource("1_vg0rx")

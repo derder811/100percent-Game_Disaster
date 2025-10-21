@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddd845qxqhepm"]
+
+[ext_resource type="Script" uid="uid://bx21va8686o4h" path="res://asset/Interaction/Interaction Area/interaction_area.gd" id="1_8fq5o"]
+[ext_resource type="Script" uid="uid://cpg5p80kwlif7" path="res://store_entrance.gd" id="2_store_entrance"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ny0hn"]
+size = Vector2(183, 40)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kn1tt"]
+radius = 38.0
+height = 142.0
+
+[node name="Entrance to Store" type="Area2D"]
+script = ExtResource("2_store_entrance")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -24)
+shape = SubResource("RectangleShape2D_ny0hn")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_8fq5o")
+metadata/_custom_type_script = "uid://bx21va8686o4h"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, 21)
+shape = SubResource("CapsuleShape2D_kn1tt")

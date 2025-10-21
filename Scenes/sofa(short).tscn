@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq22eb88ypfqf"]
+
+[ext_resource type="Texture2D" uid="uid://by8cu4p8j0pye" path="res://asset/Furnitures/Sofa (Short).png" id="1_6xgjh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xgjh"]
+size = Vector2(499.628, 319.549)
+
+[node name="Sofa(short)" type="Sprite2D"]
+scale = Vector2(0.0480357, 0.0532)
+texture = ExtResource("1_6xgjh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 65.7895)
+shape = SubResource("RectangleShape2D_6xgjh")

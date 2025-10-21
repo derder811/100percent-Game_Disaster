@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bki4fy74oohd3"]
+
+[ext_resource type="Texture2D" uid="uid://bgc88dm1qjilq" path="res://asset/Furnitures/Water Bucket.png" id="1_caem6"]
+[ext_resource type="PackedScene" uid="uid://d3v5enbqtirae" path="res://asset/Interaction/Interaction Area/interaction_area.tscn" id="2_m1vr3"]
+[ext_resource type="Script" uid="uid://dowf11g1lwcta" path="res://bucket.gd" id="3_script"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ymkvi"]
+radius = 19.246
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nj8df"]
+radius = 27.2618
+
+[node name="Bucket" type="StaticBody2D"]
+script = ExtResource("3_script")
+
+[node name="WaterBucket" type="Sprite2D" parent="."]
+position = Vector2(-0.499999, 1.5)
+scale = Vector2(0.0451429, 0.044)
+texture = ExtResource("1_caem6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.23046, 1.93516)
+shape = SubResource("CircleShape2D_ymkvi")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_m1vr3")]
+position = Vector2(-3.69144, 1.2901)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(4.69144, -1.2901)
+shape = SubResource("CircleShape2D_nj8df")

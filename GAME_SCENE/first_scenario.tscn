@@ -1,0 +1,2617 @@
+[gd_scene load_steps=92 format=4 uid="uid://dm8t7wtfh4fs6"]
+
+[ext_resource type="Texture2D" uid="uid://dt10x42mxphse" path="res://asset/Concrete.png" id="1_nj8df"]
+[ext_resource type="Texture2D" uid="uid://ex6vuokpyrv4" path="res://asset/Wall.png" id="2_1fdyj"]
+[ext_resource type="PackedScene" uid="uid://d3v5enbqtirae" path="res://asset/Interaction/Interaction Area/interaction_area.tscn" id="2_nfq5s"]
+[ext_resource type="Texture2D" uid="uid://cv8scgge3fbd2" path="res://asset/Furnitures/Border.png" id="3_34w5w"]
+[ext_resource type="Texture2D" uid="uid://dirw85u8ocy8a" path="res://asset/Furnitures/grass.png.png" id="4_34w5w"]
+[ext_resource type="PackedScene" uid="uid://cuahhdtw33i2r" path="res://asset/Furnitures/stair.tscn" id="4_ymkvi"]
+[ext_resource type="PackedScene" uid="uid://bxfot54qsa8h2" path="res://Scenes/tv.tscn" id="5_fmnlw"]
+[ext_resource type="PackedScene" uid="uid://css7ixacrmqjr" path="res://flood.tscn" id="5_p8a1h"]
+[ext_resource type="PackedScene" uid="uid://ctenaowq1rrj0" path="res://Scenes/sofa(long).tscn" id="6_a7bhn"]
+[ext_resource type="PackedScene" uid="uid://cq22eb88ypfqf" path="res://Scenes/sofa(short).tscn" id="7_7sog6"]
+[ext_resource type="PackedScene" uid="uid://c5xsfgjp25ln6" path="res://Scenes/kitchen_3_0.tscn" id="8_10f7w"]
+[ext_resource type="Texture2D" uid="uid://dm4w8cbgy5hfd" path="res://asset/Furnitures/Kitchen Cabinet.png" id="11_xra17"]
+[ext_resource type="Texture2D" uid="uid://bfgunadlwaaih" path="res://asset/Furnitures/Cup.png" id="13_x4j5f"]
+[ext_resource type="PackedScene" uid="uid://dixfin3belv75" path="res://Scenes/1_chair.tscn" id="16_ppkgk"]
+[ext_resource type="PackedScene" uid="uid://cfmugg8jh7hhj" path="res://Scenes/2_chair.tscn" id="17_4ck6m"]
+[ext_resource type="PackedScene" uid="uid://ws6abx78im8f" path="res://Scenes/chair.tscn" id="18_yy4so"]
+[ext_resource type="PackedScene" uid="uid://0mbv1ln2arvy" path="res://Scenes/study_table.tscn" id="19_ghu3s"]
+[ext_resource type="PackedScene" uid="uid://c44aag1m6tyk8" path="res://Scenes/player's_chair.tscn" id="21_e3myo"]
+[ext_resource type="Texture2D" uid="uid://cihjrrah58ihe" path="res://asset/Furnitures/Fan.png" id="22_yq88m"]
+[ext_resource type="Texture2D" uid="uid://b6dxnipmb2tsy" path="res://asset/Furnitures/Socket.png" id="23_g8avo"]
+[ext_resource type="PackedScene" uid="uid://blki5q1vf6gua" path="res://Scenes/player's_cabinet.tscn" id="24_p8a1h"]
+[ext_resource type="PackedScene" uid="uid://dgq730dhkcuey" path="res://Scenes/player's_cabinet_2.tscn" id="25_ac53u"]
+[ext_resource type="Texture2D" uid="uid://byxwetehh24gd" path="res://asset/Furnitures/Books.png" id="26_7l1nt"]
+[ext_resource type="Texture2D" uid="uid://b1i884o3dk7di" path="res://asset/Furnitures/Black Shoes.png" id="27_ef3h4"]
+[ext_resource type="Texture2D" uid="uid://bbpyteg5bjseu" path="res://asset/Furnitures/Living Room Window.png" id="29_nut1h"]
+[ext_resource type="Texture2D" uid="uid://c6uqioobo8qof" path="res://asset/Furnitures/Wallframes.png" id="30_nvir8"]
+[ext_resource type="PackedScene" uid="uid://dedc4opahjeqx" path="res://Scenes/cabinet.tscn" id="31_02gvc"]
+[ext_resource type="PackedScene" uid="uid://c8i6ll4uh8l5b" path="res://Scenes/parent's_bed.tscn" id="32_isajh"]
+[ext_resource type="PackedScene" uid="uid://dejowderl6nhn" path="res://Scenes/parent's_table.tscn" id="33_21v5d"]
+[ext_resource type="PackedScene" uid="uid://d1lpllanscnju" path="res://Scenes/drawer(no_animation).tscn" id="34_2tfsr"]
+[ext_resource type="PackedScene" uid="uid://dmdg4gn4wo3gm" path="res://asset/Furnitures/medicine_cabinet.tscn" id="34_ymkvi"]
+[ext_resource type="PackedScene" uid="uid://ck6vcuaa4vi8l" path="res://Scenes/bathroom_rack.tscn" id="35_ll08a"]
+[ext_resource type="PackedScene" uid="uid://tkrb31hi2pki" path="res://Scenes/toilet_2_0.tscn" id="36_ugwfr"]
+[ext_resource type="PackedScene" uid="uid://cg5dh7380mxix" path="res://Scenes/faucet_3_0.tscn" id="38_5mqhu"]
+[ext_resource type="PackedScene" uid="uid://mdjtillbwfr8" path="res://Scenes/ref.tscn" id="41_rqcv2"]
+[ext_resource type="Texture2D" uid="uid://crkdhbfiaoum6" path="res://asset/Furnitures/Medicine 3.png" id="42_on40a"]
+[ext_resource type="PackedScene" uid="uid://bki4fy74oohd3" path="res://bucket.tscn" id="42_ymkvi"]
+[ext_resource type="Texture2D" uid="uid://dlel13gvii1x7" path="res://asset/Furnitures/Table.png" id="43_a1e6s"]
+[ext_resource type="PackedScene" uid="uid://cj4q0wlj47qeo" path="res://frying_pan.tscn" id="43_ymkvi"]
+[ext_resource type="Texture2D" uid="uid://dpu5w3keqq86m" path="res://asset/Furnitures/Medicine 1.png" id="44_6jkof"]
+[ext_resource type="PackedScene" uid="uid://ejjuixy6nsot" path="res://asset/Furnitures/bed.tscn" id="46_1fdyj"]
+[ext_resource type="PackedScene" uid="uid://syisfjs6gwbf" path="res://e_fan.tscn" id="46_nj8df"]
+[ext_resource type="PackedScene" uid="uid://d356xsoo8fmtv" path="res://Scenes/Nathan.tscn" id="46_rfgjq"]
+[ext_resource type="PackedScene" uid="uid://c6gs0utdxtg5r" path="res://Scenes/dialog_box.tscn" id="47_1fdyj"]
+[ext_resource type="PackedScene" uid="uid://ba5u1mr1tujdf" path="res://quest.tscn" id="47_quest"]
+[ext_resource type="PackedScene" uid="uid://bgll4a52be7j0" path="res://pause_scene.tscn" id="48_pause"]
+[ext_resource type="PackedScene" uid="uid://dphjv3kh6kr78" path="res://game_settings.tscn" id="49_settings"]
+[ext_resource type="PackedScene" uid="uid://cn78s64y0du1h" path="res://Settings Button.tscn" id="50_settings_btn"]
+[ext_resource type="PackedScene" uid="uid://c4yacjasvykju" path="res://window.tscn" id="52_7sog6"]
+[ext_resource type="Texture2D" uid="uid://ddu2713ptq6sl" path="res://asset/Furnitures/Battery.png" id="52_10f7w"]
+[ext_resource type="PackedScene" uid="uid://b3vr2vqauvitr" path="res://MedKit.tscn" id="52_medkit"]
+[ext_resource type="Texture2D" uid="uid://rsy7qte7hhe3" path="res://asset/Furnitures/Documents.png" id="53_10f7w"]
+[ext_resource type="PackedScene" uid="uid://dvq24qu8x60wv" path="res://Flashlight.tscn" id="53_flashlight"]
+[ext_resource type="Texture2D" uid="uid://pndis1746vld" path="res://asset/Furnitures/Water Bottle.png" id="54_0enws"]
+[ext_resource type="Texture2D" uid="uid://7ynnxc5s4lk0" path="res://asset/Furnitures/Canned Goods.png" id="55_7uoav"]
+[ext_resource type="Texture2D" uid="uid://bb32wm3htwow4" path="res://asset/Furnitures/Phone.png" id="56_xra17"]
+[ext_resource type="Texture2D" uid="uid://drfk8heb82spm" path="res://asset/Furnitures/Fuse Box 2.png" id="58_x4j5f"]
+[ext_resource type="Script" uid="uid://cuks18hovdq8t" path="res://phone.gd" id="59_phone"]
+[ext_resource type="Script" uid="uid://6bn127b5xfm7" path="res://battery_pickup.gd" id="60_battery"]
+[ext_resource type="Script" uid="uid://caxxk6g75lr1u" path="res://documents.gd" id="61_documents"]
+[ext_resource type="Texture2D" uid="uid://bivwi22cmbctx" path="res://asset/Furnitures/Power Bank (New).png" id="61_g8avo"]
+[ext_resource type="Script" uid="uid://6iatfis6b7q5" path="res://medicine_3.gd" id="62_medicine3"]
+[ext_resource type="Script" uid="uid://ptmj7wtu8n5s" path="res://powerbank.gd" id="63_powerbank"]
+[ext_resource type="Script" uid="uid://dm4uqsk03uoco" path="res://water_bottle.gd" id="64_waterbottle"]
+[ext_resource type="Script" uid="uid://daft2qdx3cqdd" path="res://canned_i_tem.gd" id="65_cannedfood"]
+[ext_resource type="Script" uid="uid://bnhogjkcy7e0f" path="res://fuse_box.gd" id="66_fusebox"]
+[ext_resource type="PackedScene" uid="uid://clx6n61t3wwpa" path="res://go_bag.tscn" id="67_gobag"]
+[ext_resource type="PackedScene" uid="uid://c5hgk0atpn0p2" path="res://candle.tscn" id="70_ac53u"]
+[ext_resource type="PackedScene" uid="uid://cjtfeqjgwd35q" path="res://asset/Interaction/InteractionManager.tscn" id="interaction_manager"]
+[ext_resource type="PackedScene" uid="uid://bhms2eo8a0pgc" path="res://MobileControls.tscn" id="mobile_controls"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1nj8df"]
+texture = ExtResource("1_nj8df")
+9:2/0 = 0
+10:2/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+11:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+12:3/0 = 0
+12:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:3/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+12:12/0 = 0
+13:12/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+12:13/0 = 0
+13:13/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewbju"]
+texture = ExtResource("2_1fdyj")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+16:0/0 = 0
+17:0/0 = 0
+18:0/0 = 0
+19:0/0 = 0
+20:0/0 = 0
+21:0/0 = 0
+22:0/0 = 0
+23:0/0 = 0
+24:0/0 = 0
+25:0/0 = 0
+26:0/0 = 0
+27:0/0 = 0
+28:0/0 = 0
+29:0/0 = 0
+30:0/0 = 0
+31:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+16:1/0 = 0
+17:1/0 = 0
+18:1/0 = 0
+19:1/0 = 0
+20:1/0 = 0
+21:1/0 = 0
+22:1/0 = 0
+23:1/0 = 0
+24:1/0 = 0
+25:1/0 = 0
+26:1/0 = 0
+27:1/0 = 0
+28:1/0 = 0
+29:1/0 = 0
+30:1/0 = 0
+31:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+16:2/0 = 0
+17:2/0 = 0
+18:2/0 = 0
+19:2/0 = 0
+20:2/0 = 0
+21:2/0 = 0
+22:2/0 = 0
+23:2/0 = 0
+24:2/0 = 0
+25:2/0 = 0
+26:2/0 = 0
+27:2/0 = 0
+28:2/0 = 0
+29:2/0 = 0
+30:2/0 = 0
+31:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+16:3/0 = 0
+17:3/0 = 0
+18:3/0 = 0
+19:3/0 = 0
+20:3/0 = 0
+21:3/0 = 0
+22:3/0 = 0
+23:3/0 = 0
+24:3/0 = 0
+25:3/0 = 0
+26:3/0 = 0
+27:3/0 = 0
+28:3/0 = 0
+29:3/0 = 0
+30:3/0 = 0
+31:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+16:4/0 = 0
+17:4/0 = 0
+18:4/0 = 0
+19:4/0 = 0
+20:4/0 = 0
+21:4/0 = 0
+22:4/0 = 0
+23:4/0 = 0
+24:4/0 = 0
+25:4/0 = 0
+26:4/0 = 0
+27:4/0 = 0
+28:4/0 = 0
+29:4/0 = 0
+30:4/0 = 0
+31:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+16:5/0 = 0
+17:5/0 = 0
+18:5/0 = 0
+19:5/0 = 0
+20:5/0 = 0
+21:5/0 = 0
+22:5/0 = 0
+23:5/0 = 0
+24:5/0 = 0
+25:5/0 = 0
+26:5/0 = 0
+27:5/0 = 0
+28:5/0 = 0
+29:5/0 = 0
+30:5/0 = 0
+31:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+16:6/0 = 0
+17:6/0 = 0
+18:6/0 = 0
+19:6/0 = 0
+20:6/0 = 0
+21:6/0 = 0
+22:6/0 = 0
+23:6/0 = 0
+24:6/0 = 0
+25:6/0 = 0
+26:6/0 = 0
+27:6/0 = 0
+28:6/0 = 0
+29:6/0 = 0
+30:6/0 = 0
+31:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+16:7/0 = 0
+17:7/0 = 0
+18:7/0 = 0
+19:7/0 = 0
+20:7/0 = 0
+21:7/0 = 0
+22:7/0 = 0
+23:7/0 = 0
+24:7/0 = 0
+25:7/0 = 0
+26:7/0 = 0
+27:7/0 = 0
+28:7/0 = 0
+29:7/0 = 0
+30:7/0 = 0
+31:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+16:8/0 = 0
+17:8/0 = 0
+18:8/0 = 0
+19:8/0 = 0
+20:8/0 = 0
+21:8/0 = 0
+22:8/0 = 0
+23:8/0 = 0
+24:8/0 = 0
+25:8/0 = 0
+26:8/0 = 0
+27:8/0 = 0
+28:8/0 = 0
+29:8/0 = 0
+30:8/0 = 0
+31:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+15:9/0 = 0
+16:9/0 = 0
+17:9/0 = 0
+18:9/0 = 0
+19:9/0 = 0
+20:9/0 = 0
+21:9/0 = 0
+22:9/0 = 0
+23:9/0 = 0
+24:9/0 = 0
+25:9/0 = 0
+26:9/0 = 0
+27:9/0 = 0
+28:9/0 = 0
+29:9/0 = 0
+30:9/0 = 0
+31:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+16:10/0 = 0
+17:10/0 = 0
+18:10/0 = 0
+19:10/0 = 0
+20:10/0 = 0
+21:10/0 = 0
+22:10/0 = 0
+23:10/0 = 0
+24:10/0 = 0
+25:10/0 = 0
+26:10/0 = 0
+27:10/0 = 0
+28:10/0 = 0
+29:10/0 = 0
+30:10/0 = 0
+31:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+14:11/0 = 0
+15:11/0 = 0
+16:11/0 = 0
+17:11/0 = 0
+18:11/0 = 0
+19:11/0 = 0
+20:11/0 = 0
+21:11/0 = 0
+22:11/0 = 0
+23:11/0 = 0
+24:11/0 = 0
+25:11/0 = 0
+26:11/0 = 0
+27:11/0 = 0
+28:11/0 = 0
+29:11/0 = 0
+30:11/0 = 0
+31:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+12:12/0 = 0
+13:12/0 = 0
+14:12/0 = 0
+15:12/0 = 0
+16:12/0 = 0
+17:12/0 = 0
+18:12/0 = 0
+19:12/0 = 0
+20:12/0 = 0
+21:12/0 = 0
+22:12/0 = 0
+23:12/0 = 0
+24:12/0 = 0
+25:12/0 = 0
+26:12/0 = 0
+27:12/0 = 0
+28:12/0 = 0
+29:12/0 = 0
+30:12/0 = 0
+31:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+12:13/0 = 0
+13:13/0 = 0
+14:13/0 = 0
+15:13/0 = 0
+16:13/0 = 0
+17:13/0 = 0
+18:13/0 = 0
+19:13/0 = 0
+20:13/0 = 0
+21:13/0 = 0
+22:13/0 = 0
+23:13/0 = 0
+24:13/0 = 0
+25:13/0 = 0
+26:13/0 = 0
+27:13/0 = 0
+28:13/0 = 0
+29:13/0 = 0
+30:13/0 = 0
+31:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+8:14/0 = 0
+9:14/0 = 0
+10:14/0 = 0
+11:14/0 = 0
+12:14/0 = 0
+13:14/0 = 0
+14:14/0 = 0
+15:14/0 = 0
+16:14/0 = 0
+17:14/0 = 0
+18:14/0 = 0
+19:14/0 = 0
+20:14/0 = 0
+21:14/0 = 0
+22:14/0 = 0
+23:14/0 = 0
+24:14/0 = 0
+25:14/0 = 0
+26:14/0 = 0
+27:14/0 = 0
+28:14/0 = 0
+29:14/0 = 0
+30:14/0 = 0
+31:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+8:15/0 = 0
+9:15/0 = 0
+10:15/0 = 0
+11:15/0 = 0
+12:15/0 = 0
+13:15/0 = 0
+14:15/0 = 0
+15:15/0 = 0
+16:15/0 = 0
+17:15/0 = 0
+18:15/0 = 0
+19:15/0 = 0
+20:15/0 = 0
+21:15/0 = 0
+22:15/0 = 0
+23:15/0 = 0
+24:15/0 = 0
+25:15/0 = 0
+26:15/0 = 0
+27:15/0 = 0
+28:15/0 = 0
+29:15/0 = 0
+30:15/0 = 0
+31:15/0 = 0
+0:16/0 = 0
+1:16/0 = 0
+2:16/0 = 0
+3:16/0 = 0
+4:16/0 = 0
+5:16/0 = 0
+6:16/0 = 0
+7:16/0 = 0
+8:16/0 = 0
+9:16/0 = 0
+10:16/0 = 0
+11:16/0 = 0
+12:16/0 = 0
+13:16/0 = 0
+14:16/0 = 0
+15:16/0 = 0
+16:16/0 = 0
+17:16/0 = 0
+18:16/0 = 0
+19:16/0 = 0
+20:16/0 = 0
+21:16/0 = 0
+22:16/0 = 0
+23:16/0 = 0
+24:16/0 = 0
+25:16/0 = 0
+26:16/0 = 0
+27:16/0 = 0
+28:16/0 = 0
+29:16/0 = 0
+30:16/0 = 0
+31:16/0 = 0
+0:17/0 = 0
+1:17/0 = 0
+2:17/0 = 0
+3:17/0 = 0
+4:17/0 = 0
+5:17/0 = 0
+6:17/0 = 0
+7:17/0 = 0
+8:17/0 = 0
+9:17/0 = 0
+10:17/0 = 0
+11:17/0 = 0
+12:17/0 = 0
+13:17/0 = 0
+14:17/0 = 0
+15:17/0 = 0
+16:17/0 = 0
+17:17/0 = 0
+18:17/0 = 0
+19:17/0 = 0
+20:17/0 = 0
+21:17/0 = 0
+22:17/0 = 0
+23:17/0 = 0
+24:17/0 = 0
+25:17/0 = 0
+26:17/0 = 0
+27:17/0 = 0
+28:17/0 = 0
+29:17/0 = 0
+30:17/0 = 0
+31:17/0 = 0
+0:18/0 = 0
+1:18/0 = 0
+2:18/0 = 0
+3:18/0 = 0
+4:18/0 = 0
+5:18/0 = 0
+6:18/0 = 0
+7:18/0 = 0
+8:18/0 = 0
+9:18/0 = 0
+10:18/0 = 0
+11:18/0 = 0
+12:18/0 = 0
+13:18/0 = 0
+14:18/0 = 0
+15:18/0 = 0
+16:18/0 = 0
+17:18/0 = 0
+18:18/0 = 0
+19:18/0 = 0
+20:18/0 = 0
+21:18/0 = 0
+22:18/0 = 0
+23:18/0 = 0
+24:18/0 = 0
+25:18/0 = 0
+26:18/0 = 0
+27:18/0 = 0
+28:18/0 = 0
+29:18/0 = 0
+30:18/0 = 0
+31:18/0 = 0
+0:19/0 = 0
+1:19/0 = 0
+2:19/0 = 0
+3:19/0 = 0
+4:19/0 = 0
+5:19/0 = 0
+6:19/0 = 0
+7:19/0 = 0
+8:19/0 = 0
+9:19/0 = 0
+10:19/0 = 0
+11:19/0 = 0
+12:19/0 = 0
+13:19/0 = 0
+14:19/0 = 0
+15:19/0 = 0
+16:19/0 = 0
+17:19/0 = 0
+18:19/0 = 0
+19:19/0 = 0
+20:19/0 = 0
+21:19/0 = 0
+22:19/0 = 0
+23:19/0 = 0
+24:19/0 = 0
+25:19/0 = 0
+26:19/0 = 0
+27:19/0 = 0
+28:19/0 = 0
+29:19/0 = 0
+30:19/0 = 0
+31:19/0 = 0
+0:20/0 = 0
+1:20/0 = 0
+2:20/0 = 0
+3:20/0 = 0
+4:20/0 = 0
+5:20/0 = 0
+6:20/0 = 0
+7:20/0 = 0
+8:20/0 = 0
+9:20/0 = 0
+10:20/0 = 0
+11:20/0 = 0
+12:20/0 = 0
+13:20/0 = 0
+14:20/0 = 0
+15:20/0 = 0
+16:20/0 = 0
+17:20/0 = 0
+18:20/0 = 0
+19:20/0 = 0
+20:20/0 = 0
+21:20/0 = 0
+22:20/0 = 0
+23:20/0 = 0
+24:20/0 = 0
+25:20/0 = 0
+26:20/0 = 0
+27:20/0 = 0
+28:20/0 = 0
+29:20/0 = 0
+30:20/0 = 0
+31:20/0 = 0
+0:21/0 = 0
+1:21/0 = 0
+2:21/0 = 0
+3:21/0 = 0
+4:21/0 = 0
+5:21/0 = 0
+6:21/0 = 0
+7:21/0 = 0
+8:21/0 = 0
+9:21/0 = 0
+10:21/0 = 0
+11:21/0 = 0
+12:21/0 = 0
+13:21/0 = 0
+14:21/0 = 0
+15:21/0 = 0
+16:21/0 = 0
+17:21/0 = 0
+18:21/0 = 0
+19:21/0 = 0
+20:21/0 = 0
+21:21/0 = 0
+22:21/0 = 0
+23:21/0 = 0
+24:21/0 = 0
+25:21/0 = 0
+26:21/0 = 0
+27:21/0 = 0
+28:21/0 = 0
+29:21/0 = 0
+30:21/0 = 0
+31:21/0 = 0
+0:22/0 = 0
+1:22/0 = 0
+2:22/0 = 0
+3:22/0 = 0
+4:22/0 = 0
+5:22/0 = 0
+6:22/0 = 0
+7:22/0 = 0
+8:22/0 = 0
+9:22/0 = 0
+10:22/0 = 0
+11:22/0 = 0
+12:22/0 = 0
+13:22/0 = 0
+14:22/0 = 0
+15:22/0 = 0
+16:22/0 = 0
+17:22/0 = 0
+18:22/0 = 0
+19:22/0 = 0
+20:22/0 = 0
+21:22/0 = 0
+22:22/0 = 0
+23:22/0 = 0
+24:22/0 = 0
+25:22/0 = 0
+26:22/0 = 0
+27:22/0 = 0
+28:22/0 = 0
+29:22/0 = 0
+30:22/0 = 0
+31:22/0 = 0
+0:23/0 = 0
+1:23/0 = 0
+2:23/0 = 0
+3:23/0 = 0
+4:23/0 = 0
+5:23/0 = 0
+6:23/0 = 0
+7:23/0 = 0
+8:23/0 = 0
+9:23/0 = 0
+10:23/0 = 0
+11:23/0 = 0
+12:23/0 = 0
+13:23/0 = 0
+14:23/0 = 0
+15:23/0 = 0
+16:23/0 = 0
+17:23/0 = 0
+18:23/0 = 0
+19:23/0 = 0
+20:23/0 = 0
+21:23/0 = 0
+22:23/0 = 0
+23:23/0 = 0
+24:23/0 = 0
+25:23/0 = 0
+26:23/0 = 0
+27:23/0 = 0
+28:23/0 = 0
+29:23/0 = 0
+30:23/0 = 0
+31:23/0 = 0
+0:24/0 = 0
+1:24/0 = 0
+2:24/0 = 0
+3:24/0 = 0
+4:24/0 = 0
+5:24/0 = 0
+6:24/0 = 0
+7:24/0 = 0
+8:24/0 = 0
+9:24/0 = 0
+10:24/0 = 0
+11:24/0 = 0
+12:24/0 = 0
+13:24/0 = 0
+14:24/0 = 0
+15:24/0 = 0
+16:24/0 = 0
+17:24/0 = 0
+18:24/0 = 0
+19:24/0 = 0
+20:24/0 = 0
+21:24/0 = 0
+22:24/0 = 0
+23:24/0 = 0
+24:24/0 = 0
+25:24/0 = 0
+26:24/0 = 0
+27:24/0 = 0
+28:24/0 = 0
+29:24/0 = 0
+30:24/0 = 0
+31:24/0 = 0
+0:25/0 = 0
+1:25/0 = 0
+2:25/0 = 0
+3:25/0 = 0
+4:25/0 = 0
+5:25/0 = 0
+6:25/0 = 0
+7:25/0 = 0
+8:25/0 = 0
+9:25/0 = 0
+10:25/0 = 0
+11:25/0 = 0
+12:25/0 = 0
+13:25/0 = 0
+14:25/0 = 0
+15:25/0 = 0
+16:25/0 = 0
+17:25/0 = 0
+18:25/0 = 0
+19:25/0 = 0
+20:25/0 = 0
+21:25/0 = 0
+22:25/0 = 0
+23:25/0 = 0
+24:25/0 = 0
+25:25/0 = 0
+26:25/0 = 0
+27:25/0 = 0
+28:25/0 = 0
+29:25/0 = 0
+30:25/0 = 0
+31:25/0 = 0
+0:26/0 = 0
+1:26/0 = 0
+2:26/0 = 0
+3:26/0 = 0
+4:26/0 = 0
+5:26/0 = 0
+6:26/0 = 0
+7:26/0 = 0
+8:26/0 = 0
+9:26/0 = 0
+10:26/0 = 0
+11:26/0 = 0
+12:26/0 = 0
+13:26/0 = 0
+14:26/0 = 0
+15:26/0 = 0
+16:26/0 = 0
+17:26/0 = 0
+18:26/0 = 0
+19:26/0 = 0
+20:26/0 = 0
+21:26/0 = 0
+22:26/0 = 0
+23:26/0 = 0
+24:26/0 = 0
+25:26/0 = 0
+26:26/0 = 0
+27:26/0 = 0
+28:26/0 = 0
+29:26/0 = 0
+30:26/0 = 0
+31:26/0 = 0
+0:27/0 = 0
+1:27/0 = 0
+2:27/0 = 0
+3:27/0 = 0
+4:27/0 = 0
+5:27/0 = 0
+6:27/0 = 0
+7:27/0 = 0
+8:27/0 = 0
+9:27/0 = 0
+10:27/0 = 0
+11:27/0 = 0
+12:27/0 = 0
+13:27/0 = 0
+14:27/0 = 0
+15:27/0 = 0
+16:27/0 = 0
+17:27/0 = 0
+18:27/0 = 0
+19:27/0 = 0
+20:27/0 = 0
+21:27/0 = 0
+22:27/0 = 0
+23:27/0 = 0
+24:27/0 = 0
+25:27/0 = 0
+26:27/0 = 0
+27:27/0 = 0
+28:27/0 = 0
+29:27/0 = 0
+30:27/0 = 0
+31:27/0 = 0
+0:28/0 = 0
+1:28/0 = 0
+2:28/0 = 0
+3:28/0 = 0
+4:28/0 = 0
+5:28/0 = 0
+6:28/0 = 0
+7:28/0 = 0
+8:28/0 = 0
+9:28/0 = 0
+10:28/0 = 0
+11:28/0 = 0
+12:28/0 = 0
+13:28/0 = 0
+14:28/0 = 0
+15:28/0 = 0
+16:28/0 = 0
+17:28/0 = 0
+18:28/0 = 0
+19:28/0 = 0
+20:28/0 = 0
+21:28/0 = 0
+22:28/0 = 0
+23:28/0 = 0
+24:28/0 = 0
+25:28/0 = 0
+26:28/0 = 0
+27:28/0 = 0
+28:28/0 = 0
+29:28/0 = 0
+30:28/0 = 0
+31:28/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_85qyi"]
+texture = ExtResource("3_34w5w")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+16:0/0 = 0
+17:0/0 = 0
+18:0/0 = 0
+19:0/0 = 0
+20:0/0 = 0
+21:0/0 = 0
+22:0/0 = 0
+23:0/0 = 0
+24:0/0 = 0
+25:0/0 = 0
+26:0/0 = 0
+27:0/0 = 0
+28:0/0 = 0
+29:0/0 = 0
+30:0/0 = 0
+31:0/0 = 0
+32:0/0 = 0
+33:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+16:1/0 = 0
+17:1/0 = 0
+18:1/0 = 0
+19:1/0 = 0
+20:1/0 = 0
+21:1/0 = 0
+22:1/0 = 0
+23:1/0 = 0
+24:1/0 = 0
+25:1/0 = 0
+26:1/0 = 0
+27:1/0 = 0
+28:1/0 = 0
+29:1/0 = 0
+30:1/0 = 0
+31:1/0 = 0
+32:1/0 = 0
+33:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+16:2/0 = 0
+17:2/0 = 0
+18:2/0 = 0
+19:2/0 = 0
+20:2/0 = 0
+21:2/0 = 0
+22:2/0 = 0
+23:2/0 = 0
+24:2/0 = 0
+25:2/0 = 0
+26:2/0 = 0
+27:2/0 = 0
+28:2/0 = 0
+29:2/0 = 0
+30:2/0 = 0
+31:2/0 = 0
+32:2/0 = 0
+33:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+16:3/0 = 0
+17:3/0 = 0
+18:3/0 = 0
+19:3/0 = 0
+20:3/0 = 0
+21:3/0 = 0
+22:3/0 = 0
+23:3/0 = 0
+24:3/0 = 0
+25:3/0 = 0
+26:3/0 = 0
+27:3/0 = 0
+28:3/0 = 0
+29:3/0 = 0
+30:3/0 = 0
+31:3/0 = 0
+32:3/0 = 0
+33:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+16:4/0 = 0
+17:4/0 = 0
+18:4/0 = 0
+19:4/0 = 0
+20:4/0 = 0
+21:4/0 = 0
+22:4/0 = 0
+23:4/0 = 0
+24:4/0 = 0
+25:4/0 = 0
+26:4/0 = 0
+27:4/0 = 0
+28:4/0 = 0
+29:4/0 = 0
+30:4/0 = 0
+31:4/0 = 0
+32:4/0 = 0
+33:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+16:5/0 = 0
+17:5/0 = 0
+18:5/0 = 0
+19:5/0 = 0
+20:5/0 = 0
+21:5/0 = 0
+22:5/0 = 0
+23:5/0 = 0
+24:5/0 = 0
+25:5/0 = 0
+26:5/0 = 0
+27:5/0 = 0
+28:5/0 = 0
+29:5/0 = 0
+30:5/0 = 0
+31:5/0 = 0
+32:5/0 = 0
+33:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+16:6/0 = 0
+17:6/0 = 0
+18:6/0 = 0
+19:6/0 = 0
+20:6/0 = 0
+21:6/0 = 0
+22:6/0 = 0
+23:6/0 = 0
+24:6/0 = 0
+25:6/0 = 0
+26:6/0 = 0
+27:6/0 = 0
+28:6/0 = 0
+29:6/0 = 0
+30:6/0 = 0
+31:6/0 = 0
+32:6/0 = 0
+33:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+16:7/0 = 0
+17:7/0 = 0
+18:7/0 = 0
+19:7/0 = 0
+20:7/0 = 0
+21:7/0 = 0
+22:7/0 = 0
+23:7/0 = 0
+24:7/0 = 0
+25:7/0 = 0
+26:7/0 = 0
+27:7/0 = 0
+28:7/0 = 0
+29:7/0 = 0
+30:7/0 = 0
+31:7/0 = 0
+32:7/0 = 0
+33:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+16:8/0 = 0
+17:8/0 = 0
+18:8/0 = 0
+19:8/0 = 0
+20:8/0 = 0
+21:8/0 = 0
+22:8/0 = 0
+23:8/0 = 0
+24:8/0 = 0
+25:8/0 = 0
+26:8/0 = 0
+27:8/0 = 0
+28:8/0 = 0
+29:8/0 = 0
+30:8/0 = 0
+31:8/0 = 0
+32:8/0 = 0
+33:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+15:9/0 = 0
+16:9/0 = 0
+17:9/0 = 0
+18:9/0 = 0
+19:9/0 = 0
+20:9/0 = 0
+21:9/0 = 0
+22:9/0 = 0
+23:9/0 = 0
+24:9/0 = 0
+25:9/0 = 0
+26:9/0 = 0
+27:9/0 = 0
+28:9/0 = 0
+29:9/0 = 0
+30:9/0 = 0
+31:9/0 = 0
+32:9/0 = 0
+33:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+16:10/0 = 0
+17:10/0 = 0
+18:10/0 = 0
+19:10/0 = 0
+20:10/0 = 0
+21:10/0 = 0
+22:10/0 = 0
+23:10/0 = 0
+24:10/0 = 0
+25:10/0 = 0
+26:10/0 = 0
+27:10/0 = 0
+28:10/0 = 0
+29:10/0 = 0
+30:10/0 = 0
+31:10/0 = 0
+32:10/0 = 0
+33:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+14:11/0 = 0
+15:11/0 = 0
+16:11/0 = 0
+17:11/0 = 0
+18:11/0 = 0
+19:11/0 = 0
+20:11/0 = 0
+21:11/0 = 0
+22:11/0 = 0
+23:11/0 = 0
+24:11/0 = 0
+25:11/0 = 0
+26:11/0 = 0
+27:11/0 = 0
+28:11/0 = 0
+29:11/0 = 0
+30:11/0 = 0
+31:11/0 = 0
+32:11/0 = 0
+33:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+12:12/0 = 0
+13:12/0 = 0
+14:12/0 = 0
+15:12/0 = 0
+16:12/0 = 0
+17:12/0 = 0
+18:12/0 = 0
+19:12/0 = 0
+20:12/0 = 0
+21:12/0 = 0
+22:12/0 = 0
+23:12/0 = 0
+24:12/0 = 0
+25:12/0 = 0
+26:12/0 = 0
+27:12/0 = 0
+28:12/0 = 0
+29:12/0 = 0
+30:12/0 = 0
+31:12/0 = 0
+32:12/0 = 0
+33:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+12:13/0 = 0
+13:13/0 = 0
+14:13/0 = 0
+15:13/0 = 0
+16:13/0 = 0
+17:13/0 = 0
+18:13/0 = 0
+19:13/0 = 0
+20:13/0 = 0
+21:13/0 = 0
+22:13/0 = 0
+23:13/0 = 0
+24:13/0 = 0
+25:13/0 = 0
+26:13/0 = 0
+27:13/0 = 0
+28:13/0 = 0
+29:13/0 = 0
+30:13/0 = 0
+31:13/0 = 0
+32:13/0 = 0
+33:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+8:14/0 = 0
+9:14/0 = 0
+10:14/0 = 0
+11:14/0 = 0
+12:14/0 = 0
+13:14/0 = 0
+14:14/0 = 0
+15:14/0 = 0
+16:14/0 = 0
+17:14/0 = 0
+18:14/0 = 0
+19:14/0 = 0
+20:14/0 = 0
+21:14/0 = 0
+22:14/0 = 0
+23:14/0 = 0
+24:14/0 = 0
+25:14/0 = 0
+26:14/0 = 0
+27:14/0 = 0
+28:14/0 = 0
+29:14/0 = 0
+30:14/0 = 0
+31:14/0 = 0
+32:14/0 = 0
+33:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+8:15/0 = 0
+9:15/0 = 0
+10:15/0 = 0
+11:15/0 = 0
+12:15/0 = 0
+13:15/0 = 0
+14:15/0 = 0
+15:15/0 = 0
+16:15/0 = 0
+17:15/0 = 0
+18:15/0 = 0
+19:15/0 = 0
+20:15/0 = 0
+21:15/0 = 0
+22:15/0 = 0
+23:15/0 = 0
+24:15/0 = 0
+25:15/0 = 0
+26:15/0 = 0
+27:15/0 = 0
+28:15/0 = 0
+29:15/0 = 0
+30:15/0 = 0
+31:15/0 = 0
+32:15/0 = 0
+33:15/0 = 0
+0:16/0 = 0
+1:16/0 = 0
+2:16/0 = 0
+3:16/0 = 0
+4:16/0 = 0
+5:16/0 = 0
+6:16/0 = 0
+7:16/0 = 0
+8:16/0 = 0
+9:16/0 = 0
+10:16/0 = 0
+11:16/0 = 0
+12:16/0 = 0
+13:16/0 = 0
+14:16/0 = 0
+15:16/0 = 0
+16:16/0 = 0
+17:16/0 = 0
+18:16/0 = 0
+19:16/0 = 0
+20:16/0 = 0
+21:16/0 = 0
+22:16/0 = 0
+23:16/0 = 0
+24:16/0 = 0
+25:16/0 = 0
+26:16/0 = 0
+27:16/0 = 0
+28:16/0 = 0
+29:16/0 = 0
+30:16/0 = 0
+31:16/0 = 0
+32:16/0 = 0
+33:16/0 = 0
+0:17/0 = 0
+1:17/0 = 0
+2:17/0 = 0
+3:17/0 = 0
+4:17/0 = 0
+5:17/0 = 0
+6:17/0 = 0
+7:17/0 = 0
+8:17/0 = 0
+9:17/0 = 0
+10:17/0 = 0
+11:17/0 = 0
+12:17/0 = 0
+13:17/0 = 0
+14:17/0 = 0
+15:17/0 = 0
+16:17/0 = 0
+17:17/0 = 0
+18:17/0 = 0
+19:17/0 = 0
+20:17/0 = 0
+21:17/0 = 0
+22:17/0 = 0
+23:17/0 = 0
+24:17/0 = 0
+25:17/0 = 0
+26:17/0 = 0
+27:17/0 = 0
+28:17/0 = 0
+29:17/0 = 0
+30:17/0 = 0
+31:17/0 = 0
+32:17/0 = 0
+33:17/0 = 0
+0:18/0 = 0
+1:18/0 = 0
+2:18/0 = 0
+3:18/0 = 0
+4:18/0 = 0
+5:18/0 = 0
+6:18/0 = 0
+7:18/0 = 0
+8:18/0 = 0
+9:18/0 = 0
+10:18/0 = 0
+11:18/0 = 0
+12:18/0 = 0
+13:18/0 = 0
+14:18/0 = 0
+15:18/0 = 0
+16:18/0 = 0
+17:18/0 = 0
+18:18/0 = 0
+19:18/0 = 0
+20:18/0 = 0
+21:18/0 = 0
+22:18/0 = 0
+23:18/0 = 0
+24:18/0 = 0
+25:18/0 = 0
+26:18/0 = 0
+27:18/0 = 0
+28:18/0 = 0
+29:18/0 = 0
+30:18/0 = 0
+31:18/0 = 0
+32:18/0 = 0
+33:18/0 = 0
+0:19/0 = 0
+1:19/0 = 0
+2:19/0 = 0
+3:19/0 = 0
+4:19/0 = 0
+5:19/0 = 0
+6:19/0 = 0
+7:19/0 = 0
+8:19/0 = 0
+9:19/0 = 0
+10:19/0 = 0
+11:19/0 = 0
+12:19/0 = 0
+13:19/0 = 0
+14:19/0 = 0
+15:19/0 = 0
+16:19/0 = 0
+17:19/0 = 0
+18:19/0 = 0
+19:19/0 = 0
+20:19/0 = 0
+21:19/0 = 0
+22:19/0 = 0
+23:19/0 = 0
+24:19/0 = 0
+25:19/0 = 0
+26:19/0 = 0
+27:19/0 = 0
+28:19/0 = 0
+29:19/0 = 0
+30:19/0 = 0
+31:19/0 = 0
+32:19/0 = 0
+33:19/0 = 0
+0:20/0 = 0
+1:20/0 = 0
+2:20/0 = 0
+3:20/0 = 0
+4:20/0 = 0
+5:20/0 = 0
+6:20/0 = 0
+7:20/0 = 0
+8:20/0 = 0
+9:20/0 = 0
+10:20/0 = 0
+11:20/0 = 0
+12:20/0 = 0
+13:20/0 = 0
+14:20/0 = 0
+15:20/0 = 0
+16:20/0 = 0
+17:20/0 = 0
+18:20/0 = 0
+19:20/0 = 0
+20:20/0 = 0
+21:20/0 = 0
+22:20/0 = 0
+23:20/0 = 0
+24:20/0 = 0
+25:20/0 = 0
+26:20/0 = 0
+27:20/0 = 0
+28:20/0 = 0
+29:20/0 = 0
+30:20/0 = 0
+31:20/0 = 0
+32:20/0 = 0
+33:20/0 = 0
+0:21/0 = 0
+1:21/0 = 0
+2:21/0 = 0
+3:21/0 = 0
+4:21/0 = 0
+5:21/0 = 0
+6:21/0 = 0
+7:21/0 = 0
+8:21/0 = 0
+9:21/0 = 0
+10:21/0 = 0
+11:21/0 = 0
+12:21/0 = 0
+13:21/0 = 0
+14:21/0 = 0
+15:21/0 = 0
+16:21/0 = 0
+17:21/0 = 0
+18:21/0 = 0
+19:21/0 = 0
+20:21/0 = 0
+21:21/0 = 0
+22:21/0 = 0
+23:21/0 = 0
+24:21/0 = 0
+25:21/0 = 0
+26:21/0 = 0
+27:21/0 = 0
+28:21/0 = 0
+29:21/0 = 0
+30:21/0 = 0
+31:21/0 = 0
+32:21/0 = 0
+33:21/0 = 0
+0:22/0 = 0
+1:22/0 = 0
+2:22/0 = 0
+3:22/0 = 0
+4:22/0 = 0
+5:22/0 = 0
+6:22/0 = 0
+7:22/0 = 0
+8:22/0 = 0
+9:22/0 = 0
+10:22/0 = 0
+11:22/0 = 0
+12:22/0 = 0
+13:22/0 = 0
+14:22/0 = 0
+15:22/0 = 0
+16:22/0 = 0
+17:22/0 = 0
+18:22/0 = 0
+19:22/0 = 0
+20:22/0 = 0
+21:22/0 = 0
+22:22/0 = 0
+23:22/0 = 0
+24:22/0 = 0
+25:22/0 = 0
+26:22/0 = 0
+27:22/0 = 0
+28:22/0 = 0
+29:22/0 = 0
+30:22/0 = 0
+31:22/0 = 0
+32:22/0 = 0
+33:22/0 = 0
+0:23/0 = 0
+1:23/0 = 0
+2:23/0 = 0
+3:23/0 = 0
+4:23/0 = 0
+5:23/0 = 0
+6:23/0 = 0
+7:23/0 = 0
+8:23/0 = 0
+9:23/0 = 0
+10:23/0 = 0
+11:23/0 = 0
+12:23/0 = 0
+13:23/0 = 0
+14:23/0 = 0
+15:23/0 = 0
+16:23/0 = 0
+17:23/0 = 0
+18:23/0 = 0
+19:23/0 = 0
+20:23/0 = 0
+21:23/0 = 0
+22:23/0 = 0
+23:23/0 = 0
+24:23/0 = 0
+25:23/0 = 0
+26:23/0 = 0
+27:23/0 = 0
+28:23/0 = 0
+29:23/0 = 0
+30:23/0 = 0
+31:23/0 = 0
+32:23/0 = 0
+33:23/0 = 0
+0:24/0 = 0
+1:24/0 = 0
+2:24/0 = 0
+3:24/0 = 0
+4:24/0 = 0
+5:24/0 = 0
+6:24/0 = 0
+7:24/0 = 0
+8:24/0 = 0
+9:24/0 = 0
+10:24/0 = 0
+11:24/0 = 0
+12:24/0 = 0
+13:24/0 = 0
+14:24/0 = 0
+15:24/0 = 0
+16:24/0 = 0
+17:24/0 = 0
+18:24/0 = 0
+19:24/0 = 0
+20:24/0 = 0
+21:24/0 = 0
+22:24/0 = 0
+23:24/0 = 0
+24:24/0 = 0
+25:24/0 = 0
+26:24/0 = 0
+27:24/0 = 0
+28:24/0 = 0
+29:24/0 = 0
+30:24/0 = 0
+31:24/0 = 0
+32:24/0 = 0
+33:24/0 = 0
+0:25/0 = 0
+1:25/0 = 0
+2:25/0 = 0
+3:25/0 = 0
+4:25/0 = 0
+5:25/0 = 0
+6:25/0 = 0
+7:25/0 = 0
+8:25/0 = 0
+9:25/0 = 0
+10:25/0 = 0
+11:25/0 = 0
+12:25/0 = 0
+13:25/0 = 0
+14:25/0 = 0
+15:25/0 = 0
+16:25/0 = 0
+17:25/0 = 0
+18:25/0 = 0
+19:25/0 = 0
+20:25/0 = 0
+21:25/0 = 0
+22:25/0 = 0
+23:25/0 = 0
+24:25/0 = 0
+25:25/0 = 0
+26:25/0 = 0
+27:25/0 = 0
+28:25/0 = 0
+29:25/0 = 0
+30:25/0 = 0
+31:25/0 = 0
+32:25/0 = 0
+33:25/0 = 0
+0:26/0 = 0
+1:26/0 = 0
+2:26/0 = 0
+3:26/0 = 0
+4:26/0 = 0
+5:26/0 = 0
+6:26/0 = 0
+7:26/0 = 0
+8:26/0 = 0
+9:26/0 = 0
+10:26/0 = 0
+11:26/0 = 0
+12:26/0 = 0
+13:26/0 = 0
+14:26/0 = 0
+15:26/0 = 0
+16:26/0 = 0
+17:26/0 = 0
+18:26/0 = 0
+19:26/0 = 0
+20:26/0 = 0
+21:26/0 = 0
+22:26/0 = 0
+23:26/0 = 0
+24:26/0 = 0
+25:26/0 = 0
+26:26/0 = 0
+27:26/0 = 0
+28:26/0 = 0
+29:26/0 = 0
+30:26/0 = 0
+31:26/0 = 0
+32:26/0 = 0
+33:26/0 = 0
+0:27/0 = 0
+1:27/0 = 0
+2:27/0 = 0
+3:27/0 = 0
+4:27/0 = 0
+5:27/0 = 0
+6:27/0 = 0
+7:27/0 = 0
+8:27/0 = 0
+9:27/0 = 0
+10:27/0 = 0
+11:27/0 = 0
+12:27/0 = 0
+13:27/0 = 0
+14:27/0 = 0
+15:27/0 = 0
+16:27/0 = 0
+17:27/0 = 0
+18:27/0 = 0
+19:27/0 = 0
+20:27/0 = 0
+21:27/0 = 0
+22:27/0 = 0
+23:27/0 = 0
+24:27/0 = 0
+25:27/0 = 0
+26:27/0 = 0
+27:27/0 = 0
+28:27/0 = 0
+29:27/0 = 0
+30:27/0 = 0
+31:27/0 = 0
+32:27/0 = 0
+33:27/0 = 0
+0:28/0 = 0
+1:28/0 = 0
+2:28/0 = 0
+3:28/0 = 0
+4:28/0 = 0
+5:28/0 = 0
+6:28/0 = 0
+7:28/0 = 0
+8:28/0 = 0
+9:28/0 = 0
+10:28/0 = 0
+11:28/0 = 0
+12:28/0 = 0
+13:28/0 = 0
+14:28/0 = 0
+15:28/0 = 0
+16:28/0 = 0
+17:28/0 = 0
+18:28/0 = 0
+19:28/0 = 0
+20:28/0 = 0
+21:28/0 = 0
+22:28/0 = 0
+23:28/0 = 0
+24:28/0 = 0
+25:28/0 = 0
+26:28/0 = 0
+27:28/0 = 0
+28:28/0 = 0
+29:28/0 = 0
+30:28/0 = 0
+31:28/0 = 0
+32:28/0 = 0
+33:28/0 = 0
+0:29/0 = 0
+1:29/0 = 0
+2:29/0 = 0
+3:29/0 = 0
+4:29/0 = 0
+5:29/0 = 0
+6:29/0 = 0
+7:29/0 = 0
+8:29/0 = 0
+9:29/0 = 0
+10:29/0 = 0
+11:29/0 = 0
+12:29/0 = 0
+13:29/0 = 0
+14:29/0 = 0
+15:29/0 = 0
+16:29/0 = 0
+17:29/0 = 0
+18:29/0 = 0
+19:29/0 = 0
+20:29/0 = 0
+21:29/0 = 0
+22:29/0 = 0
+23:29/0 = 0
+24:29/0 = 0
+25:29/0 = 0
+26:29/0 = 0
+27:29/0 = 0
+28:29/0 = 0
+29:29/0 = 0
+30:29/0 = 0
+31:29/0 = 0
+32:29/0 = 0
+33:29/0 = 0
+0:30/0 = 0
+1:30/0 = 0
+2:30/0 = 0
+3:30/0 = 0
+4:30/0 = 0
+5:30/0 = 0
+6:30/0 = 0
+7:30/0 = 0
+8:30/0 = 0
+9:30/0 = 0
+10:30/0 = 0
+11:30/0 = 0
+12:30/0 = 0
+13:30/0 = 0
+14:30/0 = 0
+15:30/0 = 0
+16:30/0 = 0
+17:30/0 = 0
+18:30/0 = 0
+19:30/0 = 0
+20:30/0 = 0
+21:30/0 = 0
+22:30/0 = 0
+23:30/0 = 0
+24:30/0 = 0
+25:30/0 = 0
+26:30/0 = 0
+27:30/0 = 0
+28:30/0 = 0
+29:30/0 = 0
+30:30/0 = 0
+31:30/0 = 0
+32:30/0 = 0
+33:30/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cwhbi"]
+texture = ExtResource("4_34w5w")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_iivbl"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_1nj8df")
+sources/1 = SubResource("TileSetAtlasSource_ewbju")
+sources/2 = SubResource("TileSetAtlasSource_85qyi")
+sources/3 = SubResource("TileSetAtlasSource_cwhbi")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aujhx"]
+size = Vector2(19, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ff75x"]
+atlas = ExtResource("22_yq88m")
+region = Rect2(0, 0, 1750, 1750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2m5q"]
+atlas = ExtResource("22_yq88m")
+region = Rect2(1750, 0, 1750, 1750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lknxd"]
+atlas = ExtResource("22_yq88m")
+region = Rect2(0, 1750, 1750, 1750)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckj55"]
+atlas = ExtResource("22_yq88m")
+region = Rect2(1750, 1750, 1750, 1750)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q8b24"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ff75x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2m5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lknxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckj55")
+}],
+"loop": true,
+"name": &"default",
+"speed": 91.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7sog6"]
+size = Vector2(1215.25, 544.361)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7sog6"]
+radius = 3.38962
+height = 49.9524
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0enws"]
+radius = 6.44025
+height = 63.1474
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7uoav"]
+radius = 5.76233
+height = 35.815
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xra17"]
+radius = 4.06752
+height = 32.9874
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rq826"]
+radius = 5.76232
+height = 28.4718
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x4j5f"]
+radius = 4.74548
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gwr65"]
+radius = 3.3896
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8avo"]
+size = Vector2(17.4571, 37.8037)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p8a1h"]
+height = 104.617
+
+[node name="Game" type="Node2D"]
+position = Vector2(239, 166)
+scale = Vector2(2.9502, 2.12202)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAACAAkAAAAJAAYAAAAAAAgAAAAJAAYAAAAAAAkAAAAJAAYAAAAAAAoAAAAJAAYAAAAAAAsAAAAJAAYAAAAAAAwAAAAJAAYAAAABAAgAAAAJAAYAAAABAAkAAAAJAAYAAAABAAoAAAAJAAYAAAABAAsAAAAJAAYAAAABAAwAAAAJAAYAAAACAAgAAAAJAAYAAAACAAoAAAAJAAYAAAACAAsAAAAJAAYAAAACAAwAAAAJAAYAAAADAAQAAAAJAAYAAAADAAUAAAAJAAYAAAADAAYAAAAJAAYAAAADAAcAAAAJAAYAAAADAAgAAAAJAAYAAAADAAkAAAAJAAYAAAADAAoAAAAJAAYAAAADAAsAAAAJAAYAAAADAAwAAAAJAAYAAAAEAAQAAAAJAAYAAAAEAAUAAAAJAAYAAAAEAAYAAAAJAAYAAAAEAAcAAAAJAAYAAAAEAAgAAAAJAAYAAAAEAAkAAAAJAAYAAAAEAAoAAAAJAAYAAAAEAAsAAAAJAAYAAAAEAAwAAAAJAAYAAAAFAAQAAAAJAAYAAAAFAAUAAAAJAAYAAAAFAAYAAAAJAAYAAAAFAAcAAAAJAAYAAAAFAAgAAAAJAAYAAAAFAAkAAAAJAAYAAAAFAAoAAAAJAAYAAAAFAAsAAAAJAAYAAAAFAAwAAAAJAAYAAAAGAAQAAAAJAAYAAAAGAAUAAAAJAAYAAAAGAAYAAAAJAAYAAAAGAAcAAAAJAAYAAAAGAAgAAAAJAAYAAAAGAAkAAAAJAAYAAAAGAAoAAAAJAAYAAAAGAAsAAAAJAAYAAAAGAAwAAAAJAAYAAAAHAAQAAAAJAAYAAAAHAAUAAAAJAAYAAAAHAAYAAAAJAAYAAAAHAAcAAAAJAAYAAAAHAAgAAAAJAAYAAAAHAAkAAAAJAAYAAAAHAAoAAAAJAAYAAAAHAAsAAAAJAAYAAAAHAAwAAAAJAAYAAAAIAAQAAAAJAAYAAAAIAAUAAAAJAAYAAAAIAAYAAAAJAAYAAAAIAAcAAAAJAAYAAAAIAAgAAAAJAAYAAAAIAAkAAAAJAAYAAAAIAAoAAAAJAAYAAAAIAAsAAAAJAAYAAAAIAAwAAAAJAAYAAAAJAAQAAAAJAAYAAAAJAAUAAAAJAAYAAAAJAAYAAAAJAAYAAAAJAAcAAAAJAAYAAAAJAAgAAAAJAAYAAAAJAAkAAAAJAAYAAAAJAAoAAAAJAAYAAAAJAAsAAAAJAAYAAAAJAAwAAAAJAAYAAAAKAAQAAAAJAAYAAAAKAAUAAAAJAAYAAAAKAAYAAAAJAAYAAAAKAAcAAAAJAAYAAAAKAAgAAAAJAAYAAAAKAAkAAAAJAAYAAAAKAAoAAAAJAAYAAAAKAAsAAAAJAAYAAAAKAAwAAAAJAAYAAAALAAQAAAAJAAYAAAALAAUAAAAJAAYAAAALAAYAAAAJAAYAAAALAAcAAAAJAAYAAAALAAgAAAAJAAYAAAALAAkAAAAJAAYAAAALAAoAAAAJAAYAAAALAAsAAAAJAAYAAAALAAwAAAAJAAYAAAAMAAQAAAAJAAYAAAAMAAUAAAAJAAYAAAAMAAYAAAAJAAYAAAAMAAcAAAAJAAYAAAAMAAgAAAAJAAYAAAAMAAkAAAAJAAYAAAAMAAoAAAAJAAYAAAAMAAsAAAAJAAYAAAAMAAwAAAAJAAYAAAANAAQAAAAJAAYAAAANAAUAAAAJAAYAAAANAAYAAAAJAAYAAAANAAcAAAAJAAYAAAANAAgAAAAJAAYAAAANAAkAAAAJAAYAAAANAAoAAAAJAAYAAAANAAsAAAAJAAYAAAANAAwAAAAJAAYAAAAOAAQAAAAJAAYAAAAOAAUAAAAJAAYAAAAOAAYAAAAJAAYAAAAOAAcAAAAJAAYAAAAOAAgAAAAJAAYAAAAOAAkAAAAJAAYAAAAOAAoAAAAJAAYAAAAOAAsAAAAJAAYAAAAOAAwAAAAJAAYAAAAPAAQAAAAJAAYAAAAPAAUAAAAJAAYAAAAPAAYAAAAJAAYAAAAPAAcAAAAJAAYAAAAPAAgAAAAJAAYAAAAPAAkAAAAJAAYAAAAPAAoAAAAJAAYAAAAPAAsAAAAJAAYAAAAPAAwAAAAJAAYAAAAQAAQAAAAJAAYAAAAQAAUAAAAJAAYAAAAQAAYAAAAJAAYAAAAQAAcAAAAJAAYAAAAQAAgAAAAJAAYAAAAQAAkAAAAJAAYAAAAQAAoAAAAJAAYAAAAQAAsAAAAJAAYAAAAQAAwAAAAJAAYAAAARAAQAAAAJAAYAAAARAAUAAAAJAAYAAAARAAYAAAAJAAYAAAARAAcAAAAJAAYAAAARAAgAAAAJAAYAAAARAAkAAAAJAAYAAAARAAoAAAAJAAYAAAARAAsAAAAJAAYAAAARAAwAAAAJAAYAAAASAAQAAAAJAAYAAAASAAUAAAAJAAYAAAASAAYAAAAJAAYAAAASAAcAAAAJAAYAAAASAAgAAAAJAAYAAAASAAkAAAAJAAYAAAASAAoAAAAJAAYAAAASAAsAAAAJAAYAAAASAAwAAAAJAAYAAAATAAQAAAAJAAYAAAATAAUAAAAJAAYAAAATAAYAAAAJAAYAAAATAAcAAAAJAAYAAAATAAgAAAAJAAYAAAATAAkAAAAJAAYAAAATAAoAAAAJAAYAAAATAAsAAAAJAAYAAAATAAwAAAAJAAYAAAAUAAQAAAAJAAYAAAAUAAUAAAAJAAYAAAAUAAYAAAAJAAYAAAAUAAcAAAAJAAYAAAAUAAgAAAAJAAYAAAAUAAkAAAAJAAQAAAAUAAoAAAAJAAQAAAAUAAsAAAAJAAYAAAAUAAwAAAAJAAYAAAAVAAQAAAAJAAYAAAAVAAUAAAAJAAYAAAAVAAYAAAAJAAYAAAAVAAcAAAAJAAYAAAAVAAgAAAAJAAYAAAAVAAkAAAAJAAQAAAAVAAoAAAAJAAYAAAAVAAsAAAAJAAYAAAAVAAwAAAAJAAYAAAAKAAMAAAALAAMAAAALAAMAAAALAAMAAAAMAAMAAAALAAMAAAANAAMAAAALAAMAAAAOAAMAAAALAAMAAAAPAAMAAQAAABMAAAAQAAMAAAALAAMAAAARAAMAAAALAAMAAAASAAMAAAALAAMAAAATAAMAAAALAAMAAAAUAAMAAAALAAMAAAAVAAMAAAALAAMAAAAJAAMAAAALAAMAAAAHAAMAAAALAAMAAAAIAAMAAAALAAMAAAAGAAMAAAALAAMAAAAFAAMAAAALAAMAAAAEAAMAAAALAAMAAAADAAMAAAALAAMAAAAAAAAAAQAAABMAAAAAAAEAAQAAABMAAAAAAAIAAQAAABMAAAABAP//AQAAABMAAAABAAAAAQAAABMAAAABAAEAAQAAABMAAAABAAIAAQAAABMAAAACAP//AQAAABMAAAACAAAAAQAAABMAAAACAAEAAQAAABMAAAACAAIAAQAAABMAAAADAP//AQAAABMAAAAEAP//AQAAABMAAAAEAAAAAQAAABMAAAAFAP//AQAAABMAAAAFAAAAAQAAABMAAAAFAAEAAQAAABMAAAAFAAIAAQAAABMAAAAGAP//AQAAABMAAAAGAAAAAQAAABMAAAAGAAEAAQAAABMAAAAGAAIAAQAAABMAAAAHAP//AQAAABMAAAAHAAAAAQAAABMAAAAHAAEAAQAAABMAAAAHAAIAAQAAABMAAAAIAP//AQAAABMAAAAIAAAAAQAAABMAAAAIAAEAAQAAABMAAAAIAAIAAQAAABMAAAAJAP//AQAAABMAAAAJAAAAAQAAABMAAAAJAAEAAQAAABMAAAAJAAIAAQAAABMAAAAKAP//AQAAABMAAAAKAAAAAQAAABMAAAAKAAEAAQAAABMAAAAKAAIAAQAAABMAAAALAP//AQAAABMAAAALAAAAAQAAABMAAAALAAEAAQAAABMAAAALAAIAAQAAABMAAAAMAP//AQAAABMAAAAMAAAAAQAAABMAAAAMAAEAAQAAABMAAAAMAAIAAQAAABMAAAANAP//AQAAABMAAAANAAAAAQAAABMAAAANAAEAAQAAABMAAAANAAIAAQAAABMAAAAOAP//AQAAABMAAAAOAAAAAQAAABMAAAAOAAEAAQAAABMAAAAOAAIAAQAAABMAAAAPAP//AQAAABMAAAAPAAAAAQAAABMAAAAPAAEAAQAAABMAAAAPAAIAAQAAABMAAAAQAP//AQAAABMAAAAQAAAAAQAAABMAAAAQAAEAAQAAABMAAAAQAAIAAQAAABMAAAARAP//AQAAABMAAAARAAAAAQAAABMAAAARAAEAAQAAABMAAAARAAIAAQAAABMAAAASAP//AQAAABMAAAASAAAAAQAAABMAAAASAAEAAQAAABMAAAASAAIAAQAAABMAAAATAP//AQAAABMAAAATAAAAAQAAABMAAAATAAEAAQAAABMAAAATAAIAAQAAABMAAAAUAP//AQAAABMAAAAUAAAAAQAAABMAAAAUAAEAAQAAABMAAAAUAAIAAQAAABMAAAAVAP//AQAAABMAAAAVAAAAAQAAABMAAAAVAAEAAQAAABMAAAAVAAIAAQAAABMAAAAAAP//AQAAABMAAAAAAP7/AQAAABMAAAABAP7/AQAAABMAAAACAP7/AQAAABMAAAADAP7/AQAAABMAAAAEAP7/AQAAABMAAAAFAP7/AQAAABMAAAAGAP7/AQAAABMAAAAHAP7/AQAAABMAAAAIAP7/AQAAABMAAAAJAP7/AQAAABMAAAAKAP7/AQAAABMAAAALAP7/AQAAABMAAAAMAP7/AQAAABMAAAANAP7/AQAAABMAAAAOAP7/AQAAABMAAAAPAP7/AQAAABMAAAAQAP7/AQAAABMAAAARAP7/AQAAABMAAAASAP7/AQAAABMAAAATAP7/AQAAABMAAAAUAP7/AQAAABMAAAAVAP7/AQAAABMAAAD+//3/AgAAAAAAAAD+//7/AgAAAAAAAAD+////AgAAAAAAAAD+/wAAAgAAAAAAAAD+/wEAAgAAAAAAAAD+/wIAAgAAAAAAAAD+/wMAAgAAAAAAAAD+/wQAAgAAAAAAAAD+/wUAAgAAAAAAAAD+/wYAAgAAAAAAAAD+/wcAAgAAAAAAAAD+/wgAAgAAAAAAAAD+/wsAAgAAAAAAAAD+/wwAAgAAAAAAAAD///3/AgAAAAAAAAD///7/AgAAAAAAAAD/////AgAAAAAAAAD//wAAAgAAAAAAAAD//wEAAgAAAAAAAAD//wIAAgAAAAAAAAD//wMAAgAAAAAAAAD//wQAAgAAAAAAAAD//wUAAgAAAAAAAAD//wYAAgAAAAAAAAD//wcAAgAAAAAAAAD//wgAAgAAAAAAAAD//wsAAgAAAAAAAAD//wwAAgAAAAAAAAD+/w0AAgAAAAAAAAD+/w4AAgAAAAAAAAD//w0AAgAAAAAAAAD//w4AAgAAAAAAAAAAAA0AAgAAAAAAAAAAAA4AAgAAAAAAAAABAA0AAgAAAAAAAAABAA4AAgAAAAAAAAAFAA0AAgAAAAAAAAAFAA4AAgAAAAAAAAAGAA0AAgAAAAAAAAAGAA4AAgAAAAAAAAAHAA0AAgAAAAAAAAAHAA4AAgAAAAAAAAAIAA0AAgAAAAAAAAAIAA4AAgAAAAAAAAAJAA0AAgAAAAAAAAAJAA4AAgAAAAAAAAAKAA0AAgAAAAAAAAAKAA4AAgAAAAAAAAALAA0AAgAAAAAAAAALAA4AAgAAAAAAAAAMAA0AAgAAAAAAAAAMAA4AAgAAAAAAAAANAA0AAgAAAAAAAAANAA4AAgAAAAAAAAAOAA0AAgAAAAAAAAAOAA4AAgAAAAAAAAAPAA0AAgAAAAAAAAAPAA4AAgAAAAAAAAAQAA0AAgAAAAAAAAAQAA4AAgAAAAAAAAARAA0AAgAAAAAAAAARAA4AAgAAAAAAAAASAA0AAgAAAAAAAAASAA4AAgAAAAAAAAATAA0AAgAAAAAAAAATAA4AAgAAAAAAAAAUAA0AAgAAAAAAAAAUAA4AAgAAAAAAAAAVAA0AAgAAAAAAAAAVAA4AAgAAAAAAAAAWAA0AAgAAAAAAAAAWAA4AAgAAAAAAAAAXAA0AAgAAAAAAAAAXAA4AAgAAAAAAAAAWAP7/AgAAAAAAAAAWAP//AgAAAAAAAAAWAAAAAgAAAAAAAAAWAAEAAgAAAAAAAAAWAAIAAgAAAAAAAAAWAAMAAgAAAAAAAAAWAAQAAgAAAAAAAAAWAAUAAgAAAAAAAAAWAAsAAgAAAAAAAAAWAAwAAgAAAAAAAAAXAP7/AgAAAAAAAAAXAP//AgAAAAAAAAAXAAAAAgAAAAAAAAAXAAEAAgAAAAAAAAAXAAIAAgAAAAAAAAAXAAMAAgAAAAAAAAAXAAQAAgAAAAAAAAAXAAUAAgAAAAAAAAAXAAYAAgAAAAAAAAAXAAsAAgAAAAAAAAAXAAwAAgAAAAAAAAADAP3/AgAAAAAAAAAEAP3/AgAAAAAAAAAFAP3/AgAAAAAAAAAGAP3/AgAAAAAAAAAHAP3/AgAAAAAAAAAIAP3/AgAAAAAAAAAJAP3/AgAAAAAAAAAKAP3/AgAAAAAAAAALAP3/AgAAAAAAAAAMAP3/AgAAAAAAAAANAP3/AgAAAAAAAAAOAP3/AgAAAAAAAAAPAP3/AgAAAAAAAAAQAP3/AgAAAAAAAAARAP3/AgAAAAAAAAASAP3/AgAAAAAAAAATAP3/AgAAAAAAAAAUAP3/AgAAAAAAAAAVAP3/AgAAAAAAAAAWAP3/AgAAAAAAAAAXAP3/AgAAAAAAAAD+//z/AgAAAAAAAAD///z/AgAAAAAAAAADAPz/AgAAAAAAAAAEAPz/AgAAAAAAAAAFAPz/AgAAAAAAAAAGAPz/AgAAAAAAAAAHAPz/AgAAAAAAAAAIAPz/AgAAAAAAAAAJAPz/AgAAAAAAAAAKAPz/AgAAAAAAAAALAPz/AgAAAAAAAAAMAPz/AgAAAAAAAAANAPz/AgAAAAAAAAAOAPz/AgAAAAAAAAAPAPz/AgAAAAAAAAAQAPz/AgAAAAAAAAARAPz/AgAAAAAAAAASAPz/AgAAAAAAAAATAPz/AgAAAAAAAAAUAPz/AgAAAAAAAAAVAPz/AgAAAAAAAAAWAPz/AgAAAAAAAAAXAPz/AgAAAAAAAAACAP3/AAAJAAYAAAABAP3/AAAJAAYAAAAAAP3/AAAJAAYAAAAAAPz/AAAJAAYAAAABAPz/AAAJAAYAAAACAPz/AAAJAAYAAAAAAPv/AAAJAAYAAAD///v/AAAJAAYAAAD+//v/AAAJAAYAAAABAPv/AAAJAAYAAAACAPr/AAAJAAYAAAADAPr/AAAJAAYAAAAEAPr/AAAJAAYAAAAEAPv/AAAJAAYAAAACAPv/AAAJAAYAAAADAPv/AAAJAAYAAAD+//X/AAAJAAYAAAD+//b/AAAJAAYAAAD+//f/AAAJAAYAAAD+//j/AAAJAAYAAAD+//n/AAAJAAYAAAD+//r/AAAJAAYAAAD///X/AAAJAAYAAAD///b/AAAJAAYAAAD///f/AAAJAAYAAAD///j/AAAJAAYAAAD///n/AAAJAAYAAAD///r/AAAJAAYAAAAAAPX/AAAJAAYAAAAAAPb/AAAJAAYAAAAAAPf/AAAJAAYAAAAAAPj/AAAJAAYAAAAAAPn/AAAJAAYAAAAAAPr/AAAJAAYAAAABAPX/AAAJAAYAAAABAPb/AAAJAAYAAAABAPf/AAAJAAYAAAABAPj/AAAJAAYAAAABAPn/AAAJAAYAAAABAPr/AAAJAAYAAAACAPX/AAAJAAYAAAACAPb/AAAJAAYAAAACAPf/AAAJAAYAAAACAPj/AAAJAAYAAAACAPn/AAAJAAYAAAADAPX/AAAJAAYAAAADAPb/AAAJAAYAAAADAPf/AAAJAAYAAAADAPj/AAAJAAYAAAADAPn/AAAJAAYAAAAEAPX/AAAJAAYAAAAEAPb/AAAJAAYAAAAEAPf/AAAJAAYAAAAEAPj/AAAJAAYAAAAEAPn/AAAJAAYAAAAFAPX/AAAJAAYAAAAFAPb/AAAJAAYAAAAFAPf/AAAJAAYAAAAFAPj/AAAJAAYAAAAFAPn/AAAJAAYAAAAFAPr/AAAJAAYAAAAGAPX/AAAJAAYAAAAGAPb/AAAJAAYAAAAGAPf/AAAJAAYAAAAGAPj/AAAJAAYAAAAGAPn/AAAJAAYAAAAGAPr/AAAJAAYAAAAHAPX/AAAJAAYAAAAHAPb/AAAJAAYAAAAHAPf/AAAJAAYAAAAHAPj/AAAJAAYAAAAHAPn/AAAJAAYAAAAHAPr/AAAJAAYAAAAIAPX/AAAJAAYAAAAIAPb/AAAJAAYAAAAIAPf/AAAJAAYAAAAIAPj/AAAJAAYAAAAIAPn/AAAJAAYAAAAIAPr/AAAJAAYAAAAJAPX/AAAJAAYAAAAJAPb/AAAJAAYAAAAJAPf/AAAJAAYAAAAJAPj/AAAJAAYAAAAJAPn/AAAJAAYAAAAJAPr/AAAJAAYAAAAKAPX/AAAJAAYAAAAKAPb/AAAJAAYAAAAKAPf/AAAJAAYAAAAKAPj/AAAJAAYAAAAKAPn/AAAJAAYAAAAKAPr/AAAJAAYAAAALAPX/AAAJAAYAAAALAPb/AAAJAAYAAAALAPf/AAAJAAYAAAALAPj/AAAJAAYAAAALAPn/AAAJAAYAAAALAPr/AAAJAAYAAAAMAPX/AAAJAAYAAAAMAPb/AAAJAAYAAAAMAPf/AAAJAAYAAAAMAPj/AAAJAAYAAAAMAPn/AAAJAAYAAAAMAPr/AAAJAAYAAAANAPX/AAAJAAYAAAANAPb/AAAJAAYAAAANAPf/AAAJAAYAAAANAPj/AAAJAAYAAAANAPn/AAAJAAYAAAANAPr/AAAJAAYAAAAOAPX/AAAJAAYAAAAOAPb/AAAJAAYAAAAOAPf/AAAJAAYAAAAOAPj/AAAJAAYAAAAOAPn/AAAJAAYAAAAOAPr/AAAJAAYAAAAPAPX/AAAJAAYAAAAPAPb/AAAJAAYAAAAPAPf/AAAJAAYAAAAPAPj/AAAJAAYAAAAPAPn/AAAJAAYAAAAPAPr/AAAJAAYAAAD+//P/AAALAAMAAAD+//T/AAAJAAYAAAD///P/AAALAAMAAAD///T/AAAJAAYAAAAAAPP/AAALAAMAAAAAAPT/AAAJAAYAAAABAPP/AAALAAMAAAABAPT/AAAJAAYAAAACAPP/AAALAAMAAAACAPT/AAAJAAYAAAADAPP/AAALAAMAAAADAPT/AAAJAAYAAAAEAPP/AAALAAMAAAAEAPT/AAAJAAYAAAAFAPP/AAALAAMAAAAFAPT/AAAJAAYAAAAGAPP/AAALAAMAAAAGAPT/AAAJAAYAAAAHAPP/AAAHAAMAAAAHAPT/AAAJAAYAAAAIAPP/AAALAAMAAAAIAPT/AAAJAAYAAAAJAPP/AAALAAMAAAAJAPT/AAAJAAYAAAAKAPP/AAALAAMAAAAKAPT/AAAJAAYAAAALAPP/AAALAAMAAAALAPT/AAAJAAYAAAAMAPP/AAALAAMAAAAMAPT/AAAJAAYAAAANAPP/AAALAAMAAAANAPT/AAAJAAYAAAAOAPP/AAALAAMAAAAOAPT/AAAJAAYAAAAPAPP/AAALAAMAAAAPAPT/AAAJAAYAAAAFAPv/AAAJAAYAAAAGAPv/AAAJAAYAAAAHAPv/AAAJAAYAAAAIAPv/AAAJAAYAAAAJAPv/AAAJAAYAAAAKAPv/AAAJAAYAAAALAPv/AAAJAAYAAAAMAPv/AAAJAAYAAAANAPv/AAAJAAYAAAAOAPv/AAAJAAYAAAAPAPv/AAAJAAYAAAD+/+7/AQAAABMAAAD+/+//AQAAABMAAAD+//D/AQAAABMAAAD+//H/AQAAABMAAAD+//L/AQAAABMAAAD//+7/AQAAABMAAAD//+//AQAAABMAAAD///D/AQAAABMAAAD///H/AQAAABMAAAD///L/AQAAABMAAAAAAO7/AQAAABMAAAAAAO//AQAAABMAAAAAAPD/AQAAABMAAAAAAPH/AQAAABMAAAAAAPL/AQAAABMAAAABAO7/AQAAABMAAAABAO//AQAAABMAAAABAPD/AQAAABMAAAABAPH/AQAAABMAAAABAPL/AQAAABMAAAACAO7/AQAAABMAAAACAO//AQAAABMAAAACAPD/AQAAABMAAAACAPH/AQAAABMAAAACAPL/AQAAABMAAAADAO7/AQAAABMAAAADAO//AQAAABMAAAADAPD/AQAAABMAAAADAPH/AQAAABMAAAADAPL/AQAAABMAAAAEAO7/AQAAABMAAAAEAO//AQAAABMAAAAEAPD/AQAAABMAAAAEAPH/AQAAABMAAAAEAPL/AQAAABMAAAAFAO7/AQAAABMAAAAFAO//AQAAABMAAAAFAPD/AQAAABMAAAAFAPH/AQAAABMAAAAFAPL/AQAAABMAAAAGAO7/AQAAABMAAAAGAO//AQAAABMAAAAGAPD/AQAAABMAAAAGAPH/AQAAABMAAAAGAPL/AQAAABMAAAAHAO7/AQAAABMAAAAHAO//AQAAABMAAAAHAPD/AQAAABMAAAAHAPH/AQAAABMAAAAHAPL/AQAAABMAAAAIAO7/AQAAABMAAAAIAO//AQAAABMAAAAIAPD/AQAAABMAAAAIAPH/AQAAABMAAAAIAPL/AQAAABMAAAAJAO7/AQAAABMAAAAJAO//AQAAABMAAAAJAPD/AQAAABMAAAAJAPH/AQAAABMAAAAJAPL/AQAAABMAAAAKAO7/AQAAABMAAAAKAO//AQAAABMAAAAKAPD/AQAAABMAAAAKAPH/AQAAABMAAAAKAPL/AQAAABMAAAALAO7/AQAAABMAAAALAO//AQAAABMAAAALAPD/AQAAABMAAAALAPH/AQAAABMAAAALAPL/AQAAABMAAAAMAO7/AQAAABMAAAAMAO//AQAAABMAAAAMAPD/AQAAABMAAAAMAPH/AQAAABMAAAAMAPL/AQAAABMAAAANAO7/AQAAABMAAAANAO//AQAAABMAAAANAPD/AQAAABMAAAANAPH/AQAAABMAAAANAPL/AQAAABMAAAAOAO7/AQAAABMAAAAOAO//AQAAABMAAAAOAPD/AQAAABMAAAAPAO7/AQAAABMAAAAPAO//AQAAABMAAAAPAPD/AQAAABMAAAAPAPH/AQAAABMAAAAPAPL/AQAAABMAAAD+/+z/AgAAAAAAAAD+/+3/AgAAAAAAAAD//+z/AgAAAAAAAAD//+3/AgAAAAAAAAAAAOz/AgAAAAAAAAAAAO3/AgAAAAAAAAABAOz/AgAAAAAAAAABAO3/AgAAAAAAAAACAOz/AgAAAAAAAAACAO3/AgAAAAAAAAADAOz/AgAAAAAAAAADAO3/AgAAAAAAAAAEAOz/AgAAAAAAAAAEAO3/AgAAAAAAAAAFAOz/AgAAAAAAAAAFAO3/AgAAAAAAAAAGAOz/AgAAAAAAAAAGAO3/AgAAAAAAAAAHAOz/AgAAAAAAAAAHAO3/AgAAAAAAAAAIAOz/AgAAAAAAAAAIAO3/AgAAAAAAAAAJAOz/AgAAAAAAAAAJAO3/AgAAAAAAAAAKAOz/AgAAAAAAAAAKAO3/AgAAAAAAAAALAOz/AgAAAAAAAAALAO3/AgAAAAAAAAAMAOz/AgAAAAAAAAAMAO3/AgAAAAAAAAANAOz/AgAAAAAAAAANAO3/AgAAAAAAAAAOAOz/AgAAAAAAAAAOAO3/AgAAAAAAAAAPAOz/AgAAAAAAAAAPAO3/AgAAAAAAAAAOAPH/AQAAABMAAAAOAPL/AQAAABMAAAD9//v/AgAAAAAAAAD8//v/AgAAAAAAAAD9//z/AgAAAAAAAAD8//z/AgAAAAAAAAD8/+z/AgAAAAAAAAD8/+3/AgAAAAAAAAD8/+7/AgAAAAAAAAD8/+//AgAAAAAAAAD8//D/AgAAAAAAAAD8//H/AgAAAAAAAAD8//L/AgAAAAAAAAD8//P/AgAAAAAAAAD8//T/AgAAAAAAAAD8//X/AgAAAAAAAAD8//b/AgAAAAAAAAD8//f/AgAAAAAAAAD8//j/AgAAAAAAAAD8//n/AgAAAAAAAAD8//r/AgAAAAAAAAD9/+z/AgAAAAAAAAD9/+3/AgAAAAAAAAD9/+7/AgAAAAAAAAD9/+//AgAAAAAAAAD9//D/AgAAAAAAAAD9//H/AgAAAAAAAAD9//L/AgAAAAAAAAD9//P/AgAAAAAAAAD9//T/AgAAAAAAAAD9//X/AgAAAAAAAAD9//b/AgAAAAAAAAD9//f/AgAAAAAAAAD9//j/AgAAAAAAAAD9//n/AgAAAAAAAAD9//r/AgAAAAAAAAAQAOz/AgAAAAAAAAAQAO3/AgAAAAAAAAAQAO7/AgAAAAAAAAAQAO//AgAAAAAAAAAQAPD/AgAAAAAAAAAQAPH/AgAAAAAAAAAQAPL/AgAAAAAAAAAQAPP/AgAAAAAAAAAQAPT/AgAAAAAAAAAQAPX/AgAAAAAAAAAQAPb/AgAAAAAAAAAQAPf/AgAAAAAAAAAQAPj/AgAAAAAAAAAQAPn/AgAAAAAAAAAQAPr/AgAAAAAAAAAQAPv/AgAAAAAAAAARAOz/AgAAAAAAAAARAO3/AgAAAAAAAAARAO7/AgAAAAAAAAARAO//AgAAAAAAAAARAPD/AgAAAAAAAAARAPH/AgAAAAAAAAARAPL/AgAAAAAAAAARAPP/AgAAAAAAAAARAPT/AgAAAAAAAAARAPX/AgAAAAAAAAARAPb/AgAAAAAAAAARAPf/AgAAAAAAAAARAPj/AgAAAAAAAAARAPn/AgAAAAAAAAARAPr/AgAAAAAAAAARAPv/AgAAAAAAAAD9//3/AgAAAAAAAAD8//3/AgAAAAAAAAACAA0AAAAJAAQAAAACAA4AAAAJAAQAAAADAA0AAAAJAAQAAAAEAA0AAAAJAAQAAAAEAA4AAAAJAAQAAAADAA4AAAAJAAQAAAD//w8AAQAAABMAAAD//xAAAQAAABMAAAD//xEAAQAAABMAAAD//xIAAQAAABMAAAD//xMAAQAAABMAAAD//xQAAQAAABMAAAD//xUAAAALAAMAAAD//xYAAAAJAAQAAAD//xcAAAAJAAQAAAD//xgAAAAJAAQAAAD//xkAAAAJAAQAAAD//xoAAAAJAAQAAAAAAA8AAgAAAAAAAAAAABAAAgAAAAAAAAAAABEAAgAAAAAAAAAAABIAAgAAAAAAAAAAABMAAgAAAAAAAAAAABQAAgAAAAAAAAAAABUAAgAAAAAAAAAAABYAAAAJAAQAAAAAABcAAAAJAAQAAAAAABgAAAAJAAQAAAAAABkAAAAJAAQAAAAAABoAAAAJAAQAAAABAA8AAgAAAAAAAAABABAAAgAAAAAAAAABABEAAgAAAAAAAAABABIAAgAAAAAAAAABABMAAgAAAAAAAAABABQAAgAAAAAAAAABABUAAgAAAAAAAAABABYAAAAJAAQAAAABABcAAAAJAAQAAAABABgAAAAJAAQAAAABABkAAAAJAAQAAAABABoAAAAJAAQAAAACAA8AAAAJAAQAAAACABAAAAAJAAQAAAACABEAAAAJAAQAAAACABIAAAAJAAQAAAACABMAAAAJAAQAAAACABQAAAAJAAQAAAACABUAAAALAAQAAAACABYAAAAJAAQAAAACABcAAAAJAAQAAAACABgAAAAJAAQAAAACABkAAAAJAAQAAAACABoAAAAJAAQAAAADAA8AAAAJAAQAAAADABAAAAAJAAQAAAADABEAAAAJAAQAAAADABIAAAAJAAQAAAADABMAAAAJAAQAAAADABQAAAAJAAQAAAADABUAAAAJAAQAAAADABYAAAAJAAQAAAADABcAAAAJAAQAAAADABgAAAAJAAQAAAADABkAAAAJAAQAAAADABoAAAAJAAQAAAAEAA8AAAAJAAQAAAAEABAAAAAJAAQAAAAEABEAAAAJAAQAAAAEABIAAAAJAAQAAAAEABMAAAAJAAQAAAAEABQAAAAJAAQAAAAEABUAAAAJAAQAAAAEABYAAAAJAAQAAAAEABcAAAAJAAQAAAAEABgAAAAJAAQAAAAEABkAAAAJAAQAAAAEABoAAAAJAAQAAAAFAA8AAgAAAAAAAAAFABAAAgAAAAAAAAAFABEAAgAAAAAAAAAFABIAAgAAAAAAAAAFABMAAgAAAAAAAAAFABQAAgAAAAAAAAAFABUAAgAAAAAAAAAFABYAAAAJAAQAAAAFABcAAAAJAAQAAAAFABgAAAAJAAQAAAAFABkAAAAJAAQAAAAFABoAAAAJAAQAAAAGAA8AAgAAAAAAAAAGABAAAgAAAAAAAAAGABEAAgAAAAAAAAAGABIAAgAAAAAAAAAGABMAAgAAAAAAAAAGABQAAgAAAAAAAAAGABUAAgAAAAAAAAAGABYAAAAJAAQAAAAGABcAAAAJAAQAAAAGABgAAAAJAAQAAAAGABkAAAAJAAQAAAAGABoAAAAJAAQAAAAHAA8AAQAAABMAAAAHABAAAQAAABMAAAAHABEAAQAAABMAAAAHABIAAQAAABMAAAAHABMAAQAAABMAAAAHABQAAQAAABMAAAAHABUAAAALAAMAAAAHABYAAAAJAAQAAAAHABcAAAAJAAQAAAAHABgAAAAJAAQAAAAHABkAAAAJAAQAAAAHABoAAAAJAAQAAAAIAA8AAQAAABMAAAAIABAAAQAAABMAAAAIABEAAQAAABMAAAAIABIAAQAAABMAAAAIABMAAQAAABMAAAAIABQAAQAAABMAAAAIABUAAAALAAMAAAAIABYAAAAJAAQAAAAIABcAAAAJAAQAAAAIABgAAAAJAAQAAAAIABkAAAAJAAQAAAAIABoAAAAJAAQAAAAJAA8AAQAAABMAAAAJABAAAQAAABMAAAAJABEAAQAAABMAAAAJABIAAQAAABMAAAAJABMAAQAAABMAAAAJABQAAQAAABMAAAAJABUAAAALAAMAAAAJABYAAAAJAAQAAAAJABcAAAAJAAQAAAAJABgAAAAJAAQAAAAJABkAAAAJAAQAAAAJABoAAAAJAAQAAAAKAA8AAQAAABMAAAAKABAAAQAAABMAAAAKABEAAQAAABMAAAAKABIAAQAAABMAAAAKABMAAQAAABMAAAAKABQAAQAAABMAAAAKABUAAAALAAMAAAAKABYAAAAJAAQAAAAKABcAAAAJAAQAAAAKABgAAAAJAAQAAAAKABkAAAAJAAQAAAAKABoAAAAJAAQAAAALAA8AAQAAABMAAAALABAAAQAAABMAAAALABEAAQAAABMAAAALABIAAQAAABMAAAALABMAAQAAABMAAAALABQAAQAAABMAAAALABUAAAALAAMAAAALABYAAAAJAAQAAAALABcAAAAJAAQAAAALABgAAAAJAAQAAAALABkAAAAJAAQAAAALABoAAAAJAAQAAAAMAA8AAQAAABMAAAAMABAAAQAAABMAAAAMABEAAQAAABMAAAAMABIAAQAAABMAAAAMABMAAQAAABMAAAAMABQAAQAAABMAAAAMABUAAAALAAMAAAAMABYAAAAJAAQAAAAMABcAAAAJAAQAAAAMABgAAAAJAAQAAAAMABkAAAAJAAQAAAAMABoAAAAJAAQAAAANAA8AAQAAABMAAAANABAAAQAAABMAAAANABEAAQAAABMAAAANABIAAQAAABMAAAANABMAAQAAABMAAAANABQAAQAAABMAAAANABUAAAALAAMAAAANABYAAAAJAAQAAAANABcAAAAJAAQAAAANABgAAAAJAAQAAAANABkAAAAJAAQAAAANABoAAAAJAAQAAAAOAA8AAQAAABMAAAAOABAAAQAAABMAAAAOABEAAQAAABMAAAAOABIAAQAAABMAAAAOABMAAQAAABMAAAAOABQAAQAAABMAAAAOABUAAAALAAMAAAAOABYAAAAJAAQAAAAOABcAAAAJAAQAAAAOABgAAAAJAAQAAAAOABkAAAAJAAQAAAAOABoAAAAJAAQAAAAPAA8AAQAAABMAAAAPABAAAQAAABMAAAAPABEAAQAAABMAAAAPABIAAQAAABMAAAAPABMAAQAAABMAAAAPABQAAQAAABMAAAAPABUAAAALAAMAAAAPABYAAAAJAAQAAAAPABcAAAAJAAQAAAAPABgAAAAJAAQAAAAPABkAAAAJAAQAAAAPABoAAAAJAAQAAAAQAA8AAQAAABMAAAAQABAAAQAAABMAAAAQABEAAQAAABMAAAAQABIAAQAAABMAAAAQABQAAQAAABMAAAAQABUAAAALAAMAAAAQABYAAAAJAAQAAAAQABcAAAAJAAQAAAAQABgAAAAJAAQAAAAQABkAAAAJAAQAAAAQABoAAAAJAAQAAAARAA8AAQAAABMAAAARABAAAQAAABMAAAARABEAAQAAABMAAAARABIAAQAAABMAAAARABMAAQAAABMAAAARABUAAAALAAMAAAARABYAAAAJAAQAAAARABcAAAAJAAQAAAARABgAAAAJAAQAAAARABkAAAAJAAQAAAARABoAAAAJAAQAAAASAA8AAQAAABMAAAASABAAAQAAABMAAAASABEAAQAAABMAAAASABIAAQAAABMAAAASABMAAQAAABMAAAASABQAAQAAABMAAAASABUAAAALAAMAAAASABYAAAAJAAQAAAASABcAAAAJAAQAAAASABgAAAAJAAQAAAASABkAAAAJAAQAAAASABoAAAAJAAQAAAATAA8AAgAAAAAAAAATABAAAgAAAAAAAAATABEAAgAAAAAAAAATABIAAgAAAAAAAAATABMAAgAAAAAAAAATABQAAgAAAAAAAAATABUAAgAAAAAAAAATABYAAgAAAAAAAAATABcAAgAAAAAAAAATABgAAgAAAAAAAAATABkAAgAAAAAAAAATABoAAgAAAAAAAAD9/w8AAQAAABMAAAD9/xAAAQAAABMAAAD9/xEAAQAAABMAAAD9/xIAAQAAABMAAAD9/xMAAQAAABMAAAD+/w8AAQAAABMAAAD+/xAAAQAAABMAAAD+/xEAAQAAABMAAAD+/xIAAQAAABMAAAD+/xMAAQAAABMAAAD8/w8AAQAAABMAAAD8/xAAAQAAABMAAAD8/xEAAQAAABMAAAD8/xIAAQAAABMAAAD8/xMAAQAAABMAAAD+/xQAAQAAABMAAAD9/xQAAQAAABMAAAD8/xQAAQAAABMAAAD+/xUAAAALAAMAAAD9/xUAAAALAAMAAAD8/xUAAAALAAMAAAD+/xYAAAAJAAQAAAD+/xcAAAAJAAQAAAD+/xgAAAAJAAQAAAD+/xkAAAAJAAQAAAD+/xoAAAAJAAQAAAD8/xYAAAAJAAQAAAD8/xcAAAAJAAQAAAD8/xgAAAAJAAQAAAD8/xkAAAAJAAQAAAD8/xoAAAAJAAQAAAD9/xYAAAAJAAQAAAD9/xcAAAAJAAQAAAD9/xgAAAAJAAQAAAD9/xkAAAAJAAQAAAD9/xoAAAAJAAQAAAD8/xsAAAAJAAQAAAD9/xsAAAAJAAQAAAD//xsAAAAJAAQAAAABABsAAAAJAAQAAAD+/xsAAAAJAAQAAAAAABsAAAAJAAQAAAACABsAAAAJAAQAAAADABsAAAAJAAQAAAAEABsAAAAJAAQAAAAFABsAAAAJAAQAAAAGABsAAAAJAAQAAAAHABsAAAAJAAQAAAAIABsAAAAJAAQAAAAJABsAAAAJAAQAAAAKABsAAAAJAAQAAAALABsAAAAJAAQAAAAMABsAAAAJAAQAAAANABsAAAAJAAQAAAAOABsAAAAJAAQAAAAPABsAAAAJAAQAAAAQABsAAAAJAAQAAAARABsAAAAJAAQAAAASABsAAAAJAAQAAAATABsAAgAAAAAAAAD8/xwAAAAJAAQAAAD9/xwAAAAJAAQAAAD+/xwAAAAJAAQAAAD//xwAAAAJAAQAAAAAABwAAAAJAAQAAAABABwAAAAJAAQAAAACABwAAAAJAAQAAAADABwAAAAJAAQAAAAEABwAAAAJAAQAAAAFABwAAAAJAAQAAAAGABwAAAAJAAQAAAAHABwAAAAJAAQAAAAIABwAAAAJAAQAAAAJABwAAAAJAAQAAAAKABwAAAAJAAQAAAALABwAAAAJAAQAAAAMABwAAAAJAAQAAAANABwAAAAJAAQAAAAOABwAAAAJAAQAAAAPABwAAAAJAAQAAAAQABwAAAAJAAQAAAARABwAAAAJAAQAAAASABwAAAAJAAQAAAATABwAAgAAAAAAAAD9/w4AAgAAAAAAAAD8/w4AAgAAAAAAAAD9/w0AAgAAAAAAAAD8/w0AAgAAAAAAAAD6/w0AAgAAAAAAAAD6/w4AAgAAAAAAAAD6/w8AAgAAAAAAAAD6/xAAAgAAAAAAAAD6/xEAAgAAAAAAAAD6/xIAAgAAAAAAAAD6/xMAAgAAAAAAAAD6/xQAAgAAAAAAAAD6/xUAAgAAAAAAAAD6/xYAAgAAAAAAAAD6/xcAAgAAAAAAAAD6/xgAAgAAAAAAAAD6/xkAAgAAAAAAAAD6/xoAAgAAAAAAAAD6/xsAAgAAAAAAAAD6/xwAAgAAAAAAAAD6/x0AAgAAAAAAAAD6/x4AAgAAAAAAAAD7/w0AAgAAAAAAAAD7/w4AAgAAAAAAAAD7/w8AAgAAAAAAAAD7/xAAAgAAAAAAAAD7/xEAAgAAAAAAAAD7/xIAAgAAAAAAAAD7/xMAAgAAAAAAAAD7/xQAAgAAAAAAAAD7/xUAAgAAAAAAAAD7/xYAAgAAAAAAAAD7/xcAAgAAAAAAAAD7/xgAAgAAAAAAAAD7/xkAAgAAAAAAAAD7/xoAAgAAAAAAAAD7/xsAAgAAAAAAAAD7/xwAAgAAAAAAAAD7/x0AAgAAAAAAAAD7/x4AAgAAAAAAAAD8/x0AAgAAAAAAAAD8/x4AAgAAAAAAAAD9/x0AAgAAAAAAAAD9/x4AAgAAAAAAAAD+/x0AAgAAAAAAAAD+/x4AAgAAAAAAAAD//x0AAgAAAAAAAAD//x4AAgAAAAAAAAAAAB0AAgAAAAAAAAAAAB4AAgAAAAAAAAABAB0AAgAAAAAAAAABAB4AAgAAAAAAAAACAB0AAgAAAAAAAAACAB4AAgAAAAAAAAADAB0AAgAAAAAAAAADAB4AAgAAAAAAAAAEAB0AAgAAAAAAAAAEAB4AAgAAAAAAAAAFAB0AAgAAAAAAAAAFAB4AAgAAAAAAAAAGAB0AAgAAAAAAAAAGAB4AAgAAAAAAAAAHAB0AAgAAAAAAAAAHAB4AAgAAAAAAAAAIAB0AAgAAAAAAAAAIAB4AAgAAAAAAAAAJAB0AAgAAAAAAAAAJAB4AAgAAAAAAAAAKAB0AAgAAAAAAAAAKAB4AAgAAAAAAAAALAB0AAgAAAAAAAAALAB4AAgAAAAAAAAAMAB0AAgAAAAAAAAAMAB4AAgAAAAAAAAANAB0AAgAAAAAAAAANAB4AAgAAAAAAAAAOAB0AAgAAAAAAAAAOAB4AAgAAAAAAAAAPAB0AAgAAAAAAAAAPAB4AAgAAAAAAAAAQAB0AAgAAAAAAAAAQAB4AAgAAAAAAAAARAB0AAgAAAAAAAAARAB4AAgAAAAAAAAASAB0AAgAAAAAAAAASAB4AAgAAAAAAAAATAB0AAgAAAAAAAAATAB4AAgAAAAAAAAAUAA8AAgAAAAAAAAAUABAAAgAAAAAAAAAUABEAAgAAAAAAAAAUABIAAgAAAAAAAAAUABMAAgAAAAAAAAAUABQAAgAAAAAAAAAUABUAAgAAAAAAAAAUABYAAgAAAAAAAAAUABcAAgAAAAAAAAAUABgAAgAAAAAAAAAUABkAAgAAAAAAAAAUABoAAgAAAAAAAAAUABsAAgAAAAAAAAAUABwAAgAAAAAAAAAUAB0AAgAAAAAAAAAUAB4AAgAAAAAAAAARABQAAQAAABMAAAAQABMAAQAAABMAAAAWAAYAAgAAAAAAAAAXAAcAAgAAAAAAAAAWAAcAAgAAAAAAAAAWAAgAAgAAAAAAAAAXAAgAAgAAAAAAAAAWAAkAAgAAAAAAAAAXAAkAAgAAAAAAAAAWAAoAAgAAAAAAAAAXAAoAAgAAAAAAAAADAAEAAQAAABMAAAAEAAEAAQAAABMAAAADAAIAAQAAABMAAAAEAAIAAQAAABMAAAD//wkAAAAJAAQAAAD+/wkAAAAJAAQAAAD+/woAAAAJAAQAAAD//woAAAAJAAQAAAD9/wsAAAAJAAQAAAD9/wwAAAAJAAQAAAD8/wwAAAAJAAQAAAD7/wwAAAAJAAQAAAD6/wwAAAAJAAQAAAD8/wsAAAAJAAQAAAD9/woAAAAJAAQAAAD9/wkAAAAJAAQAAAD9/wgAAAAJAAQAAAD8/wgAAAAJAAQAAAD8/woAAAAJAAQAAAD8/wkAAAAJAAQAAAD9/wcAAAAJAAQAAAD3/wcAAAAJAAQAAAD4/wcAAAAJAAQAAAD5/wcAAAAJAAQAAAD6/wcAAAAJAAQAAAD7/wcAAAAJAAQAAAD8/wcAAAAJAAQAAAD3/wgAAAAJAAQAAAD3/wkAAAAJAAQAAAD3/woAAAAJAAQAAAD3/wsAAAAJAAQAAAD3/wwAAAAJAAQAAAD4/wgAAAAJAAQAAAD4/wkAAAAJAAQAAAD4/woAAAAJAAQAAAD4/wsAAAAJAAQAAAD4/wwAAAAJAAQAAAD5/wgAAAAJAAQAAAD5/wkAAAAJAAQAAAD5/woAAAAJAAQAAAD5/wsAAAAJAAQAAAD5/wwAAAAJAAQAAAD6/wgAAAAJAAQAAAD6/wkAAAAJAAQAAAD6/woAAAAJAAQAAAD6/wsAAAAJAAQAAAD7/wgAAAAJAAQAAAD7/wkAAAAJAAQAAAD7/woAAAAJAAQAAAD7/wsAAAAJAAQAAAD2/wcAAAAJAAQAAAD2/wgAAAAJAAQAAAD2/wkAAAAJAAQAAAD2/woAAAAJAAQAAAD2/wsAAAAJAAQAAAD2/wwAAAAJAAQAAAD9/wYAAAALAAMAAAD2/wYAAAALAAMAAAD3/wYAAAALAAMAAAD4/wYAAAALAAMAAAD5/wYAAAALAAMAAAD6/wYAAAALAAMAAAD7/wYAAAALAAMAAAD8/wYAAAALAAMAAAD1/wYAAAALAAMAAAD0/wYAAgAAAAAAAAD5/w0AAgAAAAAAAAD4/w0AAgAAAAAAAAD3/w0AAgAAAAAAAAD2/w0AAgAAAAAAAAD2/w4AAgAAAAAAAAD3/w4AAgAAAAAAAAD4/w4AAgAAAAAAAAD5/w4AAgAAAAAAAAD1/w4AAgAAAAAAAAD1/w0AAgAAAAAAAAD0/w0AAgAAAAAAAAD0/w4AAgAAAAAAAAD0/wwAAgAAAAAAAAD0/wsAAgAAAAAAAAD0/wkAAgAAAAAAAAD0/woAAgAAAAAAAAD0/wgAAgAAAAAAAAD0/wcAAgAAAAAAAAD0/wUAAgAAAAAAAAD0/wQAAgAAAAAAAAD0/wMAAgAAAAAAAAD0/wIAAgAAAAAAAAD0/wEAAgAAAAAAAAD1/wEAAgAAAAAAAAD2/wEAAgAAAAAAAAD3/wEAAgAAAAAAAAD4/wEAAgAAAAAAAAD5/wEAAgAAAAAAAAD6/wEAAgAAAAAAAAD7/wEAAgAAAAAAAAD8/wEAAgAAAAAAAAD9/wEAAgAAAAAAAADz/wAAAgAAAAAAAAD0/wAAAgAAAAAAAAD1/wAAAgAAAAAAAAD2/wAAAgAAAAAAAAD3/wAAAgAAAAAAAAD4/wAAAgAAAAAAAAD5/wAAAgAAAAAAAAD6/wAAAgAAAAAAAAD7/wAAAgAAAAAAAAD8/wAAAgAAAAAAAAD9/wAAAgAAAAAAAADz/wEAAgAAAAAAAADz/wIAAgAAAAAAAADz/wMAAgAAAAAAAADz/wQAAgAAAAAAAADz/wUAAgAAAAAAAADz/wYAAgAAAAAAAADz/wcAAgAAAAAAAADz/wgAAgAAAAAAAADz/wkAAgAAAAAAAADz/woAAgAAAAAAAADz/wsAAgAAAAAAAADz/wwAAgAAAAAAAADz/w0AAgAAAAAAAADz/w4AAgAAAAAAAAD2/wMAAQAAAAQAAAD1/wIAAQAAAAQAAAD1/wMAAQAAAAQAAAD1/wQAAQAAAAQAAAD1/wUAAQAAAAQAAAD2/wQAAQAAAAQAAAD2/wUAAQAAAAQAAAD3/wMAAQAAAAQAAAD3/wQAAQAAAAQAAAD3/wUAAQAAAAQAAAD4/wMAAQAAAAQAAAD4/wQAAQAAAAQAAAD4/wUAAQAAAAQAAAD5/wMAAQAAAAQAAAD5/wQAAQAAAAQAAAD5/wUAAQAAAAQAAAD6/wMAAQAAAAQAAAD6/wQAAQAAAAQAAAD6/wUAAQAAAAQAAAD7/wMAAQAAAAQAAAD7/wQAAQAAAAQAAAD7/wUAAQAAAAQAAAD8/wMAAQAAAAQAAAD8/wQAAQAAAAQAAAD8/wUAAQAAAAQAAAD9/wMAAQAAAAQAAAD9/wQAAQAAAAQAAAD9/wUAAQAAAAQAAAD2/wIAAQAAAAQAAAD3/wIAAQAAAAQAAAD4/wIAAQAAAAQAAAD5/wIAAQAAAAQAAAD6/wIAAQAAAAQAAAD7/wIAAQAAAAQAAAD8/wIAAQAAAAQAAAD9/wIAAQAAAAQAAAD1/wcAAAAJAAQAAAD1/wgAAAAJAAQAAAD1/wkAAAAJAAQAAAD1/woAAAAJAAQAAAD1/wsAAAAJAAQAAAD1/wwAAAAJAAQAAAADAAAAAQAAABMAAAD6//7/AgAAAAAAAADz//3/AgAAAAAAAADz//7/AgAAAAAAAADz////AgAAAAAAAAD0//3/AgAAAAAAAAD0//7/AgAAAAAAAAD0////AgAAAAAAAAD1//3/AgAAAAAAAAD1//7/AgAAAAAAAAD1////AgAAAAAAAAD2//3/AgAAAAAAAAD2//7/AgAAAAAAAAD2////AgAAAAAAAAD3//3/AgAAAAAAAAD3//7/AgAAAAAAAAD3////AgAAAAAAAAD4//3/AgAAAAAAAAD4//7/AgAAAAAAAAD4////AgAAAAAAAAD5//3/AgAAAAAAAAD5//7/AgAAAAAAAAD5////AgAAAAAAAAD6//3/AgAAAAAAAAD6////AgAAAAAAAAD7//3/AgAAAAAAAAD7//7/AgAAAAAAAAD7////AgAAAAAAAAD8//7/AgAAAAAAAAD8////AgAAAAAAAAD9//7/AgAAAAAAAAD9////AgAAAAAAAADz/+r/AgAAAAAAAADz/+v/AgAAAAAAAADz/+z/AgAAAAAAAADz/+3/AgAAAAAAAADz/+7/AgAAAAAAAADz/+//AgAAAAAAAADz//D/AgAAAAAAAADz//H/AgAAAAAAAADz//L/AgAAAAAAAADz//P/AgAAAAAAAADz//T/AgAAAAAAAADz//X/AgAAAAAAAADz//b/AgAAAAAAAADz//f/AgAAAAAAAADz//j/AgAAAAAAAADz//n/AgAAAAAAAADz//r/AgAAAAAAAADz//v/AgAAAAAAAADz//z/AgAAAAAAAAD0/+r/AgAAAAAAAAD0/+v/AgAAAAAAAAD0/+z/AgAAAAAAAAD0/+3/AgAAAAAAAAD0/+7/AgAAAAAAAAD0/+//AgAAAAAAAAD0//D/AgAAAAAAAAD0//H/AgAAAAAAAAD0//L/AgAAAAAAAAD0//P/AgAAAAAAAAD0//T/AgAAAAAAAAD0//X/AgAAAAAAAAD0//b/AgAAAAAAAAD0//f/AgAAAAAAAAD0//j/AgAAAAAAAAD0//n/AgAAAAAAAAD0//r/AgAAAAAAAAD0//v/AgAAAAAAAAD0//z/AgAAAAAAAAD1/+r/AgAAAAAAAAD1/+v/AgAAAAAAAAD1/+z/AgAAAAAAAAD1/+3/AgAAAAAAAAD1/+7/AgAAAAAAAAD1/+//AgAAAAAAAAD1//D/AgAAAAAAAAD1//H/AgAAAAAAAAD1//L/AgAAAAAAAAD1//P/AgAAAAAAAAD1//T/AgAAAAAAAAD1//X/AgAAAAAAAAD1//b/AgAAAAAAAAD1//f/AgAAAAAAAAD1//j/AgAAAAAAAAD1//n/AgAAAAAAAAD1//r/AgAAAAAAAAD1//v/AgAAAAAAAAD1//z/AgAAAAAAAAD2/+r/AgAAAAAAAAD2/+v/AgAAAAAAAAD2/+z/AgAAAAAAAAD2/+3/AgAAAAAAAAD2/+7/AgAAAAAAAAD2/+//AgAAAAAAAAD2//D/AgAAAAAAAAD2//H/AgAAAAAAAAD2//L/AgAAAAAAAAD2//P/AgAAAAAAAAD2//T/AgAAAAAAAAD2//X/AgAAAAAAAAD2//b/AgAAAAAAAAD2//f/AgAAAAAAAAD2//j/AgAAAAAAAAD2//n/AgAAAAAAAAD2//r/AgAAAAAAAAD2//v/AgAAAAAAAAD2//z/AgAAAAAAAAD3/+r/AgAAAAAAAAD3/+v/AgAAAAAAAAD3/+z/AgAAAAAAAAD3/+3/AgAAAAAAAAD3/+7/AgAAAAAAAAD3/+//AgAAAAAAAAD3//D/AgAAAAAAAAD3//H/AgAAAAAAAAD3//L/AgAAAAAAAAD3//P/AgAAAAAAAAD3//T/AgAAAAAAAAD3//X/AgAAAAAAAAD3//b/AgAAAAAAAAD3//f/AgAAAAAAAAD3//j/AgAAAAAAAAD3//n/AgAAAAAAAAD3//r/AgAAAAAAAAD3//v/AgAAAAAAAAD3//z/AgAAAAAAAAD4/+r/AgAAAAAAAAD4/+v/AgAAAAAAAAD4/+z/AgAAAAAAAAD4/+3/AgAAAAAAAAD4/+7/AgAAAAAAAAD4/+//AgAAAAAAAAD4//D/AgAAAAAAAAD4//H/AgAAAAAAAAD4//L/AgAAAAAAAAD4//P/AgAAAAAAAAD4//T/AgAAAAAAAAD4//X/AgAAAAAAAAD4//b/AgAAAAAAAAD4//f/AgAAAAAAAAD4//j/AgAAAAAAAAD4//n/AgAAAAAAAAD4//r/AgAAAAAAAAD4//v/AgAAAAAAAAD4//z/AgAAAAAAAAD5/+r/AgAAAAAAAAD5/+v/AgAAAAAAAAD5/+z/AgAAAAAAAAD5/+3/AgAAAAAAAAD5/+7/AgAAAAAAAAD5/+//AgAAAAAAAAD5//D/AgAAAAAAAAD5//H/AgAAAAAAAAD5//L/AgAAAAAAAAD5//P/AgAAAAAAAAD5//T/AgAAAAAAAAD5//X/AgAAAAAAAAD5//b/AgAAAAAAAAD5//f/AgAAAAAAAAD5//j/AgAAAAAAAAD5//n/AgAAAAAAAAD5//r/AgAAAAAAAAD5//v/AgAAAAAAAAD5//z/AgAAAAAAAAD6/+r/AgAAAAAAAAD6/+v/AgAAAAAAAAD6/+z/AgAAAAAAAAD6/+3/AgAAAAAAAAD6/+7/AgAAAAAAAAD6/+//AgAAAAAAAAD6//D/AgAAAAAAAAD6//H/AgAAAAAAAAD6//L/AgAAAAAAAAD6//P/AgAAAAAAAAD6//T/AgAAAAAAAAD6//X/AgAAAAAAAAD6//b/AgAAAAAAAAD6//f/AgAAAAAAAAD6//j/AgAAAAAAAAD6//n/AgAAAAAAAAD6//r/AgAAAAAAAAD6//v/AgAAAAAAAAD6//z/AgAAAAAAAAD7/+r/AgAAAAAAAAD7/+v/AgAAAAAAAAD7/+z/AgAAAAAAAAD7/+3/AgAAAAAAAAD7/+7/AgAAAAAAAAD7/+//AgAAAAAAAAD7//D/AgAAAAAAAAD7//H/AgAAAAAAAAD7//L/AgAAAAAAAAD7//P/AgAAAAAAAAD7//T/AgAAAAAAAAD7//X/AgAAAAAAAAD7//b/AgAAAAAAAAD7//f/AgAAAAAAAAD7//j/AgAAAAAAAAD7//n/AgAAAAAAAAD7//r/AgAAAAAAAAD7//v/AgAAAAAAAAD7//z/AgAAAAAAAADz/+n/AgAAAAAAAAD0/+n/AgAAAAAAAAD1/+n/AgAAAAAAAAD2/+n/AgAAAAAAAAD3/+n/AgAAAAAAAAD4/+n/AgAAAAAAAAD5/+n/AgAAAAAAAAD6/+n/AgAAAAAAAAD7/+n/AgAAAAAAAAD8/+n/AgAAAAAAAAD8/+r/AgAAAAAAAAD8/+v/AgAAAAAAAAD9/+n/AgAAAAAAAAD9/+r/AgAAAAAAAAD9/+v/AgAAAAAAAAD+/+n/AgAAAAAAAAD+/+r/AgAAAAAAAAD+/+v/AgAAAAAAAAD//+n/AgAAAAAAAAD//+r/AgAAAAAAAAD//+v/AgAAAAAAAAAAAOn/AgAAAAAAAAAAAOr/AgAAAAAAAAAAAOv/AgAAAAAAAAABAOn/AgAAAAAAAAABAOr/AgAAAAAAAAABAOv/AgAAAAAAAAACAOn/AgAAAAAAAAACAOr/AgAAAAAAAAACAOv/AgAAAAAAAAADAOn/AgAAAAAAAAADAOr/AgAAAAAAAAADAOv/AgAAAAAAAAAEAOn/AgAAAAAAAAAEAOr/AgAAAAAAAAAEAOv/AgAAAAAAAAAFAOn/AgAAAAAAAAAFAOr/AgAAAAAAAAAFAOv/AgAAAAAAAAAGAOn/AgAAAAAAAAAGAOr/AgAAAAAAAAAGAOv/AgAAAAAAAAAHAOn/AgAAAAAAAAAHAOr/AgAAAAAAAAAHAOv/AgAAAAAAAAAIAOn/AgAAAAAAAAAIAOr/AgAAAAAAAAAIAOv/AgAAAAAAAAAJAOn/AgAAAAAAAAAJAOr/AgAAAAAAAAAJAOv/AgAAAAAAAAAKAOn/AgAAAAAAAAAKAOr/AgAAAAAAAAAKAOv/AgAAAAAAAAALAOn/AgAAAAAAAAALAOr/AgAAAAAAAAALAOv/AgAAAAAAAAAMAOn/AgAAAAAAAAAMAOr/AgAAAAAAAAAMAOv/AgAAAAAAAAANAOn/AgAAAAAAAAANAOr/AgAAAAAAAAANAOv/AgAAAAAAAAAOAOn/AgAAAAAAAAAOAOr/AgAAAAAAAAAOAOv/AgAAAAAAAAAPAOn/AgAAAAAAAAAPAOr/AgAAAAAAAAAPAOv/AgAAAAAAAAAQAOn/AgAAAAAAAAAQAOr/AgAAAAAAAAAQAOv/AgAAAAAAAAARAOn/AgAAAAAAAAARAOr/AgAAAAAAAAARAOv/AgAAAAAAAAASAOn/AgAAAAAAAAASAOr/AgAAAAAAAAASAOv/AgAAAAAAAAATAOn/AgAAAAAAAAATAOr/AgAAAAAAAAATAOv/AgAAAAAAAAAUAOn/AgAAAAAAAAAUAOr/AgAAAAAAAAAUAOv/AgAAAAAAAAAVAOn/AgAAAAAAAAAVAOr/AgAAAAAAAAAVAOv/AgAAAAAAAAAWAOn/AgAAAAAAAAAWAOr/AgAAAAAAAAAWAOv/AgAAAAAAAAAXAOn/AgAAAAAAAAAXAOr/AgAAAAAAAAAXAOv/AgAAAAAAAAASAOz/AgAAAAAAAAASAO3/AgAAAAAAAAASAO7/AgAAAAAAAAASAO//AgAAAAAAAAASAPD/AgAAAAAAAAASAPH/AgAAAAAAAAASAPL/AgAAAAAAAAASAPP/AgAAAAAAAAASAPT/AgAAAAAAAAASAPX/AgAAAAAAAAASAPb/AgAAAAAAAAASAPf/AgAAAAAAAAASAPj/AgAAAAAAAAASAPn/AgAAAAAAAAASAPr/AgAAAAAAAAASAPv/AgAAAAAAAAATAOz/AgAAAAAAAAATAO3/AgAAAAAAAAATAO7/AgAAAAAAAAATAO//AgAAAAAAAAATAPD/AgAAAAAAAAATAPH/AgAAAAAAAAATAPL/AgAAAAAAAAATAPP/AgAAAAAAAAATAPT/AgAAAAAAAAATAPX/AgAAAAAAAAATAPb/AgAAAAAAAAATAPf/AgAAAAAAAAATAPj/AgAAAAAAAAATAPn/AgAAAAAAAAATAPr/AgAAAAAAAAATAPv/AgAAAAAAAAAUAOz/AgAAAAAAAAAUAO3/AgAAAAAAAAAUAO7/AgAAAAAAAAAUAO//AgAAAAAAAAAUAPD/AgAAAAAAAAAUAPH/AgAAAAAAAAAUAPL/AgAAAAAAAAAUAPP/AgAAAAAAAAAUAPT/AgAAAAAAAAAUAPX/AgAAAAAAAAAUAPb/AgAAAAAAAAAUAPf/AgAAAAAAAAAUAPj/AgAAAAAAAAAUAPn/AgAAAAAAAAAUAPr/AgAAAAAAAAAUAPv/AgAAAAAAAAAVAOz/AgAAAAAAAAAVAO3/AgAAAAAAAAAVAO7/AgAAAAAAAAAVAO//AgAAAAAAAAAVAPD/AgAAAAAAAAAVAPH/AgAAAAAAAAAVAPL/AgAAAAAAAAAVAPP/AgAAAAAAAAAVAPT/AgAAAAAAAAAVAPX/AgAAAAAAAAAVAPb/AgAAAAAAAAAVAPf/AgAAAAAAAAAVAPj/AgAAAAAAAAAVAPn/AgAAAAAAAAAVAPr/AgAAAAAAAAAVAPv/AgAAAAAAAAAWAOz/AgAAAAAAAAAWAO3/AgAAAAAAAAAWAO7/AgAAAAAAAAAWAO//AgAAAAAAAAAWAPD/AgAAAAAAAAAWAPH/AgAAAAAAAAAWAPL/AgAAAAAAAAAWAPP/AgAAAAAAAAAWAPT/AgAAAAAAAAAWAPX/AgAAAAAAAAAWAPb/AgAAAAAAAAAWAPf/AgAAAAAAAAAWAPj/AgAAAAAAAAAWAPn/AgAAAAAAAAAWAPr/AgAAAAAAAAAWAPv/AgAAAAAAAAAXAOz/AgAAAAAAAAAXAO3/AgAAAAAAAAAXAO7/AgAAAAAAAAAXAO//AgAAAAAAAAAXAPD/AgAAAAAAAAAXAPH/AgAAAAAAAAAXAPL/AgAAAAAAAAAXAPP/AgAAAAAAAAAXAPT/AgAAAAAAAAAXAPX/AgAAAAAAAAAXAPb/AgAAAAAAAAAXAPf/AgAAAAAAAAAXAPj/AgAAAAAAAAAXAPn/AgAAAAAAAAAXAPr/AgAAAAAAAAAXAPv/AgAAAAAAAAAYAOv/AgAAAAAAAAAYAOz/AgAAAAAAAAAYAO3/AgAAAAAAAAAYAO7/AgAAAAAAAAAYAO//AgAAAAAAAAAYAPD/AgAAAAAAAAAYAPH/AgAAAAAAAAAYAPL/AgAAAAAAAAAYAPP/AgAAAAAAAAAYAPT/AgAAAAAAAAAYAPX/AgAAAAAAAAAYAPb/AgAAAAAAAAAYAPf/AgAAAAAAAAAYAPj/AgAAAAAAAAAYAPn/AgAAAAAAAAAYAPr/AgAAAAAAAAAYAPv/AgAAAAAAAADu/+T/AgAAAAAAAADu/+X/AgAAAAAAAADu/+b/AgAAAAAAAADu/+f/AgAAAAAAAADu/+j/AgAAAAAAAADu/+n/AgAAAAAAAADu/+r/AgAAAAAAAADu/+v/AgAAAAAAAADu/+z/AgAAAAAAAADu/+3/AgAAAAAAAADu/+7/AgAAAAAAAADu/+//AgAAAAAAAADu//D/AgAAAAAAAADu//H/AgAAAAAAAADu//L/AgAAAAAAAADu//P/AgAAAAAAAADu//T/AgAAAAAAAADu//X/AgAAAAAAAADu//b/AgAAAAAAAADu//f/AgAAAAAAAADu//j/AgAAAAAAAADu//n/AgAAAAAAAADu//r/AgAAAAAAAADu//v/AgAAAAAAAADu//z/AgAAAAAAAADu//3/AgAAAAAAAADu//7/AgAAAAAAAADu////AgAAAAAAAADu/wAAAgAAAAAAAADu/wEAAgAAAAAAAADu/wIAAgAAAAAAAADu/wMAAgAAAAAAAADu/wQAAgAAAAAAAADu/wUAAgAAAAAAAADu/wYAAgAAAAAAAADu/wcAAgAAAAAAAADu/wgAAgAAAAAAAADu/wkAAgAAAAAAAADu/woAAgAAAAAAAADu/wsAAgAAAAAAAADu/wwAAgAAAAAAAADu/w0AAgAAAAAAAADu/w4AAgAAAAAAAADv/+T/AgAAAAAAAADv/+X/AgAAAAAAAADv/+b/AgAAAAAAAADv/+f/AgAAAAAAAADv/+j/AgAAAAAAAADv/+n/AgAAAAAAAADv/+r/AgAAAAAAAADv/+v/AgAAAAAAAADv/+z/AgAAAAAAAADv/+3/AgAAAAAAAADv/+7/AgAAAAAAAADv/+//AgAAAAAAAADv//D/AgAAAAAAAADv//H/AgAAAAAAAADv//L/AgAAAAAAAADv//P/AgAAAAAAAADv//T/AgAAAAAAAADv//X/AgAAAAAAAADv//b/AgAAAAAAAADv//f/AgAAAAAAAADv//j/AgAAAAAAAADv//n/AgAAAAAAAADv//r/AgAAAAAAAADv//v/AgAAAAAAAADv//z/AgAAAAAAAADv//3/AgAAAAAAAADv//7/AgAAAAAAAADv////AgAAAAAAAADv/wAAAgAAAAAAAADv/wEAAgAAAAAAAADv/wIAAgAAAAAAAADv/wMAAgAAAAAAAADv/wQAAgAAAAAAAADv/wUAAgAAAAAAAADv/wYAAgAAAAAAAADv/wcAAgAAAAAAAADv/wgAAgAAAAAAAADv/wkAAgAAAAAAAADv/woAAgAAAAAAAADv/wsAAgAAAAAAAADv/wwAAgAAAAAAAADv/w0AAgAAAAAAAADv/w4AAgAAAAAAAADw/+T/AgAAAAAAAADw/+X/AgAAAAAAAADw/+b/AgAAAAAAAADw/+f/AgAAAAAAAADw/+j/AgAAAAAAAADw/+n/AgAAAAAAAADw/+r/AgAAAAAAAADw/+v/AgAAAAAAAADw/+z/AgAAAAAAAADw/+3/AgAAAAAAAADw/+7/AgAAAAAAAADw/+//AgAAAAAAAADw//D/AgAAAAAAAADw//H/AgAAAAAAAADw//L/AgAAAAAAAADw//P/AgAAAAAAAADw//T/AgAAAAAAAADw//X/AgAAAAAAAADw//b/AgAAAAAAAADw//f/AgAAAAAAAADw//j/AgAAAAAAAADw//n/AgAAAAAAAADw//r/AgAAAAAAAADw//v/AgAAAAAAAADw//z/AgAAAAAAAADw//3/AgAAAAAAAADw//7/AgAAAAAAAADw////AgAAAAAAAADw/wAAAgAAAAAAAADw/wEAAgAAAAAAAADw/wIAAgAAAAAAAADw/wMAAgAAAAAAAADw/wQAAgAAAAAAAADw/wUAAgAAAAAAAADw/wYAAgAAAAAAAADw/wcAAgAAAAAAAADw/wgAAgAAAAAAAADw/wkAAgAAAAAAAADw/woAAgAAAAAAAADw/wsAAgAAAAAAAADw/wwAAgAAAAAAAADw/w0AAgAAAAAAAADw/w4AAgAAAAAAAADx/+T/AgAAAAAAAADx/+X/AgAAAAAAAADx/+b/AgAAAAAAAADx/+f/AgAAAAAAAADx/+j/AgAAAAAAAADx/+n/AgAAAAAAAADx/+r/AgAAAAAAAADx/+v/AgAAAAAAAADx/+z/AgAAAAAAAADx/+3/AgAAAAAAAADx/+7/AgAAAAAAAADx/+//AgAAAAAAAADx//D/AgAAAAAAAADx//H/AgAAAAAAAADx//L/AgAAAAAAAADx//P/AgAAAAAAAADx//T/AgAAAAAAAADx//X/AgAAAAAAAADx//b/AgAAAAAAAADx//f/AgAAAAAAAADx//j/AgAAAAAAAADx//n/AgAAAAAAAADx//r/AgAAAAAAAADx//v/AgAAAAAAAADx//z/AgAAAAAAAADx//3/AgAAAAAAAADx//7/AgAAAAAAAADx////AgAAAAAAAADx/wAAAgAAAAAAAADx/wEAAgAAAAAAAADx/wIAAgAAAAAAAADx/wMAAgAAAAAAAADx/wQAAgAAAAAAAADx/wUAAgAAAAAAAADx/wYAAgAAAAAAAADx/wcAAgAAAAAAAADx/wgAAgAAAAAAAADx/wkAAgAAAAAAAADx/woAAgAAAAAAAADx/wsAAgAAAAAAAADx/wwAAgAAAAAAAADx/w0AAgAAAAAAAADx/w4AAgAAAAAAAADy/+T/AgAAAAAAAADy/+X/AgAAAAAAAADy/+b/AgAAAAAAAADy/+f/AgAAAAAAAADy/+j/AgAAAAAAAADy/+n/AgAAAAAAAADy/+r/AgAAAAAAAADy/+v/AgAAAAAAAADy/+z/AgAAAAAAAADy/+3/AgAAAAAAAADy/+7/AgAAAAAAAADy/+//AgAAAAAAAADy//D/AgAAAAAAAADy//H/AgAAAAAAAADy//L/AgAAAAAAAADy//P/AgAAAAAAAADy//T/AgAAAAAAAADy//X/AgAAAAAAAADy//b/AgAAAAAAAADy//f/AgAAAAAAAADy//j/AgAAAAAAAADy//n/AgAAAAAAAADy//r/AgAAAAAAAADy//v/AgAAAAAAAADy//z/AgAAAAAAAADy//3/AgAAAAAAAADy//7/AgAAAAAAAADy////AgAAAAAAAADy/wAAAgAAAAAAAADy/wEAAgAAAAAAAADy/wIAAgAAAAAAAADy/wMAAgAAAAAAAADy/wQAAgAAAAAAAADy/wUAAgAAAAAAAADy/wYAAgAAAAAAAADy/wcAAgAAAAAAAADy/wgAAgAAAAAAAADy/wkAAgAAAAAAAADy/woAAgAAAAAAAADy/wsAAgAAAAAAAADy/wwAAgAAAAAAAADy/w0AAgAAAAAAAADy/w4AAgAAAAAAAADz/+T/AgAAAAAAAADz/+X/AgAAAAAAAADz/+b/AgAAAAAAAADz/+f/AgAAAAAAAADz/+j/AgAAAAAAAAD0/+T/AgAAAAAAAAD0/+X/AgAAAAAAAAD0/+b/AgAAAAAAAAD0/+f/AgAAAAAAAAD0/+j/AgAAAAAAAAD1/+T/AgAAAAAAAAD1/+X/AgAAAAAAAAD1/+b/AgAAAAAAAAD1/+f/AgAAAAAAAAD1/+j/AgAAAAAAAAD2/+T/AgAAAAAAAAD2/+X/AgAAAAAAAAD2/+b/AgAAAAAAAAD2/+f/AgAAAAAAAAD2/+j/AgAAAAAAAAD3/+T/AgAAAAAAAAD3/+X/AgAAAAAAAAD3/+b/AgAAAAAAAAD3/+f/AgAAAAAAAAD3/+j/AgAAAAAAAAD4/+T/AgAAAAAAAAD4/+X/AgAAAAAAAAD4/+b/AgAAAAAAAAD4/+f/AgAAAAAAAAD4/+j/AgAAAAAAAAD5/+T/AgAAAAAAAAD5/+X/AgAAAAAAAAD5/+b/AgAAAAAAAAD5/+f/AgAAAAAAAAD5/+j/AgAAAAAAAAD6/+T/AgAAAAAAAAD6/+X/AgAAAAAAAAD6/+b/AgAAAAAAAAD6/+f/AgAAAAAAAAD6/+j/AgAAAAAAAAD7/+T/AgAAAAAAAAD7/+X/AgAAAAAAAAD7/+b/AgAAAAAAAAD7/+f/AgAAAAAAAAD7/+j/AgAAAAAAAAD8/+T/AgAAAAAAAAD8/+X/AgAAAAAAAAD8/+b/AgAAAAAAAAD8/+f/AgAAAAAAAAD8/+j/AgAAAAAAAAD9/+T/AgAAAAAAAAD9/+X/AgAAAAAAAAD9/+b/AgAAAAAAAAD9/+f/AgAAAAAAAAD9/+j/AgAAAAAAAAD+/+T/AgAAAAAAAAD+/+X/AgAAAAAAAAD+/+b/AgAAAAAAAAD+/+f/AgAAAAAAAAD+/+j/AgAAAAAAAAD//+T/AgAAAAAAAAD//+X/AgAAAAAAAAD//+b/AgAAAAAAAAD//+f/AgAAAAAAAAD//+j/AgAAAAAAAAAAAOT/AgAAAAAAAAAAAOX/AgAAAAAAAAAAAOb/AgAAAAAAAAAAAOf/AgAAAAAAAAAAAOj/AgAAAAAAAAABAOT/AgAAAAAAAAABAOX/AgAAAAAAAAABAOb/AgAAAAAAAAABAOf/AgAAAAAAAAABAOj/AgAAAAAAAAACAOT/AgAAAAAAAAACAOX/AgAAAAAAAAACAOb/AgAAAAAAAAACAOf/AgAAAAAAAAACAOj/AgAAAAAAAAADAOT/AgAAAAAAAAADAOX/AgAAAAAAAAADAOb/AgAAAAAAAAADAOf/AgAAAAAAAAADAOj/AgAAAAAAAAAEAOT/AgAAAAAAAAAEAOX/AgAAAAAAAAAEAOb/AgAAAAAAAAAEAOf/AgAAAAAAAAAEAOj/AgAAAAAAAAAFAOT/AgAAAAAAAAAFAOX/AgAAAAAAAAAFAOb/AgAAAAAAAAAFAOf/AgAAAAAAAAAFAOj/AgAAAAAAAAAGAOT/AgAAAAAAAAAGAOX/AgAAAAAAAAAGAOb/AgAAAAAAAAAGAOf/AgAAAAAAAAAGAOj/AgAAAAAAAAAHAOT/AgAAAAAAAAAHAOX/AgAAAAAAAAAHAOb/AgAAAAAAAAAHAOf/AgAAAAAAAAAHAOj/AgAAAAAAAAAIAOT/AgAAAAAAAAAIAOX/AgAAAAAAAAAIAOb/AgAAAAAAAAAIAOf/AgAAAAAAAAAIAOj/AgAAAAAAAAAJAOT/AgAAAAAAAAAJAOX/AgAAAAAAAAAJAOb/AgAAAAAAAAAJAOf/AgAAAAAAAAAJAOj/AgAAAAAAAAAKAOT/AgAAAAAAAAAKAOX/AgAAAAAAAAAKAOb/AgAAAAAAAAAKAOf/AgAAAAAAAAAKAOj/AgAAAAAAAAALAOT/AgAAAAAAAAALAOX/AgAAAAAAAAALAOb/AgAAAAAAAAALAOf/AgAAAAAAAAALAOj/AgAAAAAAAAAMAOT/AgAAAAAAAAAMAOX/AgAAAAAAAAAMAOb/AgAAAAAAAAAMAOf/AgAAAAAAAAAMAOj/AgAAAAAAAAANAOT/AgAAAAAAAAANAOX/AgAAAAAAAAANAOb/AgAAAAAAAAANAOf/AgAAAAAAAAANAOj/AgAAAAAAAAAOAOT/AgAAAAAAAAAOAOX/AgAAAAAAAAAOAOb/AgAAAAAAAAAOAOf/AgAAAAAAAAAOAOj/AgAAAAAAAAAPAOT/AgAAAAAAAAAPAOX/AgAAAAAAAAAPAOb/AgAAAAAAAAAPAOf/AgAAAAAAAAAPAOj/AgAAAAAAAAAQAOT/AgAAAAAAAAAQAOX/AgAAAAAAAAAQAOb/AgAAAAAAAAAQAOf/AgAAAAAAAAAQAOj/AgAAAAAAAAARAOT/AgAAAAAAAAARAOX/AgAAAAAAAAARAOb/AgAAAAAAAAARAOf/AgAAAAAAAAARAOj/AgAAAAAAAAASAOT/AgAAAAAAAAASAOX/AgAAAAAAAAASAOb/AgAAAAAAAAASAOf/AgAAAAAAAAASAOj/AgAAAAAAAAATAOT/AgAAAAAAAAATAOX/AgAAAAAAAAATAOb/AgAAAAAAAAATAOf/AgAAAAAAAAATAOj/AgAAAAAAAAAUAOT/AgAAAAAAAAAUAOX/AgAAAAAAAAAUAOb/AgAAAAAAAAAUAOf/AgAAAAAAAAAUAOj/AgAAAAAAAAAVAOT/AgAAAAAAAAAVAOX/AgAAAAAAAAAVAOb/AgAAAAAAAAAVAOf/AgAAAAAAAAAVAOj/AgAAAAAAAAAWAOT/AgAAAAAAAAAWAOX/AgAAAAAAAAAWAOb/AgAAAAAAAAAWAOf/AgAAAAAAAAAWAOj/AgAAAAAAAAAXAOT/AgAAAAAAAAAXAOX/AgAAAAAAAAAXAOb/AgAAAAAAAAAXAOf/AgAAAAAAAAAXAOj/AgAAAAAAAAAYAOT/AgAAAAAAAAAYAOX/AgAAAAAAAAAYAOb/AgAAAAAAAAAYAOf/AgAAAAAAAAAYAOj/AgAAAAAAAAAYAOn/AgAAAAAAAAAYAOr/AgAAAAAAAAAZAOT/AgAAAAAAAAAZAOX/AgAAAAAAAAAZAOb/AgAAAAAAAAAZAOf/AgAAAAAAAAAZAOj/AgAAAAAAAAAZAOn/AgAAAAAAAAAZAOr/AgAAAAAAAAAZAOv/AgAAAAAAAAAZAOz/AgAAAAAAAAAZAO3/AgAAAAAAAAAZAO7/AgAAAAAAAAAZAO//AgAAAAAAAAAZAPD/AgAAAAAAAAAZAPH/AgAAAAAAAAAZAPL/AgAAAAAAAAAZAPP/AgAAAAAAAAAZAPT/AgAAAAAAAAAZAPX/AgAAAAAAAAAZAPb/AgAAAAAAAAAZAPf/AgAAAAAAAAAZAPj/AgAAAAAAAAAZAPn/AgAAAAAAAAAZAPr/AgAAAAAAAAAZAPv/AgAAAAAAAAAZAPz/AgAAAAAAAAAZAP3/AgAAAAAAAAAZAP7/AgAAAAAAAAAZAP//AgAAAAAAAAAZAAAAAgAAAAAAAAAZAAEAAgAAAAAAAAAZAAIAAgAAAAAAAAAZAAMAAgAAAAAAAAAZAAQAAgAAAAAAAAAZAAUAAgAAAAAAAAAZAAYAAgAAAAAAAAAZAAcAAgAAAAAAAAAZAAgAAgAAAAAAAAAZAAkAAgAAAAAAAAAZAAoAAgAAAAAAAAAZAAsAAgAAAAAAAAAZAAwAAgAAAAAAAAAZAA0AAgAAAAAAAAAZAA4AAgAAAAAAAAAaAOT/AgAAAAAAAAAaAOX/AgAAAAAAAAAaAOb/AgAAAAAAAAAaAOf/AgAAAAAAAAAaAOj/AgAAAAAAAAAaAOn/AgAAAAAAAAAaAOr/AgAAAAAAAAAaAOv/AgAAAAAAAAAaAOz/AgAAAAAAAAAaAO3/AgAAAAAAAAAaAO7/AgAAAAAAAAAaAO//AgAAAAAAAAAaAPD/AgAAAAAAAAAaAPH/AgAAAAAAAAAaAPL/AgAAAAAAAAAaAPP/AgAAAAAAAAAaAPT/AgAAAAAAAAAaAPX/AgAAAAAAAAAaAPb/AgAAAAAAAAAaAPf/AgAAAAAAAAAaAPj/AgAAAAAAAAAaAPn/AgAAAAAAAAAaAPr/AgAAAAAAAAAaAPv/AgAAAAAAAAAaAPz/AgAAAAAAAAAaAP3/AgAAAAAAAAAaAP7/AgAAAAAAAAAaAP//AgAAAAAAAAAaAAAAAgAAAAAAAAAaAAEAAgAAAAAAAAAaAAIAAgAAAAAAAAAaAAMAAgAAAAAAAAAaAAQAAgAAAAAAAAAaAAUAAgAAAAAAAAAaAAYAAgAAAAAAAAAaAAcAAgAAAAAAAAAaAAgAAgAAAAAAAAAaAAkAAgAAAAAAAAAaAAoAAgAAAAAAAAAaAAsAAgAAAAAAAAAaAAwAAgAAAAAAAAAaAA0AAgAAAAAAAAAaAA4AAgAAAAAAAAAbAOT/AgAAAAAAAAAbAOX/AgAAAAAAAAAbAOb/AgAAAAAAAAAbAOf/AgAAAAAAAAAbAOj/AgAAAAAAAAAbAOn/AgAAAAAAAAAbAOr/AgAAAAAAAAAbAOv/AgAAAAAAAAAbAOz/AgAAAAAAAAAbAO3/AgAAAAAAAAAbAO7/AgAAAAAAAAAbAO//AgAAAAAAAAAbAPD/AgAAAAAAAAAbAPH/AgAAAAAAAAAbAPL/AgAAAAAAAAAbAPP/AgAAAAAAAAAbAPT/AgAAAAAAAAAbAPX/AgAAAAAAAAAbAPb/AgAAAAAAAAAbAPf/AgAAAAAAAAAbAPj/AgAAAAAAAAAbAPn/AgAAAAAAAAAbAPr/AgAAAAAAAAAbAPv/AgAAAAAAAAAbAPz/AgAAAAAAAAAbAP3/AgAAAAAAAAAbAP7/AgAAAAAAAAAbAP//AgAAAAAAAAAbAAAAAgAAAAAAAAAbAAEAAgAAAAAAAAAbAAIAAgAAAAAAAAAbAAMAAgAAAAAAAAAbAAQAAgAAAAAAAAAbAAUAAgAAAAAAAAAbAAYAAgAAAAAAAAAbAAcAAgAAAAAAAAAbAAgAAgAAAAAAAAAbAAkAAgAAAAAAAAAbAAoAAgAAAAAAAAAbAAsAAgAAAAAAAAAbAAwAAgAAAAAAAAAbAA0AAgAAAAAAAAAbAA4AAgAAAAAAAAAcAOT/AgAAAAAAAAAcAOX/AgAAAAAAAAAcAOb/AgAAAAAAAAAcAOf/AgAAAAAAAAAcAOj/AgAAAAAAAAAcAOn/AgAAAAAAAAAcAOr/AgAAAAAAAAAcAOv/AgAAAAAAAAAcAOz/AgAAAAAAAAAcAO3/AgAAAAAAAAAcAO7/AgAAAAAAAAAcAO//AgAAAAAAAAAcAPD/AgAAAAAAAAAcAPH/AgAAAAAAAAAcAPL/AgAAAAAAAAAcAPP/AgAAAAAAAAAcAPT/AgAAAAAAAAAcAPX/AgAAAAAAAAAcAPb/AgAAAAAAAAAcAPf/AgAAAAAAAAAcAPj/AgAAAAAAAAAcAPn/AgAAAAAAAAAcAPr/AgAAAAAAAAAcAPv/AgAAAAAAAAAcAPz/AgAAAAAAAAAcAP3/AgAAAAAAAAAcAP7/AgAAAAAAAAAcAP//AgAAAAAAAAAcAAAAAgAAAAAAAAAcAAEAAgAAAAAAAAAcAAIAAgAAAAAAAAAcAAMAAgAAAAAAAAAcAAQAAgAAAAAAAAAcAAUAAgAAAAAAAAAcAAYAAgAAAAAAAAAcAAcAAgAAAAAAAAAcAAgAAgAAAAAAAAAcAAkAAgAAAAAAAAAcAAoAAgAAAAAAAAAcAAsAAgAAAAAAAAAcAAwAAgAAAAAAAAAcAA0AAgAAAAAAAAAcAA4AAgAAAAAAAAAYAPz/AgAAAAAAAAAYAP3/AgAAAAAAAAAYAP7/AgAAAAAAAAAYAP//AgAAAAAAAAAYAAAAAgAAAAAAAAAYAAEAAgAAAAAAAAAYAAIAAgAAAAAAAAAYAAMAAgAAAAAAAAAYAAQAAgAAAAAAAAAYAAUAAgAAAAAAAAAYAAYAAgAAAAAAAAAYAAcAAgAAAAAAAAAYAAgAAgAAAAAAAAAYAAkAAgAAAAAAAAAYAAoAAgAAAAAAAAAYAAsAAgAAAAAAAAAYAAwAAgAAAAAAAAAYAA0AAgAAAAAAAAAYAA4AAgAAAAAAAAAdAOT/AgAAAAAAAAAdAOX/AgAAAAAAAAAdAOb/AgAAAAAAAAAdAOf/AgAAAAAAAAAdAOj/AgAAAAAAAAAdAOn/AgAAAAAAAAAdAOr/AgAAAAAAAAAdAOv/AgAAAAAAAAAdAOz/AgAAAAAAAAAdAO3/AgAAAAAAAAAdAO7/AgAAAAAAAAAdAO//AgAAAAAAAAAdAPD/AgAAAAAAAAAdAPH/AgAAAAAAAAAdAPL/AgAAAAAAAAAdAPP/AgAAAAAAAAAdAPT/AgAAAAAAAAAdAPX/AgAAAAAAAAAdAPb/AgAAAAAAAAAdAPf/AgAAAAAAAAAdAPj/AgAAAAAAAAAdAPn/AgAAAAAAAAAdAPr/AgAAAAAAAAAdAPv/AgAAAAAAAAAdAPz/AgAAAAAAAAAdAP3/AgAAAAAAAAAdAP7/AgAAAAAAAAAdAP//AgAAAAAAAAAdAAAAAgAAAAAAAAAdAAEAAgAAAAAAAAAdAAIAAgAAAAAAAAAdAAMAAgAAAAAAAAAdAAQAAgAAAAAAAAAdAAUAAgAAAAAAAAAdAAYAAgAAAAAAAAAdAAcAAgAAAAAAAAAdAAgAAgAAAAAAAAAdAAkAAgAAAAAAAAAdAAoAAgAAAAAAAAAdAAsAAgAAAAAAAAAdAAwAAgAAAAAAAAAdAA0AAgAAAAAAAAAdAA4AAgAAAAAAAAAeAOT/AgAAAAAAAAAeAOX/AgAAAAAAAAAeAOb/AgAAAAAAAAAeAOf/AgAAAAAAAAAeAOj/AgAAAAAAAAAeAOn/AgAAAAAAAAAeAOr/AgAAAAAAAAAeAOv/AgAAAAAAAAAeAOz/AgAAAAAAAAAeAO3/AgAAAAAAAAAeAO7/AgAAAAAAAAAeAO//AgAAAAAAAAAeAPD/AgAAAAAAAAAeAPH/AgAAAAAAAAAeAPL/AgAAAAAAAAAeAPP/AgAAAAAAAAAeAPT/AgAAAAAAAAAeAPX/AgAAAAAAAAAeAPb/AgAAAAAAAAAeAPf/AgAAAAAAAAAeAPj/AgAAAAAAAAAeAPn/AgAAAAAAAAAeAPr/AgAAAAAAAAAeAPv/AgAAAAAAAAAeAPz/AgAAAAAAAAAeAP3/AgAAAAAAAAAeAP7/AgAAAAAAAAAeAP//AgAAAAAAAAAeAAAAAgAAAAAAAAAeAAEAAgAAAAAAAAAeAAIAAgAAAAAAAAAeAAMAAgAAAAAAAAAeAAQAAgAAAAAAAAAeAAUAAgAAAAAAAAAeAAYAAgAAAAAAAAAeAAcAAgAAAAAAAAAeAAgAAgAAAAAAAAAeAAkAAgAAAAAAAAAeAAoAAgAAAAAAAAAeAAsAAgAAAAAAAAAeAAwAAgAAAAAAAAAeAA0AAgAAAAAAAAAeAA4AAgAAAAAAAAAfAOT/AgAAAAAAAAAfAOX/AgAAAAAAAAAfAOb/AgAAAAAAAAAfAOf/AgAAAAAAAAAfAOj/AgAAAAAAAAAfAOn/AgAAAAAAAAAfAOr/AgAAAAAAAAAfAOv/AgAAAAAAAAAfAOz/AgAAAAAAAAAfAO3/AgAAAAAAAAAfAO7/AgAAAAAAAAAfAO//AgAAAAAAAAAfAPD/AgAAAAAAAAAfAPH/AgAAAAAAAAAfAPL/AgAAAAAAAAAfAPP/AgAAAAAAAAAfAPT/AgAAAAAAAAAfAPX/AgAAAAAAAAAfAPb/AgAAAAAAAAAfAPf/AgAAAAAAAAAfAPj/AgAAAAAAAAAfAPn/AgAAAAAAAAAfAPr/AgAAAAAAAAAfAPv/AgAAAAAAAAAfAPz/AgAAAAAAAAAfAP3/AgAAAAAAAAAfAP7/AgAAAAAAAAAfAP//AgAAAAAAAAAfAAAAAgAAAAAAAAAfAAEAAgAAAAAAAAAfAAIAAgAAAAAAAAAfAAMAAgAAAAAAAAAfAAQAAgAAAAAAAAAfAAUAAgAAAAAAAAAfAAYAAgAAAAAAAAAfAAcAAgAAAAAAAAAfAAgAAgAAAAAAAAAfAAkAAgAAAAAAAAAfAAoAAgAAAAAAAAAfAAsAAgAAAAAAAAAfAAwAAgAAAAAAAAAfAA0AAgAAAAAAAAAfAA4AAgAAAAAAAADu/w8AAgAAAAAAAADu/xAAAgAAAAAAAADu/xEAAgAAAAAAAADu/xIAAgAAAAAAAADu/xMAAgAAAAAAAADu/xQAAgAAAAAAAADu/xUAAgAAAAAAAADu/xYAAgAAAAAAAADu/xcAAgAAAAAAAADu/xgAAgAAAAAAAADu/xkAAgAAAAAAAADu/xoAAgAAAAAAAADu/xsAAgAAAAAAAADu/xwAAgAAAAAAAADu/x0AAgAAAAAAAADu/x4AAgAAAAAAAADv/w8AAgAAAAAAAADv/xAAAgAAAAAAAADv/xEAAgAAAAAAAADv/xIAAgAAAAAAAADv/xMAAgAAAAAAAADv/xQAAgAAAAAAAADv/xUAAgAAAAAAAADv/xYAAgAAAAAAAADv/xcAAgAAAAAAAADv/xgAAgAAAAAAAADv/xkAAgAAAAAAAADv/xoAAgAAAAAAAADv/xsAAgAAAAAAAADv/xwAAgAAAAAAAADv/x0AAgAAAAAAAADv/x4AAgAAAAAAAADw/w8AAgAAAAAAAADw/xAAAgAAAAAAAADw/xEAAgAAAAAAAADw/xIAAgAAAAAAAADw/xMAAgAAAAAAAADw/xQAAgAAAAAAAADw/xUAAgAAAAAAAADw/xYAAgAAAAAAAADw/xcAAgAAAAAAAADw/xgAAgAAAAAAAADw/xkAAgAAAAAAAADw/xoAAgAAAAAAAADw/xsAAgAAAAAAAADw/xwAAgAAAAAAAADw/x0AAgAAAAAAAADw/x4AAgAAAAAAAADx/w8AAgAAAAAAAADx/xAAAgAAAAAAAADx/xEAAgAAAAAAAADx/xIAAgAAAAAAAADx/xMAAgAAAAAAAADx/xQAAgAAAAAAAADx/xUAAgAAAAAAAADx/xYAAgAAAAAAAADx/xcAAgAAAAAAAADx/xgAAgAAAAAAAADx/xkAAgAAAAAAAADx/xoAAgAAAAAAAADx/xsAAgAAAAAAAADx/xwAAgAAAAAAAADx/x0AAgAAAAAAAADx/x4AAgAAAAAAAADy/w8AAgAAAAAAAADy/xAAAgAAAAAAAADy/xEAAgAAAAAAAADy/xIAAgAAAAAAAADy/xMAAgAAAAAAAADy/xQAAgAAAAAAAADy/xUAAgAAAAAAAADy/xYAAgAAAAAAAADy/xcAAgAAAAAAAADy/xgAAgAAAAAAAADy/xkAAgAAAAAAAADy/xoAAgAAAAAAAADy/xsAAgAAAAAAAADy/xwAAgAAAAAAAADy/x0AAgAAAAAAAADy/x4AAgAAAAAAAADz/w8AAgAAAAAAAADz/xAAAgAAAAAAAADz/xEAAgAAAAAAAADz/xIAAgAAAAAAAADz/xMAAgAAAAAAAADz/xQAAgAAAAAAAADz/xUAAgAAAAAAAADz/xYAAgAAAAAAAADz/xcAAgAAAAAAAADz/xgAAgAAAAAAAADz/xkAAgAAAAAAAADz/xoAAgAAAAAAAADz/xsAAgAAAAAAAADz/xwAAgAAAAAAAADz/x0AAgAAAAAAAADz/x4AAgAAAAAAAAD0/w8AAgAAAAAAAAD0/xAAAgAAAAAAAAD0/xEAAgAAAAAAAAD0/xIAAgAAAAAAAAD0/xMAAgAAAAAAAAD0/xQAAgAAAAAAAAD0/xUAAgAAAAAAAAD0/xYAAgAAAAAAAAD0/xcAAgAAAAAAAAD0/xgAAgAAAAAAAAD0/xkAAgAAAAAAAAD0/xoAAgAAAAAAAAD0/xsAAgAAAAAAAAD0/xwAAgAAAAAAAAD0/x0AAgAAAAAAAAD0/x4AAgAAAAAAAAD1/w8AAgAAAAAAAAD1/xAAAgAAAAAAAAD1/xEAAgAAAAAAAAD1/xIAAgAAAAAAAAD1/xMAAgAAAAAAAAD1/xQAAgAAAAAAAAD1/xUAAgAAAAAAAAD1/xYAAgAAAAAAAAD1/xcAAgAAAAAAAAD1/xgAAgAAAAAAAAD1/xkAAgAAAAAAAAD1/xoAAgAAAAAAAAD1/xsAAgAAAAAAAAD1/xwAAgAAAAAAAAD1/x0AAgAAAAAAAAD1/x4AAgAAAAAAAAD2/w8AAgAAAAAAAAD2/xAAAgAAAAAAAAD2/xEAAgAAAAAAAAD2/xIAAgAAAAAAAAD2/xMAAgAAAAAAAAD2/xQAAgAAAAAAAAD2/xUAAgAAAAAAAAD2/xYAAgAAAAAAAAD2/xcAAgAAAAAAAAD2/xgAAgAAAAAAAAD2/xkAAgAAAAAAAAD2/xoAAgAAAAAAAAD2/xsAAgAAAAAAAAD2/xwAAgAAAAAAAAD2/x0AAgAAAAAAAAD2/x4AAgAAAAAAAAD3/w8AAgAAAAAAAAD3/xAAAgAAAAAAAAD3/xEAAgAAAAAAAAD3/xIAAgAAAAAAAAD3/xMAAgAAAAAAAAD3/xQAAgAAAAAAAAD3/xUAAgAAAAAAAAD3/xYAAgAAAAAAAAD3/xcAAgAAAAAAAAD3/xgAAgAAAAAAAAD3/xkAAgAAAAAAAAD3/xoAAgAAAAAAAAD3/xsAAgAAAAAAAAD3/xwAAgAAAAAAAAD3/x0AAgAAAAAAAAD3/x4AAgAAAAAAAAD4/w8AAgAAAAAAAAD4/xAAAgAAAAAAAAD4/xEAAgAAAAAAAAD4/xIAAgAAAAAAAAD4/xMAAgAAAAAAAAD4/xQAAgAAAAAAAAD4/xUAAgAAAAAAAAD4/xYAAgAAAAAAAAD4/xcAAgAAAAAAAAD4/xgAAgAAAAAAAAD4/xkAAgAAAAAAAAD4/xoAAgAAAAAAAAD4/xsAAgAAAAAAAAD4/xwAAgAAAAAAAAD4/x0AAgAAAAAAAAD4/x4AAgAAAAAAAAD5/w8AAgAAAAAAAAD5/xAAAgAAAAAAAAD5/xEAAgAAAAAAAAD5/xIAAgAAAAAAAAD5/xMAAgAAAAAAAAD5/xQAAgAAAAAAAAD5/xUAAgAAAAAAAAD5/xYAAgAAAAAAAAD5/xcAAgAAAAAAAAD5/xgAAgAAAAAAAAD5/xkAAgAAAAAAAAD5/xoAAgAAAAAAAAD5/xsAAgAAAAAAAAD5/xwAAgAAAAAAAAD5/x0AAgAAAAAAAAD5/x4AAgAAAAAAAADu/x8AAgAAAAAAAADu/yAAAgAAAAAAAADu/yEAAgAAAAAAAADu/yIAAgAAAAAAAADu/yMAAgAAAAAAAADu/yQAAgAAAAAAAADu/yUAAgAAAAAAAADu/yYAAgAAAAAAAADu/ycAAgAAAAAAAADu/ygAAgAAAAAAAADu/ykAAgAAAAAAAADv/x8AAgAAAAAAAADv/yAAAgAAAAAAAADv/yEAAgAAAAAAAADv/yIAAgAAAAAAAADv/yMAAgAAAAAAAADv/yQAAgAAAAAAAADv/yUAAgAAAAAAAADv/yYAAgAAAAAAAADv/ycAAgAAAAAAAADv/ygAAgAAAAAAAADv/ykAAgAAAAAAAADw/x8AAgAAAAAAAADw/yAAAgAAAAAAAADw/yEAAgAAAAAAAADw/yIAAgAAAAAAAADw/yMAAgAAAAAAAADw/yQAAgAAAAAAAADw/yUAAgAAAAAAAADw/yYAAgAAAAAAAADw/ycAAgAAAAAAAADw/ygAAgAAAAAAAADw/ykAAgAAAAAAAADx/x8AAgAAAAAAAADx/yAAAgAAAAAAAADx/yEAAgAAAAAAAADx/yIAAgAAAAAAAADx/yMAAgAAAAAAAADx/yQAAgAAAAAAAADx/yUAAgAAAAAAAADx/yYAAgAAAAAAAADx/ycAAgAAAAAAAADx/ygAAgAAAAAAAADx/ykAAgAAAAAAAADy/x8AAgAAAAAAAADy/yAAAgAAAAAAAADy/yEAAgAAAAAAAADy/yIAAgAAAAAAAADy/yMAAgAAAAAAAADy/yQAAgAAAAAAAADy/yUAAgAAAAAAAADy/yYAAgAAAAAAAADy/ycAAgAAAAAAAADy/ygAAgAAAAAAAADy/ykAAgAAAAAAAADz/x8AAgAAAAAAAADz/yAAAgAAAAAAAADz/yEAAgAAAAAAAADz/yIAAgAAAAAAAADz/yMAAgAAAAAAAADz/yQAAgAAAAAAAADz/yUAAgAAAAAAAADz/yYAAgAAAAAAAADz/ycAAgAAAAAAAADz/ygAAgAAAAAAAADz/ykAAgAAAAAAAAD0/x8AAgAAAAAAAAD0/yAAAgAAAAAAAAD0/yEAAgAAAAAAAAD0/yIAAgAAAAAAAAD0/yMAAgAAAAAAAAD0/yQAAgAAAAAAAAD0/yUAAgAAAAAAAAD0/yYAAgAAAAAAAAD0/ycAAgAAAAAAAAD0/ygAAgAAAAAAAAD0/ykAAgAAAAAAAAD1/x8AAgAAAAAAAAD1/yAAAgAAAAAAAAD1/yEAAgAAAAAAAAD1/yIAAgAAAAAAAAD1/yMAAgAAAAAAAAD1/yQAAgAAAAAAAAD1/yUAAgAAAAAAAAD1/yYAAgAAAAAAAAD1/ycAAgAAAAAAAAD1/ygAAgAAAAAAAAD1/ykAAgAAAAAAAAD2/x8AAgAAAAAAAAD2/yAAAgAAAAAAAAD2/yEAAgAAAAAAAAD2/yIAAgAAAAAAAAD2/yMAAgAAAAAAAAD2/yQAAgAAAAAAAAD2/yUAAgAAAAAAAAD2/yYAAgAAAAAAAAD2/ycAAgAAAAAAAAD2/ygAAgAAAAAAAAD2/ykAAgAAAAAAAAD3/x8AAgAAAAAAAAD3/yAAAgAAAAAAAAD3/yEAAgAAAAAAAAD3/yIAAgAAAAAAAAD3/yMAAgAAAAAAAAD3/yQAAgAAAAAAAAD3/yUAAgAAAAAAAAD3/yYAAgAAAAAAAAD3/ycAAgAAAAAAAAD3/ygAAgAAAAAAAAD3/ykAAgAAAAAAAAD4/x8AAgAAAAAAAAD4/yAAAgAAAAAAAAD4/yEAAgAAAAAAAAD4/yIAAgAAAAAAAAD4/yMAAgAAAAAAAAD4/yQAAgAAAAAAAAD4/yUAAgAAAAAAAAD4/yYAAgAAAAAAAAD4/ycAAgAAAAAAAAD4/ygAAgAAAAAAAAD4/ykAAgAAAAAAAAD5/x8AAgAAAAAAAAD5/yAAAgAAAAAAAAD5/yEAAgAAAAAAAAD5/yIAAgAAAAAAAAD5/yMAAgAAAAAAAAD5/yQAAgAAAAAAAAD5/yUAAgAAAAAAAAD5/yYAAgAAAAAAAAD5/ycAAgAAAAAAAAD5/ygAAgAAAAAAAAD5/ykAAgAAAAAAAAD6/x8AAgAAAAAAAAD6/yAAAgAAAAAAAAD6/yEAAgAAAAAAAAD6/yIAAgAAAAAAAAD6/yMAAgAAAAAAAAD6/yQAAgAAAAAAAAD6/yUAAgAAAAAAAAD6/yYAAgAAAAAAAAD6/ycAAgAAAAAAAAD6/ygAAgAAAAAAAAD6/ykAAgAAAAAAAAD7/x8AAgAAAAAAAAD7/yAAAgAAAAAAAAD7/yEAAgAAAAAAAAD7/yIAAgAAAAAAAAD7/yMAAgAAAAAAAAD7/yQAAgAAAAAAAAD7/yUAAgAAAAAAAAD7/yYAAgAAAAAAAAD7/ycAAgAAAAAAAAD7/ygAAgAAAAAAAAD7/ykAAgAAAAAAAAD8/x8AAgAAAAAAAAD8/yAAAgAAAAAAAAD8/yEAAgAAAAAAAAD8/yIAAgAAAAAAAAD8/yMAAgAAAAAAAAD8/yQAAgAAAAAAAAD8/yUAAgAAAAAAAAD8/yYAAgAAAAAAAAD8/ycAAgAAAAAAAAD8/ygAAgAAAAAAAAD8/ykAAgAAAAAAAAD9/x8AAgAAAAAAAAD9/yAAAgAAAAAAAAD9/yEAAgAAAAAAAAD9/yIAAgAAAAAAAAD9/yMAAgAAAAAAAAD9/yQAAgAAAAAAAAD9/yUAAgAAAAAAAAD9/yYAAgAAAAAAAAD9/ycAAgAAAAAAAAD9/ygAAgAAAAAAAAD9/ykAAgAAAAAAAAD+/x8AAgAAAAAAAAD+/yAAAgAAAAAAAAD+/yEAAgAAAAAAAAD+/yIAAgAAAAAAAAD+/yMAAgAAAAAAAAD+/yQAAgAAAAAAAAD+/yUAAgAAAAAAAAD+/yYAAgAAAAAAAAD+/ycAAgAAAAAAAAD+/ygAAgAAAAAAAAD+/ykAAgAAAAAAAAD//x8AAgAAAAAAAAD//yAAAgAAAAAAAAD//yEAAgAAAAAAAAD//yIAAgAAAAAAAAD//yMAAgAAAAAAAAD//yQAAgAAAAAAAAD//yUAAgAAAAAAAAD//yYAAgAAAAAAAAD//ycAAgAAAAAAAAD//ygAAgAAAAAAAAD//ykAAgAAAAAAAAAAAB8AAgAAAAAAAAAAACAAAgAAAAAAAAAAACEAAgAAAAAAAAAAACIAAgAAAAAAAAAAACMAAgAAAAAAAAAAACQAAgAAAAAAAAAAACUAAgAAAAAAAAAAACYAAgAAAAAAAAAAACcAAgAAAAAAAAAAACgAAgAAAAAAAAAAACkAAgAAAAAAAAABAB8AAgAAAAAAAAABACAAAgAAAAAAAAABACEAAgAAAAAAAAABACIAAgAAAAAAAAABACMAAgAAAAAAAAABACQAAgAAAAAAAAABACUAAgAAAAAAAAABACYAAgAAAAAAAAABACcAAgAAAAAAAAABACgAAgAAAAAAAAABACkAAgAAAAAAAAACAB8AAgAAAAAAAAACACAAAgAAAAAAAAACACEAAgAAAAAAAAACACIAAgAAAAAAAAACACMAAgAAAAAAAAACACQAAgAAAAAAAAACACUAAgAAAAAAAAACACYAAgAAAAAAAAACACcAAgAAAAAAAAACACgAAgAAAAAAAAACACkAAgAAAAAAAAADAB8AAgAAAAAAAAADACAAAgAAAAAAAAADACEAAgAAAAAAAAADACIAAgAAAAAAAAADACMAAgAAAAAAAAADACQAAgAAAAAAAAADACUAAgAAAAAAAAADACYAAgAAAAAAAAADACcAAgAAAAAAAAADACgAAgAAAAAAAAADACkAAgAAAAAAAAAEAB8AAgAAAAAAAAAEACAAAgAAAAAAAAAEACEAAgAAAAAAAAAEACIAAgAAAAAAAAAEACMAAgAAAAAAAAAEACQAAgAAAAAAAAAEACUAAgAAAAAAAAAEACYAAgAAAAAAAAAEACcAAgAAAAAAAAAEACgAAgAAAAAAAAAEACkAAgAAAAAAAAAFAB8AAgAAAAAAAAAFACAAAgAAAAAAAAAFACEAAgAAAAAAAAAFACIAAgAAAAAAAAAFACMAAgAAAAAAAAAFACQAAgAAAAAAAAAFACUAAgAAAAAAAAAFACYAAgAAAAAAAAAFACcAAgAAAAAAAAAFACgAAgAAAAAAAAAFACkAAgAAAAAAAAAGAB8AAgAAAAAAAAAGACAAAgAAAAAAAAAGACEAAgAAAAAAAAAGACIAAgAAAAAAAAAGACMAAgAAAAAAAAAGACQAAgAAAAAAAAAGACUAAgAAAAAAAAAGACYAAgAAAAAAAAAGACcAAgAAAAAAAAAGACgAAgAAAAAAAAAGACkAAgAAAAAAAAAHAB8AAgAAAAAAAAAHACAAAgAAAAAAAAAHACEAAgAAAAAAAAAHACIAAgAAAAAAAAAHACMAAgAAAAAAAAAHACQAAgAAAAAAAAAHACUAAgAAAAAAAAAHACYAAgAAAAAAAAAHACcAAgAAAAAAAAAHACgAAgAAAAAAAAAHACkAAgAAAAAAAAAIAB8AAgAAAAAAAAAIACAAAgAAAAAAAAAIACEAAgAAAAAAAAAIACIAAgAAAAAAAAAIACMAAgAAAAAAAAAIACQAAgAAAAAAAAAIACUAAgAAAAAAAAAIACYAAgAAAAAAAAAIACcAAgAAAAAAAAAIACgAAgAAAAAAAAAIACkAAgAAAAAAAAAJAB8AAgAAAAAAAAAJACAAAgAAAAAAAAAJACEAAgAAAAAAAAAJACIAAgAAAAAAAAAJACMAAgAAAAAAAAAJACQAAgAAAAAAAAAJACUAAgAAAAAAAAAJACYAAgAAAAAAAAAJACcAAgAAAAAAAAAJACgAAgAAAAAAAAAJACkAAgAAAAAAAAAKAB8AAgAAAAAAAAAKACAAAgAAAAAAAAAKACEAAgAAAAAAAAAKACIAAgAAAAAAAAAKACMAAgAAAAAAAAAKACQAAgAAAAAAAAAKACUAAgAAAAAAAAAKACYAAgAAAAAAAAAKACcAAgAAAAAAAAAKACgAAgAAAAAAAAAKACkAAgAAAAAAAAALAB8AAgAAAAAAAAALACAAAgAAAAAAAAALACEAAgAAAAAAAAALACIAAgAAAAAAAAALACMAAgAAAAAAAAALACQAAgAAAAAAAAALACUAAgAAAAAAAAALACYAAgAAAAAAAAALACcAAgAAAAAAAAALACgAAgAAAAAAAAALACkAAgAAAAAAAAAMAB8AAgAAAAAAAAAMACAAAgAAAAAAAAAMACEAAgAAAAAAAAAMACIAAgAAAAAAAAAMACMAAgAAAAAAAAAMACQAAgAAAAAAAAAMACUAAgAAAAAAAAAMACYAAgAAAAAAAAAMACcAAgAAAAAAAAAMACgAAgAAAAAAAAAMACkAAgAAAAAAAAANAB8AAgAAAAAAAAANACAAAgAAAAAAAAANACEAAgAAAAAAAAANACIAAgAAAAAAAAANACMAAgAAAAAAAAANACQAAgAAAAAAAAANACUAAgAAAAAAAAANACYAAgAAAAAAAAANACcAAgAAAAAAAAANACgAAgAAAAAAAAANACkAAgAAAAAAAAAOAB8AAgAAAAAAAAAOACAAAgAAAAAAAAAOACEAAgAAAAAAAAAOACIAAgAAAAAAAAAOACMAAgAAAAAAAAAOACQAAgAAAAAAAAAOACUAAgAAAAAAAAAOACYAAgAAAAAAAAAOACcAAgAAAAAAAAAOACgAAgAAAAAAAAAOACkAAgAAAAAAAAAPAB8AAgAAAAAAAAAPACAAAgAAAAAAAAAPACEAAgAAAAAAAAAPACIAAgAAAAAAAAAPACMAAgAAAAAAAAAPACQAAgAAAAAAAAAPACUAAgAAAAAAAAAPACYAAgAAAAAAAAAPACcAAgAAAAAAAAAPACgAAgAAAAAAAAAPACkAAgAAAAAAAAAQAB8AAgAAAAAAAAAQACAAAgAAAAAAAAAQACEAAgAAAAAAAAAQACIAAgAAAAAAAAAQACMAAgAAAAAAAAAQACQAAgAAAAAAAAAQACUAAgAAAAAAAAAQACYAAgAAAAAAAAAQACcAAgAAAAAAAAAQACgAAgAAAAAAAAAQACkAAgAAAAAAAAARAB8AAgAAAAAAAAARACAAAgAAAAAAAAARACEAAgAAAAAAAAARACIAAgAAAAAAAAARACMAAgAAAAAAAAARACQAAgAAAAAAAAARACUAAgAAAAAAAAARACYAAgAAAAAAAAARACcAAgAAAAAAAAARACgAAgAAAAAAAAARACkAAgAAAAAAAAASAB8AAgAAAAAAAAASACAAAgAAAAAAAAASACEAAgAAAAAAAAASACIAAgAAAAAAAAASACMAAgAAAAAAAAASACQAAgAAAAAAAAASACUAAgAAAAAAAAASACYAAgAAAAAAAAASACcAAgAAAAAAAAASACgAAgAAAAAAAAASACkAAgAAAAAAAAATAB8AAgAAAAAAAAATACAAAgAAAAAAAAATACEAAgAAAAAAAAATACIAAgAAAAAAAAATACMAAgAAAAAAAAATACQAAgAAAAAAAAATACUAAgAAAAAAAAATACYAAgAAAAAAAAATACcAAgAAAAAAAAATACgAAgAAAAAAAAATACkAAgAAAAAAAAAUAB8AAgAAAAAAAAAUACAAAgAAAAAAAAAUACEAAgAAAAAAAAAUACIAAgAAAAAAAAAUACMAAgAAAAAAAAAUACQAAgAAAAAAAAAUACUAAgAAAAAAAAAUACYAAgAAAAAAAAAUACcAAgAAAAAAAAAUACgAAgAAAAAAAAAUACkAAgAAAAAAAAAVAB4AAgAAAAAAAAAVAB8AAgAAAAAAAAAVACAAAgAAAAAAAAAVACEAAgAAAAAAAAAVACIAAgAAAAAAAAAVACMAAgAAAAAAAAAVACQAAgAAAAAAAAAVACUAAgAAAAAAAAAVACYAAgAAAAAAAAAVACcAAgAAAAAAAAAVACgAAgAAAAAAAAAVACkAAgAAAAAAAAAWAB4AAgAAAAAAAAAWAB8AAgAAAAAAAAAWACAAAgAAAAAAAAAWACEAAgAAAAAAAAAWACIAAgAAAAAAAAAWACMAAgAAAAAAAAAWACQAAgAAAAAAAAAWACUAAgAAAAAAAAAWACYAAgAAAAAAAAAWACcAAgAAAAAAAAAWACgAAgAAAAAAAAAWACkAAgAAAAAAAAAXAB4AAgAAAAAAAAAXAB8AAgAAAAAAAAAXACAAAgAAAAAAAAAXACEAAgAAAAAAAAAXACIAAgAAAAAAAAAXACMAAgAAAAAAAAAXACQAAgAAAAAAAAAXACUAAgAAAAAAAAAXACYAAgAAAAAAAAAXACcAAgAAAAAAAAAXACgAAgAAAAAAAAAXACkAAgAAAAAAAAAYAB4AAgAAAAAAAAAYAB8AAgAAAAAAAAAYACAAAgAAAAAAAAAYACEAAgAAAAAAAAAYACIAAgAAAAAAAAAYACMAAgAAAAAAAAAYACQAAgAAAAAAAAAYACUAAgAAAAAAAAAYACYAAgAAAAAAAAAYACcAAgAAAAAAAAAYACgAAgAAAAAAAAAYACkAAgAAAAAAAAAZAB4AAgAAAAAAAAAZAB8AAgAAAAAAAAAZACAAAgAAAAAAAAAZACEAAgAAAAAAAAAZACIAAgAAAAAAAAAZACMAAgAAAAAAAAAZACQAAgAAAAAAAAAZACUAAgAAAAAAAAAZACYAAgAAAAAAAAAZACcAAgAAAAAAAAAZACgAAgAAAAAAAAAZACkAAgAAAAAAAAAaAB4AAgAAAAAAAAAaAB8AAgAAAAAAAAAaACAAAgAAAAAAAAAaACEAAgAAAAAAAAAaACIAAgAAAAAAAAAaACMAAgAAAAAAAAAaACQAAgAAAAAAAAAaACUAAgAAAAAAAAAaACYAAgAAAAAAAAAaACcAAgAAAAAAAAAaACgAAgAAAAAAAAAaACkAAgAAAAAAAAAbAB4AAgAAAAAAAAAbAB8AAgAAAAAAAAAbACAAAgAAAAAAAAAbACEAAgAAAAAAAAAbACIAAgAAAAAAAAAbACMAAgAAAAAAAAAbACQAAgAAAAAAAAAbACUAAgAAAAAAAAAbACYAAgAAAAAAAAAbACcAAgAAAAAAAAAbACgAAgAAAAAAAAAbACkAAgAAAAAAAAAcAB4AAgAAAAAAAAAcAB8AAgAAAAAAAAAcACAAAgAAAAAAAAAcACEAAgAAAAAAAAAcACIAAgAAAAAAAAAcACMAAgAAAAAAAAAcACQAAgAAAAAAAAAcACUAAgAAAAAAAAAcACYAAgAAAAAAAAAcACcAAgAAAAAAAAAcACgAAgAAAAAAAAAcACkAAgAAAAAAAAAdAB4AAgAAAAAAAAAdAB8AAgAAAAAAAAAdACAAAgAAAAAAAAAdACEAAgAAAAAAAAAdACIAAgAAAAAAAAAdACMAAgAAAAAAAAAdACQAAgAAAAAAAAAdACUAAgAAAAAAAAAdACYAAgAAAAAAAAAdACcAAgAAAAAAAAAdACgAAgAAAAAAAAAdACkAAgAAAAAAAAAeAB4AAgAAAAAAAAAeAB8AAgAAAAAAAAAeACAAAgAAAAAAAAAeACEAAgAAAAAAAAAeACIAAgAAAAAAAAAeACMAAgAAAAAAAAAeACQAAgAAAAAAAAAeACUAAgAAAAAAAAAeACYAAgAAAAAAAAAeACcAAgAAAAAAAAAeACgAAgAAAAAAAAAeACkAAgAAAAAAAAAfAB4AAgAAAAAAAAAfAB8AAgAAAAAAAAAfACAAAgAAAAAAAAAfACEAAgAAAAAAAAAfACIAAgAAAAAAAAAfACMAAgAAAAAAAAAfACQAAgAAAAAAAAAfACUAAgAAAAAAAAAfACYAAgAAAAAAAAAfACcAAgAAAAAAAAAfACgAAgAAAAAAAAAfACkAAgAAAAAAAAAVAA8AAgAAAAAAAAAVABAAAgAAAAAAAAAVABEAAgAAAAAAAAAVABIAAgAAAAAAAAAVABMAAgAAAAAAAAAVABQAAgAAAAAAAAAVABUAAgAAAAAAAAAVABYAAgAAAAAAAAAVABcAAgAAAAAAAAAVABgAAgAAAAAAAAAVABkAAgAAAAAAAAAVABoAAgAAAAAAAAAVABsAAgAAAAAAAAAVABwAAgAAAAAAAAAVAB0AAgAAAAAAAAAWAA8AAgAAAAAAAAAWABAAAgAAAAAAAAAWABEAAgAAAAAAAAAWABIAAgAAAAAAAAAWABMAAgAAAAAAAAAWABQAAgAAAAAAAAAWABUAAgAAAAAAAAAWABYAAgAAAAAAAAAWABcAAgAAAAAAAAAWABgAAgAAAAAAAAAWABkAAgAAAAAAAAAWABoAAgAAAAAAAAAWABsAAgAAAAAAAAAWABwAAgAAAAAAAAAWAB0AAgAAAAAAAAAXAA8AAgAAAAAAAAAXABAAAgAAAAAAAAAXABEAAgAAAAAAAAAXABIAAgAAAAAAAAAXABMAAgAAAAAAAAAXABQAAgAAAAAAAAAXABUAAgAAAAAAAAAXABYAAgAAAAAAAAAXABcAAgAAAAAAAAAXABgAAgAAAAAAAAAXABkAAgAAAAAAAAAXABoAAgAAAAAAAAAXABsAAgAAAAAAAAAXABwAAgAAAAAAAAAXAB0AAgAAAAAAAAAYAA8AAgAAAAAAAAAYABAAAgAAAAAAAAAYABEAAgAAAAAAAAAYABIAAgAAAAAAAAAYABMAAgAAAAAAAAAYABQAAgAAAAAAAAAYABUAAgAAAAAAAAAYABYAAgAAAAAAAAAYABcAAgAAAAAAAAAYABgAAgAAAAAAAAAYABkAAgAAAAAAAAAYABoAAgAAAAAAAAAYABsAAgAAAAAAAAAYABwAAgAAAAAAAAAYAB0AAgAAAAAAAAAZAA8AAgAAAAAAAAAZABAAAgAAAAAAAAAZABEAAgAAAAAAAAAZABIAAgAAAAAAAAAZABMAAgAAAAAAAAAZABQAAgAAAAAAAAAZABUAAgAAAAAAAAAZABYAAgAAAAAAAAAZABcAAgAAAAAAAAAZABgAAgAAAAAAAAAZABkAAgAAAAAAAAAZABoAAgAAAAAAAAAZABsAAgAAAAAAAAAZABwAAgAAAAAAAAAZAB0AAgAAAAAAAAAaAA8AAgAAAAAAAAAaABAAAgAAAAAAAAAaABEAAgAAAAAAAAAaABIAAgAAAAAAAAAaABMAAgAAAAAAAAAaABQAAgAAAAAAAAAaABUAAgAAAAAAAAAaABYAAgAAAAAAAAAaABcAAgAAAAAAAAAaABgAAgAAAAAAAAAaABkAAgAAAAAAAAAaABoAAgAAAAAAAAAaABsAAgAAAAAAAAAaABwAAgAAAAAAAAAaAB0AAgAAAAAAAAAbAA8AAgAAAAAAAAAbABAAAgAAAAAAAAAbABEAAgAAAAAAAAAbABIAAgAAAAAAAAAbABMAAgAAAAAAAAAbABQAAgAAAAAAAAAbABUAAgAAAAAAAAAbABYAAgAAAAAAAAAbABcAAgAAAAAAAAAbABgAAgAAAAAAAAAbABkAAgAAAAAAAAAbABoAAgAAAAAAAAAbABsAAgAAAAAAAAAbABwAAgAAAAAAAAAbAB0AAgAAAAAAAAAcAA8AAgAAAAAAAAAcABAAAgAAAAAAAAAcABEAAgAAAAAAAAAcABIAAgAAAAAAAAAcABMAAgAAAAAAAAAcABQAAgAAAAAAAAAcABUAAgAAAAAAAAAcABYAAgAAAAAAAAAcABcAAgAAAAAAAAAcABgAAgAAAAAAAAAcABkAAgAAAAAAAAAcABoAAgAAAAAAAAAcABsAAgAAAAAAAAAcABwAAgAAAAAAAAAcAB0AAgAAAAAAAAAdAA8AAgAAAAAAAAAdABAAAgAAAAAAAAAdABEAAgAAAAAAAAAdABIAAgAAAAAAAAAdABMAAgAAAAAAAAAdABQAAgAAAAAAAAAdABUAAgAAAAAAAAAdABYAAgAAAAAAAAAdABcAAgAAAAAAAAAdABgAAgAAAAAAAAAdABkAAgAAAAAAAAAdABoAAgAAAAAAAAAdABsAAgAAAAAAAAAdABwAAgAAAAAAAAAdAB0AAgAAAAAAAAAeAA8AAgAAAAAAAAAeABAAAgAAAAAAAAAeABEAAgAAAAAAAAAeABIAAgAAAAAAAAAeABMAAgAAAAAAAAAeABQAAgAAAAAAAAAeABUAAgAAAAAAAAAeABYAAgAAAAAAAAAeABcAAgAAAAAAAAAeABgAAgAAAAAAAAAeABkAAgAAAAAAAAAeABoAAgAAAAAAAAAeABsAAgAAAAAAAAAeABwAAgAAAAAAAAAeAB0AAgAAAAAAAAAfAA8AAgAAAAAAAAAfABAAAgAAAAAAAAAfABEAAgAAAAAAAAAfABIAAgAAAAAAAAAfABMAAgAAAAAAAAAfABQAAgAAAAAAAAAfABUAAgAAAAAAAAAfABYAAgAAAAAAAAAfABcAAgAAAAAAAAAfABgAAgAAAAAAAAAfABkAAgAAAAAAAAAfABoAAgAAAAAAAAAfABsAAgAAAAAAAAAfABwAAgAAAAAAAAAfAB0AAgAAAAAAAAA=")
+tile_set = SubResource("TileSet_iivbl")
+
+[node name="FLOOD" parent="." instance=ExtResource("5_p8a1h")]
+
+[node name="Stair" parent="." instance=ExtResource("4_ymkvi")]
+position = Vector2(23.5937, 49.5)
+
+[node name="Tv" parent="." instance=ExtResource("5_fmnlw")]
+position = Vector2(53, 68)
+
+[node name="Sofa(long)" parent="." instance=ExtResource("6_a7bhn")]
+position = Vector2(93.2813, 51.5313)
+
+[node name="Sofa(short)" parent="." instance=ExtResource("7_7sog6")]
+position = Vector2(141.969, 51.75)
+
+[node name="Kitchen3_0" parent="." instance=ExtResource("8_10f7w")]
+position = Vector2(290, 62)
+
+[node name="KitchenCabinet" type="Sprite2D" parent="."]
+position = Vector2(318.766, -18)
+scale = Vector2(0.0871371, 0.0625)
+texture = ExtResource("11_xra17")
+
+[node name="Cup" type="Sprite2D" parent="."]
+position = Vector2(330, -15)
+scale = Vector2(0.0380002, 0.0388889)
+texture = ExtResource("13_x4j5f")
+
+[node name="1Chair" parent="." instance=ExtResource("16_ppkgk")]
+position = Vector2(124.398, 155.983)
+
+[node name="2Chair" parent="." instance=ExtResource("17_4ck6m")]
+position = Vector2(162.362, 122.054)
+
+[node name="Chair" parent="." instance=ExtResource("18_yy4so")]
+position = Vector2(145.753, 181.431)
+
+[node name="StudyTable" parent="." instance=ExtResource("19_ghu3s")]
+position = Vector2(-18.6428, -180.017)
+scale = Vector2(0.222656, 0.313976)
+
+[node name="Player\'sChair" parent="." instance=ExtResource("21_e3myo")]
+position = Vector2(6.44024, -186.615)
+
+[node name="Socket" type="Sprite2D" parent="."]
+position = Vector2(165, -200)
+scale = Vector2(0.0218571, 0.0168)
+texture = ExtResource("23_g8avo")
+
+[node name="Player\'s Cabinet" parent="." instance=ExtResource("24_p8a1h")]
+position = Vector2(192.19, -215.832)
+
+[node name="Player\'s Cabinet 2" parent="." instance=ExtResource("25_ac53u")]
+position = Vector2(235.916, -213.947)
+
+[node name="Books" type="Sprite2D" parent="."]
+position = Vector2(-23.3882, -200.752)
+scale = Vector2(0.183594, 0.201172)
+texture = ExtResource("26_7l1nt")
+
+[node name="BlackShoes" type="Sprite2D" parent="."]
+position = Vector2(189.493, -194.161)
+scale = Vector2(0.0080555, 0.00671429)
+texture = ExtResource("27_ef3h4")
+
+[node name="LivingRoomWindow" type="Sprite2D" parent="."]
+position = Vector2(253, -8)
+scale = Vector2(0.0686667, 0.0492308)
+texture = ExtResource("29_nut1h")
+
+[node name="Wallframes" type="Sprite2D" parent="."]
+position = Vector2(120, 10)
+scale = Vector2(0.0770589, 0.0521053)
+texture = ExtResource("30_nvir8")
+
+[node name="Cabinet" parent="." instance=ExtResource("31_02gvc")]
+position = Vector2(-32.719, 310.62)
+scale = Vector2(0.0597651, 0.055395)
+
+[node name="Parent\'s Bed" parent="." instance=ExtResource("32_isajh")]
+position = Vector2(-22.0324, 428.837)
+
+[node name="Socket2" type="Sprite2D" parent="."]
+position = Vector2(140, 350)
+scale = Vector2(0.0274286, 0.0269)
+texture = ExtResource("23_g8avo")
+
+[node name="Parent\'s E-Fan" type="CharacterBody2D" parent="."]
+position = Vector2(125, 365)
+scale = Vector2(1.00266, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Parent\'s E-Fan"]
+position = Vector2(-1, -10)
+scale = Vector2(0.0365714, 0.0266429)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parent\'s E-Fan"]
+position = Vector2(-1, -10)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Parent\'s E-Fan"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_aujhx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(79.0239, -136.503)
+zoom = Vector2(0.8, 0.8)
+
+[node name="Parent\'s E-Fan Animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(125, 355)
+scale = Vector2(0.0428268, 0.0283662)
+sprite_frames = SubResource("SpriteFrames_q8b24")
+autoplay = "default"
+frame_progress = 0.284943
+
+[node name="Parent\'s Table" parent="." instance=ExtResource("33_21v5d")]
+position = Vector2(218.968, 343.069)
+
+[node name="Drawer(noAnimation)" parent="." instance=ExtResource("34_2tfsr")]
+position = Vector2(277.269, 342.127)
+
+[node name="BathroomRack" parent="." instance=ExtResource("35_ll08a")]
+position = Vector2(-61.6907, 96.1348)
+scale = Vector2(0.0626216, 0.0520679)
+
+[node name="Toilet2_0" parent="." instance=ExtResource("36_ugwfr")]
+position = Vector2(-112.461, 99.6185)
+scale = Vector2(0.0674236, 0.0708321)
+
+[node name="Faucet3_0" parent="." instance=ExtResource("38_5mqhu")]
+position = Vector2(-171.651, 95.4681)
+rotation = -0.028233
+scale = Vector2(-0.0156662, 0.0174488)
+
+[node name="MedicineCabinet" parent="." instance=ExtResource("34_ymkvi")]
+position = Vector2(195, 18)
+
+[node name="Ref" parent="." instance=ExtResource("41_rqcv2")]
+position = Vector2(337, 87)
+
+[node name="Medicine1" type="Sprite2D" parent="."]
+position = Vector2(186, 14)
+scale = Vector2(0.0154546, 0.0108333)
+texture = ExtResource("44_6jkof")
+
+[node name="Bucket" parent="." instance=ExtResource("42_ymkvi")]
+position = Vector2(-163.037, 118.69)
+
+[node name="FryingPan" parent="." instance=ExtResource("43_ymkvi")]
+position = Vector2(291.006, 31.6077)
+
+[node name="eFAN" parent="." instance=ExtResource("46_nj8df")]
+position = Vector2(148.272, -198.032)
+
+[node name="BED" parent="." instance=ExtResource("46_1fdyj")]
+position = Vector2(97.2815, -194.155)
+
+[node name="Quest" parent="." instance=ExtResource("47_quest")]
+
+[node name="DialogBox" parent="." instance=ExtResource("47_1fdyj")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("48_pause")]
+
+[node name="GameSettings" parent="." instance=ExtResource("49_settings")]
+
+[node name="SettingsButton" parent="." instance=ExtResource("50_settings_btn")]
+
+[node name="MobileControls" parent="." instance=ExtResource("mobile_controls")]
+
+[node name="MedKit" parent="." groups=["Player2", "dialog_system", "interactable"] instance=ExtResource("52_medkit")]
+position = Vector2(204.054, 26.8612)
+scale = Vector2(0.577313, 1.01629)
+
+[node name="Flashlight" parent="." groups=["Player2", "dialog_system", "interactable"] instance=ExtResource("53_flashlight")]
+position = Vector2(265.745, 325.633)
+
+[node name="Window" parent="." instance=ExtResource("52_7sog6")]
+position = Vector2(38.9804, -247.406)
+scale = Vector2(0.0926385, 0.0583722)
+
+[node name="Table" type="Sprite2D" parent="."]
+position = Vector2(163.04, 154.57)
+scale = Vector2(0.0608052, 0.0744495)
+texture = ExtResource("43_a1e6s")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Table"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table/StaticBody2D"]
+position = Vector2(5.57446, -50.6379)
+shape = SubResource("RectangleShape2D_7sog6")
+
+[node name="Medicine 3" type="Area2D" parent="."]
+position = Vector2(186.089, 25.9187)
+collision_mask = 2
+script = ExtResource("62_medicine3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Medicine 3"]
+position = Vector2(0.677933, 0.471258)
+scale = Vector2(0.0189422, 0.0261567)
+texture = ExtResource("42_on40a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Medicine 3"]
+position = Vector2(0.338961, 17.9075)
+shape = SubResource("CapsuleShape2D_7sog6")
+
+[node name="Battery" type="Area2D" parent="."]
+position = Vector2(288.455, 325.162)
+collision_mask = 2
+script = ExtResource("60_battery")
+
+[node name="Sprite2D" type="Sprite2D" parent="Battery"]
+position = Vector2(1.01685, 1.41376)
+scale = Vector2(0.0158093, 0.0175171)
+texture = ExtResource("52_10f7w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Battery"]
+position = Vector2(0.677917, 22.1487)
+shape = SubResource("CapsuleShape2D_0enws")
+
+[node name="Documents" type="Area2D" parent="."]
+position = Vector2(205.071, 329.874)
+collision_mask = 2
+script = ExtResource("61_documents")
+
+[node name="Sprite2D" type="Sprite2D" parent="Documents"]
+position = Vector2(0.677913, 7.06873)
+scale = Vector2(0.0195073, 0.0279892)
+texture = ExtResource("53_10f7w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Documents"]
+position = Vector2(0.677919, 8.01123)
+shape = SubResource("CapsuleShape2D_7uoav")
+
+[node name="Water Bottle" type="Area2D" parent="."]
+position = Vector2(164.735, 155.983)
+collision_mask = 2
+script = ExtResource("64_waterbottle")
+
+[node name="Sprite2D" type="Sprite2D" parent="Water Bottle"]
+position = Vector2(-0.338959, 1.88496)
+scale = Vector2(0.0146883, 0.0186004)
+texture = ExtResource("54_0enws")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Water Bottle"]
+position = Vector2(-0.338943, 8.01122)
+shape = SubResource("CapsuleShape2D_xra17")
+
+[node name="Canned Food" type="Area2D" parent="."]
+position = Vector2(190.835, 141.846)
+collision_mask = 2
+script = ExtResource("65_cannedfood")
+
+[node name="Sprite2D" type="Sprite2D" parent="Canned Food"]
+position = Vector2(2.71172, 1.88498)
+scale = Vector2(0.00975361, 0.0151317)
+texture = ExtResource("55_7uoav")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Canned Food"]
+position = Vector2(11.1857, 0.9425)
+rotation = 1.56342
+shape = SubResource("CapsuleShape2D_rq826")
+
+[node name="Phone" type="Area2D" parent="."]
+position = Vector2(-13.8974, -173.891)
+collision_mask = 2
+script = ExtResource("59_phone")
+
+[node name="Sprite2D" type="Sprite2D" parent="Phone"]
+position = Vector2(0.338958, -1.41374)
+scale = Vector2(0.0104799, 0.0126542)
+texture = ExtResource("56_xra17")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Phone"]
+position = Vector2(-0.338962, 1.885)
+shape = SubResource("CapsuleShape2D_x4j5f")
+
+[node name="Power Bank" type="Area2D" parent="."]
+position = Vector2(-24.4051, -172.006)
+collision_mask = 2
+script = ExtResource("63_powerbank")
+
+[node name="Sprite2D" type="Sprite2D" parent="Power Bank"]
+position = Vector2(1.35582, -2.82742)
+scale = Vector2(0.00924076, 0.0156695)
+texture = ExtResource("61_g8avo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Power Bank"]
+position = Vector2(1.01686, 0.942568)
+shape = SubResource("CapsuleShape2D_gwr65")
+
+[node name="Fuse Box" type="StaticBody2D" parent="."]
+position = Vector2(164.735, 288.404)
+script = ExtResource("66_fusebox")
+
+[node name="Sprite2D" type="Sprite2D" parent="Fuse Box"]
+position = Vector2(-0.67792, 5.18374)
+scale = Vector2(0.0527868, 0.0615003)
+texture = ExtResource("58_x4j5f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fuse Box"]
+position = Vector2(-1.0173, 6.59794)
+shape = SubResource("RectangleShape2D_g8avo")
+
+[node name="InteractionArea" parent="Fuse Box" instance=ExtResource("2_nfq5s")]
+position = Vector2(0.677507, 4.2417)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Fuse Box/InteractionArea"]
+position = Vector2(-1.01688, 26.8612)
+shape = SubResource("CapsuleShape2D_p8a1h")
+
+[node name="nathan" parent="." instance=ExtResource("46_rfgjq")]
+position = Vector2(-418.976, -462.503)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="nathan"]
+position = Vector2(498, 326)
+remote_path = NodePath("../../Camera2D")
+
+[node name="InteractionManager" parent="." instance=ExtResource("interaction_manager")]
+visible = false
+position = Vector2(-84.74, -34.8724)
+
+[node name="GoBag" parent="." instance=ExtResource("67_gobag")]
+position = Vector2(241.34, -142.788)
+
+[node name="candle" parent="." instance=ExtResource("70_ac53u")]
+position = Vector2(232.527, 333.173)

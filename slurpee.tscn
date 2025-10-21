@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bl1qf2fn53cxk"]
+
+[ext_resource type="Texture2D" uid="uid://x57nsrlamhos" path="res://earthquake Asset/Slurpy.png" id="1_ex1l6"]
+[ext_resource type="Script" uid="uid://bqoufbpa2goxq" path="res://slurpee.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://d3v5enbqtirae" path="res://asset/Interaction/Interaction Area/interaction_area.tscn" id="2_interaction"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33cny"]
+size = Vector2(2108.21, 504.941)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxfog"]
+size = Vector2(292, 125)
+
+[node name="Slurpee" type="Area2D"]
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(19, 2)
+scale = Vector2(0.138506, 0.159615)
+texture = ExtResource("1_ex1l6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(-21.6611, 242.47)
+shape = SubResource("RectangleShape2D_33cny")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(17, 52.5)
+shape = SubResource("RectangleShape2D_rxfog")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_interaction")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(17, 52.5)
+shape = SubResource("RectangleShape2D_rxfog")

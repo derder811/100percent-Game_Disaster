@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://clx6n61t3wwpa"]
+
+[ext_resource type="Texture2D" uid="uid://bpv7asv38qoe" path="res://asset/Furnitures/Go bag.png" id="2_0opxy"]
+[ext_resource type="Script" uid="uid://77r7owh6v6u" path="res://go_bag.gd" id="3_script"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymkvi"]
+size = Vector2(40.875, 38)
+
+[node name="GoBag" type="Area2D"]
+collision_mask = 2
+script = ExtResource("3_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, 1.90735e-06)
+scale = Vector2(0.276074, 0.263379)
+texture = ExtResource("2_0opxy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_ymkvi")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

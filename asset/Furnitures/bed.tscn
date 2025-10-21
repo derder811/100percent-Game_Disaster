@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://ejjuixy6nsot"]
+
+[ext_resource type="Script" uid="uid://bwr30h2b0bggk" path="res://asset/Furnitures/bed.gd" id="1_w0sfc"]
+[ext_resource type="Texture2D" uid="uid://cw5h0h8te2m6y" path="res://asset/Furnitures/Player's Bedroom.png" id="1_x4ojk"]
+[ext_resource type="PackedScene" uid="uid://d3v5enbqtirae" path="res://asset/Interaction/Interaction Area/interaction_area.tscn" id="2_w0sfc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0sfc"]
+size = Vector2(627.357, 731.636)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8dqff"]
+radius = 31.1448
+
+[node name="BED" type="StaticBody2D"]
+position = Vector2(124, -252)
+script = ExtResource("1_w0sfc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.00002, -3.05176e-05)
+scale = Vector2(0.0573836, 0.0574056)
+texture = ExtResource("1_x4ojk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.00001, 2)
+scale = Vector2(0.0573836, 0.0574056)
+shape = SubResource("RectangleShape2D_w0sfc")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_w0sfc")]
+position = Vector2(0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(3, 1)
+shape = SubResource("CircleShape2D_8dqff")

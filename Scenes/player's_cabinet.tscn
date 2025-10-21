@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://blki5q1vf6gua"]
+
+[ext_resource type="Texture2D" uid="uid://caueydqe27cmr" path="res://asset/Cabinet 2.png" id="1_4pcyr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pcyr"]
+size = Vector2(1190.99, 1042.25)
+
+[node name="Player\'s Cabinet" type="Sprite2D"]
+scale = Vector2(0.034425, 0.0355)
+texture = ExtResource("1_4pcyr")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(43.573, 183.099)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_4pcyr")

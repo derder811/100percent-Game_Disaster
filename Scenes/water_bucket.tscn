@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d10i0dvvwuhj6"]
+
+[ext_resource type="Texture2D" uid="uid://bgc88dm1qjilq" path="res://asset/Furnitures/Water Bucket.png" id="1_bucket"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bucket"]
+size = Vector2(100, 100)
+
+[node name="WaterBucket" type="Sprite2D"]
+texture = ExtResource("1_bucket")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_bucket")

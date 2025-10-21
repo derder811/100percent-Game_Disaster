@@ -1,0 +1,107 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba5u1mr1tujdf"]
+
+[ext_resource type="Script" uid="uid://br8vbqdbc18us" path="res://quest.gd" id="1_hhw1v"]
+
+[node name="Quest" type="Node"]
+script = ExtResource("1_hhw1v")
+
+[node name="Quest UI" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="Quest Text Box" type="Panel" parent="Quest UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -221.0
+offset_top = 69.0
+offset_right = -11.0
+offset_bottom = 199.0
+grow_horizontal = 0
+
+[node name="QuestContainer" type="VBoxContainer" parent="Quest UI/Quest Text Box"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HeaderContainer" type="HBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer"]
+layout_mode = 2
+
+[node name="ExclamationIcon" type="Label" parent="Quest UI/Quest Text Box/QuestContainer/HeaderContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CurrentObjectiveLabel" type="Label" parent="Quest UI/Quest Text Box/QuestContainer/HeaderContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
+text = "Current Objective"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Quest UI/Quest Text Box/QuestContainer"]
+layout_mode = 2
+
+[node name="Objectives" type="VBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer"]
+layout_mode = 2
+
+[node name="Objective1" type="HBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer/Objectives"]
+layout_mode = 2
+
+[node name="CheckBox1" type="CheckBox" parent="Quest UI/Quest Text Box/QuestContainer/Objectives/Objective1"]
+layout_mode = 2
+
+[node name="Label1" type="Label" parent="Quest UI/Quest Text Box/QuestContainer/Objectives/Objective1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
+text = "Go downstairs and check the television"
+autowrap_mode = 2
+
+[node name="Objective2" type="HBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer/Objectives"]
+layout_mode = 2
+
+[node name="CheckBox2" type="CheckBox" parent="Quest UI/Quest Text Box/QuestContainer/Objectives/Objective2"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Quest UI/Quest Text Box/QuestContainer/Objectives/Objective2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
+text = "Find and interact with the fuse box"
+autowrap_mode = 2
+
+[node name="Objective3" type="HBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer/Objectives"]
+layout_mode = 2
+
+[node name="CheckBox3" type="CheckBox" parent="Quest UI/Quest Text Box/QuestContainer/Objectives/Objective3"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Quest UI/Quest Text Box/QuestContainer/Objectives/Objective3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
+text = "Collect all pickable emergency items"
+autowrap_mode = 2
+
+[node name="ProgressLabel" type="Label" parent="Quest UI/Quest Text Box/QuestContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
+text = "Quest Progress: 0/3"
+horizontal_alignment = 1
+vertical_alignment = 1

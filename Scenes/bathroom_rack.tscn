@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck6vcuaa4vi8l"]
+
+[ext_resource type="Texture2D" uid="uid://ccij7pujcxk21" path="res://asset/Furnitures/Bathroom Rack.png" id="1_hduc1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hduc1"]
+size = Vector2(644.136, 531.034)
+
+[node name="BathroomRack" type="Sprite2D"]
+scale = Vector2(0.046574, 0.0395455)
+texture = ExtResource("1_hduc1")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 12.6437)
+shape = SubResource("RectangleShape2D_hduc1")

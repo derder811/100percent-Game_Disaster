@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8i6ll4uh8l5b"]
+
+[ext_resource type="Texture2D" uid="uid://3ojj8h8qrb0g" path="res://asset/Furnitures/Parent's Bed.png" id="1_xl7tj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xl7tj"]
+size = Vector2(670.657, 432.781)
+
+[node name="Parent\'s Bed" type="Sprite2D"]
+scale = Vector2(0.119286, 0.1086)
+texture = ExtResource("1_xl7tj")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-4.79691e-05, -13.8121)
+shape = SubResource("RectangleShape2D_xl7tj")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1lpllanscnju"]
+
+[ext_resource type="Texture2D" uid="uid://cr7cqvunlor6y" path="res://asset/Furnitures/Drawer (No Animation).png" id="1_jl4mv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jl4mv"]
+size = Vector2(765.693, 523.649)
+
+[node name="Drawer(noAnimation)" type="Sprite2D"]
+scale = Vector2(0.0574643, 0.0592)
+texture = ExtResource("1_jl4mv")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1.65959e-05, -8.44595)
+shape = SubResource("RectangleShape2D_jl4mv")

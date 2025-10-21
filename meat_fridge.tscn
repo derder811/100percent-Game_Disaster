@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bj4sxrlf63570"]
+
+[ext_resource type="Script" path="res://meat_fridge.gd" id="1_u21wq"]
+[ext_resource type="Texture2D" uid="uid://ceuy764himm0j" path="res://earthquake Asset/Meat Container.png" id="2_u4g1i"]
+[ext_resource type="PackedScene" uid="uid://d3v5enbqtirae" path="res://asset/Interaction/Interaction Area/interaction_area.tscn" id="3_pmedd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33cny"]
+size = Vector2(1084.66, 1495.03)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pul74"]
+size = Vector2(137, 221)
+
+[node name="Meat Fridge" type="Area2D"]
+script = ExtResource("1_u21wq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 13)
+scale = Vector2(0.0958823, 0.124412)
+texture = ExtResource("2_u4g1i")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(10.4297, -40.189)
+shape = SubResource("RectangleShape2D_33cny")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 18.5)
+shape = SubResource("RectangleShape2D_pul74")
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_pmedd")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(-1.5, 18.5)
+shape = SubResource("RectangleShape2D_pul74")

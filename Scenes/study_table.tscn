@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://0mbv1ln2arvy"]
+
+[ext_resource type="Texture2D" uid="uid://dnylxikrltkqv" path="res://asset/Furnitures/Study table.png" id="1_wm5ac"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wm5ac"]
+size = Vector2(107.79, 143.186)
+
+[node name="StudyTable" type="Sprite2D"]
+scale = Vector2(0.222656, 0.230469)
+texture = ExtResource("1_wm5ac")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -15.1864)
+shape = SubResource("RectangleShape2D_wm5ac")

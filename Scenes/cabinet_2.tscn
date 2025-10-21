@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://diuetvms3yfqb"]
+
+[ext_resource type="Texture2D" uid="uid://caueydqe27cmr" path="res://asset/Cabinet 2.png" id="1_c12tv"]
+
+[node name="Cabinet2" type="Sprite2D"]
+scale = Vector2(0.034425, 0.0355)
+texture = ExtResource("1_c12tv")

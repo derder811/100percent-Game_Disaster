@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://dphjv3kh6kr78"]
+
+[ext_resource type="Script" uid="uid://diil61wso1kqi" path="res://game_settings.gd" id="1_settings_script"]
+[ext_resource type="Texture2D" uid="uid://bijl8uthfsrdc" path="res://asset/button/Exit Button.png" id="2_back_btn"]
+[ext_resource type="Texture2D" uid="uid://cpnkhjjc55psl" path="res://asset/button/Settings Menu/Resume Button.png" id="4_resume_btn"]
+
+[node name="GameSettings" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1147.0
+offset_top = 535.0
+offset_right = 1147.0
+offset_bottom = 535.0
+scale = Vector2(0.157843, 0.178576)
+script = ExtResource("1_settings_script")
+
+[node name="SettingsPanel#VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.422
+offset_top = 111.997
+offset_right = 1706.58
+offset_bottom = 585.997
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsPanel_VBoxContainer#TitleLabel" type="Label" parent="SettingsPanel#VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsPanel_VBoxContainer#HSeparator" type="HSeparator" parent="SettingsPanel#VBoxContainer"]
+layout_mode = 2
+
+[node name="SettingsPanel_VBoxContainer#ButtonContainer" type="HBoxContainer" parent="SettingsPanel#VBoxContainer"]
+layout_mode = 2
+
+[node name="SettingsPanel_VBoxContainer_ButtonContainer#ResumeButton" type="TextureButton" parent="SettingsPanel#VBoxContainer/SettingsPanel_VBoxContainer#ButtonContainer"]
+custom_minimum_size = Vector2(60, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_resume_btn")
+stretch_mode = 4
+
+[node name="SettingsPanel_VBoxContainer_ButtonContainer#BackButton" type="TextureButton" parent="SettingsPanel#VBoxContainer/SettingsPanel_VBoxContainer#ButtonContainer"]
+custom_minimum_size = Vector2(60, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("2_back_btn")
+stretch_mode = 4

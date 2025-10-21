@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bh0k7hhalpdwo"]
+
+[ext_resource type="Script" uid="uid://bxsl75l4m0gs6" path="res://hotdog_siopao.gd" id="1_b5bka"]
+[ext_resource type="Texture2D" uid="uid://cilw07qsq0ixp" path="res://earthquake Asset/Hotdog and Siopao.png" id="2_bfpit"]
+[ext_resource type="PackedScene" uid="uid://d3v5enbqtirae" path="res://asset/Interaction/Interaction Area/interaction_area.tscn" id="3_jlo3i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83mej"]
+size = Vector2(1458.54, 2593.23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kb75v"]
+size = Vector2(164, 275)
+
+[node name="Hotdog and Siopao" type="Area2D"]
+script = ExtResource("1_b5bka")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(23, 37)
+scale = Vector2(0.0946154, 0.100261)
+texture = ExtResource("2_bfpit")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(21.1382, -69.8179)
+shape = SubResource("RectangleShape2D_83mej")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(23, 34.5)
+shape = SubResource("RectangleShape2D_kb75v")
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_jlo3i")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(23, 34.5)
+shape = SubResource("RectangleShape2D_kb75v")

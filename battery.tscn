@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://34vawdjma2v5"]
+
+[ext_resource type="Texture2D" uid="uid://ddu2713ptq6sl" path="res://asset/Furnitures/Battery.png" id="1_8fmpm"]
+[ext_resource type="Script" uid="uid://bx21va8686o4h" path="res://asset/Interaction/Interaction Area/interaction_area.gd" id="2_qise7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m10sm"]
+radius = 3.0
+height = 10.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iq4wo"]
+radius = 11.0
+
+[node name="Battery" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(112, 182)
+scale = Vector2(0.0181818, 0.0226666)
+texture = ExtResource("1_8fmpm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(112, 182)
+shape = SubResource("CapsuleShape2D_m10sm")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+script = ExtResource("2_qise7")
+metadata/_custom_type_script = "uid://bx21va8686o4h"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(113, 182)
+shape = SubResource("CircleShape2D_iq4wo")

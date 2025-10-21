@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxfot54qsa8h2"]
+
+[ext_resource type="Texture2D" uid="uid://b3yq83hemjbfv" path="res://asset/Furnitures/TV.png" id="1_a4k46"]
+[ext_resource type="PackedScene" uid="uid://d3v5enbqtirae" path="res://asset/Interaction/Interaction Area/interaction_area.tscn" id="2_tv_interaction"]
+[ext_resource type="Script" uid="uid://bletg3t45t6ay" path="res://Scenes/tv.gd" id="3_tv_script"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4k46"]
+size = Vector2(15, 63)
+
+[node name="Tv" type="StaticBody2D"]
+script = ExtResource("3_tv_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0345714, 0.056)
+texture = ExtResource("1_a4k46")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_tv_interaction")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 3.5)
+shape = SubResource("RectangleShape2D_a4k46")
