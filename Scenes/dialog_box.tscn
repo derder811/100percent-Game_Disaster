@@ -85,12 +85,7 @@ horizontal_alignment = 1
 layout_mode = 2
 alignment = 2
 
-[node name="NextButton" type="Button" parent="DialogControl/VBoxContainer/ButtonContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "Next(space)"
-
 [node name="CloseButton" type="Button" parent="DialogControl/VBoxContainer/ButtonContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "Close (Space)"
+text = "Close (Interact)"

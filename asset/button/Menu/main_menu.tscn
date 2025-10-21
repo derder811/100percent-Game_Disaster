@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cbb6e505vv82h"]
 
 [ext_resource type="Texture2D" uid="uid://dsbgdrrlaxsha" path="res://asset/button/Play Button.png" id="1_o6y0k"]
-[ext_resource type="Texture2D" uid="uid://cmuaxdr8ponkq" path="res://asset/button/Menu/Background Menu.png" id="2_j5p8y"]
+[ext_resource type="Texture2D" uid="uid://prvxv2xqr53q" path="res://Image Title.png" id="2_ia5vl"]
 [ext_resource type="Texture2D" uid="uid://c1r4r62xtlnv1" path="res://asset/button/Option Button.png" id="2_vcpwu"]
 [ext_resource type="Texture2D" uid="uid://bijl8uthfsrdc" path="res://asset/button/Exit Button.png" id="3_j5p8y"]
 [ext_resource type="Script" uid="uid://cyn7saeyt1y2q" path="res://asset/button/Menu/main_menu.gd" id="4_script"]
@@ -24,7 +24,7 @@ script = ExtResource("4_script")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(571.416, 321.42)
 scale = Vector2(1.12784, 0.633722)
-texture = ExtResource("2_j5p8y")
+texture = ExtResource("2_ia5vl")
 
 [node name="Play Button" type="TextureButton" parent="."]
 layout_mode = 1

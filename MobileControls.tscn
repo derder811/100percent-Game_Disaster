@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhms2eo8a0pgc"]
+[gd_scene load_steps=3 format=3 uid="uid://bhms2eo8a0pgc"]
 
 [ext_resource type="Script" uid="uid://0mf0lmmsc8lk" path="res://mobile_controls.gd" id="1"]
+
+[sub_resource type="StyleBoxFlat" id="2"]
+bg_color = Color(0.2, 0.2, 0.2, 0.4)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
 
 [node name="MobileControls" type="CanvasLayer"]
 layer = 500
@@ -25,21 +32,20 @@ offset_right = 180.0
 offset_bottom = -200.0
 grow_vertical = 0
 
-[node name="Base" type="ColorRect" parent="UIRoot/Joystick"]
+[node name="Base" type="Panel" parent="UIRoot/Joystick"]
 layout_mode = 2
-offset_left = -14.0
-offset_top = -2.0
-offset_right = 146.0
-offset_bottom = 158.0
-scale = Vector2(1.56895, 1.41157)
+offset_left = 29.0
+offset_top = 7.0
+offset_right = 213.0
+offset_bottom = 193.0
 mouse_filter = 2
-color = Color(0.2, 0.2, 0.2, 0.4)
+theme_override_styles/panel = SubResource("2")
 
 [node name="Knob" type="ColorRect" parent="UIRoot/Joystick"]
 layout_mode = 2
 offset_left = 80.0
-offset_top = 80.0
-offset_right = 140.0
+offset_top = 62.0
+offset_right = 159.0
 offset_bottom = 140.0
 mouse_filter = 2
 color = Color(0.8, 0.8, 0.8, 0.9)
