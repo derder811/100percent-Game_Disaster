@@ -33,11 +33,12 @@ func _ready():
 func _process(_delta):
 	# Map joystick vector to directional actions
 	var v := stick_vector
-	# Release all first
+	# Release all first (prevent stuck inputs)
 	Input.action_release("move_left")
 	Input.action_release("move_right")
 	Input.action_release("move_up")
 	Input.action_release("move_down")
+
 	# Apply presses based on vector
 	if v.x < -deadzone:
 		Input.action_press("move_left", clamp(-v.x, 0.0, 1.0))
@@ -50,8 +51,9 @@ func _process(_delta):
 		Input.action_press("move_down", clamp(v.y, 0.0, 1.0))
 
 func _on_joystick_gui_input(event: InputEvent) -> void:
+	# Use consistent GLOBAL coordinates for all input types
 	if event is InputEventScreenTouch:
-		var touch := event as InputEventScreenTouch
+		var touch: InputEventScreenTouch = event as InputEventScreenTouch
 		if touch.pressed:
 			start_pos = joystick_base.global_position + joystick_base.size / 2.0
 			dragging = true
@@ -59,12 +61,14 @@ func _on_joystick_gui_input(event: InputEvent) -> void:
 		else:
 			dragging = false
 			stick_vector = Vector2.ZERO
-			joystick_knob.position = joystick_base.size/2.0 - joystick_knob.size/2.0
+			# Reset knob to center of base
+			var center_local := joystick_base.position + joystick_base.size/2.0
+			joystick_knob.position = center_local - joystick_knob.size/2.0
 	elif event is InputEventScreenDrag and dragging:
-		var drag := event as InputEventScreenDrag
+		var drag: InputEventScreenDrag = event as InputEventScreenDrag
 		_update_stick(drag.position)
 	elif event is InputEventMouseButton:
-		var mb := event as InputEventMouseButton
+		var mb: InputEventMouseButton = event as InputEventMouseButton
 		if mb.pressed:
 			start_pos = joystick_base.global_position + joystick_base.size / 2.0
 			dragging = true
@@ -72,31 +76,56 @@ func _on_joystick_gui_input(event: InputEvent) -> void:
 		else:
 			dragging = false
 			stick_vector = Vector2.ZERO
-			joystick_knob.position = joystick_base.size/2.0 - joystick_knob.size/2.0
+			var center_local := joystick_base.position + joystick_base.size/2.0
+			joystick_knob.position = center_local - joystick_knob.size/2.0
 	elif event is InputEventMouseMotion and dragging:
-		_update_stick((event as InputEventMouseMotion).position)
+		var motion: InputEventMouseMotion = event as InputEventMouseMotion
+		_update_stick(motion.position)
 
 func _update_stick(world_pos: Vector2) -> void:
-	# Convert world_pos into vector relative to start center
-	var delta := world_pos - start_pos
-	var v := delta
+	# Compute delta relative to base center without using to_local on Control
+	var center_local: Vector2 = joystick_base.size / 2.0
+	var touch_local: Vector2 = world_pos - joystick_base.global_position
+	var v: Vector2 = touch_local - center_local
 	# Limit to max_radius
 	if v.length() > max_radius:
 		v = v.normalized() * max_radius
 	# Update knob visual (local space)
-	joystick_knob.position = joystick_base.size/2.0 - joystick_knob.size/2.0 + v
+	joystick_knob.position = center_local - joystick_knob.size/2.0 + v
 	# Normalize to [-1,1]
 	stick_vector = v / max_radius
 
 func _on_interact_pressed() -> void:
-	# Prefer custom interact; fallback to ui_accept if not defined
+	# Emit as actual input events so _input(event) sees them
+	if InputMap.has_action("advance_dialog"):
+		var e_adv: InputEventAction = InputEventAction.new()
+		e_adv.action = "advance_dialog"
+		e_adv.pressed = true
+		Input.parse_input_event(e_adv)
 	if InputMap.has_action("interact"):
-		Input.action_press("interact")
+		var e_int: InputEventAction = InputEventAction.new()
+		e_int.action = "interact"
+		e_int.pressed = true
+		Input.parse_input_event(e_int)
 	else:
-		Input.action_press("ui_accept")
+		var e_accept: InputEventAction = InputEventAction.new()
+		e_accept.action = "ui_accept"
+		e_accept.pressed = true
+		Input.parse_input_event(e_accept)
 
 func _on_interact_released() -> void:
+	if InputMap.has_action("advance_dialog"):
+		var e_adv: InputEventAction = InputEventAction.new()
+		e_adv.action = "advance_dialog"
+		e_adv.pressed = false
+		Input.parse_input_event(e_adv)
 	if InputMap.has_action("interact"):
-		Input.action_release("interact")
+		var e_int: InputEventAction = InputEventAction.new()
+		e_int.action = "interact"
+		e_int.pressed = false
+		Input.parse_input_event(e_int)
 	else:
-		Input.action_release("ui_accept")
+		var e_accept: InputEventAction = InputEventAction.new()
+		e_accept.action = "ui_accept"
+		e_accept.pressed = false
+		Input.parse_input_event(e_accept)

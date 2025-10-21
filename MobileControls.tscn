@@ -27,8 +27,11 @@ grow_vertical = 0
 
 [node name="Base" type="ColorRect" parent="UIRoot/Joystick"]
 layout_mode = 2
-offset_right = 160.0
-offset_bottom = 160.0
+offset_left = -14.0
+offset_top = -2.0
+offset_right = 146.0
+offset_bottom = 158.0
+scale = Vector2(1.56895, 1.41157)
 mouse_filter = 2
 color = Color(0.2, 0.2, 0.2, 0.4)
 
@@ -48,10 +51,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -240.0
-offset_top = -260.0
-offset_right = -40.0
-offset_bottom = -180.0
+offset_left = -285.0
+offset_top = -304.0
+offset_right = -33.0
+offset_bottom = -189.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "Interact"

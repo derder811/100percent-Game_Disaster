@@ -24,6 +24,7 @@ var target_text: String = ""
 # Animation variables
 var tween: Tween
 var is_animating: bool = false
+var _handled_input_press: bool = false
 
 func _ready():
 	# Connect button signals
@@ -47,12 +48,40 @@ func _ready():
 func _input(event):
 	if not dialog_control.visible or is_animating:
 		return
-		
-	if event.is_action_pressed("ui_accept") or event.is_action_pressed("advance_dialog"):
+	
+	# Treat Interact as Space, alongside ui_accept and advance_dialog
+	var pressed: bool = event.is_action_pressed("ui_accept") \
+		or event.is_action_pressed("advance_dialog") \
+		or event.is_action_pressed("interact")
+	if pressed:
+		_handled_input_press = true
 		if is_typing:
 			_finish_typing()
 		else:
-			_next_message()
+			# If on last line, close instead of advancing to empty
+			if current_line_index >= dialog_lines.size() - 1:
+				close_dialog()
+			else:
+				_next_message()
+
+# Also listen for programmatic presses (Input.action_press) from UI buttons
+func _process(_delta):
+	if not dialog_control.visible or is_animating:
+		return
+	if _handled_input_press:
+		# Skip duplicated handling when an actual input event was processed
+		_handled_input_press = false
+		return
+	var pressed: bool = Input.is_action_just_pressed("advance_dialog") \
+		or Input.is_action_just_pressed("interact")
+	if pressed:
+		if is_typing:
+			_finish_typing()
+		else:
+			if current_line_index >= dialog_lines.size() - 1:
+				close_dialog()
+			else:
+				_next_message()
 
 func show_dialog(title: String, lines: Array[String]):
 	if is_animating:
