@@ -97,6 +97,9 @@ func trigger_flood_animation():
 	print("Flood: Starting flood animation")
 	is_flood_visible = true
 	
+	# Start flood ambience
+	AudioManager.play_ambient("res://Music/Flood.mp3", true)
+	
 	# Make the flood node visible
 	visible = true
 	
@@ -176,10 +179,12 @@ func animate_screen_shake():
 	shake_tween.tween_property(camera, "global_position", original_position, 0.2)
 
 func hide_flood():
-	"""Hide the flood (for testing or reset purposes)"""
 	visible = false
 	modulate.a = 0.0
 	is_flood_visible = false
+	
+	# Stop flood ambience when hidden
+	AudioManager.stop_ambient()
 	
 	if flood_tile_layer:
 		flood_tile_layer.modulate.a = 0.0

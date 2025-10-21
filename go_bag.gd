@@ -92,6 +92,7 @@ func pickup_item():
 		
 		# Set the global flag that the go bag has been picked up
 		GameState.set_go_bag_picked_up()
+		AudioManager.play_sfx("res://Music/Item Pick Ups.mp3")
 		
 		# Show self-talk about the go bag first
 		show_item_self_talk()

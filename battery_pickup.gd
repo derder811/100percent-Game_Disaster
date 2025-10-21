@@ -84,6 +84,7 @@ func pickup_item():
 	if player_nearby and player_nearby.has_method("get_items"):
 		print("✓ Item '", itemName, "' picked up successfully!")
 		player_nearby.get_items(itemData)
+		AudioManager.play_sfx("res://Music/Item Pick Ups.mp3")
 		
 		# Show self-talk about the battery's purpose
 		show_item_self_talk()

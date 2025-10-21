@@ -41,6 +41,11 @@ func _ready():
 	setup_bag_reference()
 	# Connect to physics process for smooth movement
 	set_physics_process(true)
+	# Start outside ambience for earthquake scenario
+	if AudioManager:
+		AudioManager.stop_ambient()
+		AudioManager.stop_bgm()
+		AudioManager.play_ambient("res://Music/OUTSIDE.mp3", true)
 	# Show welcome dialog centered on screen after scene loads
 	call_deferred("_show_earthquake_welcome")
 

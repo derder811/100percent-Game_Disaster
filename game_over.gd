@@ -12,6 +12,10 @@ var button_hover_tween: Tween
 func _ready():
 	print("Game Over: _ready() called")
 	
+	# Stop any ongoing ambience and play Game Over SFX
+	AudioManager.stop_ambient()
+	AudioManager.play_sfx("res://Music/Game Over.mp3")
+	
 	# Connect the menu button
 	if menu_button:
 		menu_button.pressed.connect(_on_menu_button_pressed)
@@ -214,11 +218,14 @@ func go_to_main_menu():
 	for scene_path in main_menu_scenes:
 		if ResourceLoader.exists(scene_path):
 			print("Game Over: Loading scene: ", scene_path)
+			# Stop SFX and ambience before switching scenes
+			AudioManager.stop_all()
 			get_tree().change_scene_to_file(scene_path)
 			return
 	
 	# If no main menu found, restart current scene
 	print("Game Over: No main menu found, restarting current scene")
+	AudioManager.stop_all()
 	get_tree().reload_current_scene()
 
 func restart_game():

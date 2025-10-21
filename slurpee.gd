@@ -185,6 +185,9 @@ func _play_pre_earthquake_evacuation_cutscene() -> void:
 	var scene = get_tree().current_scene
 	if scene == null:
 		return
+	# Play earthquake audio for cutscene
+	if AudioManager:
+		AudioManager.play_sfx("res://Music/Earthquak.mp3")
 	# Get player and temporarily disable RemoteTransform controlling the camera
 	var player = get_tree().get_first_node_in_group("Player2")
 	if player == null:
@@ -300,6 +303,10 @@ func _play_pre_earthquake_evacuation_cutscene() -> void:
 		(restored_cam as Camera2D).make_current()
 	# Clean up cutscene cam and ensure restored camera is current
 	_cleanup_cutscene_camera(scene, cam, restored_cam)
+	# Stop earthquake ambience and restore store ambience
+	if AudioManager:
+		AudioManager.stop_ambient()
+		AudioManager.play_ambient("res://Music/INSIDE_THE_STORE_AUDIO.mp3", true)
 
 func _trigger_earthquake_quest():
 	# Avoid duplicating the quest if already present

@@ -189,6 +189,8 @@ func _start_quake_timers():
 		_quake_timer.timeout.connect(_on_quake_duration_done)
 		add_child(_quake_timer)
 		_quake_timer.start()
+	# Start ambient earthquake sound
+	AudioManager.play_ambient("res://Music/Earthquake 2.mp3", true)
 
 # New: Trigger Player3 safety self-talk sequence
 func _trigger_player3_safety_self_talk():
@@ -238,6 +240,8 @@ func _on_quake_duration_done():
 		_shake_timer.stop()
 	# Restore StoreQuest UI after quake ends
 	_set_store_quest_hidden(false)
+	# Stop ambient earthquake sound
+	AudioManager.stop_ambient()
 	_show_hint_dialog("The shaking subsides. Stay cautious and proceed carefully.")
 
 # Helper to stop shakes when all objectives are done
@@ -253,6 +257,8 @@ func _maybe_end_quake():
 		_stop_continuous_camera_shake()
 		# Restore StoreQuest if objectives finished early
 		_set_store_quest_hidden(false)
+		# Stop ambient earthquake sound
+		AudioManager.stop_ambient()
 
 # Camera shake coroutine
 func _camera_shake(duration_sec: float, magnitude: float) -> void:
@@ -288,6 +294,8 @@ func _collapse_and_game_over():
 		_shake_timer.stop()
 	if _quake_timer:
 		_quake_timer.stop()
+	# Stop ambient earthquake sound
+	AudioManager.stop_ambient()
 	# Hide StoreQuest UI during collapse
 	_set_store_quest_hidden(true)
 	# Create and fade-in a black overlay

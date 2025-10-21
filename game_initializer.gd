@@ -24,6 +24,9 @@ func _ready():
 	# Add this node to a group so it can be found by the interaction manager
 	add_to_group("game_initializer")
 	
+	# Start ambient heavy rain for typhoon scenario
+	AudioManager.play_ambient("res://Music/Heavy Rain.mp3", true)
+	
 	# Wait a moment for the scene to fully load, then show startup message
 	await get_tree().create_timer(1.0).timeout
 	show_startup_message()

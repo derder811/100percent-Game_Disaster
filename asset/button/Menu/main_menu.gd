@@ -28,6 +28,11 @@ func _ready():
 	$"Exit Button".mouse_entered.connect(_on_button_hover.bind("Exit Button"))
 	$"Exit Button".mouse_exited.connect(_on_button_unhover.bind("Exit Button"))
 	
+	# Ensure ambient (e.g., Heavy Rain) is stopped when entering menu
+	AudioManager.stop_ambient()
+	# Start menu BGM
+	AudioManager.play_bgm("res://Music/Menu BGM.mp3", true)
+	
 	# Fade in animation for the menu
 	_fade_in_menu()
 	
@@ -88,6 +93,7 @@ func _update_title_pulse(progress: float):
 func _on_button_hover(button_name: String):
 	if is_transitioning:
 		return
+	AudioManager.play_sfx("res://Music/Tapping the Button.mp3")
 	var button = get_node(button_name)
 	var hover_tween = create_tween()
 	hover_tween.tween_property(button, "scale", original_scales[button_name] * 1.1, 0.2)
@@ -105,6 +111,7 @@ func _animate_button_click(button_name: String, callback: Callable):
 	if is_transitioning:
 		return
 	is_transitioning = true
+	AudioManager.play_sfx("res://Music/Tapping the Button.mp3")
 	var button = get_node(button_name)
 	
 	# Click animation: scale down then up
@@ -123,6 +130,9 @@ func _transition_to_scene(scene_path: String):
 	var transition_tween = create_tween()
 	transition_tween.tween_property(self, "modulate:a", 0.0, 0.5)
 	await transition_tween.finished
+	
+	# Stop menu BGM before changing scene
+	AudioManager.stop_bgm()
 	
 	# Change scene
 	get_tree().change_scene_to_file(scene_path)

@@ -83,6 +83,7 @@ func pickup_item():
 	if player_nearby and player_nearby.has_method("get_items"):
 		print("✓ Item '", itemName, "' picked up successfully!")
 		player_nearby.get_items(itemData)
+		AudioManager.play_sfx("res://Music/Item Pick Ups.mp3")
 		
 		# Generate self-talk based on item type
 		var self_talk_message = get_item_self_talk_message()

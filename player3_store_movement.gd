@@ -47,6 +47,11 @@ func _ready():
 	
 	# Connect to physics process for smooth movement
 	set_physics_process(true)
+	# Start inside store ambience
+	if AudioManager:
+		AudioManager.stop_ambient()
+		AudioManager.stop_bgm()
+		AudioManager.play_ambient("res://Music/INSIDE_THE_STORE_AUDIO.mp3", true)
 	
 	# Set up a timer to trigger movement comments every 10 seconds
 	var existing_timer = get_node_or_null("MovementCommentTimer")
