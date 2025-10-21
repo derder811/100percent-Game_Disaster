@@ -29,7 +29,7 @@
 [ext_resource type="Script" uid="uid://d1yw73c1iqib0" path="res://test_interaction_debug.gd" id="25_interaction_debug"]
 [ext_resource type="PackedScene" uid="uid://bgb87dydao761" path="res://cashier_(npc).tscn" id="29_suotf"]
 [ext_resource type="PackedScene" uid="uid://dcu7sodrqumrr" path="res://customer_(npc).tscn" id="30_suotf"]
-[ext_resource type="PackedScene" path="res://store_quest.tscn" id="99_store_quest"]
+[ext_resource type="PackedScene" uid="uid://bys8d4p60rk6m" path="res://store_quest.tscn" id="99_store_quest"]
 [ext_resource type="PackedScene" uid="uid://bgll4a52be7j0" path="res://pause_scene.tscn" id="100_pause"]
 [ext_resource type="PackedScene" uid="uid://dphjv3kh6kr78" path="res://game_settings.tscn" id="101_settings"]
 [ext_resource type="PackedScene" uid="uid://cn78s64y0du1h" path="res://Settings Button.tscn" id="102_settings_btn"]
@@ -10546,6 +10546,7 @@ size = Vector2(308, 182)
 
 [sub_resource type="Animation" id="Animation_463xk"]
 length = 0.001
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

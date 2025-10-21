@@ -25,10 +25,9 @@ func _get_dialog_box() -> Node:
 	return inst
 
 func _on_interact() -> void:
-	var lines: Array[String] = [
-		"Hello... Welcome to the store.",
-		"Yes we accept Gcash payment"
-	]
+	# Merge lines into a single message to avoid Next
+	var merged_text: String = "Hello... Welcome to the store.\nYes we accept Gcash payment"
+	var lines: Array[String] = [merged_text]
 	# Prefer bottom DialogBox UI for conversation
 	var box = _get_dialog_box()
 	if box != null and box.has_method("show_dialog"):
@@ -38,7 +37,9 @@ func _on_interact() -> void:
 		if box.has_signal("dialog_closed"):
 			box.dialog_closed.connect(_on_cashier_dialog_finished)
 		box.show_dialog("CASHIER", lines)
-		# Safety fallback: ensure StoreQuest shows even if signals don’t fire
+		# Immediate fallback: start StoreQuest UI right after interaction
+		call_deferred("_on_cashier_dialog_finished")
+
 		var safety_timer := Timer.new()
 		safety_timer.one_shot = true
 		safety_timer.wait_time = 8.0
@@ -69,7 +70,24 @@ func _on_cashier_dialog_finished() -> void:
 
 func _show_store_quest_ui() -> void:
 	var store_quest = get_tree().current_scene.find_child("StoreQuest", true, false)
-	if store_quest:
+	if store_quest == null:
+		store_quest = get_tree().root.find_child("StoreQuest", true, false)
+	if store_quest == null:
+		# Search all top-levels for a child named StoreQuest
+		for c in get_tree().root.get_children():
+			var f = c.find_child("StoreQuest", true, false)
+			if f != null:
+				store_quest = f
+				break
+	if store_quest == null:
+		# Last resort: instantiate StoreQuest and attach to current scene
+		var store_quest_scene: PackedScene = load("res://store_quest.tscn")
+		if store_quest_scene != null:
+			store_quest = store_quest_scene.instantiate()
+			var parent := get_tree().current_scene if get_tree().current_scene != null else get_tree().root
+			parent.add_child(store_quest)
+			print("Cashier NPC: StoreQuest instantiated as fallback")
+	if store_quest != null:
 		if store_quest.has_method("start_quest"):
 			store_quest.start_quest()
 			print("Cashier NPC: StoreQuest started")
@@ -79,7 +97,7 @@ func _show_store_quest_ui() -> void:
 		else:
 			print("Cashier NPC: StoreQuest found but no start_quest/show_quest_ui methods")
 	else:
-		print("Cashier NPC: StoreQuest node not found in current scene")
+		print("Cashier NPC: StoreQuest not found or failed to instantiate")
 
 func face_towards(dir: Vector2, moving: bool = false) -> void:
 	if anim_player == null:

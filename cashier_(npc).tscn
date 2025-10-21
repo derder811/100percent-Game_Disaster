@@ -164,7 +164,7 @@ shape = SubResource("CircleShape2D_suotf")
 [node name="InteractionArea" type="Area2D" parent="."]
 position = Vector2(-666, -412)
 collision_layer = 0
-collision_mask = 2
+collision_mask = 3
 script = ExtResource("2_gtkkr")
 metadata/_custom_type_script = "uid://bx21va8686o4h"
 

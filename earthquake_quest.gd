@@ -35,10 +35,11 @@ func _ready():
 	label2 = get_node_or_null("Quest UI/Earthquake Quest Box/QuestContainer/Objectives/Objective2/Label2")
 	
 	if quest_box:
-		# Place on right side of the screen
+		# Place on right side of the screen, nudged down to avoid Settings
 		var viewport_size = get_viewport().size
 		var margin := 24.0
-		original_position = Vector2(viewport_size.x - quest_box.size.x - margin, margin)
+		var top_offset := 80.0
+		original_position = Vector2(viewport_size.x - quest_box.size.x - margin, margin + top_offset)
 		quest_box.position = original_position + Vector2(40, 0) # start slightly offscreen for slide-in
 		quest_box.visible = true
 		show_quest_box_with_animation()
@@ -73,7 +74,6 @@ func _ready():
 	if _quest_timer == null:
 		_quest_timer = Timer.new()
 		_quest_timer.wait_time = quest_time_limit_sec
-		_quest_timer.one_shot = true
 		_quest_timer.timeout.connect(_on_quest_time_limit_reached)
 		add_child(_quest_timer)
 		_quest_timer.start()
@@ -120,7 +120,6 @@ func _complete_objective(index: int):
 		quest_box.modulate = Color(1, 1, 1, 1)
 		quest_box.scale = Vector2(1, 1)
 		tween.tween_property(quest_box, "scale", Vector2(1.05, 1.05), 0.15)
-		tween.tween_property(quest_box, "scale", Vector2(1.0, 1.0), 0.15)
 		tween.tween_property(quest_box, "modulate", Color(1, 0.95, 0.8), 0.1)
 		tween.tween_property(quest_box, "modulate", Color(1, 1, 1), 0.4)
 		await tween.finished
@@ -157,42 +156,29 @@ func _show_hint_dialog(text: String):
 		if "exit" in text.to_lower() and sys.has_method("trigger_go_to_exit_hint"):
 			sys.trigger_go_to_exit_hint()
 			return
-		# Otherwise show as custom self-talk using bottom textbox style
+		# Otherwise use generic self-talk bottom textbox
 		if sys.has_method("trigger_custom_self_talk"):
 			sys.trigger_custom_self_talk(text)
 			return
-	# Fallback to bottom DialogBox UI if present
-	var dialog_box = get_tree().get_first_node_in_group("dialog_system")
-	if dialog_box != null and dialog_box.has_method("show_dialog"):
-		dialog_box.show_dialog("QUEST", [text])
-		return
-	# Final fallback: show old bubble above player
-	var player = get_tree().get_first_node_in_group("Player2")
-	var pos = Vector2(100, 100)
-	if player != null:
-		pos = player.global_position + Vector2(0, -120)
-	DialogManager.start_dialog(pos, [text])
+	# Fallback to top DialogBox
+	var dialog_box = get_tree().root.get_node_or_null("DialogBox")
+	if dialog_box and dialog_box.has_method("show_dialog"):
+		dialog_box.show_dialog("INFO", [text])
 
-# Start timers for the earthquake duration and periodic shaking
 func _start_quake_timers():
 	if _shake_timer == null:
 		_shake_timer = Timer.new()
 		_shake_timer.wait_time = quake_shake_interval_sec
-		_shake_timer.autostart = false
-		_shake_timer.one_shot = false
 		_shake_timer.timeout.connect(_do_periodic_shake)
 		add_child(_shake_timer)
+		_shake_timer.start()
 	if _quake_timer == null:
 		_quake_timer = Timer.new()
 		_quake_timer.wait_time = quake_total_duration_sec
-		_quake_timer.one_shot = true
 		_quake_timer.timeout.connect(_on_quake_duration_done)
 		add_child(_quake_timer)
 		_quake_timer.start()
-	# Start ambient earthquake sound
-	AudioManager.play_ambient("res://Music/Earthquake 2.mp3", true)
 
-# New: Trigger Player3 safety self-talk sequence
 func _trigger_player3_safety_self_talk():
 	var sts_nodes = get_tree().get_nodes_in_group("player3_self_talk_system")
 	if sts_nodes and sts_nodes.size() > 0:
@@ -279,8 +265,9 @@ func _camera_shake(duration_sec: float, magnitude: float) -> void:
 func _on_quest_time_limit_reached():
 	if _collapse_started:
 		return
-	var objectives_done := (checkbox1 and checkbox1.button_pressed) and (checkbox2 and checkbox2.button_pressed)
-	if objectives_done:
+	# If objectives are already done, ignore
+	var done := (checkbox1 and checkbox1.button_pressed) and (checkbox2 and checkbox2.button_pressed)
+	if done:
 		return
 	_collapse_and_game_over()
 

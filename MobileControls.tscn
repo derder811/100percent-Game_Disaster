@@ -1,13 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhms2eo8a0pgc"]
+[gd_scene load_steps=2 format=3 uid="uid://bhms2eo8a0pgc"]
 
 [ext_resource type="Script" uid="uid://0mf0lmmsc8lk" path="res://mobile_controls.gd" id="1"]
-
-[sub_resource type="StyleBoxFlat" id="2"]
-bg_color = Color(0.2, 0.2, 0.2, 0.4)
-corner_radius_top_left = 100
-corner_radius_top_right = 100
-corner_radius_bottom_right = 100
-corner_radius_bottom_left = 100
 
 [node name="MobileControls" type="CanvasLayer"]
 layer = 500
@@ -21,34 +14,54 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Joystick" type="Control" parent="UIRoot"]
+[node name="ArrowButtons" type="Control" parent="UIRoot"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -360.0
-offset_right = 180.0
-offset_bottom = -200.0
+offset_left = 37.0
+offset_top = -435.0
+offset_right = 197.0
+offset_bottom = -275.0
 grow_vertical = 0
+scale = Vector2(2.02885, 1.53274)
 
-[node name="Base" type="Panel" parent="UIRoot/Joystick"]
+[node name="Left" type="Button" parent="UIRoot/ArrowButtons"]
 layout_mode = 2
-offset_left = 29.0
-offset_top = 7.0
-offset_right = 213.0
-offset_bottom = 193.0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("2")
+offset_left = 2.46446
+offset_top = 54.1515
+offset_right = 43.4645
+offset_bottom = 100.151
+focus_mode = 0
+text = "◀"
 
-[node name="Knob" type="ColorRect" parent="UIRoot/Joystick"]
+[node name="Right" type="Button" parent="UIRoot/ArrowButtons"]
 layout_mode = 2
-offset_left = 80.0
-offset_top = 62.0
-offset_right = 159.0
-offset_bottom = 140.0
-mouse_filter = 2
-color = Color(0.8, 0.8, 0.8, 0.9)
+offset_left = 99.0
+offset_top = 55.0
+offset_right = 154.0
+offset_bottom = 108.0
+scale = Vector2(0.75098, 0.799934)
+focus_mode = 0
+text = "▶"
+
+[node name="Up" type="Button" parent="UIRoot/ArrowButtons"]
+layout_mode = 2
+offset_left = 50.7678
+offset_top = 3.26213
+offset_right = 91.7678
+offset_bottom = 50.2621
+focus_mode = 0
+text = "▲"
+
+[node name="Down" type="Button" parent="UIRoot/ArrowButtons"]
+layout_mode = 2
+offset_left = 50.0
+offset_top = 104.0
+offset_right = 95.0
+offset_bottom = 152.0
+focus_mode = 0
+text = "▼"
 
 [node name="InteractButton" type="Button" parent="UIRoot"]
 layout_mode = 1
@@ -57,10 +70,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -285.0
-offset_top = -304.0
-offset_right = -33.0
-offset_bottom = -189.0
+offset_left = -264.0
+offset_top = -407.0
+offset_right = -12.0
+offset_bottom = -292.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "Interact"

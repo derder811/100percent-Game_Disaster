@@ -9,19 +9,22 @@ script = ExtResource("1_earthquake_quest_script")
 layer = 50
 
 [node name="Earthquake Quest Box" type="Panel" parent="Quest UI"]
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 444.0
-offset_bottom = 184.0
+offset_left = 725.0
+offset_top = 82.0
+offset_right = 1145.0
+offset_bottom = 242.0
 
 [node name="QuestContainer" type="VBoxContainer" parent="Quest UI/Earthquake Quest Box"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 14.0
 offset_top = 12.0
 offset_right = -14.0
 offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="HeaderContainer" type="HBoxContainer" parent="Quest UI/Earthquake Quest Box/QuestContainer"]
 layout_mode = 2

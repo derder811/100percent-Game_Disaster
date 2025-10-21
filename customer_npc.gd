@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var anim_tree: AnimationTree = $AnimationTree
 @onready var player2: CharacterBody2D = null
 var _player_was_moving: bool = false
+
 var dialog_box_scene: PackedScene = preload("res://Scenes/dialog_box.tscn")
 
 func _ready():
@@ -29,28 +30,24 @@ func _process(delta):
 		_player_was_moving = moving
 
 func _get_dialog_box() -> Node:
-	# Try to find an existing DialogSystem
 	var existing = get_tree().get_first_node_in_group("dialog_system")
 	if existing != null and is_instance_valid(existing):
 		return existing
-	# Otherwise instantiate one
 	var inst = dialog_box_scene.instantiate()
 	get_tree().root.add_child(inst)
 	return inst
 
 func _on_interact() -> void:
-	print("Customer NPC: player interacted")
-	var lines: Array[String] = [
-		"Okay, this section's stacked.",
-		"What am I even in the mood for?"
-	]
+	# Merge lines into a single message to avoid Next progression
+	var merged_text: String = "Hi. Can I buy this?\nnoted!"
+	var lines: Array[String] = [merged_text]
 	# Prefer bottom DialogBox UI for conversation
 	var box = _get_dialog_box()
 	if box != null and box.has_method("show_dialog"):
 		box.show_dialog("CUSTOMER", lines)
 	else:
-		# Fallback: use bubble dialog above customer
-		var pos = global_position + Vector2(0, -120)
+		# Fallback bubble dialog near the customer
+		var pos = global_position + Vector2(0, -100)
 		DialogManager.start_dialog(pos, lines)
 
 func face_towards(dir: Vector2, moving: bool = false) -> void:

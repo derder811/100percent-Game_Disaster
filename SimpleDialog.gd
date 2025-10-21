@@ -15,7 +15,7 @@ func _ready():
 	# Start with scale 0 for pop animation
 	scale = Vector2.ZERO
 
-func show_dialog(text: String, position: Vector2 = Vector2.ZERO, header: String = "TIPS", footer_hint: String = "Close(Space)"):
+func show_dialog(text: String, position: Vector2 = Vector2.ZERO, header: String = "TIPS", footer_hint: String = "Close (Space / Interact)"):
 	print("SimpleDialog.show_dialog called with: ", text)
 	current_text = text
 	content_label.text = text
@@ -45,7 +45,7 @@ func show_dialog(text: String, position: Vector2 = Vector2.ZERO, header: String 
 	tween.set_trans(Tween.TRANS_BACK)
 	tween.tween_property(self, "scale", Vector2.ONE, 0.3)
 	
-	print("Dialog shown at position: ", global_position)
+
 
 func hide_dialog():
 	if tween:
@@ -61,6 +61,13 @@ func hide_dialog():
 	)
 
 func _input(event):
-	if is_showing and event is InputEventKey and event.pressed:
+	if not is_showing:
+		return
+	# Accept space/enter/escape keys
+	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_SPACE or event.keycode == KEY_ENTER or event.keycode == KEY_ESCAPE:
 			hide_dialog()
+			return
+	# Accept action presses from mobile controls
+	if event.is_action_pressed("ui_accept") or event.is_action_pressed("interact") or event.is_action_pressed("advance_dialog"):
+		hide_dialog()

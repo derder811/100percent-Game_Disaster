@@ -294,6 +294,12 @@ func _get_mobile_controls_blocking(block: bool) -> void:
 				for c in [joystick, joystick.get_node_or_null("Base"), joystick.get_node_or_null("Knob")]:
 					if c:
 						c.mouse_filter = Control.MOUSE_FILTER_IGNORE if block else Control.MOUSE_FILTER_STOP
+			# Arrow buttons support
+			var arrows := ui_root.get_node_or_null("ArrowButtons")
+			if arrows:
+				for c in [arrows, arrows.get_node_or_null("Up"), arrows.get_node_or_null("Down"), arrows.get_node_or_null("Left"), arrows.get_node_or_null("Right")]:
+					if c:
+						c.mouse_filter = Control.MOUSE_FILTER_IGNORE if block else Control.MOUSE_FILTER_STOP
 
 func _get_interaction_ui_blocking(block: bool) -> void:
 	var iu := _get_interaction_ui()

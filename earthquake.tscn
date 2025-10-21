@@ -10627,6 +10627,7 @@ size = Vector2(88.5044, 1078.01)
 
 [sub_resource type="Animation" id="Animation_463xk"]
 length = 0.001
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

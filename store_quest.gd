@@ -28,10 +28,11 @@ func _ready():
 	quest_box = get_node_or_null("Quest UI/Quest Text Box")
 	
 	if quest_box:
-		# Position on right side of the screen
+		# Position on right side of the screen, nudged down to avoid Settings
 		var viewport_size = get_viewport().size
 		var margin := 24.0
-		original_position = Vector2(viewport_size.x - quest_box.size.x - margin, margin)
+		var top_offset := 80.0
+		original_position = Vector2(viewport_size.x - quest_box.size.x - margin, margin + top_offset)
 		quest_box.position = original_position
 		# Do NOT show by default; will be started by cashier interaction
 		quest_box.visible = false
@@ -95,9 +96,10 @@ func update_quest_ui():
 		progress_label.text = "Quest Progress: %d/4" % done
 
 func complete_objective(objective_name: String):
+	# Auto-start the quest if any interaction happens before the cashier starts it
 	if not quest_started:
-		print("StoreQuest: interaction ignored; quest not started")
-		return
+		print("StoreQuest: auto-starting quest due to interaction: ", objective_name)
+		start_quest()
 	var idx := _objective_index(objective_name)
 	if idx == -1:
 		print("StoreQuest: Unknown objective", objective_name)

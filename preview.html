@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quest UI Fix Preview</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background:#0f1218; color:#e6edf3; margin:0; padding:32px; }
+    .card { max-width: 860px; margin: 0 auto; background:#161b22; border:1px solid #30363d; border-radius:12px; padding:24px; }
+    h1 { margin:0 0 12px; font-size: 22px; }
+    h2 { margin:24px 0 8px; font-size: 18px; }
+    code { background:#0b0f14; border:1px solid #30363d; padding:2px 6px; border-radius:6px; }
+    li { margin:6px 0; }
+    .ok { color:#3fb950; }
+    .warn { color:#d29922; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Quest UI Fix Preview</h1>
+    <p>This page summarizes the changes applied to fix Store Quest and Earthquake Quest triggers and UI visibility, plus a small layout tweak so the Settings button no longer flickers.</p>
+
+    <h2>What Changed</h2>
+    <ul>
+      <li><span class="ok">StoreQuest</span>: Auto-starts when any objective interaction occurs, so the quest UI appears even if the cashier start fails.</li>
+      <li><span class="ok">EarthquakeQuest</span>: Fixed a runtime error in <code>_ready()</code> (missing <code>viewport_size</code>) that prevented the quest UI from showing after the Slurpee interaction.</li>
+      <li><span class="ok">UI Positioning</span>: Both quest panels are nudged down by <code>80px</code> to avoid overlapping the top-right Settings button and eliminate perceived blinking/flicker.</li>
+      <li><span class="ok">Item Tips</span>: Fixed <code>SimpleDialogManager.show_item_dialog</code> null-check/indentation so pickup tips display correctly (e.g., battery, water, go bag). Added a fallback <code>start_dialog</code> and simple position helpers for compatibility.</li>
+      <li><span class="ok">Interactive Asset Tips</span>: Added SimpleDialog safety tips for Scenario 1 assets: <code>window</code>, <code>fuse_box</code>, <code>candle</code>, <code>tv</code>, <code>e_fan</code>, <code>bucket</code>, <code>frying_pan</code>.</li>
+      <li><span class="ok">Mobile Controls</span>: Switched joystick to arrow buttons (D-pad). Movement now uses <code>move_left/right/up/down</code> via button press/hold.</li>
+    </ul>
+
+    <h2>How to Validate In-Game</h2>
+    <ol>
+      <li>Open <code>inside_the_store.tscn</code> and run the scene.</li>
+      <li>Interact with the cashier: Store Quest UI should appear on the right, below the Settings button.</li>
+      <li>Interact with the slurpee machine: Earthquake Quest should instantiate and its UI should also appear below the Settings button; Store Quest UI hides during the quake.</li>
+      <li>Pick up any item (e.g., <code>battery</code>, <code>water_bottle</code>, <code>go_bag</code>): a simple tips dialog should pop above the player with header “TIPS”.</li>
+      <li>Interact with assets (e.g., <code>window</code>, <code>fuse_box</code>, <code>candle</code>): a SimpleDialog safety tip should display after the short self-talk.</li>
+    </ol>
+
+    <h2>Files Updated</h2>
+    <ul>
+      <li><code>store_quest.gd</code> — Auto-start in <code>complete_objective()</code>; quest box positioned with an extra <code>80px</code> top offset.</li>
+      <li><code>earthquake_quest.gd</code> — Initialize <code>viewport_size</code> in <code>_ready()</code>; quest box positioned with an extra <code>80px</code> top offset.</li>
+      <li><code>SimpleDialogManager.gd</code> — Fix <code>show_item_dialog</code> logic; add <code>start_dialog</code> and position helpers.</li>
+      <li><code>MobileControls.tscn</code> — Added <code>ArrowButtons</code> container with Up/Down/Left/Right buttons.</li>
+      <li><code>mobile_controls.gd</code> — Enabled D-pad mode; mapped button_down/up to movement actions; hid joystick.</li>
+      <li><code>pause_menu.gd</code> / <code>game_settings.gd</code> — Block/unblock ArrowButtons when overlays are active.</li>
+    </ul>
+
+    <h2>Notes</h2>
+    <ul>
+      <li>If the Earthquake Quest still doesn’t appear, confirm <code>earthquake_quest.tscn</code> is instanced and added to <code>get_tree().current_scene</code> by <code>slurpee.gd</code>.</li>
+      <li>Ensure players are in the <code>Player2</code> group for Interaction Areas to register and prompt correctly.</li>
+    </ul>
+  </div>
+</body>
+</html>

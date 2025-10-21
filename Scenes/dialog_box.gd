@@ -94,6 +94,12 @@ func show_dialog(title: String, lines: Array[String]):
 	# Set title
 	title_label.text = title
 	
+	# Set button visibility based on line count
+	if next_button:
+		next_button.visible = lines.size() > 1
+	if close_button:
+		close_button.visible = true
+	
 	# Show the dialog with pop-in animation
 	_animate_dialog_in()
 
@@ -145,6 +151,10 @@ func _display_current_message():
 	if current_line_index >= dialog_lines.size():
 		close_dialog()
 		return
+	
+	# Update Next button visibility depending on position
+	if next_button:
+		next_button.visible = (dialog_lines.size() > 1) and (current_line_index < dialog_lines.size() - 1)
 	
 	target_text = dialog_lines[current_line_index]
 	_start_typing()
