@@ -28,38 +28,38 @@ scale = Vector2(2.02885, 1.53274)
 
 [node name="Left" type="Button" parent="UIRoot/ArrowButtons"]
 layout_mode = 2
-offset_left = 2.46446
-offset_top = 54.1515
-offset_right = 43.4645
-offset_bottom = 100.151
+offset_left = -3.94313
+offset_top = 170.283
+offset_right = 37.0569
+offset_bottom = 216.283
 focus_mode = 0
 text = "◀"
 
 [node name="Right" type="Button" parent="UIRoot/ArrowButtons"]
 layout_mode = 2
-offset_left = 99.0
-offset_top = 55.0
-offset_right = 154.0
-offset_bottom = 108.0
+offset_left = 79.8482
+offset_top = 170.283
+offset_right = 132.848
+offset_bottom = 228.283
 scale = Vector2(0.75098, 0.799934)
 focus_mode = 0
 text = "▶"
 
 [node name="Up" type="Button" parent="UIRoot/ArrowButtons"]
 layout_mode = 2
-offset_left = 50.7678
-offset_top = 3.26213
-offset_right = 91.7678
-offset_bottom = 50.2621
+offset_left = 38.4929
+offset_top = 126.0
+offset_right = 78.4929
+offset_bottom = 171.0
 focus_mode = 0
 text = "▲"
 
 [node name="Down" type="Button" parent="UIRoot/ArrowButtons"]
 layout_mode = 2
-offset_left = 50.0
-offset_top = 104.0
-offset_right = 95.0
-offset_bottom = 152.0
+offset_left = 38.4454
+offset_top = 214.648
+offset_right = 79.4454
+offset_bottom = 260.648
 focus_mode = 0
 text = "▼"
 
@@ -70,10 +70,11 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -264.0
-offset_top = -407.0
-offset_right = -12.0
-offset_bottom = -292.0
+offset_left = -333.0
+offset_top = -207.0
+offset_right = -81.0
+offset_bottom = -92.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Interact"
+text = "Interact / Pick-Up
+"

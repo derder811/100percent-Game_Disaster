@@ -28,14 +28,9 @@ func _ready():
 	quest_box = get_node_or_null("Quest UI/Quest Text Box")
 	
 	if quest_box:
-		# Position on right side of the screen, nudged down to avoid Settings
-		var viewport_size = get_viewport().size
-		var margin := 24.0
-		var top_offset := 80.0
-		original_position = Vector2(viewport_size.x - quest_box.size.x - margin, margin + top_offset)
-		quest_box.position = original_position
-		# Do NOT show by default; will be started by cashier interaction
+		# Hide initially; reposition after layout so size is correct on mobile
 		quest_box.visible = false
+		call_deferred("_reposition_quest_box")
 	else:
 		print("StoreQuest: WARNING - Quest box not found")
 	
@@ -51,6 +46,9 @@ func _ready():
 		print("StoreQuest: WARNING - Objectives container not found")
 	
 	update_quest_ui()
+	# Mobile fallback: ensure quest UI starts on Android
+	if OS.has_feature("mobile"):
+		call_deferred("start_quest")
 
 func update_quest_ui():
 	var objective_texts = [
@@ -219,6 +217,16 @@ func show_quest_ui():
 		quest_box.visible = true
 	# Re-run the slide-in animation if it was hidden
 	show_quest_box_with_animation()
+
+func _reposition_quest_box():
+	if quest_box:
+		var viewport_size = get_viewport().size
+		var margin := 24.0
+		var top_offset := 80.0
+		original_position = Vector2(viewport_size.x - quest_box.size.x - margin, margin + top_offset)
+		quest_box.position = original_position
+	else:
+		print("StoreQuest: WARNING - Quest box not found during reposition")
 
 # New: explicit start, only called by cashier interaction
 func start_quest():

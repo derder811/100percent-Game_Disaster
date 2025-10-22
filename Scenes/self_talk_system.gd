@@ -45,7 +45,7 @@ var has_shown_startup_message = false
 var timer_self_talk_active = false
 @onready var player = get_parent()
 
-# Bottom textbox UI (matches Player 3 style)
+# Compact textbox UI
 var _textbox_layer: CanvasLayer = null
 var _textbox_panel: Panel = null
 var _textbox_label: Label = null
@@ -53,14 +53,9 @@ var _textbox_active: bool = false
 var _textbox_ttl_timer: Timer = null
 
 func _ready():
-	# Add this node to a group so it can be found by the interaction manager
 	add_to_group("self_talk_system")
-	
-	# Wait a moment for the scene to fully load, then show startup message
 	await get_tree().create_timer(1.0).timeout
 	show_startup_message()
-	
-	# Start the timer-based self talk after startup
 	await get_tree().create_timer(2.0).timeout
 	start_timer_self_talk()
 
@@ -73,14 +68,12 @@ func stop_timer_self_talk():
 
 func _timer_self_talk_loop():
 	while timer_self_talk_active:
-		await get_tree().create_timer(30.0).timeout  # Wait 30 seconds
-		# Avoid overlapping with other dialogs if a manager is active
+		await get_tree().create_timer(30.0).timeout
 		if timer_self_talk_active and player and is_instance_valid(player):
 			if not DialogManager.is_dialog_active:
 				show_timer_self_talk()
 
 func show_timer_self_talk():
-	# Get a random timer-based self-talk message
 	var messages = self_talk_messages["timer_based"]
 	var random_message = messages[randi() % messages.size()]
 	_show_textbox(random_message)
@@ -88,53 +81,43 @@ func show_timer_self_talk():
 func show_startup_message():
 	if has_shown_startup_message:
 		return
-	
 	has_shown_startup_message = true
-	
-	# Find the DialogBox in the scene
 	var dialog_box = get_tree().get_first_node_in_group("dialog_system")
 	if dialog_box and dialog_box.has_method("show_dialog"):
 		dialog_box.show_dialog("WELCOME", self_talk_messages["game_start"])
-		# Connect to the dialog finished signal to show follow-up self-talk
 		if not dialog_box.dialog_finished.is_connected(_on_startup_dialog_finished):
 			dialog_box.dialog_finished.connect(_on_startup_dialog_finished)
 	else:
 		print("DialogBox not found for startup message")
 
 func _on_startup_dialog_finished():
-	# Show a brief self-talk message after the startup dialog
 	await get_tree().create_timer(2.0).timeout
 	show_self_talk_message()
 
 func show_self_talk_message():
-	# Always show the first message "It's raining hard... gonna check the window." as the first automatic talk
 	var first_message = "It's raining hard... gonna check the window."
 	_show_textbox(first_message)
 
-# Function to trigger custom self-talk with a specific message
 func trigger_custom_self_talk(custom_message: String):
 	_show_textbox(custom_message)
 
-# Function to trigger self-talk from external sources
 func trigger_self_talk(message_type: String = "timer_based"):
 	if message_type in self_talk_messages:
 		var messages = self_talk_messages[message_type]
 		var random_message = messages[randi() % messages.size()]
 		_show_textbox(random_message)
 
-# Function to trigger item pickup self-talk
 func trigger_item_pickup_self_talk(item_name: String):
 	if "item_pickup" in self_talk_messages and item_name in self_talk_messages["item_pickup"]:
 		var message = self_talk_messages["item_pickup"][item_name]
 		_show_textbox(message)
 
-# NEW: Function to trigger self-talk right after interacting with store items
 func trigger_after_item_interact_talk(item_type: String):
 	if after_item_interact_msgs.has(item_type):
 		_show_textbox(after_item_interact_msgs[item_type])
 
 # -----------------------------
-# Bottom textbox implementation
+# Centered-top textbox implementation
 # -----------------------------
 func _ensure_textbox_nodes():
 	if _textbox_layer == null:
@@ -143,17 +126,17 @@ func _ensure_textbox_nodes():
 		add_child(_textbox_layer)
 	if _textbox_panel == null:
 		_textbox_panel = Panel.new()
-		# Anchor to bottom, full width with margins
-		_textbox_panel.anchor_left = 0.0
-		_textbox_panel.anchor_right = 1.0
-		_textbox_panel.anchor_top = 1.0
-		_textbox_panel.anchor_bottom = 1.0
-		_textbox_panel.offset_left = 24
-		_textbox_panel.offset_right = -24
-		_textbox_panel.offset_top = -140
-		_textbox_panel.offset_bottom = -24
-		_textbox_panel.custom_minimum_size = Vector2(0, 110)
-		# Style: dark rounded background
+		# Anchor to top center
+		_textbox_panel.anchor_left = 0.5
+		_textbox_panel.anchor_right = 0.5
+		_textbox_panel.anchor_top = 0.0
+		_textbox_panel.anchor_bottom = 0.0
+		# 560x160 box below the top HUD
+		_textbox_panel.offset_left = -280
+		_textbox_panel.offset_right = 280
+		_textbox_panel.offset_top = 24
+		_textbox_panel.offset_bottom = 184
+		_textbox_panel.custom_minimum_size = Vector2(560, 160)
 		var sb := StyleBoxFlat.new()
 		sb.bg_color = Color(0, 0, 0, 0.75)
 		sb.corner_radius_top_left = 10
@@ -169,12 +152,12 @@ func _ensure_textbox_nodes():
 		_textbox_label.anchor_right = 1.0
 		_textbox_label.anchor_top = 0.0
 		_textbox_label.anchor_bottom = 1.0
-		_textbox_label.offset_left = 16
-		_textbox_label.offset_right = -16
-		_textbox_label.offset_top = 10
-		_textbox_label.offset_bottom = -10
+		_textbox_label.offset_left = 18
+		_textbox_label.offset_right = -18
+		_textbox_label.offset_top = 12
+		_textbox_label.offset_bottom = -12
 		_textbox_label.autowrap_mode = TextServer.AUTOWRAP_WORD
-		_textbox_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+		_textbox_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		_textbox_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		_textbox_label.add_theme_color_override("font_color", Color(1,1,1,1))
 		_textbox_panel.add_child(_textbox_label)

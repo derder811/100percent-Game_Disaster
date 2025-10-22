@@ -35,14 +35,10 @@ func _ready():
 	label2 = get_node_or_null("Quest UI/Earthquake Quest Box/QuestContainer/Objectives/Objective2/Label2")
 	
 	if quest_box:
-		# Place on right side of the screen, nudged down to avoid Settings
-		var viewport_size = get_viewport().size
-		var margin := 24.0
-		var top_offset := 80.0
-		original_position = Vector2(viewport_size.x - quest_box.size.x - margin, margin + top_offset)
-		quest_box.position = original_position + Vector2(40, 0) # start slightly offscreen for slide-in
-		quest_box.visible = true
-		show_quest_box_with_animation()
+		# Hide initially; reposition after layout so size is correct on mobile
+		quest_box.visible = false
+		call_deferred("_reposition_quest_box")
+		call_deferred("show_quest_box_with_animation")
 	
 	# Hide first quake visuals if present while quest is ongoing
 	_hide_first_quake_if_present()
@@ -344,3 +340,13 @@ func _stop_continuous_camera_shake():
 	var camera = get_viewport().get_camera_2d()
 	if camera:
 		camera.offset = _camera_original_offset
+
+func _reposition_quest_box():
+	if quest_box:
+		var viewport_size = get_viewport().size
+		var margin := 24.0
+		var top_offset := 80.0
+		original_position = Vector2(viewport_size.x - quest_box.size.x - margin, margin + top_offset)
+		quest_box.position = original_position + Vector2(40, 0)
+	else:
+		print("EarthquakeQuest: WARNING - Quest box not found during reposition")
