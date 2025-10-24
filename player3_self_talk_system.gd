@@ -827,6 +827,10 @@ func _await_seconds(sec: float) -> void:
 # Map known self-talk lines (or keywords) to available voice assets
 func _map_voice_path_for_message(message: String) -> String:
 	var msg := String(message)
+	# Earthquake safety: Drop, Cover, Hold
+	var msg_l := msg.to_lower()
+	if msg_l.find("drop") != -1 and msg_l.find("cover") != -1 and msg_l.find("hold") != -1:
+		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/DROP COVER AND HOLD.mp3"
 	# Store entry messages
 	if msg.find("Oh hey, a convenience store") != -1:
 		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Store Entry) - Copy.mp3"

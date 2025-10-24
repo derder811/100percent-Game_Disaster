@@ -9,6 +9,9 @@ func _ready():
 	if audio_player:
 		print("Survive: Playing survive.mp3 music")
 	
+	# Clean up any gameplay overlays (mobile controls / interaction prompt)
+	_cleanup_mobile_ui_overlays()
+	
 	if menu_button:
 		menu_button.pressed.connect(_on_menu_button_pressed)
 		# Subtle hover animation
@@ -22,6 +25,18 @@ func _ready():
 		)
 	# Run a celebratory intro animation
 	_animate_intro()
+
+func _cleanup_mobile_ui_overlays():
+	var root = get_tree().root
+	if root:
+		var mc = root.get_node_or_null("MobileControls")
+		if mc:
+			print("Survive: Removing MobileControls overlay")
+			mc.queue_free()
+		var iu = root.get_node_or_null("InteractionUI")
+		if iu:
+			print("Survive: Removing InteractionUI overlay")
+			iu.queue_free()
 
 func _animate_intro():
 	if sprite:

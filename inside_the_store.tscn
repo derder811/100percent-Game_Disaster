@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://dcqr0c7w7cu63" path="res://player3_store_movement.gd" id="20_player3_movement"]
 [ext_resource type="Script" uid="uid://d258ewk0hhnku" path="res://test_player3_interaction.gd" id="21_test_script"]
 [ext_resource type="PackedScene" uid="uid://cjtfeqjgwd35q" path="res://asset/Interaction/InteractionManager.tscn" id="22_interaction_manager"]
+[ext_resource type="PackedScene" uid="uid://5y7bw6kpi1sy" path="res://store_exit.tscn" id="23_6bfdg"]
 [ext_resource type="Script" uid="uid://jf00vjx3ch42" path="res://test_self_talk_direct.gd" id="23_test_direct"]
 [ext_resource type="Script" uid="uid://bfpo3un3k6cdb" path="res://comprehensive_debug.gd" id="24_comprehensive_debug"]
 [ext_resource type="Script" uid="uid://d1yw73c1iqib0" path="res://test_interaction_debug.gd" id="25_interaction_debug"]
@@ -10675,9 +10676,6 @@ transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pv4qk"]
 size = Vector2(30, 48)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1a2q"]
-size = Vector2(248, 82)
-
 [node name="Inside The Store" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -10883,11 +10881,7 @@ position = Vector2(1088, 599)
 [node name="Table 2" parent="." instance=ExtResource("20_4v8su")]
 position = Vector2(441, 124)
 
-[node name="Store Exit" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Store Exit"]
-position = Vector2(841, 1004)
-shape = SubResource("RectangleShape2D_m1a2q")
+[node name="Store Exit" parent="." instance=ExtResource("23_6bfdg")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(838, 921)
@@ -10909,6 +10903,7 @@ script = ExtResource("24_comprehensive_debug")
 script = ExtResource("25_interaction_debug")
 
 [node name="Customer (NPC)" parent="." instance=ExtResource("30_suotf")]
+position = Vector2(6, -18)
 
 [node name="Cashier (NPC)" parent="." instance=ExtResource("29_suotf")]
 position = Vector2(987, 982)

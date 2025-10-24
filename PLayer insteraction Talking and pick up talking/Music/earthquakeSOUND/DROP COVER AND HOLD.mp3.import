@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cucbxw35i03ji"
+path="res://.godot/imported/DROP COVER AND HOLD.mp3-b855f5b57f9d594bc302d2bb4e8bfb71.mp3str"
+
+[deps]
+
+source_file="res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/DROP COVER AND HOLD.mp3"
+dest_files=["res://.godot/imported/DROP COVER AND HOLD.mp3-b855f5b57f9d594bc302d2bb4e8bfb71.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

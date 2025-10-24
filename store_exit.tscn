@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://5y7bw6kpi1sy"]
+
+[ext_resource type="Script" uid="uid://548ua0wbcvfm" path="res://store_exit_interaction_config.gd" id="1_whq5w"]
+[ext_resource type="PackedScene" uid="uid://d3v5enbqtirae" path="res://asset/Interaction/Interaction Area/interaction_area.tscn" id="2_b3mbn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1a2q"]
+size = Vector2(248, 82)
+
+[node name="Store Exit" type="Area2D"]
+script = ExtResource("1_whq5w")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_b3mbn")]
+position = Vector2(836, 939)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(836, 989)
+shape = SubResource("RectangleShape2D_m1a2q")

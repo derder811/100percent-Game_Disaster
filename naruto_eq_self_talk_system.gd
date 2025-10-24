@@ -37,17 +37,17 @@ func _ready():
 		print("NarutoEQSelfTalkSystem: ERROR - DialogManager not found!")
 	
 	# Show first message after 5 seconds
-	await get_tree().create_timer(5.0).timeout
+	await _await_seconds(5.0)
 	print("NarutoEQSelfTalkSystem: Showing first message...")
 	show_specific_message(0)  # Show first message
 	
 	# Show second message after 10 more seconds
-	await get_tree().create_timer(10.0).timeout
+	await _await_seconds(10.0)
 	print("NarutoEQSelfTalkSystem: Showing second message...")
 	show_specific_message(1)  # Show second message
 	
 	# Start regular timer-based self talk after that
-	await get_tree().create_timer(2.0).timeout
+	await _await_seconds(2.0)
 	print("NarutoEQSelfTalkSystem: Starting timer self talk")
 	start_timer_self_talk()
 
@@ -63,7 +63,7 @@ func stop_timer_self_talk():
 func _timer_self_talk_loop():
 	print("NarutoEQSelfTalkSystem: _timer_self_talk_loop() started")
 	while timer_self_talk_active:
-		await get_tree().create_timer(10.0).timeout  # Reduced to 10 seconds for testing
+		await _await_seconds(10.0)  # Reduced to 10 seconds for testing
 		print("NarutoEQSelfTalkSystem: Timer expired, checking conditions...")
 		
 		if timer_self_talk_active and player and is_instance_valid(player):
@@ -316,3 +316,16 @@ func _play_voice_for_message(message: String) -> void:
 		audio_mgr = get_tree().get_root().get_node_or_null("/root/AudioManager")
 	if audio_mgr and audio_mgr.has_method("play_sfx"):
 		audio_mgr.play_sfx(voice_path, 4.0)
+
+func _await_seconds(sec: float) -> void:
+	# Safe wait that works even if get_tree() becomes null during scene changes
+	if not is_inside_tree():
+		return
+	var t := Timer.new()
+	t.one_shot = true
+	t.wait_time = sec
+	add_child(t)
+	t.start()
+	await t.timeout
+	if is_instance_valid(t):
+		t.queue_free()

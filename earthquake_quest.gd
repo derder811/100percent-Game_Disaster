@@ -118,6 +118,14 @@ func _on_exit_entered(body):
 		_complete_objective(2)
 		_show_hint_dialog("I made it to the exit! Quest complete.")
 
+# Public: allow interaction-area to complete via exit
+func complete_via_exit_interaction():
+	if exit_reached:
+		return
+	exit_reached = true
+	_complete_objective(2)
+	_show_hint_dialog("I made it to the exit! Quest complete.")
+
 func update_quest_ui():
 	if label1:
 		label1.text = "Hide under 3 tables (%d/%d)" % [_hidden_count(), tables_required]
@@ -259,6 +267,9 @@ func _maybe_end_quake():
 		_set_store_quest_hidden(false)
 		# Stop ambient earthquake sound
 		AudioManager.stop_ambient()
+		# Transition to Survive scene when quest completes
+		if get_tree():
+			get_tree().change_scene_to_file("res://Survive.tscn")
 
 # Camera shake coroutine
 func _camera_shake(duration_sec: float, magnitude: float) -> void:
