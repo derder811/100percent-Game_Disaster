@@ -11,7 +11,7 @@ const lines: Array[String] = [
 
 func _ready():
 	interaction_area.interact = Callable(self, "_on_interact")
-	interaction_area.action_name = "examine bed"
+	interaction_area.action_name = "bed"
 
 func _on_interact():
 	# Safety check for overlapping bodies

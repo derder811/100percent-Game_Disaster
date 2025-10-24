@@ -4,7 +4,7 @@ class_name SelfTalkSystem
 # Self-talk messages for different scenarios
 var self_talk_messages = {
 	"game_start": [
-		"It's early in the morning. Heavy rain pours outside as strong winds shake the trees. A typhoon is approaching, and you're the only one left at home. Your goal is to stay safe and prepare for the storm by gathering important items and taking the right precautions. Learn what to do before and during a typhoon through each interaction inside the house."
+		"It's early in the morning. Heavy rain pours outside as strong winds shake the trees. A typhoon is approaching, and you're the only one left at home. Your goal is to stay safe and prepare for the storm by gathering important items and taking the right precautions."
  
 	] as Array[String],
 	"timer_based": [

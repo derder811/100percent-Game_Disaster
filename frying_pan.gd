@@ -9,7 +9,7 @@ const lines: Array[String] = [
 
 func _ready():
 	interaction_area.interact = Callable(self, "_on_interact")
-	interaction_area.action_name = "examine frying pan"
+	interaction_area.action_name = "frying pan"
 
 func _on_interact():
 	# Safety check for overlapping bodies

@@ -84,7 +84,7 @@ func _process(delta):
 		
 		# Show interaction prompt for closest area
 		if label:
-			label.text = "Press (E) to " + closest_area.action_name
+			label.text = "Press (Interact) to examine " + closest_area.action_name
 			label.visible = true
 			
 			# Position label near the interactable object

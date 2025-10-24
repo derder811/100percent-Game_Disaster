@@ -20,7 +20,7 @@ func _ready():
 		print("Warning: Sprite2D node not found in candle!")
 	
 	interaction_area.interact = Callable(self, "_on_interact")
-	interaction_area.action_name = "examine candle"
+	interaction_area.action_name = "candle"
 	print("Candle: Ready for E key interaction!")
 
 func _on_interact():

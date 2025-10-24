@@ -22,6 +22,6 @@ anchor_right = 0.5
 offset_left = -140.0
 offset_right = 140.0
 offset_bottom = 40.0
-text = "Tap Interact to interact"
+text = "Press (Interact) to examine"
 horizontal_alignment = 1
 visible = false

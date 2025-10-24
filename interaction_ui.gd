@@ -12,9 +12,9 @@ func show_interaction_prompt(interactable: Node) -> void:
 		if interactable.has_method("get_interaction_prompt"):
 			name_text = interactable.get_interaction_prompt()
 		else:
-			name_text = "Tap Interact to interact with %s" % interactable.name
+			name_text = "Press (Interact) to examine %s" % interactable.name
 	else:
-		name_text = "Tap Interact to interact"
+		name_text = "Press (Interact) to examine"
 	if prompt_label:
 		prompt_label.text = name_text
 		prompt_label.visible = true

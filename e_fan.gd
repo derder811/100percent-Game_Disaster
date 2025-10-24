@@ -5,7 +5,7 @@ extends StaticBody2D
 
 func _ready():
 	interaction_area.interact = Callable(self, "_on_interact")
-	interaction_area.action_name = "examine electric fan"
+	interaction_area.action_name = "electric fan"
 
 func _on_interact():
 	# Safety check for overlapping bodies

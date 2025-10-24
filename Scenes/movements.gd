@@ -90,10 +90,6 @@ func handle_movement(delta):
 	# Normalize for consistent diagonal movement
 	input_vector = input_vector.normalized()
 	
-	# Update animation direction based on movement
-	if input_vector != Vector2.ZERO:
-		animation_tree.set("parameters/walk/blend_position", input_vector)
-	
 	# Apply movement with smooth acceleration/deceleration
 	if input_vector != Vector2.ZERO:
 		# Accelerate towards target velocity
@@ -101,6 +97,30 @@ func handle_movement(delta):
 	else:
 		# Apply friction when no input
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+	
+	# Update animation based on actual movement (velocity), not just input
+	update_animation(input_vector)
+
+func update_animation(input_vector: Vector2):
+	# Check if character is actually moving (velocity threshold to avoid micro-movements)
+	var is_moving = velocity.length() > 10.0  # Minimum speed threshold
+	
+	if is_moving and input_vector != Vector2.ZERO:
+		# Character is moving - play walking animation
+		if animation_tree:
+			animation_tree.active = true
+			# Use input direction for animation direction (for responsive feel)
+			animation_tree.set("parameters/walk/blend_position", input_vector)
+			print("Playing walk animation with direction: ", input_vector)
+	else:
+		# Character is not moving - play idle animation
+		if animation_tree:
+			animation_tree.active = false
+			# Use AnimationPlayer directly for idle
+			var anim_player = get_node_or_null("AnimationPlayer")
+			if anim_player:
+				anim_player.play("idle")
+				print("Playing idle animation")
 
 func handle_interactions():
 	# Update nearby interactables
@@ -180,7 +200,7 @@ func update_interaction_ui():
 		if closest_interactable.has_method("get_interaction_prompt"):
 			interaction_label.text = closest_interactable.get_interaction_prompt()
 		else:
-			interaction_label.text = "Press SPACE to interact"
+			interaction_label.text = "Press (Interact) to examine"
 			
 		print("Player: Basic interaction label text set to: ", interaction_label.text)
 	else:
@@ -273,7 +293,7 @@ func get_interaction_ui():
 	return interaction_ui
 
 # Helper function to make any object interactable
-func make_interactable(object: Node, prompt: String = "Press SPACE to interact"):
+func make_interactable(object: Node, prompt: String = "Press (Interact) to examine"):
 	if not object.is_in_group("interactable"):
 		object.add_to_group("interactable")
 	

@@ -14,7 +14,7 @@ func _ready():
 	if sprite == null:
 		sprite = get_node_or_null("Sprite")
 	interaction_area.interact = Callable(self, "_on_interact")
-	interaction_area.action_name = "examine window"
+	interaction_area.action_name = "window"
 
 func _on_interact():
 	# Safety check for overlapping bodies

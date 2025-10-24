@@ -9,7 +9,7 @@ func _ready():
 	# Configure the existing InteractionArea child
 	var interaction_area = $InteractionArea
 	if interaction_area:
-		interaction_area.action_name = "examine slurpee"
+		interaction_area.action_name = "slurpee"
 		interaction_area.interact = Callable(self, "_on_interact")
 		print("Slurpee interaction area configured")
 	else:

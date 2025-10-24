@@ -188,7 +188,7 @@ func update_interaction_ui():
 			
 			# Fallback to basic label system
 			if interaction_label:
-				interaction_label.text = "Press E to interact with " + closest_interactable.name
+				interaction_label.text = "Press (Interact) to examine " + closest_interactable.name
 				interaction_label.visible = true
 				interaction_label.global_position = closest_interactable.global_position + Vector2(0, -50)
 				print("Player 1: Basic interaction label text set to: ", interaction_label.text)
