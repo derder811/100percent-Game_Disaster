@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cjiwedp6r33ok"
+path="res://.godot/imported/Flood.mp3-514d91e0ae945d97521d40572df3d14a.mp3str"
+
+[deps]
+
+source_file="res://PLayer insteraction Talking and pick up talking/Music/Flood.mp3"
+dest_files=["res://.godot/imported/Flood.mp3-514d91e0ae945d97521d40572df3d14a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

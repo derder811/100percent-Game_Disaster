@@ -22,6 +22,11 @@ extends CanvasLayer
 @onready var btn_down: Button = $UIRoot/ArrowButtons/Down
 @onready var btn_left: Button = $UIRoot/ArrowButtons/Left
 @onready var btn_right: Button = $UIRoot/ArrowButtons/Right
+# Add diagonal buttons
+@onready var btn_up_left: Button = $UIRoot/ArrowButtons/UpLeft
+@onready var btn_up_right: Button = $UIRoot/ArrowButtons/UpRight
+@onready var btn_down_left: Button = $UIRoot/ArrowButtons/DownLeft
+@onready var btn_down_right: Button = $UIRoot/ArrowButtons/DownRight
 
 var stick_vector: Vector2 = Vector2.ZERO
 var dragging: bool = false
@@ -71,6 +76,23 @@ func _ready():
 		btn_down.focus_mode = Control.FOCUS_NONE
 		btn_down.button_down.connect(_on_arrow_down.bind("move_down"))
 		btn_down.button_up.connect(_on_arrow_up.bind("move_down"))
+	# Connect diagonal buttons to press two actions
+	if btn_up_left:
+		btn_up_left.focus_mode = Control.FOCUS_NONE
+		btn_up_left.button_down.connect(_on_diagonal_down.bind(["move_up", "move_left"]))
+		btn_up_left.button_up.connect(_on_diagonal_up.bind(["move_up", "move_left"]))
+	if btn_up_right:
+		btn_up_right.focus_mode = Control.FOCUS_NONE
+		btn_up_right.button_down.connect(_on_diagonal_down.bind(["move_up", "move_right"]))
+		btn_up_right.button_up.connect(_on_diagonal_up.bind(["move_up", "move_right"]))
+	if btn_down_left:
+		btn_down_left.focus_mode = Control.FOCUS_NONE
+		btn_down_left.button_down.connect(_on_diagonal_down.bind(["move_down", "move_left"]))
+		btn_down_left.button_up.connect(_on_diagonal_up.bind(["move_down", "move_left"]))
+	if btn_down_right:
+		btn_down_right.focus_mode = Control.FOCUS_NONE
+		btn_down_right.button_down.connect(_on_diagonal_down.bind(["move_down", "move_right"]))
+		btn_down_right.button_up.connect(_on_diagonal_up.bind(["move_down", "move_right"]))
 	# Interact button
 	if interact_button:
 		interact_button.pressed.connect(_on_interact_pressed)
@@ -239,3 +261,12 @@ func _on_arrow_down(action_name: String) -> void:
 
 func _on_arrow_up(action_name: String) -> void:
 	Input.action_release(action_name)
+
+# Press multiple actions for diagonal buttons
+func _on_diagonal_down(action_names: Array) -> void:
+	for name in action_names:
+		Input.action_press(name, 1.0)
+
+func _on_diagonal_up(action_names: Array) -> void:
+	for name in action_names:
+		Input.action_release(name)

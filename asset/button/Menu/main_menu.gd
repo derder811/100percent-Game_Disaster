@@ -31,7 +31,7 @@ func _ready():
 	# Ensure ambient (e.g., Heavy Rain) is stopped when entering menu
 	AudioManager.stop_ambient()
 	# Start menu BGM
-	AudioManager.play_bgm("res://Music/Menu BGM.mp3", true)
+	AudioManager.play_bgm("res://PLayer insteraction Talking and pick up talking/Music/Menu BGM.mp3", true)
 	
 	# Fade in animation for the menu
 	_fade_in_menu()
@@ -93,7 +93,7 @@ func _update_title_pulse(progress: float):
 func _on_button_hover(button_name: String):
 	if is_transitioning:
 		return
-	AudioManager.play_sfx("res://Music/Tapping the Button.mp3")
+	AudioManager.play_sfx("res://PLayer insteraction Talking and pick up talking/Music/Tapping the Button.mp3")
 	var button = get_node(button_name)
 	var hover_tween = create_tween()
 	hover_tween.tween_property(button, "scale", original_scales[button_name] * 1.1, 0.2)
@@ -111,7 +111,7 @@ func _animate_button_click(button_name: String, callback: Callable):
 	if is_transitioning:
 		return
 	is_transitioning = true
-	AudioManager.play_sfx("res://Music/Tapping the Button.mp3")
+	AudioManager.play_sfx("res://PLayer insteraction Talking and pick up talking/Music/Tapping the Button.mp3")
 	var button = get_node(button_name)
 	
 	# Click animation: scale down then up

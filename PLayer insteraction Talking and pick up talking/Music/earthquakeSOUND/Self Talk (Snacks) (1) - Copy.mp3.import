@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bg6ya1pdc3fbr"
+path="res://.godot/imported/Self Talk (Snacks) (1) - Copy.mp3-c20b5f651b6607cee5a7a3ea8d2c90d0.mp3str"
+
+[deps]
+
+source_file="res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Snacks) (1) - Copy.mp3"
+dest_files=["res://.godot/imported/Self Talk (Snacks) (1) - Copy.mp3-c20b5f651b6607cee5a7a3ea8d2c90d0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

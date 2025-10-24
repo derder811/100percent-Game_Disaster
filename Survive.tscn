@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmds2sueb60ib"]
+
+[ext_resource type="Texture2D" uid="uid://c7ccmm264ovtm" path="res://You Survived!.png" id="1_bmooi"]
+[ext_resource type="Texture2D" uid="uid://c2ekm2x5qerr1" path="res://asset/button/Settings Menu/Menu Button.png" id="2_d1aby"]
+[ext_resource type="Script" uid="uid://ctknokbkgf62g" path="res://survive.gd" id="3_survive_script"]
+[ext_resource type="AudioStream" uid="uid://bju6xau0iag5q" path="res://asset/button/Survive.mp3" id="4_survive_audio"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_survive_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(583.226, 329.439)
+scale = Vector2(0.354938, 0.516097)
+texture = ExtResource("1_bmooi")
+
+[node name="Button" type="Button" parent="Sprite2D"]
+offset_left = -414.792
+offset_top = 221.975
+offset_right = 593.208
+offset_bottom = 554.975
+scale = Vector2(0.697569, 0.558686)
+icon = ExtResource("2_d1aby")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_survive_audio")
+volume_db = -10.0
+autoplay = true

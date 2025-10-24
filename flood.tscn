@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://brfea6jyd3wak" path="res://asset/button/Menu/TileSet_V1.png" id="1_8hpub"]
 [ext_resource type="Script" uid="uid://jo8yk42a5b6n" path="res://flood.gd" id="1_flood_script"]
-[ext_resource type="AudioStream" uid="uid://cjiwedp6r33ok" path="res://Music/Flood.mp3" id="2_ud40a"]
+[ext_resource type="AudioStream" uid="uid://cjiwedp6r33ok" path="res://PLayer insteraction Talking and pick up talking/Music/Flood.mp3" id="2_ud40a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v6spv"]
 texture = ExtResource("1_8hpub")

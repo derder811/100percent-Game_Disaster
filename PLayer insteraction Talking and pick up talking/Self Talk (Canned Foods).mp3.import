@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cdlubvukig4xi"
+path="res://.godot/imported/Self Talk (Canned Foods).mp3-3c58d233dc54361ebe244ace10e7ad65.mp3str"
+
+[deps]
+
+source_file="res://PLayer insteraction Talking and pick up talking/Self Talk (Canned Foods).mp3"
+dest_files=["res://.godot/imported/Self Talk (Canned Foods).mp3-3c58d233dc54361ebe244ace10e7ad65.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

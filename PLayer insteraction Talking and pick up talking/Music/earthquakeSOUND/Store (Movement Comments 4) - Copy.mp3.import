@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d17knwjgpkke2"
+path="res://.godot/imported/Store (Movement Comments 4) - Copy.mp3-4e2fae4b69910082ef2a9bf023e5c32c.mp3str"
+
+[deps]
+
+source_file="res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Store (Movement Comments 4) - Copy.mp3"
+dest_files=["res://.godot/imported/Store (Movement Comments 4) - Copy.mp3-4e2fae4b69910082ef2a9bf023e5c32c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

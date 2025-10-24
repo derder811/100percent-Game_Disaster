@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://v3h4fuheek6m"
+path="res://.godot/imported/Self Talk (Bag).mp3-01da4f81f9f47819a0e6827ea9c0ac7e.mp3str"
+
+[deps]
+
+source_file="res://PLayer insteraction Talking and pick up talking/Self Talk (Bag).mp3"
+dest_files=["res://.godot/imported/Self Talk (Bag).mp3-01da4f81f9f47819a0e6827ea9c0ac7e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

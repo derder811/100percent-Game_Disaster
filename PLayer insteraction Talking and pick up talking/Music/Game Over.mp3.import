@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b4k6vk0en37ci"
+path="res://.godot/imported/Game Over.mp3-86804e6f14205feb2f7646c6244a894f.mp3str"
+
+[deps]
+
+source_file="res://PLayer insteraction Talking and pick up talking/Music/Game Over.mp3"
+dest_files=["res://.godot/imported/Game Over.mp3-86804e6f14205feb2f7646c6244a894f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -45,7 +45,7 @@ func _ready():
 	# Stop any ambient (e.g., Heavy Rain) carried over from scenarios
 	AudioManager.stop_ambient()
 	# Start menu BGM similar to main menu
-	AudioManager.play_bgm("res://Music/Menu BGM.mp3", true)
+	AudioManager.play_bgm("res://PLayer insteraction Talking and pick up talking/Music/Menu BGM.mp3", true)
 
 # Fade in animation when menu appears
 func _fade_in_menu():
@@ -128,14 +128,14 @@ func _transition_to_scene(scene_path: String, disaster_type: String):
 # Function called when Typhoon button is pressed
 func _on_typhoon_button_pressed():
 	print("Typhoon button pressed - Loading typhoon scenario")
-	AudioManager.play_sfx("res://Music/Tapping the Button.mp3")
-	AudioManager.play_ambient("res://Music/Heavy Rain.mp3", true)
+	AudioManager.play_sfx("res://PLayer insteraction Talking and pick up talking/Music/Tapping the Button.mp3")
+	AudioManager.play_ambient("res://PLayer insteraction Talking and pick up talking/Music/Heavy Rain.mp3", true)
 	_animate_button_click("typhoon", func(): _transition_to_scene("res://GAME_SCENE/first_scenario.tscn", "Typhoon"))
 
 # Function called when Earthquake button is pressed
 func _on_earthquake_button_pressed():
 	print("Earthquake button pressed - Loading earthquake scenario")
-	AudioManager.play_sfx("res://Music/Tapping the Button.mp3")
+	AudioManager.play_sfx("res://PLayer insteraction Talking and pick up talking/Music/Tapping the Button.mp3")
 	_animate_button_click("earthquake", func(): _transition_to_scene("res://earthquake.tscn", "Earthquake"))
 
 # Optional: Add keyboard support for accessibility

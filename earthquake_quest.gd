@@ -134,6 +134,7 @@ func show_quest_box_with_animation():
 		return
 	if not quest_box:
 		return
+	quest_box.visible = true
 	# Slide-in from the right with a subtle bounce
 	var tween = create_tween()
 	var target_pos = original_position

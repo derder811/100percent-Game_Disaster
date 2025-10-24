@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dya402qhwpuje"
+path="res://.godot/imported/Item Pick Ups.mp3-e80e916a04ee189b144dae8c0aa5bf04.mp3str"
+
+[deps]
+
+source_file="res://PLayer insteraction Talking and pick up talking/Music/Item Pick Ups.mp3"
+dest_files=["res://.godot/imported/Item Pick Ups.mp3-e80e916a04ee189b144dae8c0aa5bf04.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

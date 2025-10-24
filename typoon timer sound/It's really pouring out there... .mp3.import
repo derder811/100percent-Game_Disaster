@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b3jh18xrxcs7k"
+path="res://.godot/imported/It's really pouring out there... .mp3-26c394589d860ebfb323ac7fe56c6e97.mp3str"
+
+[deps]
+
+source_file="res://typoon timer sound/It's really pouring out there... .mp3"
+dest_files=["res://.godot/imported/It's really pouring out there... .mp3-26c394589d860ebfb323ac7fe56c6e97.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

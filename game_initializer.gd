@@ -25,7 +25,7 @@ func _ready():
 	add_to_group("game_initializer")
 	
 	# Start ambient heavy rain for typhoon scenario
-	AudioManager.play_ambient("res://Music/Heavy Rain.mp3", true)
+	AudioManager.play_ambient("res://PLayer insteraction Talking and pick up talking/Music/Heavy Rain.mp3", true)
 	
 	# Wait a moment for the scene to fully load, then show startup message
 	await get_tree().create_timer(1.0).timeout

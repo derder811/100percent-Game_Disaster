@@ -8,14 +8,14 @@ var self_talk_messages = {
  
 	] as Array[String],
 	"timer_based": [
-		"It's raining hard... gonna check the window.",
-		"It's really pouring out there... I hope the roof holds up.",
-		"I know I kept some supplies somewhere...",
-		"Feels a bit eerie being alone during a storm like this.",
-		"I can hear the rain hitting the walls... I need to stay focused and finished preparing."
+		"Its raining hard.",
+		"It's really pouring out there...",
+		"I know i kept some supplies somewhere...",
+		"Feels a bit eerie being alone.",
+		"I can hear the rain hitting the walls..."
 	] as Array[String],
 	"item_pickup": {
-		"flashlight": "Good thing the flashlight still works. This will help if the power's out for long.",
+		"flashlight": "Good thing the flashlight still works.",
 		"battery": "Extra batteries—perfect. I'll save these for the flashlight.",
 		"documents": "These documents are important... Gonna keep them on my bag",
 		"canned_food": "Good thing there are still some canned foods left.",
@@ -39,6 +39,43 @@ var after_item_interact_msgs := {
 	"meat_fridge": "Frozen meat could be useful if I can cook it before the power goes out completely.",
 	"hotdog_siopao": "Hotdog or siopao? Man, tough choice. Maybe HotPao?.",
 	"food_section": "Let's see what they've got here... canned stuff, quick bites. Pretty standard."
+}
+
+# Map item keys to corresponding self-talk audio clip paths
+var item_audio_paths := {
+	"go_bag": "res://PLayer insteraction Talking and pick up talking/Self Talk (Bag).mp3",
+	"battery": "res://PLayer insteraction Talking and pick up talking/Self Talk (Battery).mp3",
+	"water_bottle": "res://PLayer insteraction Talking and pick up talking/Self Talk (Bottled Water).mp3",
+	"candle": "res://PLayer insteraction Talking and pick up talking/Self Talk (Candle).mp3",
+	"canned_food": "res://PLayer insteraction Talking and pick up talking/Self Talk (Canned Foods).mp3",
+	"documents": "res://PLayer insteraction Talking and pick up talking/Self Talk (Documents).mp3",
+	"medkit": "res://PLayer insteraction Talking and pick up talking/Self Talk (First Aid Kit).mp3",
+	"fuse_box": "res://PLayer insteraction Talking and pick up talking/Self Talk (Fuse Box).mp3",
+	"medicine_2": "res://PLayer insteraction Talking and pick up talking/Self-Talk-_Medicine-2_.mp3",
+	"medicine_3": "res://PLayer insteraction Talking and pick up talking/Self Talk (Medicine 3).mp3",
+	"mobile_phone": "res://PLayer insteraction Talking and pick up talking/Self Talk (Mobile Phone).mp3",
+	"powerbank": "res://PLayer insteraction Talking and pick up talking/Self Talk (Power Bank).mp3",
+	"tv": "res://PLayer insteraction Talking and pick up talking/Self Talk (TV).mp3",
+	"bucket": "res://PLayer insteraction Talking and pick up talking/Self Talk (Water Bucket).mp3",
+	"window": "res://PLayer insteraction Talking and pick up talking/Self Talk (Window).mp3",
+	"flashlight": "res://PLayer insteraction Talking and pick up talking/Self-Talk-_Flash-Light_.mp3"
+}
+
+# New: Audio clips for timer-based self-talk (Typhoon movement-style lines)
+var timer_audio_paths := [
+	"res://typoon timer sound/Its raining hard.mp3",
+	"res://typoon timer sound/It's really pouring out there... .mp3",
+	"res://typoon timer sound/I know i kept some supplies somewhere... .mp3",
+	"res://typoon timer sound/Feels a bit eerie being alone.mp3",
+	"res://typoon timer sound/I can hear the rain hitting the walls... .mp3"
+]
+# Map specific timer-based text lines to their voice clips for exact pairing
+var timer_audio_map := {
+	"Its raining hard.": "res://typoon timer sound/Its raining hard.mp3",
+	"It's really pouring out there...": "res://typoon timer sound/It's really pouring out there... .mp3",
+	"I know i kept some supplies somewhere...": "res://typoon timer sound/I know i kept some supplies somewhere... .mp3",
+	"Feels a bit eerie being alone.": "res://typoon timer sound/Feels a bit eerie being alone.mp3",
+	"I can hear the rain hitting the walls...": "res://typoon timer sound/I can hear the rain hitting the walls... .mp3"
 }
 
 var has_shown_startup_message = false
@@ -69,14 +106,43 @@ func stop_timer_self_talk():
 func _timer_self_talk_loop():
 	while timer_self_talk_active:
 		await get_tree().create_timer(30.0).timeout
-		if timer_self_talk_active and player and is_instance_valid(player):
-			if not DialogManager.is_dialog_active:
-				show_timer_self_talk()
+		if not timer_self_talk_active:
+			break
+		if player == null or not is_instance_valid(player):
+			continue
+		# Safely check if any dialog is active; default to false if manager missing
+		var dialog_active := false
+		if typeof(DialogManager) != TYPE_NIL:
+			dialog_active = DialogManager.is_dialog_active
+		# Avoid overlapping with our own textbox being active
+		if not dialog_active and not _textbox_active:
+			show_timer_self_talk()
 
 func show_timer_self_talk():
 	var messages = self_talk_messages["timer_based"]
-	var random_message = messages[randi() % messages.size()]
-	_show_textbox(random_message)
+	var idx = randi() % messages.size()
+	var message = messages[idx]
+	print("TimerSelfTalk: showing message idx=", idx, " text=", message)
+	_show_textbox(message)
+	# Play the voice line mapped to the shown text; fallback to index mapping
+	var voice_path: String = ""
+	if typeof(timer_audio_map) != TYPE_NIL:
+		voice_path = timer_audio_map.get(message, "")
+	if voice_path == "" and timer_audio_paths.size() > 0:
+		var mapped_index = min(idx, timer_audio_paths.size() - 1)
+		voice_path = timer_audio_paths[mapped_index]
+	print("TimerSelfTalk: resolved voice_path=", voice_path)
+	if voice_path != "":
+		var audio_mgr = null
+		if typeof(AudioManager) != TYPE_NIL:
+			audio_mgr = AudioManager
+		else:
+			audio_mgr = get_tree().get_root().get_node_or_null("/root/AudioManager")
+		if audio_mgr:
+			print("TimerSelfTalk: playing SFX")
+			audio_mgr.play_sfx(voice_path, 4.0)
+		else:
+			print("TimerSelfTalk: AudioManager not found; cannot play SFX")
 
 func show_startup_message():
 	if has_shown_startup_message:
@@ -95,26 +161,85 @@ func _on_startup_dialog_finished():
 	show_self_talk_message()
 
 func show_self_talk_message():
-	var first_message = "It's raining hard... gonna check the window."
+	# Use a mapped timer-based line and play its audio
+	var first_message = "Its raining hard."
 	_show_textbox(first_message)
+	# Attempt to play matching audio for this line
+	var voice_path: String = ""
+	if typeof(timer_audio_map) != TYPE_NIL:
+		voice_path = timer_audio_map.get(first_message, "")
+	if voice_path == "" and timer_audio_paths.size() > 0:
+		voice_path = timer_audio_paths[0]
+	if voice_path != "":
+		var audio_mgr = null
+		if typeof(AudioManager) != TYPE_NIL:
+			audio_mgr = AudioManager
+		else:
+			audio_mgr = get_tree().get_root().get_node_or_null("/root/AudioManager")
+		if audio_mgr:
+			audio_mgr.play_sfx(voice_path, 4.0)
+		else:
+			print("SelfTalk startup: AudioManager not found; cannot play SFX")
 
 func trigger_custom_self_talk(custom_message: String):
+	# Show text and try to play audio if the line is mapped
 	_show_textbox(custom_message)
+	var voice_path: String = ""
+	if typeof(timer_audio_map) != TYPE_NIL:
+		voice_path = timer_audio_map.get(custom_message, "")
+	if voice_path != "":
+		var audio_mgr = null
+		if typeof(AudioManager) != TYPE_NIL:
+			audio_mgr = AudioManager
+		else:
+			audio_mgr = get_tree().get_root().get_node_or_null("/root/AudioManager")
+		if audio_mgr:
+			audio_mgr.play_sfx(voice_path, 4.0)
 
 func trigger_self_talk(message_type: String = "timer_based"):
 	if message_type in self_talk_messages:
 		var messages = self_talk_messages[message_type]
-		var random_message = messages[randi() % messages.size()]
+		var idx = randi() % messages.size()
+		var random_message = messages[idx]
+		print("SelfTalk trigger: type=", message_type, " idx=", idx, " text=", random_message)
 		_show_textbox(random_message)
+		# If it's timer-based, use text→audio mapping; fallback to index mapping
+		if message_type == "timer_based":
+			var voice_path: String = ""
+			if typeof(timer_audio_map) != TYPE_NIL:
+				voice_path = timer_audio_map.get(random_message, "")
+			if voice_path == "" and timer_audio_paths.size() > 0:
+				var mapped_index = min(idx, timer_audio_paths.size() - 1)
+				voice_path = timer_audio_paths[mapped_index]
+			print("SelfTalk trigger: resolved voice_path=", voice_path)
+			if voice_path != "":
+				var audio_mgr = null
+				if typeof(AudioManager) != TYPE_NIL:
+					audio_mgr = AudioManager
+				else:
+					audio_mgr = get_tree().get_root().get_node_or_null("/root/AudioManager")
+				if audio_mgr:
+					print("SelfTalk trigger: playing SFX")
+					audio_mgr.play_sfx(voice_path, 4.0)
+				else:
+					print("SelfTalk trigger: AudioManager not found; cannot play SFX")
 
 func trigger_item_pickup_self_talk(item_name: String):
 	if "item_pickup" in self_talk_messages and item_name in self_talk_messages["item_pickup"]:
 		var message = self_talk_messages["item_pickup"][item_name]
 		_show_textbox(message)
+	# Play associated self-talk audio if available
+	var audio_path: String = item_audio_paths.get(item_name, "")
+	if audio_path != "" and AudioManager:
+		AudioManager.play_sfx(audio_path, 4.0)
 
 func trigger_after_item_interact_talk(item_type: String):
 	if after_item_interact_msgs.has(item_type):
 		_show_textbox(after_item_interact_msgs[item_type])
+	# Play associated self-talk audio if available for this interaction type
+	var audio_path: String = item_audio_paths.get(item_type, "")
+	if audio_path != "" and AudioManager:
+		AudioManager.play_sfx(audio_path, 4.0)
 
 # -----------------------------
 # Centered-top textbox implementation

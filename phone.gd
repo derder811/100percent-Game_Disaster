@@ -86,6 +86,9 @@ func pickup_item():
 		player_nearby.get_items(itemData)
 		AudioManager.play_sfx("res://Music/Item Pick Ups.mp3")
 		
+		# Notify quest system about emergency item collection
+		notify_quest_system()
+		
 		# Show self-talk about the phone's purpose
 		show_item_self_talk()
 		
@@ -94,6 +97,15 @@ func pickup_item():
 		queue_free()
 	else:
 		print("✗ ERROR: Player doesn't have get_items method!")
+
+func notify_quest_system():
+	# Find and notify the quest system about emergency item collection
+	var quest_system = get_tree().current_scene.find_child("Quest", true, false)
+	if quest_system and quest_system.has_method("on_emergency_item_collected"):
+		print("✓ Notifying quest system about emergency item pickup: ", itemName)
+		quest_system.on_emergency_item_collected()
+	else:
+		print("✗ Quest system not found or doesn't have on_emergency_item_collected method")
 
 func show_item_self_talk():
 	# Trigger self-talk first using the self-talk system

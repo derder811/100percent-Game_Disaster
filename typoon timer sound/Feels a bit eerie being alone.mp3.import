@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b6cqwqscqx7fd"
+path="res://.godot/imported/Feels a bit eerie being alone.mp3-6c0630dda3876e9411c4e6a090a00154.mp3str"
+
+[deps]
+
+source_file="res://typoon timer sound/Feels a bit eerie being alone.mp3"
+dest_files=["res://.godot/imported/Feels a bit eerie being alone.mp3-6c0630dda3876e9411c4e6a090a00154.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

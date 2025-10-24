@@ -107,6 +107,28 @@ func _cleanup_cutscene_camera(scene: Node, cut_cam: Camera2D, player_cam: Camera
 	if cut_cam and cut_cam.is_inside_tree():
 		cut_cam.queue_free()
 
+# Disable and hide NPC after evacuation
+func _disable_npc(npc: Node) -> void:
+	if npc == null:
+		return
+	if npc is CanvasItem:
+		(npc as CanvasItem).visible = false
+	# Stop processing
+	npc.set_process(false)
+	npc.set_physics_process(false)
+	# Disable collisions and interactions if applicable
+	var ia = npc.get_node_or_null("InteractionArea")
+	if ia and ia is Area2D:
+		(ia as Area2D).monitoring = false
+		(ia as Area2D).set_deferred("monitorable", false)
+	var coll = npc.get_node_or_null("CollisionShape2D")
+	if coll and coll is CollisionShape2D:
+		(coll as CollisionShape2D).disabled = true
+	if npc is PhysicsBody2D:
+		var body := npc as PhysicsBody2D
+		body.collision_layer = 0
+		body.collision_mask = 0
+
 # Path helpers: move a node along a Path2D's curve
 func _update_node_along_path(progress: float, node: Node2D, path: Path2D) -> void:
 	var curve := path.curve
@@ -243,8 +265,7 @@ func _play_pre_earthquake_evacuation_cutscene() -> void:
 		var cashier_curve := _build_evacuation_curve(cashier_start, exit_pos + Vector2(0, -60), exit_out_pos)
 		await _tween_node_and_cam_along_curve(cashier as Node2D, cashier_curve, cam, cashier_anchor_local, Vector2(0, -24), 3.0)
 		await get_tree().create_timer(0.25).timeout
-		if cashier is CanvasItem:
-			(cashier as CanvasItem).visible = false
+		_disable_npc(cashier)
 	# Focus camera on customer using visual anchor
 	if customer and cam:
 		var customer_pos := _get_npc_visual_position(customer)
@@ -261,8 +282,7 @@ func _play_pre_earthquake_evacuation_cutscene() -> void:
 		var customer_curve := _build_evacuation_curve(customer_start, exit_pos + Vector2(0, -60), exit_out_pos)
 		await _tween_node_and_cam_along_curve(customer as Node2D, customer_curve, cam, customer_anchor_local, Vector2(0, -24), 3.0)
 		await get_tree().create_timer(0.25).timeout
-		if customer is CanvasItem:
-			(customer as CanvasItem).visible = false
+		_disable_npc(customer)
 	# Focus briefly on the exit (zoom back to normal)
 	if cam:
 		await _focus_camera(cam, exit_pos, Vector2(1.0, 1.0), 0.9)

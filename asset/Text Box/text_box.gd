@@ -21,13 +21,13 @@ var punctuation_time = 0.03  # Much faster - was 0.15
 # Safety tips for different assets - combined into single messages
 var safety_tips = {
 	"window": [
-		"Stay away from windows during a typhoon. Strong winds can shatter glass or blow debris inside, so it's safest to stay in the inner part of the house."
+		"Stay away from windows during a typhoon. Strong winds can shatter glass or blow debris inside."
 	] as Array[String],
 	"tv": [
 		"Always monitor weather updates from PAGASA, NDRRMC, or local news for safety alerts and evacuation instructions."
 	] as Array[String],
 	"fuse_box": [
-		"During a typhoon, turn off the main power switch if flooding begins or there's frequent lightning. This helps prevent electrical shocks and fire hazards. Stay dry and use a flashlight instead of touching any wet electrical parts."
+		"During a typhoon, turn off the main power switch if flooding begins or there's frequent lightning. "
 	] as Array[String],
 	"go_bag": [
 		"Prepare a Go Bag with water, food, medicine, flashlight, batteries, and important documents for quick evacuation."
@@ -189,11 +189,11 @@ func _display_letter():
 		if continue_label:
 			continue_label.visible = true
 		
-		# Start 7-second auto-hide timer for Player 3 self-talk
+		# Start 2-second auto-hide timer for Player 3 self-talk
 		if auto_hide_timer:
-			auto_hide_timer.wait_time = 7.0
+			auto_hide_timer.wait_time = 2.0
 			auto_hide_timer.start()
-			print("Started 7-second auto-hide timer for self-talk")
+			print("Started 2-second auto-hide timer for self-talk")
 		return
 	
 	match text[letter_index]:

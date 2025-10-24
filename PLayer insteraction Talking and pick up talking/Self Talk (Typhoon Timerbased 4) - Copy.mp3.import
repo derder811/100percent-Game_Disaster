@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b0c1blctic42r"
+path="res://.godot/imported/Self Talk (Typhoon Timerbased 4) - Copy.mp3-209b7321324e216e973140e8ca732caf.mp3str"
+
+[deps]
+
+source_file="res://PLayer insteraction Talking and pick up talking/Self Talk (Typhoon Timerbased 4) - Copy.mp3"
+dest_files=["res://.godot/imported/Self Talk (Typhoon Timerbased 4) - Copy.mp3-209b7321324e216e973140e8ca732caf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

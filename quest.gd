@@ -16,8 +16,8 @@ var total_emergency_items = 9  # powerbank, phone, documents, first aid (medkit)
 
 # Timer variables for third quest
 var quest_timer: Timer
-var timer_duration = 90.0  # 1 minute 30 seconds
-var time_remaining = 90.0
+var timer_duration = 120.0  # 2 minutes
+var time_remaining = 120.0
 var is_timer_active = false
 var timer_label: Label
 
@@ -252,15 +252,12 @@ func complete_objective(objective_name: String):
 			
 			# Update UI to show the new objective
 			update_quest_ui()
-		elif current_objective_index >= 2:
-			# All objectives completed
-			print("Quest: All objectives completed!")
-			await get_tree().create_timer(1.0).timeout
-			animate_quest_completion()
 		
-		# Check if all objectives are complete
+		# Check if all objectives are complete after updating
 		if all_objectives_complete():
-			print("Quest: All objectives completed!")
+			print("Quest: All objectives completed! Triggering scene transition...")
+			# Wait a moment for any animations to complete
+			await get_tree().create_timer(1.5).timeout
 			animate_quest_completion()
 	else:
 		print("Objective not completed because:")
@@ -272,6 +269,7 @@ func complete_objective(objective_name: String):
 
 func animate_quest_completion():
 	"""Special animation when all objectives are completed"""
+	print("Quest: animate_quest_completion() called - starting completion animation")
 	if quest_box:
 		var tween = create_tween()
 		tween.set_parallel(true)
@@ -283,6 +281,24 @@ func animate_quest_completion():
 		# Golden glow effect
 		tween.tween_property(quest_box, "modulate", Color(1.5, 1.3, 0.8, 1.0), 0.5)
 		tween.tween_property(quest_box, "modulate", Color.WHITE, 0.5).set_delay(0.5)
+		
+		# After the animation, transition to the Survive screen
+		print("Quest: Calling _go_to_survive_scene() via call_deferred")
+		call_deferred("_go_to_survive_scene")
+	else:
+		print("Quest: quest_box is null, calling _go_to_survive_scene() directly")
+		call_deferred("_go_to_survive_scene")
+
+func _go_to_survive_scene():
+	print("Quest: _go_to_survive_scene() called - transitioning to Survive.tscn")
+	var survive_scene_path := "res://Survive.tscn"
+	if ResourceLoader.exists(survive_scene_path):
+		print("Quest: Survive scene found, waiting 0.8 seconds before transition...")
+		await get_tree().create_timer(0.8).timeout
+		print("Quest: Changing scene to Survive.tscn now!")
+		get_tree().change_scene_to_file(survive_scene_path)
+	else:
+		print("ERROR: Survive scene not found at ", survive_scene_path)
 
 func all_objectives_complete() -> bool:
 	for objective in objectives.values():
@@ -528,7 +544,7 @@ func start_quest_timer():
 			timer_label.visible = true
 			update_timer_display()
 		
-		print("Quest: Timer started for emergency items collection (90 seconds)")
+		print("Quest: Timer started for emergency items collection (120 seconds)")
 
 func stop_quest_timer():
 	"""Stop the quest timer"""

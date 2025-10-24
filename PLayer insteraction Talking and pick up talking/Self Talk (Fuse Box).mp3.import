@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://btbxm43q7k0k1"
+path="res://.godot/imported/Self Talk (Fuse Box).mp3-0b6bacebe65b578f1f336429f01a5f67.mp3str"
+
+[deps]
+
+source_file="res://PLayer insteraction Talking and pick up talking/Self Talk (Fuse Box).mp3"
+dest_files=["res://.godot/imported/Self Talk (Fuse Box).mp3-0b6bacebe65b578f1f336429f01a5f67.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

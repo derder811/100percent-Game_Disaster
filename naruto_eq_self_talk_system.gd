@@ -216,23 +216,23 @@ func _ensure_textbox_nodes():
 		add_child(_textbox_layer)
 	if _textbox_panel == null:
 		_textbox_panel = Panel.new()
-		# Anchor to bottom, full width with margins
-		_textbox_panel.anchor_left = 0.0
-		_textbox_panel.anchor_right = 1.0
-		_textbox_panel.anchor_top = 1.0
-		_textbox_panel.anchor_bottom = 1.0
-		_textbox_panel.offset_left = 24
-		_textbox_panel.offset_right = -24
-		_textbox_panel.offset_top = -140
-		_textbox_panel.offset_bottom = -24
-		_textbox_panel.custom_minimum_size = Vector2(0, 110)
+		# Anchor to top-centered width to match image
+		_textbox_panel.anchor_left = 0.15
+		_textbox_panel.anchor_right = 0.85
+		_textbox_panel.anchor_top = 0.0
+		_textbox_panel.anchor_bottom = 0.0
+		_textbox_panel.offset_left = 0
+		_textbox_panel.offset_right = 0
+		_textbox_panel.offset_top = 24
+		_textbox_panel.offset_bottom = 154
+		_textbox_panel.custom_minimum_size = Vector2(0, 130)
 		# Style: dark rounded background
 		var sb := StyleBoxFlat.new()
-		sb.bg_color = Color(0, 0, 0, 0.75)
-		sb.corner_radius_top_left = 10
-		sb.corner_radius_top_right = 10
-		sb.corner_radius_bottom_left = 10
-		sb.corner_radius_bottom_right = 10
+		sb.bg_color = Color(0, 0, 0, 0.80)
+		sb.corner_radius_top_left = 12
+		sb.corner_radius_top_right = 12
+		sb.corner_radius_bottom_left = 12
+		sb.corner_radius_bottom_right = 12
 		_textbox_panel.add_theme_stylebox_override("panel", sb)
 		_textbox_panel.visible = false
 		_textbox_layer.add_child(_textbox_panel)
@@ -247,7 +247,7 @@ func _ensure_textbox_nodes():
 		_textbox_label.offset_top = 10
 		_textbox_label.offset_bottom = -10
 		_textbox_label.autowrap_mode = TextServer.AUTOWRAP_WORD
-		_textbox_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+		_textbox_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		_textbox_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		_textbox_label.add_theme_color_override("font_color", Color(1,1,1,1))
 		_textbox_panel.add_child(_textbox_label)
@@ -264,11 +264,11 @@ func _update_textbox_style(is_urgent: bool):
 	if is_urgent:
 		sb.bg_color = Color(0.10, 0.00, 0.00, 0.85)
 	else:
-		sb.bg_color = Color(0, 0, 0, 0.75)
-	sb.corner_radius_top_left = 10
-	sb.corner_radius_top_right = 10
-	sb.corner_radius_bottom_left = 10
-	sb.corner_radius_bottom_right = 10
+		sb.bg_color = Color(0, 0, 0, 0.80)
+	sb.corner_radius_top_left = 12
+	sb.corner_radius_top_right = 12
+	sb.corner_radius_bottom_left = 12
+	sb.corner_radius_bottom_right = 12
 	_textbox_panel.add_theme_stylebox_override("panel", sb)
 	if _textbox_label != null:
 		_textbox_label.add_theme_color_override("font_color", Color(1,1,1,1))

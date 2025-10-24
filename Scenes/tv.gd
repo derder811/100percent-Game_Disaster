@@ -30,13 +30,24 @@ func _on_interact():
 		if sprite != null:
 			sprite.flip_h = overlapping_bodies[0].global_position.x < global_position.x
 		
+		# Play self-talk voice clip
+		if AudioManager:
+			AudioManager.play_sfx("res://PLayer insteraction Talking and pick up talking/Self Talk (TV).mp3", 4.0)
+		
 		# Show self-talk in bottom textbox via SelfTalkSystem
 		var sys = get_tree().get_first_node_in_group("self_talk_system")
 		if sys and sys.has_method("trigger_custom_self_talk"):
 			sys.trigger_custom_self_talk(lines[0])
 		
-		# Show SimpleDialog safety tips after self-talk completes
-		await get_tree().create_timer(4.5).timeout
+		# Wait for actual audio completion, then remove self-talk textbox
+		await AudioManager.wait_sfx_finished()
+		if sys and sys.has_method("hide_self_talk"):
+			sys.hide_self_talk()
+		elif sys and sys.has_method("clear_self_talk"):
+			sys.clear_self_talk()
+		
+		# Show SimpleDialog safety tips after self-talk is removed
+		await get_tree().create_timer(0.3).timeout
 		SimpleDialogManager.show_safety_tips("tv", global_position)
 		
 		# Follow-up self-talk message

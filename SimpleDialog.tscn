@@ -5,8 +5,8 @@
 [node name="SimpleDialog" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 550.0
-offset_bottom = 280.0
+offset_right = 600.0
+offset_bottom = 300.0
 script = ExtResource("1_simple")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -16,7 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.15, 0.15, 0.15, 0.95)
+color = Color(0.12, 0.12, 0.12, 0.96)
 
 [node name="Border" type="ColorRect" parent="Background"]
 layout_mode = 1
@@ -25,18 +25,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.8, 0.8, 0.8, 1)
+color = Color(0.85, 0.85, 0.85, 1)
 
 [node name="InnerBackground" type="ColorRect" parent="Background/Border"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.01
-anchor_top = 0.01
-anchor_right = 0.99
-anchor_bottom = 0.99
+anchor_left = 0.012
+anchor_top = 0.012
+anchor_right = 0.988
+anchor_bottom = 0.988
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.2, 0.2, 0.2, 1)
+color = Color(0.18, 0.18, 0.18, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/Border/InnerBackground"]
 layout_mode = 1
@@ -49,34 +49,34 @@ grow_vertical = 2
 [node name="Header" type="Label" parent="Background/Border/InnerBackground/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 22
 text = "TIPS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="Background/Border/InnerBackground/VBoxContainer"]
+[node name="HeaderSeparator" type="HSeparator" parent="Background/Border/InnerBackground/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 2
+custom_minimum_size = Vector2(0, 2)
 
 [node name="ContentContainer" type="MarginContainer" parent="Background/Border/InnerBackground/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 15
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 24
 
 [node name="ContentLabel" type="Label" parent="Background/Border/InnerBackground/VBoxContainer/ContentContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 14
 text = "Dialog text will appear here..."
 autowrap_mode = 3
 
 [node name="Footer" type="MarginContainer" parent="Background/Border/InnerBackground/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 5
+theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
@@ -84,5 +84,5 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_font_sizes/font_size = 12
-text = "Close(Space)"
+text = "Close (Space / Interact)"
 horizontal_alignment = 2

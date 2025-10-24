@@ -15,7 +15,7 @@ func _ready():
 	if interaction_area:
 		interaction_area.interact = _on_interact
 	# Start heavy rain ambience for the first scenario
-	AudioManager.play_ambient("res://Music/Heavy Rain.mp3", true)
+	AudioManager.play_ambient("res://PLayer insteraction Talking and pick up talking/Music/Heavy Rain.mp3", true)
 
 func _on_interact():
 	# Safety check for overlapping bodies

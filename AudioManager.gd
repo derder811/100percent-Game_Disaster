@@ -67,6 +67,17 @@ func play_sfx(path: String, volume_db: float = 0.0) -> void:
 	sfx_player.volume_db = volume_db
 	sfx_player.play()
 
+# Await until the currently playing SFX finishes.
+# If nothing is playing, returns immediately.
+func wait_sfx_finished() -> void:
+	if sfx_player and sfx_player.playing:
+		await sfx_player.finished
+
+# Convenience API: play an SFX then await its completion.
+func play_sfx_and_wait(path: String, volume_db: float = 0.0) -> void:
+	play_sfx(path, volume_db)
+	await wait_sfx_finished()
+
 func stop_all() -> void:
 	stop_bgm()
 	stop_ambient()

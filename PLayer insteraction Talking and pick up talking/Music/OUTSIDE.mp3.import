@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://g3qi7qvtc4op"
+path="res://.godot/imported/OUTSIDE.mp3-9728896eec862de0a11b6f60810dfbd0.mp3str"
+
+[deps]
+
+source_file="res://PLayer insteraction Talking and pick up talking/Music/OUTSIDE.mp3"
+dest_files=["res://.godot/imported/OUTSIDE.mp3-9728896eec862de0a11b6f60810dfbd0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cucbxw35i03ji"
+path="res://.godot/imported/Self Talk (Slurpee) - Copy.mp3-c0a9cc25fe6223c9579ddb84e6f1b752.mp3str"
+
+[deps]
+
+source_file="res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Slurpee) - Copy.mp3"
+dest_files=["res://.godot/imported/Self Talk (Slurpee) - Copy.mp3-c0a9cc25fe6223c9579ddb84e6f1b752.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

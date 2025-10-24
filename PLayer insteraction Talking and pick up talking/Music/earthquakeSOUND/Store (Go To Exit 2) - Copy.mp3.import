@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://djvayal2b5xao"
+path="res://.godot/imported/Store (Go To Exit 2) - Copy.mp3-6dbc102293d4b35d9db11ccf02292592.mp3str"
+
+[deps]
+
+source_file="res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Store (Go To Exit 2) - Copy.mp3"
+dest_files=["res://.godot/imported/Store (Go To Exit 2) - Copy.mp3-6dbc102293d4b35d9db11ccf02292592.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

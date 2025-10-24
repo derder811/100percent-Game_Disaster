@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dof2554of6um"
+path="res://.godot/imported/Earthquake 3.mp3-ad988ad141f4e36f66c274a1c3bbca89.mp3str"
+
+[deps]
+
+source_file="res://PLayer insteraction Talking and pick up talking/Music/Earthquake 3.mp3"
+dest_files=["res://.godot/imported/Earthquake 3.mp3-ad988ad141f4e36f66c274a1c3bbca89.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

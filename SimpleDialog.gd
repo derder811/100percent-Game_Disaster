@@ -8,12 +8,24 @@ extends Control
 var current_text = ""
 var is_showing = false
 var tween: Tween
+var auto_hide_timer: Timer
 
 func _ready():
 	visible = false
 	set_process_input(true)
 	# Start with scale 0 for pop animation
 	scale = Vector2.ZERO
+	
+	# Create auto-hide timer
+	auto_hide_timer = Timer.new()
+	auto_hide_timer.wait_time = 2.0
+	auto_hide_timer.one_shot = true
+	auto_hide_timer.timeout.connect(func(): 
+		print("Auto-hide timer expired - closing simple dialog")
+		if is_showing:
+			hide_dialog()
+	)
+	add_child(auto_hide_timer)
 
 func show_dialog(text: String, position: Vector2 = Vector2.ZERO, header: String = "TIPS", footer_hint: String = "Close (Space / Interact)"):
 	print("SimpleDialog.show_dialog called with: ", text)
@@ -27,11 +39,11 @@ func show_dialog(text: String, position: Vector2 = Vector2.ZERO, header: String 
 	
 	# Position the dialog
 	if position != Vector2.ZERO:
-		global_position = position - Vector2(size.x / 2, size.y + 50)
+		global_position = position - Vector2(size.x / 2, size.y - 5)
 	else:
 		# Center on screen
 		var viewport_size = get_viewport().get_visible_rect().size
-		global_position = Vector2(viewport_size.x / 2 - size.x / 2, viewport_size.y / 2 - size.y / 2)
+		global_position = Vector2(viewport_size.x / 2 - size.x / 2, viewport_size.y / 2 - size.y / 2 + 35)
 	
 	visible = true
 	is_showing = true
@@ -45,9 +57,17 @@ func show_dialog(text: String, position: Vector2 = Vector2.ZERO, header: String 
 	tween.set_trans(Tween.TRANS_BACK)
 	tween.tween_property(self, "scale", Vector2.ONE, 0.3)
 	
+	# Start auto-hide timer
+	if auto_hide_timer:
+		auto_hide_timer.start()
+		print("Started 2-second auto-hide timer for simple dialog")
 
 
 func hide_dialog():
+	# Stop auto-hide timer if it's running
+	if auto_hide_timer and not auto_hide_timer.is_stopped():
+		auto_hide_timer.stop()
+	
 	if tween:
 		tween.kill()
 	tween = create_tween()

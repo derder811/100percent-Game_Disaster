@@ -175,6 +175,16 @@ func animate_quest_completion():
 		tween.tween_property(quest_box, "scale", Vector2(1.0, 1.0), 0.25).set_delay(0.25)
 		tween.tween_property(quest_box, "modulate", Color(1.5, 1.3, 0.8, 1.0), 0.5)
 		tween.tween_property(quest_box, "modulate", Color.WHITE, 0.5).set_delay(0.5)
+		# Transition to Survive scene after the animation
+		call_deferred("_go_to_survive_scene")
+
+func _go_to_survive_scene():
+	var survive_scene_path := "res://Survive.tscn"
+	if ResourceLoader.exists(survive_scene_path):
+		await get_tree().create_timer(0.8).timeout
+		get_tree().change_scene_to_file(survive_scene_path)
+	else:
+		print("Survive scene not found at ", survive_scene_path)
 
 func show_quest_box_with_animation():
 	if quest_box and not is_quest_box_visible:
