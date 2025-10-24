@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://bjkpnjhn5p5ll"]
+[gd_scene load_steps=43 format=4 uid="uid://bjkpnjhn5p5ll"]
 
 [ext_resource type="Texture2D" uid="uid://bmwlesqnyqitg" path="res://earthquake Asset/EQ Tileset.png" id="1_ny0hn"]
 [ext_resource type="Texture2D" uid="uid://brc11ppc6xbdj" path="res://earthquake Asset/SuperMarket.png" id="2_6f7f8"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bgll4a52be7j0" path="res://pause_scene.tscn" id="99_pause"]
 [ext_resource type="PackedScene" uid="uid://dphjv3kh6kr78" path="res://game_settings.tscn" id="100_settings"]
 [ext_resource type="PackedScene" uid="uid://cn78s64y0du1h" path="res://Settings Button.tscn" id="101_settings_btn"]
+[ext_resource type="Script" uid="uid://cwd4y6gkud3m0" path="res://earthquake_cutscene_audio.gd" id="102_quake_audio_boot"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hy6pp"]
 texture = ExtResource("1_ny0hn")
@@ -10872,6 +10873,9 @@ position = Vector2(1255, 433)
 [node name="GameSettings" parent="." instance=ExtResource("100_settings")]
 
 [node name="SettingsButton" parent="." instance=ExtResource("101_settings_btn")]
+
+[node name="AudioBoot" type="Node" parent="."]
+script = ExtResource("102_quake_audio_boot")
 
 [node name="EarthquakeAmbientSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_outside_audio")

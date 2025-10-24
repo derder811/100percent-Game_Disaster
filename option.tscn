@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfkat5mowh8u2"]
+[gd_scene load_steps=6 format=3 uid="uid://dfkat5mowh8u2"]
 
 [ext_resource type="Script" uid="uid://d2wpti3m2wpic" path="res://option.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://oqvhfbla6jo1" path="res://asset/button/Menu/Background Menu 2.png" id="1_slay5"]
-[ext_resource type="Texture2D" uid="uid://cie6qi7233eov" path="res://asset/button/Sounds Button.png" id="2_l82yo"]
+[ext_resource type="Texture2D" uid="uid://762cq485dejb" path="res://asset/button/off.png" id="3_c6ia3"]
 [ext_resource type="Texture2D" uid="uid://c24e6o6vuonag" path="res://asset/button/Back Button.png" id="3_uhspr"]
+[ext_resource type="Texture2D" uid="uid://ml2ij7g0by80" path="res://asset/button/butonton (1).png" id="5_v4yl2"]
 
 [node name="OPTION" type="Control"]
 layout_mode = 3
@@ -21,18 +22,26 @@ texture = ExtResource("1_slay5")
 
 [node name="Toggle Sounds" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 469.0
-offset_top = 216.0
-offset_right = 1794.0
-offset_bottom = 866.0
+offset_left = 454.0
+offset_top = 280.0
+offset_right = 1845.0
+offset_bottom = 644.0
 scale = Vector2(0.180267, 0.159386)
-texture_normal = ExtResource("2_l82yo")
+texture_normal = ExtResource("3_c6ia3")
 
 [node name="Back Button" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 475.0
-offset_top = 344.0
-offset_right = 1450.0
-offset_bottom = 669.0
+offset_left = 465.0
+offset_top = 389.0
+offset_right = 1440.0
+offset_bottom = 714.0
 scale = Vector2(0.236522, 0.179277)
 texture_normal = ExtResource("3_uhspr")
+
+[node name="Toggle Sounds2" type="TextureButton" parent="."]
+offset_left = 458.0
+offset_top = 229.0
+offset_right = 1780.0
+offset_bottom = 580.0
+scale = Vector2(0.180267, 0.159386)
+texture_normal = ExtResource("5_v4yl2")

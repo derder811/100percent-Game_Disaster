@@ -10886,7 +10886,7 @@ position = Vector2(441, 124)
 [node name="Store Exit" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Store Exit"]
-position = Vector2(837, 1046)
+position = Vector2(841, 1004)
 shape = SubResource("RectangleShape2D_m1a2q")
 
 [node name="Camera2D" type="Camera2D" parent="."]

@@ -101,7 +101,7 @@ func _ready():
 		tree.node_added.connect(_on_node_added)
 	
 	# Wait a moment for the scene to fully load, then show entry message
-	await get_tree().create_timer(2.0).timeout
+	await _await_seconds(2.0)
 	show_store_entry_message()
 
 func show_store_entry_message():
@@ -151,10 +151,10 @@ func trigger_after_item_interact_talk(item_type: String):
 func _wait_for_dialog_and_show_self_talk():
 	# Wait until no active dialog AND global cooldown is ready
 	while _is_any_dialog_active() or not _cooldown_ready():
-		await get_tree().create_timer(0.25).timeout
+		await _await_seconds(0.25)
 	
 	# Add a small delay to prevent overlap
-	await get_tree().create_timer(0.75).timeout
+	await _await_seconds(0.75)
 	
 	# Show the self-talk if we still have a pending message
 	if pending_interaction_self_talk != "":
@@ -162,7 +162,7 @@ func _wait_for_dialog_and_show_self_talk():
 		pending_interaction_self_talk = ""
 	
 	# Reset interaction state after a delay
-	await get_tree().create_timer(3.0).timeout
+	await _await_seconds(3.0)
 	is_currently_interacting = false
 
 func _cooldown_ready() -> bool:
@@ -186,7 +186,7 @@ func _show_pending_interaction_self_talk():
 		pending_interaction_self_talk = ""
 		
 		# Reset interaction state after showing the message
-		await get_tree().create_timer(3.0).timeout
+		await _await_seconds(3.0)
 		is_currently_interacting = false
 
 func trigger_movement_comment():
@@ -359,16 +359,16 @@ func _process_interaction_queue():
 			return
 		# Wait until no active dialog; interactions bypass global cooldown
 		while not _can_show_interaction_now():
-			await get_tree().create_timer(0.25).timeout
+			await _await_seconds(0.25)
 		
 		var msg: String = interaction_queue.pop_front()
 		_show_dialog_above_player(msg)
 		# Wait a bit for auto-close and avoid immediate stacking
-		await get_tree().create_timer(2.5).timeout
+		await _await_seconds(2.5)
 	
 	# Clear interaction state when queue drains
 	interaction_processing = false
-	await get_tree().create_timer(0.5).timeout
+	await _await_seconds(0.5)
 	is_currently_interacting = false
 
 # Add mapping to ensure after_interact messages only show when interacting with the asset
@@ -430,13 +430,13 @@ func _run_earthquake_safety_sequence():
 			return
 		# wait until no other dialog and global cooldown is ready
 		while _is_any_dialog_active() or not _cooldown_ready():
-			await get_tree().create_timer(0.25).timeout
+			await _await_seconds(0.25)
 			if player == null or not is_instance_valid(player) or player.is_queued_for_deletion() or not player.is_inside_tree():
 				eq_sequence_running = false
 				return
 		_show_dialog_above_player(msg)
 		# brief pause between safety lines
-		await get_tree().create_timer(3.0).timeout
+		await _await_seconds(3.0)
 	eq_sequence_running = false
 
 func _get_current_dialog_node() -> Node:
@@ -811,21 +811,43 @@ func _maybe_restyle_new_node(node: Node) -> void:
 	return
 
 
+# Safe await helper to avoid get_tree() being null during scene changes
+func _await_seconds(sec: float) -> void:
+	if not is_inside_tree():
+		return
+	var t := Timer.new()
+	t.one_shot = true
+	t.wait_time = sec
+	add_child(t)
+	t.start()
+	await t.timeout
+	if is_instance_valid(t):
+		t.queue_free()
+
 # Map known self-talk lines (or keywords) to available voice assets
 func _map_voice_path_for_message(message: String) -> String:
 	var msg := String(message)
 	# Store entry messages
 	if msg.find("Oh hey, a convenience store") != -1:
 		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Store Entry) - Copy.mp3"
-	elif msg.find("I need to cover all areas of the store") != -1:
+	elif msg.find("I'm in the store now") != -1 or msg.find("in the store now") != -1:
 		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Store Entry) - Copy.mp3"
+	# Movement comments
+	elif msg.find("Let me check over here") != -1:
+		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Letmecheckoverhere.mp3"
+	elif msg.find("What's in this section") != -1:
+		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/whats in this section.mp3"
+	elif msg.find("I should look around") != -1:
+		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/i should look around.mp3"
 	elif msg.find("Maybe there's something useful here") != -1:
+		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/maybe there somethins useful.mp3"
+	elif msg.find("I need to cover all areas of the store") != -1:
 		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Store Entry) - Copy.mp3"
 	# Exit messages
 	elif msg.find("should head to the exit") != -1 or msg.find("time to leave") != -1:
 		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/i should head to the exit.mp3"
 	# Food section messages
-	elif msg.find("What's in this section") != -1 or msg.find("food section") != -1:
+	elif msg.find("food section") != -1:
 		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Food Section) - Copy.mp3"
 	# Snacks section messages
 	elif msg.find("snacks") != -1 or msg.find("chips") != -1:

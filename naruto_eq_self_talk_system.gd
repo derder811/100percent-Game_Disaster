@@ -279,6 +279,7 @@ func _show_textbox(message: String, seconds: float = 4.0, urgent: bool = false):
 	_textbox_label.text = message
 	_textbox_panel.visible = true
 	_textbox_active = true
+	_play_voice_for_message(message)
 	if _textbox_ttl_timer != null:
 		if seconds > 0.0:
 			_textbox_ttl_timer.start(seconds)
@@ -289,3 +290,29 @@ func _hide_textbox():
 	_textbox_active = false
 	if _textbox_panel != null:
 		_textbox_panel.visible = false
+
+# Map known self-talk lines to available voice assets for Naruto
+func _map_voice_path_for_message(message: String) -> String:
+	var msg := String(message)
+	# Convenience store entry and timer-based lines
+	if msg.find("Oh hey, a convenience store") != -1:
+		return "res://asset/button/Oh hey, a convenience store..mp3"
+	elif msg.find("Might as well take a look") != -1:
+		return "res://asset/button/Oh hey, a convenience store..mp3"
+	elif msg.find("Could use a quick break") != -1:
+		return "res://asset/button/Oh hey, a convenience store..mp3"
+	# Fallback: no known voice asset
+	return ""
+
+# Play a voice clip for the given message, if mapped
+func _play_voice_for_message(message: String) -> void:
+	var voice_path := _map_voice_path_for_message(message)
+	if voice_path == "":
+		return
+	var audio_mgr = null
+	if typeof(AudioManager) != TYPE_NIL:
+		audio_mgr = AudioManager
+	else:
+		audio_mgr = get_tree().get_root().get_node_or_null("/root/AudioManager")
+	if audio_mgr and audio_mgr.has_method("play_sfx"):
+		audio_mgr.play_sfx(voice_path, 4.0)

@@ -18,7 +18,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.4)
 
 [node name="PopupPanel" type="PopupPanel" parent="Background"]
-size = Vector2i(10, 10)
+size = Vector2i(2003, 388)
 
 [node name="MenuContainer" type="VBoxContainer" parent="Background/PopupPanel"]
 anchors_preset = 15

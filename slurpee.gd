@@ -207,9 +207,10 @@ func _play_pre_earthquake_evacuation_cutscene() -> void:
 	var scene = get_tree().current_scene
 	if scene == null:
 		return
-	# Play earthquake audio for cutscene
+	# Play earthquake audio for cutscene (ambient loop), stop store ambience
 	if AudioManager:
-		AudioManager.play_sfx("res://Music/Earthquak.mp3")
+		AudioManager.stop_ambient()
+		AudioManager.play_ambient("res://PLayer insteraction Talking and pick up talking/Music/Earthquak.mp3", true)
 	# Get player and temporarily disable RemoteTransform controlling the camera
 	var player = get_tree().get_first_node_in_group("Player2")
 	if player == null:

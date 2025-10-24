@@ -25,6 +25,19 @@ var game_over_scene_path: String = "res://game_over.tscn"
 var _continuous_shake_running: bool = false
 var _camera_original_offset: Vector2 = Vector2.ZERO
 
+# Safe await helper to avoid get_tree() being null
+func _await_seconds(sec: float) -> void:
+	if not is_inside_tree():
+		return
+	var t := Timer.new()
+	t.one_shot = true
+	t.wait_time = sec
+	add_child(t)
+	t.start()
+	await t.timeout
+	if is_instance_valid(t):
+		t.queue_free()
+
 func is_active() -> bool:
 	return _quest_active
 func _ready():
@@ -64,6 +77,10 @@ func _ready():
 	_start_quake_timers()
 	# Begin continuous camera shake for the duration of the quest
 	call_deferred("_start_continuous_camera_shake", 10.0)
+	# Start earthquake ambience
+	if AudioManager:
+		AudioManager.stop_ambient()
+		AudioManager.play_ambient("res://PLayer insteraction Talking and pick up talking/Music/Earthquak.mp3", true)
 	# Trigger Player3 safety self-talk sequence right after quake begins
 	call_deferred("_trigger_player3_safety_self_talk")
 	# Start 1-minute quest timer for fail-state
@@ -254,7 +271,7 @@ func _camera_shake(duration_sec: float, magnitude: float) -> void:
 	var elapsed := 0.0
 	while elapsed < duration_sec:
 		camera.offset = Vector2(rng.randf_range(-magnitude, magnitude), rng.randf_range(-magnitude, magnitude))
-		await get_tree().create_timer(0.02).timeout
+		await _await_seconds(0.02)
 		elapsed += 0.02
 	camera.offset = original_offset
 
@@ -331,7 +348,7 @@ func _run_continuous_camera_shake(magnitude: float):
 		if done or _collapse_started:
 			break
 		camera.offset = Vector2(rng.randf_range(-magnitude, magnitude), rng.randf_range(-magnitude, magnitude))
-		await get_tree().create_timer(0.02).timeout
+		await _await_seconds(0.02)
 	_stop_continuous_camera_shake()
 
 func _stop_continuous_camera_shake():
