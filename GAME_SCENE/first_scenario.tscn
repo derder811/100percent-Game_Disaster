@@ -2599,13 +2599,6 @@ position = Vector2(0.677507, 4.2417)
 position = Vector2(-1.01688, 26.8612)
 shape = SubResource("CapsuleShape2D_p8a1h")
 
-[node name="nathan" parent="." instance=ExtResource("46_rfgjq")]
-position = Vector2(-418.976, -462.503)
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="nathan"]
-position = Vector2(498, 326)
-remote_path = NodePath("../../Camera2D")
-
 [node name="InteractionManager" parent="." instance=ExtResource("interaction_manager")]
 visible = false
 position = Vector2(-84.74, -34.8724)
@@ -2615,3 +2608,10 @@ position = Vector2(241.34, -142.788)
 
 [node name="candle" parent="." instance=ExtResource("70_ac53u")]
 position = Vector2(232.527, 333.173)
+
+[node name="nathan" parent="." instance=ExtResource("46_rfgjq")]
+position = Vector2(-418.976, -462.503)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="nathan"]
+position = Vector2(498, 326)
+remote_path = NodePath("../../Camera2D")

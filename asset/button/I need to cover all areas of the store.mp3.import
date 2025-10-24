@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b0njpnjqttkxt"
+path="res://.godot/imported/I need to cover all areas of the store.mp3-5e30b38a16b9b76d8e1523b308bf9a5f.mp3str"
+
+[deps]
+
+source_file="res://asset/button/I need to cover all areas of the store.mp3"
+dest_files=["res://.godot/imported/I need to cover all areas of the store.mp3-5e30b38a16b9b76d8e1523b308bf9a5f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

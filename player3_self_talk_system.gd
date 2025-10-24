@@ -376,9 +376,9 @@ var action_name_by_item_type: Dictionary = {
 	"snacks": "examine snacks",
 	"fridge": "examine fridge",
 	"slurpee": "examine slurpee",
-	"ice_cream_fridge": "examine ice cream fridge",
-	"meat_fridge": "examine meat fridge",
-	"hotdog_siopao": "examine hotdog and siopao",
+	"ice_cream_fridge": "ice cream fridge",
+	"meat_fridge": "meat fridge",
+	"hotdog_siopao": "hotdog and siopao",
 	"food_section": "examine snacks"
 }
 
@@ -580,6 +580,8 @@ func _show_textbox(message: String, seconds: float = 4.0, urgent: bool = false):
 	# Textbox is screen-anchored; disable follow so it won't move bubble
 	_follow_active = false
 	set_process(true)
+	# Play voice for this message once textbox becomes visible
+	_play_voice_for_message(message)
 	if _textbox_ttl_timer != null:
 		if seconds > 0.0:
 			_textbox_ttl_timer.start(seconds)
@@ -807,3 +809,54 @@ func _maybe_restyle_new_node(node: Node) -> void:
 			if ("dialog" in p_name) or ("bubble" in p_name) or ("speech" in p_name) or ("balloon" in p_name) or ("tutorial" in p_name):
 				_hide_canvas_visuals(parent)
 	return
+
+
+# Map known self-talk lines (or keywords) to available voice assets
+func _map_voice_path_for_message(message: String) -> String:
+	var msg := String(message)
+	# Store entry messages
+	if msg.find("Oh hey, a convenience store") != -1:
+		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Store Entry) - Copy.mp3"
+	elif msg.find("I need to cover all areas of the store") != -1:
+		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Store Entry) - Copy.mp3"
+	elif msg.find("Maybe there's something useful here") != -1:
+		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Store Entry) - Copy.mp3"
+	# Exit messages
+	elif msg.find("should head to the exit") != -1 or msg.find("time to leave") != -1:
+		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/i should head to the exit.mp3"
+	# Food section messages
+	elif msg.find("What's in this section") != -1 or msg.find("food section") != -1:
+		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Food Section) - Copy.mp3"
+	# Snacks section messages
+	elif msg.find("snacks") != -1 or msg.find("chips") != -1:
+		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Snacks) - Copy.mp3"
+	# Ice cream fridge interactions
+	elif msg.find("Ice cream") != -1 or msg.find("frozen") != -1:
+		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Ice Cream) - Copy.mp3"
+	# Meat fridge interactions
+	elif msg.find("meat") != -1 or msg.find("beef") != -1 or msg.find("pork") != -1:
+		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Meat) - Copy.mp3"
+	# Hotdog/Siopao interactions
+	elif msg.find("hotdog") != -1 or msg.find("siopao") != -1:
+		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (HotPao) (1).mp3"
+	# General fridge interactions (fallback for other fridges)
+	elif msg.find("fridge") != -1 or msg.find("refrigerator") != -1:
+		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Fridge) (1).mp3"
+	# Slurpee interactions
+	elif msg.find("slurpee") != -1 or msg.find("drink") != -1:
+		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Slurpee) - Copy.mp3"
+	# No known voice asset
+	return ""
+
+# Play a voice clip for the given message, if mapped
+func _play_voice_for_message(message: String) -> void:
+	var voice_path := _map_voice_path_for_message(message)
+	if voice_path == "":
+		return
+	var audio_mgr = null
+	if typeof(AudioManager) != TYPE_NIL:
+		audio_mgr = AudioManager
+	else:
+		audio_mgr = get_tree().get_root().get_node_or_null("/root/AudioManager")
+	if audio_mgr and audio_mgr.has_method("play_sfx"):
+		audio_mgr.play_sfx(voice_path, 4.0)

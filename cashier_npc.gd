@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var interaction_area: InteractionArea = $InteractionArea
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var anim_tree: AnimationTree = $AnimationTree
+@onready var cashier_audio_player: AudioStreamPlayer = $CashierAudioPlayer
 var dialog_box_scene: PackedScene = preload("res://Scenes/dialog_box.tscn")
 var store_quest_activated: bool = false
 
@@ -25,6 +26,11 @@ func _get_dialog_box() -> Node:
 	return inst
 
 func _on_interact() -> void:
+	# Play cashier message audio
+	if cashier_audio_player != null:
+		cashier_audio_player.play()
+		print("Cashier NPC: Playing cashier message audio")
+	
 	# Merge lines into a single message to avoid Next
 	var merged_text: String = "Hello... Welcome to the store.\nYes we accept Gcash payment"
 	var lines: Array[String] = [merged_text]

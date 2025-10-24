@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://bgb87dydao761"]
+[gd_scene load_steps=22 format=3 uid="uid://bgb87dydao761"]
 
 [ext_resource type="Texture2D" uid="uid://dxwtgl3sn4xlt" path="res://earthquake Asset/Mother sprites.png" id="1_w8lub"]
 [ext_resource type="Script" uid="uid://bx21va8686o4h" path="res://asset/Interaction/Interaction Area/interaction_area.gd" id="2_gtkkr"]
 [ext_resource type="Script" uid="uid://24qfx7jmjcab" path="res://cashier_npc.gd" id="3_cashier_npc"]
+[ext_resource type="AudioStream" uid="uid://dvme6sooxypac" path="res://asset/button/CASHIER MESSAGE.mp3" id="4_cashier_audio"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_suotf"]
 
@@ -196,3 +197,8 @@ autoplay = "idle"
 tree_root = SubResource("AnimationNodeStateMachine_iwum0")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Walk/blend_position = Vector2(0, 0)
+
+[node name="CashierAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_cashier_audio")
+volume_db = -5.0
+bus = "Master"

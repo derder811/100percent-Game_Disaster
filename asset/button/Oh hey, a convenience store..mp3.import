@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bpmh53fkle5w"
+path="res://.godot/imported/Oh hey, a convenience store..mp3-9e896efe84f61ec1f08e711a6dbc466c.mp3str"
+
+[deps]
+
+source_file="res://asset/button/Oh hey, a convenience store..mp3"
+dest_files=["res://.godot/imported/Oh hey, a convenience store..mp3-9e896efe84f61ec1f08e711a6dbc466c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

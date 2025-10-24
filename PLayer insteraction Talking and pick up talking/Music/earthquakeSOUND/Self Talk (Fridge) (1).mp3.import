@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://se8iwf4webvw"
+path="res://.godot/imported/Self Talk (Fridge) (1).mp3-12d81737ad1fe8e843e9f0456ab1666b.mp3str"
+
+[deps]
+
+source_file="res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Fridge) (1).mp3"
+dest_files=["res://.godot/imported/Self Talk (Fridge) (1).mp3-12d81737ad1fe8e843e9f0456ab1666b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://bjkpnjhn5p5ll"]
+[gd_scene load_steps=42 format=4 uid="uid://bjkpnjhn5p5ll"]
 
 [ext_resource type="Texture2D" uid="uid://bmwlesqnyqitg" path="res://earthquake Asset/EQ Tileset.png" id="1_ny0hn"]
 [ext_resource type="Texture2D" uid="uid://brc11ppc6xbdj" path="res://earthquake Asset/SuperMarket.png" id="2_6f7f8"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://2qtu5slxw7k4" path="res://earthquake Asset/Outside Chair.png" id="7_ar1gu"]
 [ext_resource type="Texture2D" uid="uid://f8ch702fpghh" path="res://earthquake Asset/Electric Line Post.png" id="8_njc4q"]
 [ext_resource type="PackedScene" uid="uid://cjtfeqjgwd35q" path="res://asset/Interaction/InteractionManager.tscn" id="11_interaction_manager"]
+[ext_resource type="AudioStream" uid="uid://g3qi7qvtc4op" path="res://PLayer insteraction Talking and pick up talking/Music/OUTSIDE.mp3" id="12_outside_audio"]
+[ext_resource type="AudioStream" uid="uid://bpmh53fkle5w" path="res://asset/button/Oh hey, a convenience store..mp3" id="13_self_talk_outside"]
 [ext_resource type="PackedScene" uid="uid://bgll4a52be7j0" path="res://pause_scene.tscn" id="99_pause"]
 [ext_resource type="PackedScene" uid="uid://dphjv3kh6kr78" path="res://game_settings.tscn" id="100_settings"]
 [ext_resource type="PackedScene" uid="uid://cn78s64y0du1h" path="res://Settings Button.tscn" id="101_settings_btn"]
@@ -10870,3 +10872,12 @@ position = Vector2(1255, 433)
 [node name="GameSettings" parent="." instance=ExtResource("100_settings")]
 
 [node name="SettingsButton" parent="." instance=ExtResource("101_settings_btn")]
+
+[node name="EarthquakeAmbientSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_outside_audio")
+volume_db = -5.0
+autoplay = true
+
+[node name="EarthquakeSelfTalkSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_self_talk_outside")
+volume_db = -4.0

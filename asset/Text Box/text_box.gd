@@ -14,6 +14,15 @@ var letter_index = 0
 var is_text_complete = false
 var is_being_freed = false  # Flag to prevent multiple queue_free calls
 
+# Pending self-talk voice path to play after text becomes visible
+var pending_voice_path: String = ""
+var pending_voice_category: String = ""
+var has_played_pending_voice: bool = false
+
+# Time-based visual highlight while voice plays
+var _highlight_indicator: Control = null
+var _highlight_timer: Timer = null
+
 var letter_time = 0.005  # Much faster - was 0.02
 var space_time = 0.01    # Much faster - was 0.04
 var punctuation_time = 0.03  # Much faster - was 0.15
@@ -136,6 +145,12 @@ func display_text(text_to_display: String):
 	text = text_to_display
 	is_text_complete = false
 	
+	# Detect target self-talk lines and defer audio until text starts rendering
+	var voice_info := _map_voice_for_text(text_to_display)
+	pending_voice_path = voice_info.get("path", "")
+	pending_voice_category = voice_info.get("category", "")
+	has_played_pending_voice = false
+	
 	# Hide continue label initially
 	if continue_label:
 		continue_label.visible = false
@@ -181,6 +196,21 @@ func display_text(text_to_display: String):
 func _display_letter():
 	label.text += text[letter_index]
 	
+	# Play pending voice line once after text starts rendering
+	if not has_played_pending_voice and pending_voice_path != "":
+		var audio_mgr = null
+		if typeof(AudioManager) != TYPE_NIL:
+			audio_mgr = AudioManager
+		else:
+			audio_mgr = get_tree().get_root().get_node_or_null("/root/AudioManager")
+		if audio_mgr and audio_mgr.has_method("play_sfx"):
+			audio_mgr.play_sfx(pending_voice_path, 4.0)
+			var dur := _get_audio_length(pending_voice_path)
+			_start_voice_highlight(pending_voice_category, dur)
+			has_played_pending_voice = true
+		else:
+			print("AudioManager not found; cannot play pending voice line")
+	
 	letter_index += 1
 	if letter_index >= text.length():
 		finished_displaying.emit()
@@ -217,3 +247,136 @@ func _on_auto_hide_timer_timeout() -> void:
 	if not is_being_freed:
 		is_being_freed = true
 		queue_free()
+
+# ===== Time-based voice highlight helpers =====
+func _map_voice_for_text(msg: String) -> Dictionary:
+	var m := String(msg)
+	# Default mapping
+	var result := {"path": "", "category": ""}
+	# Store entry
+	if m.find("Oh hey, a convenience store") != -1 or m.find("I need to cover all areas of the store") != -1 or m.find("Maybe there's something useful here") != -1:
+		result.path = "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Store Entry) - Copy.mp3"
+		result.category = "store_entry"
+		return result
+	# Exit
+	if m.find("exit") != -1 or m.find("time to leave") != -1 or m.find("get out") != -1:
+		result.path = "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/i should head to the exit.mp3"
+		result.category = "exit"
+		return result
+	# Food section
+	if m.find("What's in this section") != -1 or m.find("food section") != -1 or m.find("whats in this section") != -1:
+		result.path = "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Food Section) - Copy.mp3"
+		result.category = "food_section"
+		return result
+	# Snacks
+	if m.find("snacks") != -1 or m.find("chips") != -1:
+		result.path = "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Snacks) - Copy.mp3"
+		result.category = "snacks"
+		return result
+	# Ice cream
+	if m.find("Ice cream") != -1 or m.find("frozen") != -1:
+		result.path = "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Ice Cream) - Copy.mp3"
+		result.category = "ice_cream"
+		return result
+	# Meat
+	if m.find("meat") != -1 or m.find("beef") != -1 or m.find("pork") != -1:
+		result.path = "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Meat) - Copy.mp3"
+		result.category = "meat"
+		return result
+	# Hotdog/Siopao
+	if m.find("hotdog") != -1 or m.find("siopao") != -1 or m.find("hotpao") != -1:
+		result.path = "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (HotPao) (1).mp3"
+		result.category = "hotpao"
+		return result
+	# Slurpee
+	if m.find("slurpee") != -1 or m.find("drink") != -1:
+		result.path = "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Slurpee) - Copy.mp3"
+		result.category = "slurpee"
+		return result
+	# General fridge
+	if m.find("fridge") != -1 or m.find("refrigerator") != -1:
+		result.path = "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Fridge) (1).mp3"
+		result.category = "fridge"
+		return result
+	return result
+
+func _get_audio_length(path: String) -> float:
+	var stream: AudioStream = load(path)
+	if stream == null:
+		return 2.0
+	var len := 2.0
+	if stream is AudioStreamMP3:
+		len = (stream as AudioStreamMP3).get_length()
+	elif stream is AudioStreamOggVorbis:
+		len = (stream as AudioStreamOggVorbis).get_length()
+	elif stream is AudioStreamWAV:
+		len = (stream as AudioStreamWAV).get_length()
+	return max(len, 0.5)
+
+func _category_color(cat: String) -> Color:
+	match cat:
+		"ice_cream":
+			return Color(0.4, 0.7, 1.0, 0.8)
+		"meat":
+			return Color(0.9, 0.3, 0.3, 0.8)
+		"hotpao":
+			return Color(0.95, 0.6, 0.2, 0.8)
+		"snacks":
+			return Color(1.0, 0.9, 0.2, 0.8)
+		"food_section":
+			return Color(0.3, 0.9, 0.6, 0.8)
+		"fridge":
+			return Color(0.6, 0.9, 1.0, 0.8)
+		"slurpee":
+			return Color(0.4, 0.4, 1.0, 0.8)
+		"store_entry":
+			return Color(0.8, 0.8, 0.8, 0.8)
+		"exit":
+			return Color(0.6, 0.6, 0.6, 0.8)
+		_:
+			return Color(1, 1, 1, 0.6)
+
+func _start_voice_highlight(category: String, duration: float) -> void:
+	_clear_voice_highlight()
+	if category == "":
+		return
+	# Create a small pulsing color tag with category text
+	var container := HBoxContainer.new()
+	container.name = "VoiceHighlight"
+	container.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	container.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	add_child(container)
+	# Position near top-left of the textbox
+	container.position = Vector2(8, -28)
+	var rect := ColorRect.new()
+	rect.color = _category_color(category)
+	rect.size = Vector2(110, 24)
+	container.add_child(rect)
+	var tag := Label.new()
+	tag.text = category.capitalize().replace("_", " ")
+	tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	tag.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	tag.size = rect.size
+	rect.add_child(tag)
+	_highlight_indicator = container
+	# Pulse tween
+	var t := create_tween()
+	t.set_loops(ceil(duration / 0.6))
+	t.tween_property(rect, "modulate:a", 0.4, 0.3)
+	t.tween_property(rect, "modulate:a", 0.9, 0.3)
+	# Clear after duration
+	_highlight_timer = Timer.new()
+	_highlight_timer.one_shot = true
+	_highlight_timer.wait_time = duration
+	add_child(_highlight_timer)
+	_highlight_timer.start()
+	_highlight_timer.timeout.connect(_clear_voice_highlight)
+
+func _clear_voice_highlight() -> void:
+	if _highlight_timer != null and is_instance_valid(_highlight_timer):
+		_highlight_timer.stop()
+		_highlight_timer.queue_free()
+		_highlight_timer = null
+	if _highlight_indicator != null and is_instance_valid(_highlight_indicator):
+		_highlight_indicator.queue_free()
+		_highlight_indicator = null
