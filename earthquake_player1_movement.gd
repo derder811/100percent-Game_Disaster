@@ -134,7 +134,31 @@ func handle_movement(delta):
 	else:
 		# Apply friction when not moving
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+	
+	# NEW: Toggle idle/walk animations based on actual movement
+	update_animation(input_vector)
 
+# NEW: Unified animation toggling for idle vs walking
+func update_animation(input_vector: Vector2) -> void:
+	var is_moving := velocity.length() > 10.0 and input_vector != Vector2.ZERO
+	var anim_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
+	if is_moving:
+		if animation_tree:
+			animation_tree.active = true
+			# keep direction in sync
+			animation_tree.set("parameters/Walk/blend_position", input_vector)
+			# Avoid idle overriding when active
+			if anim_player:
+				anim_player.stop()
+	else:
+		# Not moving: disable tree and play idle if available
+		if animation_tree:
+			animation_tree.active = false
+		if anim_player:
+			if anim_player.has_animation("idle"):
+				anim_player.play("idle")
+			else:
+				anim_player.stop()
 func update_nearby_interactables():
 	# Find all interactable objects in the scene
 	var interactables = get_tree().get_nodes_in_group("interactable")

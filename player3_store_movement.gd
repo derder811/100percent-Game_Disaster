@@ -127,23 +127,6 @@ func handle_movement(delta):
 	# Normalize for consistent diagonal movement
 	input_vector = input_vector.normalized()
 	
-	# Update animation direction based on movement
-	if animation_tree and input_vector != Vector2.ZERO:
-		# Try different parameter paths that might exist
-		if animation_tree.has_method("set"):
-			# Try common animation tree parameter names
-			var param_paths = [
-				"parameters/Walk/blend_position",
-				"parameters/walk/blend_position", 
-				"parameters/movement/blend_position",
-				"parameters/idle_walk/blend_position"
-			]
-			
-			for path in param_paths:
-				if animation_tree.get(path) != null:
-					animation_tree.set(path, input_vector)
-					break
-	
 	# Apply movement with smooth acceleration/deceleration
 	if input_vector != Vector2.ZERO:
 		# Accelerate towards target velocity
@@ -151,6 +134,9 @@ func handle_movement(delta):
 	else:
 		# Apply friction when no input
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+	
+	# Toggle animations based on movement and direction
+	_update_animation(input_vector)
 
 # Debug function to print current position
 func _input(event):
@@ -216,3 +202,35 @@ func show_after_cover():
 		sprite.modulate = Color(1, 1, 1, 1)
 	set_physics_process(true)
 	set_process(true)
+
+func _update_animation(input_vector: Vector2) -> void:
+	var is_moving := velocity.length() > 10.0 and input_vector != Vector2.ZERO
+	var anim_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
+	if is_moving:
+		if animation_tree:
+			animation_tree.active = true
+			if animation_tree.has_method("set"):
+				# Prefer capital 'Walk' path, fall back to other known paths
+				if animation_tree.get("parameters/Walk/blend_position") != null:
+					animation_tree.set("parameters/Walk/blend_position", input_vector)
+				elif animation_tree.get("parameters/walk/blend_position") != null:
+					animation_tree.set("parameters/walk/blend_position", input_vector)
+				elif animation_tree.get("parameters/movement/blend_position") != null:
+					animation_tree.set("parameters/movement/blend_position", input_vector)
+				elif animation_tree.get("parameters/idle_walk/blend_position") != null:
+					animation_tree.set("parameters/idle_walk/blend_position", input_vector)
+			# Prevent idle from overriding when walking
+			if anim_player:
+				anim_player.stop()
+	else:
+		# Character is not moving - play idle animation
+		if animation_tree:
+			animation_tree.active = false
+		# Prefer 'idle' if available, otherwise fall back to 'RESET', else stop
+		if anim_player:
+			if anim_player.has_animation("idle"):
+				anim_player.play("idle")
+			elif anim_player.has_animation("RESET"):
+				anim_player.play("RESET")
+			else:
+				anim_player.stop()

@@ -10501,9 +10501,11 @@ sources/1 = SubResource("TileSetAtlasSource_us342")
 sources/2 = SubResource("TileSetAtlasSource_0fkei")
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_suotf"]
+a = Vector2(30.5704, -1950)
+b = Vector2(4.36719, -419.829)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sk4qd"]
-size = Vector2(96, 329)
+size = Vector2(268, 338.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3er4e"]
 size = Vector2(459.556, 728.573)
@@ -10693,11 +10695,11 @@ texture = ExtResource("5_ffgt4")
 [node name="StaticBody2D" type="StaticBody2D" parent="Counter/Sprite2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Counter/Sprite2D/StaticBody2D"]
-position = Vector2(2.18359, 11.0481)
+position = Vector2(358.11, 977.76)
 shape = SubResource("SegmentShape2D_suotf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Counter"]
-position = Vector2(79, 0)
+position = Vector2(-12, 6)
 shape = SubResource("RectangleShape2D_sk4qd")
 
 [node name="ATM" type="Area2D" parent="."]

@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dvme6sooxypac" path="res://asset/button/CASHIER MESSAGE.mp3" id="4_cashier_audio"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_suotf"]
+radius = 90.0056
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jej64"]
 radius = 28.0081
@@ -159,7 +160,7 @@ motion_mode = 1
 script = ExtResource("3_cashier_npc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(53, 477)
+position = Vector2(-666, -437)
 shape = SubResource("CircleShape2D_suotf")
 
 [node name="InteractionArea" type="Area2D" parent="."]
@@ -201,4 +202,3 @@ parameters/Walk/blend_position = Vector2(0, 0)
 [node name="CashierAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_cashier_audio")
 volume_db = -5.0
-bus = "Master"
