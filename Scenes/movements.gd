@@ -38,18 +38,71 @@ func _ready():
 	set_physics_process(true)
 
 func setup_bag_reference():
-	# Find the bag as a child of the player
+	# Try to find Bag as a direct child first
 	bag = get_node_or_null("Bag")
 	
+	# If not found, try to locate Bag anywhere in the current scene
 	if not bag:
-		print("✗ WARNING: Bag node not found as child of player")
-		print("Available child nodes:")
-		for child in get_children():
-			print("  - ", child.name, " (", child.get_class(), ")")
-	else:
-		print("✓ Bag found and connected successfully")
-		print("Bag type: ", bag.get_class())
+		var scene = get_tree().current_scene
+		if scene:
+			bag = scene.find_child("Bag", true, false)
+			if bag:
+				print("✓ Bag found in scene and connected successfully: ", bag.name)
+			else:
+				print("✗ WARNING: Bag node not found in player or scene. Will instance one.")
+		else:
+			print("✗ WARNING: No current scene while searching for Bag")
+	
+	# If still not found, instance Bag.tscn and place it on a top CanvasLayer
+	if not bag:
+		var bag_scene: PackedScene = load("res://Bag.tscn")
+		if bag_scene:
+			bag = bag_scene.instantiate()
+			var scene2 = get_tree().current_scene
+			if scene2:
+				var bag_layer: CanvasLayer = scene2.get_node_or_null("UILayer_Bag")
+				if not bag_layer:
+					bag_layer = CanvasLayer.new()
+					bag_layer.name = "UILayer_Bag"
+					bag_layer.layer = 200
+					scene2.add_child(bag_layer)
+				bag_layer.add_child(bag)
+				print("✓ Instanced Bag.tscn under UILayer_Bag for UI on top")
+			else:
+				print("✗ ERROR: Failed to get current scene for bag instancing")
+		else:
+			print("✗ ERROR: Failed to load Bag.tscn")
+	
+	if bag:
+		# Ensure bag is under our top UI layer and captures clicks
+		var scene3 = get_tree().current_scene
+		if scene3:
+			var bag_layer2: CanvasLayer = scene3.get_node_or_null("UILayer_Bag")
+			if not bag_layer2:
+				bag_layer2 = CanvasLayer.new()
+				bag_layer2.name = "UILayer_Bag"
+				bag_layer2.layer = 200
+				scene3.add_child(bag_layer2)
+			if bag.get_parent() != bag_layer2:
+				bag_layer2.add_child(bag)
+		bag.mouse_filter = Control.MOUSE_FILTER_STOP
+		if bag.has_node("TextureButton"):
+			var btn: TextureButton = bag.get_node("TextureButton")
+			btn.disabled = false
+			btn.mouse_filter = Control.MOUSE_FILTER_STOP
+		print("✓ Bag connected. Type: ", bag.get_class())
 		print("Bag has get_items method: ", bag.has_method("get_items"))
+		# If a Bag UI exists, mark the go bag as available so items can be picked up
+		if Engine.has_singleton("GameState"):
+			GameState.set_go_bag_picked_up()
+		else:
+			# Direct access if autoload is used
+			if typeof(GameState) != TYPE_NIL and GameState.has_method("set_go_bag_picked_up"):
+				GameState.set_go_bag_picked_up()
+			else:
+				print("✗ WARNING: GameState singleton not available to mark go bag picked up")
+	else:
+		print("✗ Bag setup failed — inventory will not function")
 
 func setup_interaction_ui():
 	# The interaction UI is now handled by the scene-level InteractionUI node
@@ -198,53 +251,35 @@ func update_interaction_ui():
 		
 		# Update text based on object
 		if closest_interactable.has_method("get_interaction_prompt"):
-			interaction_label.text = closest_interactable.get_interaction_prompt()
+			# E.g., prompt like "Press E to inspect TV"
+			var prompt_text = closest_interactable.get_interaction_prompt()
+			print("Player: interaction prompt text: ", prompt_text)
 		else:
-			interaction_label.text = "Press (Interact) to examine"
-			
-		print("Player: Basic interaction label text set to: ", interaction_label.text)
+			print("Player: interactable has no get_interaction_prompt method")
 	else:
-		print("Player: No interactable object found, hiding UI")
-		
-		# Use enhanced UI system
-		if interaction_ui and interaction_ui.has_method("hide_interaction_prompt"):
-			interaction_ui.hide_interaction_prompt()
-		
-		# Hide basic interaction prompt
+		# Hide UI when there's no interactable nearby
 		interaction_label.visible = false
 
 func perform_interaction(target):
-	if not target:
-		print("Player: perform_interaction called with null target")
+	print("Player: perform_interaction called on: ", target.name)
+	
+	# Generic interaction handling
+	if target.has_method("interact"):
+		print("Player: target has interact method, calling it")
+		target.interact()
 		return
 	
-	print("Player: Interacting with: ", target.name)
-	
-	# Call object's interaction method if it exists
-	if target.has_method("on_interact"):
-		print("Player: Calling on_interact method on ", target.name)
-		target.on_interact(self)
+	# Specific interactions
+	if target.name.contains("Door"):
+		interact_with_door(target)
+	elif target.name.contains("Cabinet"):
+		interact_with_container(target)
+	elif target.is_in_group("item"):
+		pickup_item(target)
 	else:
-		print("Player: ERROR - ", target.name, " does not have on_interact method!")
-	
-	# Handle different types of objects
-	match target.get_groups():
-		var groups when "furniture" in groups:
-			interact_with_furniture(target)
-		var groups when "items" in groups:
-			interact_with_item(target)
-		var groups when "doors" in groups:
-			interact_with_door(target)
-		var groups when "containers" in groups:
-			interact_with_container(target)
+		print("Player: No specific interaction handler for: ", target.name)
 
-func interact_with_furniture(furniture):
-	print("Using furniture: ", furniture.name)
-	# Example: sitting on chair, opening drawer, etc.
-	if furniture.has_method("use"):
-		furniture.use()
-
-func interact_with_item(item):
+func pickup_item(item):
 	print("Picking up item: ", item.name)
 	# Example: add to inventory, remove from scene
 	if item.has_method("pickup"):
@@ -293,54 +328,10 @@ func get_interaction_ui():
 	return interaction_ui
 
 # Helper function to make any object interactable
-func make_interactable(object: Node, prompt: String = "Press (Interact) to examine"):
-	if not object.is_in_group("interactable"):
-		object.add_to_group("interactable")
-	
-	# Add interaction prompt method if it doesn't exist
-	if not object.has_method("get_interaction_prompt"):
-		var script_text = """
-extends Node
-
-var interaction_prompt = "%s"
-
-func get_interaction_prompt():
-	return interaction_prompt
-
-func on_interact(player):
-	print("Default interaction with ", name)
-""" % prompt
-		
-		var new_script = GDScript.new()
-		new_script.source_code = script_text
-		object.set_script(new_script)
-
-# Debug function to visualize interaction radius
-func _draw():
-	if Engine.is_editor_hint():
-		return
-	
-	# Safety check: ensure node is ready and in scene tree
-	if not is_inside_tree():
-		return
-	
-	# Draw interaction radius in debug mode
-	if OS.is_debug_build():
-		draw_circle(Vector2.ZERO, interaction_radius, Color.CYAN, false, 2.0)
-		
-		# Draw line to closest interactable
-		if closest_interactable and is_instance_valid(closest_interactable):
-			var direction = (closest_interactable.global_position - global_position)
-			draw_line(Vector2.ZERO, direction, Color.GREEN, 2.0)
-
-# Forward item self-talk to SelfTalkSystem for consistent bottom textbox UI
-func trigger_item_self_talk(item_type: String):
-	var sys = get_tree().get_first_node_in_group("self_talk_system")
-	if sys and sys.has_method("trigger_after_item_interact_talk"):
-		sys.trigger_after_item_interact_talk(item_type)
-
-# Forward custom self-talk to SelfTalkSystem
-func trigger_custom_self_talk(message: String):
-	var sys = get_tree().get_first_node_in_group("self_talk_system")
-	if sys and sys.has_method("trigger_custom_self_talk"):
-		sys.trigger_custom_self_talk(message)
+# Simply add the node to the "interactable" group and implement get_interaction_prompt()
+# func make_interactable(node: Node, prompt: String):
+# 	if node:
+# 		node.add_to_group("interactable")
+# 		if not node.has_method("get_interaction_prompt"):
+# 			node.get_interaction_prompt = func():
+# 				return prompt

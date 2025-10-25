@@ -141,8 +141,14 @@ func show_timer_self_talk():
 		if audio_mgr:
 			print("TimerSelfTalk: playing SFX")
 			audio_mgr.play_sfx(voice_path, 4.0)
-		else:
-			print("TimerSelfTalk: AudioManager not found; cannot play SFX")
+			await audio_mgr.wait_sfx_finished()
+		# After audio completes (or if none), show a simple tip near player
+		_hide_textbox()
+		var pos := Vector2.ZERO
+		if player and is_instance_valid(player):
+			pos = player.global_position + Vector2(0, -80)
+		if typeof(SimpleDialogManager) != TYPE_NIL:
+			SimpleDialogManager.start_dialog(pos, ["Keep essentials ready and avoid risky areas."])
 
 func show_startup_message():
 	if has_shown_startup_message:
@@ -178,8 +184,27 @@ func show_self_talk_message():
 			audio_mgr = get_tree().get_root().get_node_or_null("/root/AudioManager")
 		if audio_mgr:
 			audio_mgr.play_sfx(voice_path, 4.0)
+			await audio_mgr.wait_sfx_finished()
 		else:
 			print("SelfTalk startup: AudioManager not found; cannot play SFX")
+			await get_tree().create_timer(1.0).timeout
+		# Hide the self-talk textbox to avoid overlap
+		_hide_textbox()
+		# Determine dialog position near player
+		var pos := Vector2.ZERO
+		if player and is_instance_valid(player):
+			pos = player.global_position + Vector2(0, -80)
+		# Show a simple follow-up dialog near the player
+		if typeof(SimpleDialogManager) != TYPE_NIL:
+			SimpleDialogManager.start_dialog(pos, ["Stay calm and check essentials nearby."])
+	else:
+		# If no audio was played, still show the dialog after a short delay
+		await get_tree().create_timer(1.0).timeout
+		var pos2 := Vector2.ZERO
+		if player and is_instance_valid(player):
+			pos2 = player.global_position + Vector2(0, -80)
+		if typeof(SimpleDialogManager) != TYPE_NIL:
+			SimpleDialogManager.start_dialog(pos2, ["Stay calm and check essentials nearby."])
 
 func trigger_custom_self_talk(custom_message: String):
 	# Show text and try to play audio if the line is mapped
@@ -193,7 +218,6 @@ func trigger_custom_self_talk(custom_message: String):
 			audio_mgr = AudioManager
 		else:
 			audio_mgr = get_tree().get_root().get_node_or_null("/root/AudioManager")
-		if audio_mgr:
 			audio_mgr.play_sfx(voice_path, 4.0)
 
 func trigger_self_talk(message_type: String = "timer_based"):
@@ -226,8 +250,7 @@ func trigger_self_talk(message_type: String = "timer_based"):
 
 func trigger_item_pickup_self_talk(item_name: String):
 	if "item_pickup" in self_talk_messages and item_name in self_talk_messages["item_pickup"]:
-		var message = self_talk_messages["item_pickup"][item_name]
-		_show_textbox(message)
+		_show_textbox(self_talk_messages["item_pickup"][item_name])
 	# Play associated self-talk audio if available
 	var audio_path: String = item_audio_paths.get(item_name, "")
 	if audio_path != "" and AudioManager:
@@ -270,6 +293,8 @@ func _ensure_textbox_nodes():
 		sb.corner_radius_bottom_right = 10
 		_textbox_panel.add_theme_stylebox_override("panel", sb)
 		_textbox_panel.visible = false
+		# Allow bag clicks to pass through this overlay
+		_textbox_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		_textbox_layer.add_child(_textbox_panel)
 	if _textbox_label == null:
 		_textbox_label = Label.new()
@@ -303,7 +328,6 @@ func _update_textbox_style(is_urgent: bool):
 	sb.corner_radius_top_left = 10
 	sb.corner_radius_top_right = 10
 	sb.corner_radius_bottom_left = 10
-	sb.corner_radius_bottom_right = 10
 	_textbox_panel.add_theme_stylebox_override("panel", sb)
 	if _textbox_label != null:
 		_textbox_label.add_theme_color_override("font_color", Color(1,1,1,1))

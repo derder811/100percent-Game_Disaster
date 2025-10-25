@@ -2,6 +2,31 @@ extends Control
 
 @onready var bagContainer = $NinePatchRect
 @onready var itemsInContainer = $NinePatchRect/MarginContainer/slotitem
+@onready var toggle_button = $TextureButton
+
+func _ready():
+	# Ensure the bag UI starts hidden and clickable
+	if toggle_button:
+		toggle_button.mouse_filter = Control.MOUSE_FILTER_STOP
+		toggle_button.disabled = false
+	if bagContainer:
+		bagContainer.visible = false
+		bagContainer.z_index = 1
+	# Move Bag to a dedicated top CanvasLayer so it is always clickable
+	var scene = get_tree().current_scene
+	if scene:
+		var bag_layer: CanvasLayer = scene.get_node_or_null("UILayer_Bag")
+		if not bag_layer:
+			bag_layer = CanvasLayer.new()
+			bag_layer.name = "UILayer_Bag"
+			bag_layer.layer = 200
+			scene.add_child(bag_layer)
+		if get_parent() != bag_layer:
+			var p = get_parent()
+			if p:
+				p.remove_child(self)
+			bag_layer.add_child(self)
+	print("Bag UI ready; click the backpack to toggle inventory.")
 
 var items = []
 
@@ -32,7 +57,7 @@ func add_item(item_data: Dictionary):
 	for i in range(items.size()):
 		print("  Item ", i, ": ", items[i])
 	
-	# Update quest progress after adding item
+
 	update_quest_progress()
 	print("=========================")
 
@@ -50,69 +75,35 @@ func get_emergency_items_count():
 		"flashlight",
 		"canned food",
 		"water bottle",
-		"medicine 3"
 	]
 	
-	print("Looking for emergency items: ", emergency_item_names)
-	
-	var count = 0
-	for i in range(items.size()):
-		var item = items[i]
-		print("Checking item ", i, ": ", item)
-		
-		if "name" in item:
-			var item_name = item["name"].to_lower()
-			print("  Item name (lowercase): '", item_name, "'")
-			
-			# Check if the item name matches any emergency item (case-insensitive)
-			var is_emergency = false
-			for emergency_name in emergency_item_names:
-				if item_name == emergency_name:
-					print("  MATCH FOUND! '", item_name, "' matches '", emergency_name, "'")
-					is_emergency = true
-					break
-			
-			if is_emergency:
-				count += 1
-				print("  Emergency item count increased to: ", count)
-			else:
-				print("  Not an emergency item")
-		else:
-			print("  Item has no 'name' key")
-	
-	print("Final emergency items count: ", count)
-	print("======================================")
-	return count
+	var emergency_count = 0
+	for item in items:
+		if item.has("name"):
+			var item_name_lower = String(item["name"]).to_lower()
+			if item_name_lower in emergency_item_names:
+				emergency_count += 1
+	print("Emergency items in bag: ", emergency_count)
+	return emergency_count
 
 func update_quest_progress():
-	print("=== UPDATE_QUEST_PROGRESS DEBUG ===")
+	print("=== UPDATE QUEST PROGRESS CALLED ===")
 	var emergency_count = get_emergency_items_count()
-	print("Emergency items count: ", emergency_count)
-	
-	# Find the quest node in the scene tree
-	var quest_manager = null
 	var scene = get_tree().current_scene
-	
+	var quest_manager: Node = null
 	if scene:
-		print("Current scene: ", scene.name)
-		print("Scene children:")
+		# Try direct child lookup first
 		for child in scene.get_children():
-			print("  - ", child.name, " (", child.get_class(), ")")
-			if child.get_script() and child.get_script().get_path().ends_with("quest.gd"):
+			if child.name == "Quest":
 				quest_manager = child
 				print("✓ Found quest node: ", child.name)
 				break
 		
-		# If not found directly, search recursively
+		# If not found, search recursively
 		if not quest_manager:
-			quest_manager = scene.find_child("Quest", true, false)
+			quest_manager = _find_quest_node_recursive(scene)
 			if quest_manager:
-				print("✓ Found Quest node via find_child")
-			else:
-				# Try to find any node with quest.gd script
-				quest_manager = _find_quest_node_recursive(scene)
-				if quest_manager:
-					print("✓ Found quest node recursively: ", quest_manager.name)
+				print("✓ Found quest node recursively: ", quest_manager.name)
 	
 	if quest_manager and quest_manager.has_method("update_emergency_items_ui"):
 		print("✓ Quest manager found, calling update_emergency_items_ui()")
@@ -142,19 +133,24 @@ func _find_quest_node_recursive(node: Node) -> Node:
 func refresh_ui():
 	var allItemSlots = itemsInContainer.get_children()
 	print("Number of slots: ", allItemSlots.size())
-	print("Number of items: ", items.size())
-	
-	for i in len(items):
-		if i < allItemSlots.size():
+
+	# Update slot textures to reflect current items
+	for i in range(allItemSlots.size()):
+		if i < items.size():
 			var itemData = items[i]
 			if "icon" in itemData and itemData["icon"] != null:
 				allItemSlots[i].texture = itemData["icon"]
-				print("Setting slot ", i, " with item: ", itemData["name"])
+				print("Setting slot ", i, " with item: ", itemData.get("name", "<unnamed>"))
 			else:
-				print("Item ", itemData["name"], " has no valid icon")
+				print("Item has no valid icon: ", itemData)
+		else:
+			# Clear remaining slots
+			allItemSlots[i].texture = null
 
 func _on_texture_button_pressed():
+	# Toggle visibility and refresh contents
 	bagContainer.visible = !bagContainer.visible
+	refresh_ui()
 	print("Bag visibility toggled: ", bagContainer.visible)
 	if bagContainer.visible:
 		print("Bag is now visible, showing ", items.size(), " items")

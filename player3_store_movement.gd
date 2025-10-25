@@ -17,6 +17,7 @@ var movement_count: int = 0  # Counter for movements
 var movement_trigger_threshold: int = 20  # Trigger self-talk every 20 movements
 # Timer-based movement comment trigger (every 10 seconds)
 var movement_comment_timer: Timer
+var last_move_dir: Vector2 = Vector2.DOWN
 
 # Input Actions - Player 3 WASD movement
 const MOVE_LEFT = "ui_left"         # A key / Left Arrow
@@ -206,27 +207,31 @@ func show_after_cover():
 func _update_animation(input_vector: Vector2) -> void:
 	var is_moving := velocity.length() > 10.0 and input_vector != Vector2.ZERO
 	var anim_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
+	# Quantize to cardinal directions for clean animation selection
+	var dir := input_vector
+	if abs(dir.x) > abs(dir.y):
+		dir.y = 0
+	else:
+		dir.x = 0
+	dir = dir.normalized()
 	if is_moving:
+		last_move_dir = dir if dir != Vector2.ZERO else last_move_dir
 		if animation_tree:
 			animation_tree.active = true
 			if animation_tree.has_method("set"):
-				# Prefer capital 'Walk' path, fall back to other known paths
 				if animation_tree.get("parameters/Walk/blend_position") != null:
-					animation_tree.set("parameters/Walk/blend_position", input_vector)
+					animation_tree.set("parameters/Walk/blend_position", last_move_dir)
 				elif animation_tree.get("parameters/walk/blend_position") != null:
-					animation_tree.set("parameters/walk/blend_position", input_vector)
+					animation_tree.set("parameters/walk/blend_position", last_move_dir)
 				elif animation_tree.get("parameters/movement/blend_position") != null:
-					animation_tree.set("parameters/movement/blend_position", input_vector)
+					animation_tree.set("parameters/movement/blend_position", last_move_dir)
 				elif animation_tree.get("parameters/idle_walk/blend_position") != null:
-					animation_tree.set("parameters/idle_walk/blend_position", input_vector)
-			# Prevent idle from overriding when walking
+					animation_tree.set("parameters/idle_walk/blend_position", last_move_dir)
 			if anim_player:
 				anim_player.stop()
 	else:
-		# Character is not moving - play idle animation
 		if animation_tree:
 			animation_tree.active = false
-		# Prefer 'idle' if available, otherwise fall back to 'RESET', else stop
 		if anim_player:
 			if anim_player.has_animation("idle"):
 				anim_player.play("idle")

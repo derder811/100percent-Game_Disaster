@@ -50,23 +50,19 @@ func show_safety_tips(asset_type: String, position: Vector2, header: String = "T
 	
 	print("Safety tips dialog created and shown")
 
+# Show item-specific tip dialog near given position
 func show_item_dialog(item_name: String, position: Vector2):
-	print("SimpleDialogManager.show_item_dialog called for: ", item_name)
-	
-	# Close existing dialog if any
-	if current_dialog:
-		if is_instance_valid(current_dialog):
-			current_dialog.queue_free()
-		current_dialog = null
-	
 	# Get safety tip for this item
 	var tip = safety_tips.get(item_name, "No safety information available for this item.")
-	var dialog_text = "Item picked up: " + item_name.capitalize() + "\n\nTip: " + tip
+	
+	# Wait for any ongoing self-talk SFX to finish before showing tips
+	if typeof(AudioManager) != TYPE_NIL and AudioManager.has_method("wait_sfx_finished"):
+		await AudioManager.wait_sfx_finished()
 	
 	# Create and show dialog
 	current_dialog = dialog_scene.instantiate()
 	get_tree().root.add_child(current_dialog)
-	current_dialog.show_dialog(dialog_text, position)
+	current_dialog.show_dialog(tip, position)
 	
 	print("Dialog created and shown")
 
@@ -88,6 +84,11 @@ func start_dialog(position: Vector2, lines: Array[String], header: String = "TIP
 	var text := "".join(lines)
 	if text == "":
 		text = ""
+	
+	# Wait for any ongoing self-talk SFX to finish before showing tips
+	if typeof(AudioManager) != TYPE_NIL and AudioManager.has_method("wait_sfx_finished"):
+		await AudioManager.wait_sfx_finished()
+	
 	# Create and show dialog
 	current_dialog = dialog_scene.instantiate()
 	get_tree().root.add_child(current_dialog)

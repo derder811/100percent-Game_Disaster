@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cqq6s4irw8kdf" path="res://asset/button/Settings Menu/inventorySlot.png" id="4_0fvok"]
 
 [node name="Bag" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,24 +19,23 @@ script = ExtResource("1_4busj")
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 29.0
-offset_top = 18.0
-offset_right = 93.0
-offset_bottom = 82.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 80.0
+offset_bottom = 80.0
 focus_mode = 0
 texture_normal = ExtResource("2_45frc")
 texture_pressed = ExtResource("2_45frc")
 texture_hover = ExtResource("2_45frc")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-visible = false
 custom_minimum_size = Vector2(90, 85)
 layout_mode = 0
-offset_left = 213.0
-offset_top = 149.0
-offset_right = 303.0
-offset_bottom = 234.0
-scale = Vector2(3, 3)
+offset_left = -36.0
+offset_top = -25.0
+offset_right = 54.0
+offset_bottom = 60.0
+scale = Vector2(0.931062, 0.814578)
 texture = ExtResource("3_0fjy1")
 patch_margin_left = 6
 patch_margin_top = 13
