@@ -326,8 +326,9 @@ func _show_earthquake_welcome() -> void:
 	# Ensure DialogBox exists and show centered welcome
 	var dialog_box = _ensure_dialog_box_present()
 	if dialog_box and dialog_box.has_method("show_dialog"):
-		var welcome_text := "It’s a calm afternoon. The sun is high, and the street feels peaceful as people go about their day. You stop in front of a small grocery store, thinking of picking up a few items before heading home."
+		var welcome_text := "It's a calm afternoon. The sun is high, and the street feels peaceful as people go about their day. You stop in front of a small grocery store, thinking of picking up a few items before heading home."
 		var lines: Array[String] = [welcome_text] as Array[String]
-		dialog_box.show_dialog("WELCOME", lines)
+		# Enable auto-dismiss for earthquake welcome dialog (2 seconds)
+		dialog_box.show_dialog("WELCOME", lines, true)
 	else:
 		print("DialogBox not found; cannot show earthquake welcome")

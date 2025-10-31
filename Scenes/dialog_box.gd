@@ -26,6 +26,11 @@ var tween: Tween
 var is_animating: bool = false
 var _handled_input_press: bool = false
 
+# Auto-dismiss timer variables
+var auto_dismiss_timer: Timer
+var auto_dismiss_enabled: bool = false
+var auto_dismiss_duration: float = 5.0
+
 func _ready():
 	# Connect button signals
 	if next_button:
@@ -36,6 +41,12 @@ func _ready():
 	# Create tween for animations
 	tween = create_tween()
 	tween.kill()  # Stop it initially
+	
+	# Setup auto-dismiss timer
+	auto_dismiss_timer = Timer.new()
+	auto_dismiss_timer.one_shot = true
+	auto_dismiss_timer.timeout.connect(_on_auto_dismiss_timeout)
+	add_child(auto_dismiss_timer)
 	
 	# Hide dialog initially and set initial scale for pop animation
 	dialog_control.visible = false
@@ -55,6 +66,10 @@ func _input(event):
 		or event.is_action_pressed("interact")
 	if pressed:
 		_handled_input_press = true
+		# Stop auto-dismiss timer when user interacts
+		if auto_dismiss_timer and not auto_dismiss_timer.is_stopped():
+			auto_dismiss_timer.stop()
+		
 		if is_typing:
 			_finish_typing()
 		else:
@@ -75,6 +90,10 @@ func _process(_delta):
 	var pressed: bool = Input.is_action_just_pressed("advance_dialog") \
 		or Input.is_action_just_pressed("interact")
 	if pressed:
+		# Stop auto-dismiss timer when user interacts
+		if auto_dismiss_timer and not auto_dismiss_timer.is_stopped():
+			auto_dismiss_timer.stop()
+		
 		if is_typing:
 			_finish_typing()
 		else:
@@ -83,13 +102,14 @@ func _process(_delta):
 			else:
 				_next_message()
 
-func show_dialog(title: String, lines: Array[String]):
+func show_dialog(title: String, lines: Array[String], enable_auto_dismiss: bool = false):
 	if is_animating:
 		return
 		
 	item_name = title
 	dialog_lines = lines
 	current_line_index = 0
+	auto_dismiss_enabled = enable_auto_dismiss
 	
 	# Set title
 	title_label.text = title
@@ -158,6 +178,12 @@ func _display_current_message():
 	
 	target_text = dialog_lines[current_line_index]
 	_start_typing()
+	
+	# Start auto-dismiss timer if enabled and this is the last message
+	if auto_dismiss_enabled and current_line_index >= dialog_lines.size() - 1:
+		auto_dismiss_timer.wait_time = auto_dismiss_duration
+		auto_dismiss_timer.start()
+		print("Auto-dismiss timer started for welcome dialog (", auto_dismiss_duration, " seconds)")
 
 func _start_typing():
 	is_typing = true
@@ -198,9 +224,20 @@ func _next_message():
 func close_dialog():
 	if is_animating:
 		return
+	# Stop auto-dismiss timer if running
+	if auto_dismiss_timer and not auto_dismiss_timer.is_stopped():
+		auto_dismiss_timer.stop()
 	_animate_dialog_out()
 
+func _on_auto_dismiss_timeout():
+	print("Auto-dismiss timer expired - closing welcome dialog")
+	close_dialog()
+
 func _on_next_button_pressed():
+	# Stop auto-dismiss timer when user interacts
+	if auto_dismiss_timer and not auto_dismiss_timer.is_stopped():
+		auto_dismiss_timer.stop()
+	
 	if is_typing:
 		_finish_typing()
 	else:

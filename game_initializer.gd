@@ -40,7 +40,8 @@ func show_startup_message():
 	# Find the DialogBox in the scene
 	var dialog_box = get_tree().get_first_node_in_group("dialog_system")
 	if dialog_box and dialog_box.has_method("show_dialog"):
-		dialog_box.show_dialog("WELCOME", self_talk_messages["game_start"])
+		# Enable auto-dismiss for welcome dialog (2 seconds)
+		dialog_box.show_dialog("WELCOME", self_talk_messages["game_start"], true)
 		# Connect to the dialog finished signal to show follow-up self-talk
 		if not dialog_box.dialog_finished.is_connected(_on_startup_dialog_finished):
 			dialog_box.dialog_finished.connect(_on_startup_dialog_finished)

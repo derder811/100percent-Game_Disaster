@@ -4,7 +4,7 @@ class_name SelfTalkSystem
 # Self-talk messages for different scenarios
 var self_talk_messages = {
 	"game_start": [
-		"It's early in the morning. Heavy rain pours outside as strong winds shake the trees. A typhoon is approaching, and you're the only one left at home. Your goal is to stay safe and prepare for the storm by gathering important items and taking the right precautions."
+		"It's early in the morning. Heavy rain pours outside as strong winds shake the trees. A typhoon is approaching, and you're the only one left at home. Your goal is to stay safe and prepare for the stormwdsaasdwa"
  
 	] as Array[String],
 	"timer_based": [
@@ -156,7 +156,8 @@ func show_startup_message():
 	has_shown_startup_message = true
 	var dialog_box = get_tree().get_first_node_in_group("dialog_system")
 	if dialog_box and dialog_box.has_method("show_dialog"):
-		dialog_box.show_dialog("WELCOME", self_talk_messages["game_start"])
+		# Enable auto-dismiss for welcome dialog (2 seconds)
+		dialog_box.show_dialog("WELCOME", self_talk_messages["game_start"], true)
 		if not dialog_box.dialog_finished.is_connected(_on_startup_dialog_finished):
 			dialog_box.dialog_finished.connect(_on_startup_dialog_finished)
 	else:
