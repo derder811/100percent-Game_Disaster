@@ -160,11 +160,22 @@ func show_quest_box_with_animation():
 	if not quest_box:
 		return
 	quest_box.visible = true
-	# Slide-in from the right with a subtle bounce
+	# Slide-in from the right with a subtle bounce using offset properties
 	var tween = create_tween()
-	var target_pos = original_position
-	quest_box.position = original_position + Vector2(40, 0)
-	tween.tween_property(quest_box, "position", target_pos, 0.35).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	var margin := 24.0
+	var top_offset := 80.0
+	
+	# Start position (off-screen to the right)
+	quest_box.offset_left = 40.0  # Start 40px to the right
+	quest_box.offset_right = quest_box.offset_left + quest_box.size.x
+	quest_box.offset_top = top_offset
+	
+	# Target position (anchored to right edge)
+	var target_left = -(quest_box.size.x + margin)
+	var target_right = -margin
+	
+	tween.tween_property(quest_box, "offset_left", target_left, 0.35).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(quest_box, "offset_right", target_right, 0.35).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	tween.tween_property(quest_box, "scale", Vector2(1.02, 1.02), 0.1)
 	tween.tween_property(quest_box, "scale", Vector2(1.0, 1.0), 0.1)
 	await tween.finished
@@ -372,10 +383,18 @@ func _stop_continuous_camera_shake():
 
 func _reposition_quest_box():
 	if quest_box:
-		var viewport_size = get_viewport().size
+		# With anchoring to top-right, we only need to adjust the offset
+		# The quest box is now anchored to the right edge, so it will automatically
+		# position correctly regardless of screen size
 		var margin := 24.0
 		var top_offset := 80.0
-		original_position = Vector2(viewport_size.x - quest_box.size.x - margin, margin + top_offset)
-		quest_box.position = original_position + Vector2(40, 0)
+		
+		# Set the offset from the right edge (negative because it's anchored right)
+		quest_box.offset_left = -(quest_box.size.x + margin)
+		quest_box.offset_right = -margin
+		quest_box.offset_top = top_offset
+		
+		# Store original position for animations
+		original_position = quest_box.position
 	else:
 		print("EarthquakeQuest: WARNING - Quest box not found during reposition")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cei4pmm5itgfx" path="res://game_over.gd" id="1_ccer4"]
 [ext_resource type="Texture2D" uid="uid://brnhdif0e55ny" path="res://asset/button/Game Over.png" id="1_yxx3c"]
-[ext_resource type="Texture2D" uid="uid://c2ekm2x5qerr1" path="res://asset/button/Settings Menu/Menu Button.png" id="2_ccer4"]
+[ext_resource type="Texture2D" uid="uid://dhwmfwxr07qef" path="res://asset/button/Menu Button (Updated).png" id="3_ccer4"]
 
 [node name="GAME OVER" type="Control"]
 layout_mode = 3
@@ -32,9 +32,9 @@ offset_bottom = 299.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.313403, 0.376781)
-texture_normal = ExtResource("2_ccer4")
-texture_pressed = ExtResource("2_ccer4")
-texture_hover = ExtResource("2_ccer4")
+texture_normal = ExtResource("3_ccer4")
+texture_pressed = ExtResource("3_ccer4")
+texture_hover = ExtResource("3_ccer4")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 

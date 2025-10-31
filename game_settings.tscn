@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dphjv3kh6kr78"]
 
 [ext_resource type="Script" uid="uid://diil61wso1kqi" path="res://game_settings.gd" id="1_settings_script"]
-[ext_resource type="Texture2D" uid="uid://bijl8uthfsrdc" path="res://asset/button/Exit Button.png" id="2_back_btn"]
-[ext_resource type="Texture2D" uid="uid://cpnkhjjc55psl" path="res://asset/button/Settings Menu/Resume Button.png" id="4_resume_btn"]
+[ext_resource type="Texture2D" uid="uid://bygx6wgr2egbh" path="res://asset/button/Resume Button (Updated).png" id="2_whu6v"]
+[ext_resource type="Texture2D" uid="uid://begm0ktid6gp5" path="res://asset/button/Exit Button (Updated).png" id="3_r0nbb"]
 
 [node name="GameSettings" type="Control"]
 process_mode = 2
@@ -46,12 +46,12 @@ layout_mode = 2
 custom_minimum_size = Vector2(60, 25)
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("4_resume_btn")
+texture_normal = ExtResource("2_whu6v")
 stretch_mode = 4
 
 [node name="SettingsPanel_VBoxContainer_ButtonContainer#BackButton" type="TextureButton" parent="SettingsPanel#VBoxContainer/SettingsPanel_VBoxContainer#ButtonContainer"]
 custom_minimum_size = Vector2(60, 25)
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("2_back_btn")
+texture_normal = ExtResource("3_r0nbb")
 stretch_mode = 4

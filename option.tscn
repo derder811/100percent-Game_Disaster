@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://d2wpti3m2wpic" path="res://option.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://oqvhfbla6jo1" path="res://asset/button/Menu/Background Menu 2.png" id="1_slay5"]
-[ext_resource type="Texture2D" uid="uid://762cq485dejb" path="res://asset/button/off.png" id="3_c6ia3"]
-[ext_resource type="Texture2D" uid="uid://c24e6o6vuonag" path="res://asset/button/Back Button.png" id="3_uhspr"]
-[ext_resource type="Texture2D" uid="uid://ml2ij7g0by80" path="res://asset/button/butonton (1).png" id="5_v4yl2"]
+[ext_resource type="Texture2D" uid="uid://mfmgbpwfkqac" path="res://asset/button/Sound Button OFF.png" id="3_uhspr"]
+[ext_resource type="Texture2D" uid="uid://cj72yg7y00eta" path="res://asset/button/Back Button (Updated).png" id="4_c6ia3"]
+[ext_resource type="Texture2D" uid="uid://6f82x80nvagg" path="res://asset/button/Sounds Button ON.png" id="5_v4yl2"]
 
 [node name="OPTION" type="Control"]
 layout_mode = 3
@@ -22,26 +22,27 @@ texture = ExtResource("1_slay5")
 
 [node name="Toggle Sounds" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 454.0
-offset_top = 280.0
-offset_right = 1845.0
-offset_bottom = 644.0
+offset_left = 443.0
+offset_top = 263.0
+offset_right = 1834.0
+offset_bottom = 627.0
 scale = Vector2(0.180267, 0.159386)
-texture_normal = ExtResource("3_c6ia3")
+texture_normal = ExtResource("3_uhspr")
 
 [node name="Back Button" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 465.0
-offset_top = 389.0
-offset_right = 1440.0
-offset_bottom = 714.0
+offset_left = 450.0
+offset_top = 414.0
+offset_right = 1425.0
+offset_bottom = 739.0
 scale = Vector2(0.236522, 0.179277)
-texture_normal = ExtResource("3_uhspr")
+texture_normal = ExtResource("4_c6ia3")
 
 [node name="Toggle Sounds2" type="TextureButton" parent="."]
-offset_left = 458.0
-offset_top = 229.0
-offset_right = 1780.0
-offset_bottom = 580.0
+layout_mode = 0
+offset_left = 450.0
+offset_top = 195.0
+offset_right = 1772.0
+offset_bottom = 546.0
 scale = Vector2(0.180267, 0.159386)
 texture_normal = ExtResource("5_v4yl2")

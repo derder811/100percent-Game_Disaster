@@ -15,17 +15,17 @@ var self_talk_messages = {
 		"I can hear the rain hitting the walls..."
 	] as Array[String],
 	"item_pickup": {
-		"flashlight": "Good thing the flashlight still works.",
-		"battery": "Extra batteries—perfect. I'll save these for the flashlight.",
-		"documents": "These documents are important... Gonna keep them on my bag",
-		"canned_food": "Good thing there are still some canned foods left.",
-		"water_bottle": "I'll keep these bottled waters ready... the tap might get contaminated later.",
-		"medkit": "Good.. Everything's here — bandages, alcohol, medicine.",
-		"medicine_2": "Good thing I still have some antibiotics left... just in case anyone gets an infection after the storm.",
+		"flashlight": "Flashlight. This should help.",
+		"battery": "Got a spare battery.",
+		"documents": "Got some papers, might be important.",
+		"canned_food": "Canned food. This should last a while.",
+		"water_bottle": "Bottled water secured.",
+		"medkit": "Got a med kit!",
+		"medicine_2": "Got some meds!”",
 		"medicine_3": "Painkillers and cold meds, these might come in handy if anyone feels sick.",
-		"mobile_phone": "Signal's weak... I'll keep my phone on me, just in case of any emergency or updates.",
-		"powerbank": "This power bank will be useful to keep my phone charged during emergencies.",
-		"go_bag": "Gonna find some food, water, and medicine… anything essential before things get worse.",
+		"mobile_phone": "Signal’s weak… I’ll keep my phone on me, just in case of any emergency or updates.",
+		"powerbank": "Got a power bank. Might need this later.",
+		"go_bag": "Good, my emergency bag’s here. I’ll start packing the essentials.",
 		"candle": "I'll use this if the power goes out... but maybe a flashlight is safer. I don't want to cause a fire."
 	}
 }

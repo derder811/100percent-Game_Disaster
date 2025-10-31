@@ -18,7 +18,7 @@ func _ready():
 func _on_interact():
 	print("DEBUG: _on_interact called in slurpee.gd")
 	print("Slurpee machine interacted with!")
-	# Earthquake sequence: shake camera, self-talk, then trigger new quest
+	# Initial camera shake for the slurpee interaction
 	_trigger_camera_shake(1.5, 12.0)
 	
 	# Trigger self-talk for earthquake safety guidance
@@ -29,13 +29,12 @@ func _on_interact():
 	else:
 		print("DEBUG: Player not found or missing trigger_item_self_talk")
 	
-	# Trigger the EarthquakeQuest UI and logic (after pre-quest cutscene)
-	_trigger_earthquake_quest()
-	
-	# Update StoreQuest objective (still complete the store quest step)
+	# Complete the store quest objective (this will trigger earthquake quest when all objectives are done)
 	var store_quest = get_tree().current_scene.find_child("StoreQuest", true, false)
 	if store_quest and store_quest.has_method("on_slurpee_interaction"):
 		store_quest.on_slurpee_interaction()
+	else:
+		print("DEBUG: StoreQuest not found or missing on_slurpee_interaction method")
 
 # Simple camera shake using Camera2D offset jitter
 func _trigger_camera_shake(duration_sec := 1.5, magnitude := 10.0) -> void:
@@ -325,22 +324,7 @@ func _play_pre_earthquake_evacuation_cutscene() -> void:
 	# Clean up cutscene cam and ensure restored camera is current
 	_cleanup_cutscene_camera(scene, cam, restored_cam)
 	# Stop earthquake ambience and restore store ambience
+		
 	if AudioManager:
 		AudioManager.stop_ambient()
 		AudioManager.play_ambient("res://Music/INSIDE_THE_STORE_AUDIO.mp3", true)
-
-func _trigger_earthquake_quest():
-	# Avoid duplicating the quest if already present
-	var existing = get_tree().current_scene.find_child("EarthquakeQuest", true, false)
-	if existing:
-		print("EarthquakeQuest already active")
-		return
-	# Play the pre-quest evacuation cutscene first
-	await _play_pre_earthquake_evacuation_cutscene()
-	var quest_res: PackedScene = load("res://earthquake_quest.tscn")
-	if quest_res:
-		var quest_instance = quest_res.instantiate()
-		get_tree().current_scene.add_child(quest_instance)
-		print("EarthquakeQuest instantiated")
-	else:
-		print("ERROR: earthquake_quest.tscn not found")

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhms2eo8a0pgc"]
+[gd_scene load_steps=4 format=3 uid="uid://bhms2eo8a0pgc"]
 
 [ext_resource type="Script" uid="uid://0mf0lmmsc8lk" path="res://mobile_controls.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bftc4fo2qsj2b" path="res://BUTONTON/Interact Button.png" id="2_6x7v6"]
+[ext_resource type="Texture2D" uid="uid://bcmamt720vskd" path="res://BUTONTON/Pick up Button.png" id="3_hklcm"]
 
 [node name="MobileControls" type="CanvasLayer"]
 layer = 500
@@ -106,11 +108,27 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -333.0
-offset_top = -207.0
-offset_right = -81.0
-offset_bottom = -92.0
+offset_left = -246.0
+offset_top = -241.0
+offset_right = 862.0
+offset_bottom = 842.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Interact / Pick-Up
-"
+scale = Vector2(0.145728, 0.132252)
+icon = ExtResource("2_6x7v6")
+
+[node name="Pickup Button" type="Button" parent="UIRoot/InteractButton"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1108.0
+offset_top = -1067.88
+offset_right = -100.0
+offset_bottom = -159.877
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.08326, 1.15985)
+icon = ExtResource("3_hklcm")
