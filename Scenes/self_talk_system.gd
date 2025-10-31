@@ -35,8 +35,8 @@ var after_item_interact_msgs := {
 	"snacks": "Ooh, snacks! Always hard to choose... do I go salty or sweet?",
 	"fridge": "Hmm... beverages.",
 	"slurpee": "DROP COVER AND HOLD",
-	"ice_cream_fridge": "Ice cream won't last long without power, but maybe there are other frozen goods.",
-	"meat_fridge": "Frozen meat could be useful if I can cook it before the power goes out completely.",
+	"ice_cream_fridge": "Hmm... kinda craving something sweet. Do I have room for ice cream though?",
+	"meat_fridge": "Meat looks fresh. Probably not grabbing any today, but noted.",
 	"hotdog_siopao": "Hotdog or siopao? Man, tough choice. Maybe HotPao?.",
 	"food_section": "Let's see what they've got here... canned stuff, quick bites. Pretty standard."
 }
