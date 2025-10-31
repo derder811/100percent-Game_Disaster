@@ -17,6 +17,7 @@ extends CanvasLayer
 @onready var joystick_base: Control = $UIRoot/Joystick/Base
 @onready var joystick_knob: Control = $UIRoot/Joystick/Knob
 @onready var interact_button: Button = $UIRoot/InteractButton
+@onready var pickup_button: Button = $UIRoot/PickupButton
 @onready var arrow_root: Control = $UIRoot/ArrowButtons
 @onready var btn_up: Button = $UIRoot/ArrowButtons/Up
 @onready var btn_down: Button = $UIRoot/ArrowButtons/Down
@@ -34,6 +35,16 @@ var start_pos: Vector2 = Vector2.ZERO
 var active_touch_index: int = -1
 
 func _ready():
+	# Connect to GlobalInteractionManager with deferred call to ensure it's ready
+	call_deferred("_connect_to_global_manager")
+
+func _connect_to_global_manager():
+	if GlobalInteractionManager:
+		GlobalInteractionManager.interaction_changed.connect(_on_interaction_changed)
+		GlobalInteractionManager.interaction_cleared.connect(_on_interaction_cleared)
+	else:
+		print("MobileControls: ERROR - GlobalInteractionManager not found!")
+	
 	if ui_root:
 		ui_root.visible = true
 	# Only connect joystick when not using D-pad
@@ -103,6 +114,21 @@ func _ready():
 		interact_button.add_theme_color_override("font_pressed_color", Color(0.9,0.9,0.9))
 		interact_button.add_theme_color_override("font_hover_color", Color(1,1,1))
 		interact_button.add_theme_color_override("font_disabled_color", Color(0.7,0.7,0.7))
+		interact_button.text = "Interact"
+		interact_button.visible = false  # Hidden by default
+	
+	# Pickup button
+	if pickup_button:
+		pickup_button.pressed.connect(_on_pickup_pressed)
+		pickup_button.button_up.connect(_on_pickup_released)
+		pickup_button.focus_mode = Control.FOCUS_NONE
+		pickup_button.custom_minimum_size = Vector2(160, 60)
+		pickup_button.add_theme_color_override("font_color", Color(1,1,1))
+		pickup_button.add_theme_color_override("font_pressed_color", Color(0.9,0.9,0.9))
+		pickup_button.add_theme_color_override("font_hover_color", Color(1,1,1))
+		pickup_button.add_theme_color_override("font_disabled_color", Color(0.7,0.7,0.7))
+		pickup_button.text = "Pick Up"
+		pickup_button.visible = false  # Hidden by default
 
 func _process(_delta):
 	# When using D-pad, buttons directly press/release actions; skip joystick mapping
@@ -270,3 +296,52 @@ func _on_diagonal_down(action_names: Array) -> void:
 func _on_diagonal_up(action_names: Array) -> void:
 	for name in action_names:
 		Input.action_release(name)
+
+func _on_pickup_pressed() -> void:
+	# Emit pickup action for items
+	if InputMap.has_action("interact"):
+		var e_int: InputEventAction = InputEventAction.new()
+		e_int.action = "interact"
+		e_int.pressed = true
+		Input.parse_input_event(e_int)
+	else:
+		var e_accept: InputEventAction = InputEventAction.new()
+		e_accept.action = "ui_accept"
+		e_accept.pressed = true
+		Input.parse_input_event(e_accept)
+
+func _on_pickup_released() -> void:
+	if InputMap.has_action("interact"):
+		var e_int: InputEventAction = InputEventAction.new()
+		e_int.action = "interact"
+		e_int.pressed = false
+		Input.parse_input_event(e_int)
+	else:
+		var e_accept: InputEventAction = InputEventAction.new()
+		e_accept.action = "ui_accept"
+		e_accept.pressed = false
+		Input.parse_input_event(e_accept)
+
+func _on_interaction_changed(object_type: GlobalInteractionManager.ObjectType) -> void:
+	match object_type:
+		GlobalInteractionManager.ObjectType.INTERACTABLE:
+			if interact_button:
+				interact_button.visible = true
+			if pickup_button:
+				pickup_button.visible = false
+		GlobalInteractionManager.ObjectType.PICKUPABLE:
+			if interact_button:
+				interact_button.visible = false
+			if pickup_button:
+				pickup_button.visible = true
+		_:
+			if interact_button:
+				interact_button.visible = false
+			if pickup_button:
+				pickup_button.visible = false
+
+func _on_interaction_cleared() -> void:
+	if interact_button:
+		interact_button.visible = false
+	if pickup_button:
+		pickup_button.visible = false

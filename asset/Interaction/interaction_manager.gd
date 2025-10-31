@@ -73,6 +73,11 @@ func _process(delta):
 		if area == null or not is_instance_valid(area):
 			active_areas.remove_at(i)
 	
+	# Check if mobile controls are active to decide whether to show labels
+	var mobile_controls_active = false
+	if GlobalInteractionManager:
+		mobile_controls_active = GlobalInteractionManager.are_mobile_controls_active()
+	
 	if active_areas.size() > 0:
 		# Sort areas by distance to player
 		active_areas.sort_custom(sort_by_distance_to_player)
@@ -82,8 +87,8 @@ func _process(delta):
 				label.visible = false
 			return
 		
-		# Show interaction prompt for closest area
-		if label:
+		# Show interaction prompt for closest area only if mobile controls are not active
+		if label and not mobile_controls_active:
 			label.text = "Press (Interact) to examine " + closest_area.action_name
 			label.visible = true
 			
@@ -91,6 +96,9 @@ func _process(delta):
 			var target_position = closest_area.global_position
 			# Offset the label to appear below and slightly to the right of the object
 			label.global_position = target_position + Vector2(20, 60)
+		elif label:
+			# Hide label when mobile controls are active
+			label.visible = false
 		
 		# Handle interaction input
 		if Input.is_action_just_pressed("interact"):

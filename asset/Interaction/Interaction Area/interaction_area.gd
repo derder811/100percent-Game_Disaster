@@ -34,6 +34,9 @@ func _on_body_entered(body):
 	if body.is_in_group("Player2"):
 		print("DEBUG: Player2 detected! Registering area with action: ", action_name)
 		InteractionManager.register_area(self)
+		# Also register with GlobalInteractionManager for button display
+		if GlobalInteractionManager:
+			GlobalInteractionManager.register_object(self, GlobalInteractionManager.ObjectType.INTERACTABLE)
 	else:
 		print("DEBUG: Body is not in Player2 group")
 
@@ -42,9 +45,15 @@ func _on_body_exited(body):
 	if body.is_in_group("Player2"):
 		print("DEBUG: Player2 exited! Unregistering area")
 		InteractionManager.unregister_area(self)
+		# Also unregister from GlobalInteractionManager
+		if GlobalInteractionManager:
+			GlobalInteractionManager.unregister_object(self)
 	else:
 		print("DEBUG: Non-Player2 body exited")
 
 func _exit_tree():
 	print("InteractionArea: exiting tree, unregistering if needed")
 	InteractionManager.unregister_area(self)
+	# Also unregister from GlobalInteractionManager
+	if GlobalInteractionManager:
+		GlobalInteractionManager.unregister_object(self)

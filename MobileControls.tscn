@@ -117,18 +117,18 @@ grow_vertical = 0
 scale = Vector2(0.145728, 0.132252)
 icon = ExtResource("2_6x7v6")
 
-[node name="Pickup Button" type="Button" parent="UIRoot/InteractButton"]
+[node name="PickupButton" type="Button" parent="UIRoot"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1108.0
-offset_top = -1067.88
-offset_right = -100.0
-offset_bottom = -159.877
+offset_left = -250.0
+offset_top = -240.0
+offset_right = 858.0
+offset_bottom = 843.0
 grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(1.08326, 1.15985)
+scale = Vector2(0.145728, 0.132252)
 icon = ExtResource("3_hklcm")

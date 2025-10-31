@@ -24,6 +24,7 @@ QuestManager="*res://quest.gd"
 GameState="*res://GameState.gd"
 EarthquakeInteractionManager="*res://EarthquakeInteractionManager.tscn"
 AudioManager="*res://AudioManager.gd"
+GlobalInteractionManager="*res://GlobalInteractionManager.gd"
 
 [display]
 

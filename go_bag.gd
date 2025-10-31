@@ -76,6 +76,9 @@ func _on_body_entered(body):
 		player_nearby = body
 		if pickup_prompt:
 			pickup_prompt.visible = true
+		# Register with GlobalInteractionManager
+		if GlobalInteractionManager:
+			GlobalInteractionManager.register_object(self, GlobalInteractionManager.ObjectType.PICKUPABLE)
 	else:
 		print("✗ Not a player, ignoring collision")
 
@@ -84,6 +87,9 @@ func _on_body_exited(body):
 		player_nearby = null
 		if pickup_prompt:
 			pickup_prompt.visible = false
+		# Unregister from GlobalInteractionManager
+		if GlobalInteractionManager:
+			GlobalInteractionManager.unregister_object(self)
 
 func pickup_item():
 	if player_nearby:

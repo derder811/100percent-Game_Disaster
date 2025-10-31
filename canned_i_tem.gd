@@ -57,6 +57,9 @@ func _on_body_entered(body):
 		print("✓ Player detected! Showing pickup prompt...")
 		player_nearby = body
 		show_pickup_prompt()
+		# Register with GlobalInteractionManager
+		if GlobalInteractionManager:
+			GlobalInteractionManager.register_object(self, GlobalInteractionManager.ObjectType.PICKUPABLE)
 	else:
 		print("✗ Not a player, ignoring collision")
 
@@ -65,6 +68,9 @@ func _on_body_exited(body):
 		print("Player left item area, hiding prompt")
 		player_nearby = null
 		hide_pickup_prompt()
+		# Unregister from GlobalInteractionManager
+		if GlobalInteractionManager:
+			GlobalInteractionManager.unregister_object(self)
 
 func show_pickup_prompt():
 	if pickup_prompt:
