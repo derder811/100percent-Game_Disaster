@@ -467,20 +467,20 @@ func _reposition_quest_box():
 	if quest_box:
 		# Use anchor-based positioning instead of absolute positioning
 		# This ensures proper positioning in both windowed and fullscreen modes
-		quest_box.anchors_preset = Control.PRESET_TOP_RIGHT
-		quest_box.anchor_left = 1.0
-		quest_box.anchor_right = 1.0
+		quest_box.anchors_preset = Control.PRESET_TOP_LEFT
+		quest_box.anchor_left = 0.0
+		quest_box.anchor_right = 0.0
 		quest_box.anchor_top = 0.0
 		quest_box.anchor_bottom = 0.0
 		
-		# Set offsets for proper positioning
+		# Set offsets for proper positioning (left-side anchoring)
 		var margin := 24.0
 		var top_offset := 80.0
 		var box_width := 420.0  # Fixed width based on scene file
 		var box_height := 200.0  # Fixed height based on scene file
 		
-		quest_box.offset_left = -box_width - margin
-		quest_box.offset_right = -margin
+		quest_box.offset_left = margin
+		quest_box.offset_right = margin + box_width
 		quest_box.offset_top = top_offset
 		quest_box.offset_bottom = top_offset + box_height
 		

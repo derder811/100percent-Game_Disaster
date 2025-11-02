@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest Box Width Adjustment - Before & After</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #ecf0f1;
+            margin-bottom: 30px;
+        }
+        
+        .comparison {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: flex-start;
+            margin: 40px 0;
+        }
+        
+        .quest-demo {
+            text-align: center;
+        }
+        
+        .quest-demo h3 {
+            margin-bottom: 20px;
+            color: #e74c3c;
+        }
+        
+        .game-screen {
+            width: 600px;
+            height: 400px;
+            background: linear-gradient(45deg, #34495e, #2c3e50);
+            border: 3px solid #7f8c8d;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Game elements */
+        .shelf {
+            position: absolute;
+            background: linear-gradient(to bottom, #8b4513, #654321);
+            border: 2px solid #5d4037;
+        }
+        
+        .shelf1 { top: 50px; left: 100px; width: 80px; height: 120px; }
+        .shelf2 { top: 50px; right: 100px; width: 80px; height: 120px; }
+        .shelf3 { bottom: 80px; left: 150px; width: 80px; height: 100px; }
+        .shelf4 { bottom: 80px; right: 150px; width: 80px; height: 100px; }
+        
+        .table {
+            position: absolute;
+            background: #8b4513;
+            border: 2px solid #654321;
+            border-radius: 5px;
+        }
+        
+        .table1 { bottom: 120px; left: 250px; width: 100px; height: 60px; }
+        
+        .player {
+            position: absolute;
+            bottom: 50px;
+            left: 280px;
+            width: 20px;
+            height: 30px;
+            background: #3498db;
+            border-radius: 50% 50% 0 0;
+        }
+        
+        /* Quest boxes */
+        .quest-box-old {
+            position: absolute;
+            top: 80px;
+            left: 24px;
+            width: 296px; /* Old width: 320 - 24 = 296px */
+            height: 160px;
+            background: rgba(44, 62, 80, 0.95);
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            padding: 12px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        
+        .quest-box-new {
+            position: absolute;
+            top: 80px;
+            left: 24px;
+            width: 236px; /* New width: 260 - 24 = 236px */
+            height: 160px;
+            background: rgba(44, 62, 80, 0.95);
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            padding: 12px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        
+        .quest-header {
+            color: #ecf0f1;
+            font-weight: bold;
+            margin-bottom: 8px;
+            border-bottom: 1px solid #7f8c8d;
+            padding-bottom: 4px;
+        }
+        
+        .quest-objective {
+            display: flex;
+            align-items: center;
+            margin: 6px 0;
+            color: #bdc3c7;
+        }
+        
+        .checkbox {
+            width: 12px;
+            height: 12px;
+            border: 1px solid #7f8c8d;
+            margin-right: 8px;
+            background: transparent;
+        }
+        
+        .checkbox.checked {
+            background: #27ae60;
+        }
+        
+        .changes-summary {
+            background: rgba(52, 73, 94, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .changes-summary h3 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+        
+        .change-item {
+            margin: 10px 0;
+            padding: 8px;
+            background: rgba(44, 62, 80, 0.6);
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+        
+        .file-name {
+            color: #f39c12;
+            font-weight: bold;
+        }
+        
+        .improvement {
+            background: rgba(39, 174, 96, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #27ae60;
+        }
+        
+        .improvement h4 {
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Earthquake Quest Box - Width Adjustment</h1>
+        
+        <div class="comparison">
+            <div class="quest-demo">
+                <h3>❌ Before (Too Wide)</h3>
+                <div class="game-screen">
+                    <!-- Game elements -->
+                    <div class="shelf shelf1"></div>
+                    <div class="shelf shelf2"></div>
+                    <div class="shelf shelf3"></div>
+                    <div class="shelf shelf4"></div>
+                    <div class="table table1"></div>
+                    <div class="player"></div>
+                    
+                    <!-- Old quest box -->
+                    <div class="quest-box-old">
+                        <div class="quest-header">Earthquake Quest</div>
+                        <div class="quest-objective">
+                            <div class="checkbox checked"></div>
+                            <span>Hide under 3 tables (2/3)</span>
+                        </div>
+                        <div class="quest-objective">
+                            <div class="checkbox"></div>
+                            <span>Go to exit</span>
+                        </div>
+                    </div>
+                </div>
+                <p><strong>Width:</strong> 296px (too wide)</p>
+            </div>
+            
+            <div class="quest-demo">
+                <h3>✅ After (Compact)</h3>
+                <div class="game-screen">
+                    <!-- Game elements -->
+                    <div class="shelf shelf1"></div>
+                    <div class="shelf shelf2"></div>
+                    <div class="shelf shelf3"></div>
+                    <div class="shelf shelf4"></div>
+                    <div class="table table1"></div>
+                    <div class="player"></div>
+                    
+                    <!-- New quest box -->
+                    <div class="quest-box-new">
+                        <div class="quest-header">Earthquake Quest</div>
+                        <div class="quest-objective">
+                            <div class="checkbox checked"></div>
+                            <span>Hide under 3 tables (2/3)</span>
+                        </div>
+                        <div class="quest-objective">
+                            <div class="checkbox"></div>
+                            <span>Go to exit</span>
+                        </div>
+                    </div>
+                </div>
+                <p><strong>Width:</strong> 236px (more compact)</p>
+            </div>
+        </div>
+        
+        <div class="changes-summary">
+            <h3>📝 Technical Changes Made</h3>
+            
+            <div class="change-item">
+                <span class="file-name">earthquake_quest.tscn</span><br>
+                • Reduced quest box width from <code>offset_right = 320.0</code> to <code>offset_right = 260.0</code><br>
+                • This reduces the total width from 296px to 236px (60px reduction)
+            </div>
+            
+            <div class="change-item">
+                <span class="file-name">earthquake_quest.gd</span><br>
+                • No changes needed - positioning logic uses <code>quest_box.size.x</code><br>
+                • Animation functions automatically adapt to new width<br>
+                • Left-side anchoring remains intact
+            </div>
+        </div>
+        
+        <div class="improvement">
+            <h4>🎯 Improvements Achieved</h4>
+            <ul>
+                <li><strong>Better Proportions:</strong> Quest box no longer dominates the screen</li>
+                <li><strong>More Game Visibility:</strong> Players can see more of the game world</li>
+                <li><strong>Cleaner UI:</strong> More balanced and professional appearance</li>
+                <li><strong>Maintained Functionality:</strong> All text still fits comfortably</li>
+                <li><strong>Responsive Design:</strong> Positioning logic adapts automatically</li>
+            </ul>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px; color: #95a5a6;">
+            <p>The quest box is now more compact while maintaining readability and functionality!</p>
+        </div>
+    </div>
+</body>
+</html>

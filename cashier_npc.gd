@@ -31,6 +31,9 @@ func _on_interact() -> void:
 		cashier_audio_player.play()
 		print("Cashier NPC: Playing cashier message audio")
 	
+	# Hide any existing quest UI during dialogue to prevent overlap
+	_hide_existing_quest_ui()
+	
 	# Merge lines into a single message to avoid Next
 	var merged_text: String = "Hello... Welcome to the store.\nYes we accept Gcash payment"
 	var lines: Array[String] = [merged_text]
@@ -38,14 +41,14 @@ func _on_interact() -> void:
 	var box = _get_dialog_box()
 	if box != null and box.has_method("show_dialog"):
 		# Connect both finished and closed to show StoreQuest UI
-		if box.has_signal("dialog_finished"):
+		# Make sure we only connect once to avoid duplicate connections
+		if box.has_signal("dialog_finished") and not box.dialog_finished.is_connected(_on_cashier_dialog_finished):
 			box.dialog_finished.connect(_on_cashier_dialog_finished)
-		if box.has_signal("dialog_closed"):
+		if box.has_signal("dialog_closed") and not box.dialog_closed.is_connected(_on_cashier_dialog_finished):
 			box.dialog_closed.connect(_on_cashier_dialog_finished)
 		box.show_dialog("CASHIER", lines)
-		# Immediate fallback: start StoreQuest UI right after interaction
-		call_deferred("_on_cashier_dialog_finished")
-
+		
+		# Safety timer as fallback in case signals don't work
 		var safety_timer := Timer.new()
 		safety_timer.one_shot = true
 		safety_timer.wait_time = 8.0
@@ -67,14 +70,15 @@ func _on_interact() -> void:
 		add_child(t)
 		t.start()
 
-func _on_cashier_dialog_finished() -> void:
-	if store_quest_activated:
-		return
-	store_quest_activated = true
-	print("Cashier NPC: conversation finished, showing StoreQuest UI")
-	_show_store_quest_ui()
+func _hide_existing_quest_ui() -> void:
+	# Hide any existing quest UI to prevent overlap with dialogue
+	var store_quest = _find_store_quest()
+	if store_quest != null and store_quest.has_method("hide_quest_ui"):
+		store_quest.hide_quest_ui()
+		print("Cashier NPC: Hidden existing quest UI during dialogue")
 
-func _show_store_quest_ui() -> void:
+func _find_store_quest() -> Node:
+	# Helper method to find the StoreQuest node
 	var store_quest = get_tree().current_scene.find_child("StoreQuest", true, false)
 	if store_quest == null:
 		store_quest = get_tree().root.find_child("StoreQuest", true, false)
@@ -85,6 +89,17 @@ func _show_store_quest_ui() -> void:
 			if f != null:
 				store_quest = f
 				break
+	return store_quest
+
+func _on_cashier_dialog_finished() -> void:
+	if store_quest_activated:
+		return
+	store_quest_activated = true
+	print("Cashier NPC: conversation finished, showing StoreQuest UI")
+	_show_store_quest_ui()
+
+func _show_store_quest_ui() -> void:
+	var store_quest = _find_store_quest()
 	if store_quest == null:
 		# Last resort: instantiate StoreQuest and attach to current scene
 		var store_quest_scene: PackedScene = load("res://store_quest.tscn")

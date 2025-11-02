@@ -27,6 +27,7 @@ var _camera_original_offset: Vector2 = Vector2.ZERO
 # Player hiding state tracking
 var _player_is_hiding: bool = false
 var _shake_paused_due_to_hiding: bool = false
+var _resume_shake_timer: Timer = null
 
 # Safe await helper to avoid get_tree() being null
 func _await_seconds(sec: float) -> void:
@@ -79,6 +80,13 @@ func _ready():
 	if exit_area and exit_area is Area2D:
 		exit_area.body_entered.connect(_on_exit_entered)
 	
+	# Initialize resume shake timer
+	_resume_shake_timer = Timer.new()
+	_resume_shake_timer.wait_time = 1.5  # 1.5 second delay
+	_resume_shake_timer.one_shot = true
+	_resume_shake_timer.timeout.connect(_on_resume_shake_timer_timeout)
+	add_child(_resume_shake_timer)
+	
 	update_quest_ui()
 	
 	# Start earthquake timers: total duration and periodic shaking
@@ -116,10 +124,19 @@ func _on_player_started_hiding(table_name: String):
 	print("EarthquakeQuest: Player started hiding under ", table_name, " - pausing shaking")
 	_player_is_hiding = true
 	_pause_shaking()
+	# Stop the resume timer if it's running (player hid again before timer finished)
+	if _resume_shake_timer and _resume_shake_timer.time_left > 0:
+		_resume_shake_timer.stop()
 
 func _on_player_stopped_hiding(table_name: String):
-	print("EarthquakeQuest: Player stopped hiding from ", table_name, " - resuming shaking")
+	print("EarthquakeQuest: Player stopped hiding from ", table_name, " - starting delay before resuming shaking")
 	_player_is_hiding = false
+	# Start the delay timer instead of immediately resuming
+	if _resume_shake_timer:
+		_resume_shake_timer.start()
+
+func _on_resume_shake_timer_timeout():
+	print("EarthquakeQuest: Delay finished - resuming shaking")
 	_resume_shaking()
 
 func _hidden_count() -> int:
@@ -179,19 +196,19 @@ func show_quest_box_with_animation():
 	if not quest_box:
 		return
 	quest_box.visible = true
-	# Slide-in from the right with a subtle bounce using offset properties
+	# Slide-in from the left with a subtle bounce using offset properties
 	var tween = create_tween()
 	var margin := 24.0
 	var top_offset := 80.0
 	
-	# Start position (off-screen to the right)
-	quest_box.offset_left = 40.0  # Start 40px to the right
+	# Start position (off-screen to the left)
+	quest_box.offset_left = -quest_box.size.x - 40.0  # Start 40px off-screen to the left
 	quest_box.offset_right = quest_box.offset_left + quest_box.size.x
 	quest_box.offset_top = top_offset
 	
-	# Target position (anchored to right edge)
-	var target_left = -(quest_box.size.x + margin)
-	var target_right = -margin
+	# Target position (anchored to left edge with margin)
+	var target_left = margin
+	var target_right = margin + quest_box.size.x
 	
 	tween.tween_property(quest_box, "offset_left", target_left, 0.35).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	tween.tween_property(quest_box, "offset_right", target_right, 0.35).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
@@ -428,15 +445,15 @@ func _resume_shaking():
 
 func _reposition_quest_box():
 	if quest_box:
-		# With anchoring to top-right, we only need to adjust the offset
-		# The quest box is now anchored to the right edge, so it will automatically
+		# With anchoring to top-left, we only need to adjust the offset
+		# The quest box is now anchored to the left edge, so it will automatically
 		# position correctly regardless of screen size
 		var margin := 24.0
 		var top_offset := 80.0
 		
-		# Set the offset from the right edge (negative because it's anchored right)
-		quest_box.offset_left = -(quest_box.size.x + margin)
-		quest_box.offset_right = -margin
+		# Set the offset from the left edge (positive because it's anchored left)
+		quest_box.offset_left = margin
+		quest_box.offset_right = quest_box.size.x + margin
 		quest_box.offset_top = top_offset
 		
 		# Store original position for animations
