@@ -100,12 +100,24 @@ func pickup_item():
 		GameState.set_go_bag_picked_up()
 		AudioManager.play_sfx("res://Music/Item Pick Ups.mp3")
 		
+		# Notify quest system about go bag pickup
+		notify_quest_system()
+		
 		# Show self-talk about the go bag first
 		show_item_self_talk()
 		
 		# Hide the pickup prompt after interaction
 		if pickup_prompt:
 			pickup_prompt.visible = false
+
+func notify_quest_system():
+	# Find and notify the quest system about go bag collection
+	var quest_system = get_tree().current_scene.find_child("Quest", true, false)
+	if quest_system and quest_system.has_method("on_go_bag_collected"):
+		print("✓ Notifying quest system about go bag pickup")
+		quest_system.on_go_bag_collected()
+	else:
+		print("✗ Quest system not found or doesn't have on_go_bag_collected method")
 
 func show_item_self_talk():
 	# Trigger self-talk first using the self-talk system

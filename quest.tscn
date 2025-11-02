@@ -95,6 +95,20 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 8
+text = "Find and pick up the go bag"
+autowrap_mode = 2
+
+[node name="Objective4" type="HBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer/Objectives"]
+layout_mode = 2
+
+[node name="CheckBox4" type="CheckBox" parent="Quest UI/Quest Text Box/QuestContainer/Objectives/Objective4"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="Quest UI/Quest Text Box/QuestContainer/Objectives/Objective4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
 text = "Collect all pickable emergency items"
 autowrap_mode = 2
 

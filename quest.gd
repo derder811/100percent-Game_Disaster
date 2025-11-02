@@ -4,6 +4,7 @@ extends Node
 var objectives = {
 	"check_television": false,
 	"interact_fuse_box": false,
+	"collect_go_bag": false,
 	"collect_emergency_items": false
 }
 
@@ -126,6 +127,7 @@ func update_quest_ui():
 	var objective_texts = [
 		"Go downstairs and check the television",
 		"Find and interact with the fuse box", 
+		"Find and pick up the go bag",
 		"Collect all pickable emergency items"
 	]
 	
@@ -160,7 +162,7 @@ func update_quest_ui():
 			var current_text = objective_texts[current_objective_index]
 			
 			# For emergency items objective, show list-style display
-			if current_objective_index == 2:  # Emergency items objective
+			if current_objective_index == 3:  # Emergency items objective (now index 3)
 				# Show the main objective
 				current_text += " (" + str(emergency_items_collected) + "/" + str(total_emergency_items) + ")"
 				
@@ -170,7 +172,7 @@ func update_quest_ui():
 					update_emergency_items_list_ui()
 			
 			# Check if objective is completed
-			var objective_keys = ["check_television", "interact_fuse_box", "collect_emergency_items"]
+			var objective_keys = ["check_television", "interact_fuse_box", "collect_go_bag", "collect_emergency_items"]
 			if current_objective_index < objective_keys.size():
 				var is_completed = objectives[objective_keys[current_objective_index]]
 				
@@ -185,7 +187,7 @@ func update_quest_ui():
 		
 		if current_checkbox:
 			current_checkbox.visible = true
-			var objective_keys = ["check_television", "interact_fuse_box", "collect_emergency_items"]
+			var objective_keys = ["check_television", "interact_fuse_box", "collect_go_bag", "collect_emergency_items"]
 			if current_objective_index < objective_keys.size():
 				current_checkbox.button_pressed = objectives[objective_keys[current_objective_index]]
 	
@@ -198,7 +200,7 @@ func update_quest_ui():
 				completed_count += 1
 		
 		progress_label.visible = true
-		progress_label.text = "Quest Progress: " + str(completed_count) + "/3"
+		progress_label.text = "Quest Progress: " + str(completed_count) + "/4"
 		print("Quest: Set progress text: ", progress_label.text)
 
 func update_emergency_items_list_ui():
@@ -314,8 +316,10 @@ func complete_objective(objective_name: String):
 				objective_index = 0
 			"interact_fuse_box":
 				objective_index = 1
-			"collect_emergency_items":
+			"collect_go_bag":
 				objective_index = 2
+			"collect_emergency_items":
+				objective_index = 3
 		
 		print("Objective index: ", objective_index)
 		
@@ -332,19 +336,19 @@ func complete_objective(objective_name: String):
 			# Stop the timer when emergency items quest is completed
 			stop_quest_timer()
 			# Set current objective to this one if it's not already
-			if current_objective_index < 2:
-				current_objective_index = 2
-				print("Advanced current_objective_index to 2 for emergency items")
+			if current_objective_index < 3:
+				current_objective_index = 3
+				print("Advanced current_objective_index to 3 for emergency items")
 		
 		# Advance to next objective if not at the end
-		if objective_index == current_objective_index and current_objective_index < 2:
+		if objective_index == current_objective_index and current_objective_index < 3:
 			# Wait for animation to complete before advancing
 			await get_tree().create_timer(1.0).timeout
 			current_objective_index += 1
 			print("Quest: Advanced to objective index ", current_objective_index)
 			
-			# Start timer when advancing to the third quest (emergency items collection)
-			if current_objective_index == 2:
+			# Start timer when advancing to the fourth quest (emergency items collection)
+			if current_objective_index == 3:
 				print("Quest: Starting timer for emergency items collection")
 				start_quest_timer()
 			
@@ -418,6 +422,10 @@ func on_tv_interaction():
 # Function to be called when player interacts with fuse box
 func on_fusebox_interaction():
 	complete_objective("interact_fuse_box")
+
+# Function to be called when player picks up the go bag
+func on_go_bag_collected():
+	complete_objective("collect_go_bag")
 
 # Function to be called when player collects an emergency item
 func on_emergency_item_collected(item_name: String = ""):
