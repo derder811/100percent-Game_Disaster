@@ -22,12 +22,21 @@ texture = ExtResource("1_slay5")
 
 [node name="Toggle Sounds" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 443.0
-offset_top = 263.0
-offset_right = 1834.0
-offset_bottom = 627.0
+offset_left = 450.0
+offset_top = 230.0
+offset_right = 1772.0
+offset_bottom = 581.0
 scale = Vector2(0.180267, 0.159386)
 texture_normal = ExtResource("3_uhspr")
+
+[node name="Toggle Sounds2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 230.0
+offset_right = 1772.0
+offset_bottom = 581.0
+scale = Vector2(0.180267, 0.159386)
+texture_normal = ExtResource("5_v4yl2")
 
 [node name="Back Button" type="TextureButton" parent="."]
 layout_mode = 0
@@ -38,11 +47,4 @@ offset_bottom = 739.0
 scale = Vector2(0.236522, 0.179277)
 texture_normal = ExtResource("4_c6ia3")
 
-[node name="Toggle Sounds2" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 450.0
-offset_top = 195.0
-offset_right = 1772.0
-offset_bottom = 546.0
-scale = Vector2(0.180267, 0.159386)
-texture_normal = ExtResource("5_v4yl2")
+[node name="MenuAudioPlayer" type="AudioStreamPlayer" parent="."]

@@ -24,6 +24,9 @@ var _collapse_started: bool = false
 var game_over_scene_path: String = "res://game_over.tscn"
 var _continuous_shake_running: bool = false
 var _camera_original_offset: Vector2 = Vector2.ZERO
+# Player hiding state tracking
+var _player_is_hiding: bool = false
+var _shake_paused_due_to_hiding: bool = false
 
 # Safe await helper to avoid get_tree() being null
 func _await_seconds(sec: float) -> void:
@@ -65,6 +68,11 @@ func _ready():
 			t.connect("player_hidden", Callable(self, "_on_table_hidden"))
 			# Track initial state per table
 			tables_hidden[t.name] = false
+		# Connect to hiding/unhiding signals for shake control
+		if t and t.has_signal("player_hidden"):
+			t.connect("player_hidden", Callable(self, "_on_player_started_hiding"))
+		if t and t.has_signal("player_unhidden"):
+			t.connect("player_unhidden", Callable(self, "_on_player_stopped_hiding"))
 	
 	# Connect to exit area
 	var exit_area = get_tree().current_scene.find_child("Store Exit", true, false)
@@ -102,6 +110,17 @@ func _on_table_hidden(table_name: String):
 		_complete_objective(1)
 		# Prompt player for next step
 		_show_hint_dialog("Good! Now go to the exit.")
+
+# Signal handlers for hiding state management
+func _on_player_started_hiding(table_name: String):
+	print("EarthquakeQuest: Player started hiding under ", table_name, " - pausing shaking")
+	_player_is_hiding = true
+	_pause_shaking()
+
+func _on_player_stopped_hiding(table_name: String):
+	print("EarthquakeQuest: Player stopped hiding from ", table_name, " - resuming shaking")
+	_player_is_hiding = false
+	_resume_shaking()
 
 func _hidden_count() -> int:
 	var count := 0
@@ -248,7 +267,11 @@ func _set_store_quest_hidden(hidden: bool):
 func _do_periodic_shake():
 	if not _quest_active:
 		return
-	_camera_shake(0.6, 10.0)
+	# Only do periodic shake if player is not hiding
+	if not _shake_paused_due_to_hiding:
+		_camera_shake(0.6, 10.0)
+	else:
+		print("EarthquakeQuest: Skipping periodic shake - player is hiding")
 
 # When the 50s quake duration ends, stop periodic shakes
 func _on_quake_duration_done():
@@ -369,7 +392,14 @@ func _run_continuous_camera_shake(magnitude: float):
 		var done := (checkbox1 and checkbox1.button_pressed) and (checkbox2 and checkbox2.button_pressed)
 		if done or _collapse_started:
 			break
-		camera.offset = Vector2(rng.randf_range(-magnitude, magnitude), rng.randf_range(-magnitude, magnitude))
+		
+		# Only shake if player is not hiding
+		if not _shake_paused_due_to_hiding:
+			camera.offset = Vector2(rng.randf_range(-magnitude, magnitude), rng.randf_range(-magnitude, magnitude))
+		else:
+			# Keep camera steady when player is hiding
+			camera.offset = _camera_original_offset
+		
 		await _await_seconds(0.02)
 	_stop_continuous_camera_shake()
 
@@ -380,6 +410,21 @@ func _stop_continuous_camera_shake():
 	var camera = get_viewport().get_camera_2d()
 	if camera:
 		camera.offset = _camera_original_offset
+
+# Pause/Resume shaking functions for hiding mechanics
+func _pause_shaking():
+	if not _shake_paused_due_to_hiding:
+		_shake_paused_due_to_hiding = true
+		print("EarthquakeQuest: Shaking paused - player is hiding")
+		# Restore camera to original position when pausing
+		var camera = get_viewport().get_camera_2d()
+		if camera:
+			camera.offset = _camera_original_offset
+
+func _resume_shaking():
+	if _shake_paused_due_to_hiding:
+		_shake_paused_due_to_hiding = false
+		print("EarthquakeQuest: Shaking resumed - player came out of hiding")
 
 func _reposition_quest_box():
 	if quest_box:
