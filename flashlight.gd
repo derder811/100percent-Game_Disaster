@@ -108,7 +108,7 @@ func notify_quest_system():
 	var quest_system = get_tree().current_scene.find_child("Quest", true, false)
 	if quest_system and quest_system.has_method("on_emergency_item_collected"):
 		print("✓ Notifying quest system about emergency item pickup: ", itemName)
-		quest_system.on_emergency_item_collected()
+		quest_system.on_emergency_item_collected(itemName)
 	else:
 		print("✗ Quest system not found or doesn't have on_emergency_item_collected method")
 

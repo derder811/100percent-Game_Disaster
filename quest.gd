@@ -14,6 +14,23 @@ var current_objective_index = 0
 var emergency_items_collected = 0
 var total_emergency_items = 9  # powerbank, phone, documents, first aid (medkit), battery, flashlight, canned food, water bottle, medicine 3
 
+# Individual emergency items tracking for list-style quest
+var emergency_items_status = {
+	"powerbank": false,
+	"phone": false,
+	"documents": false,
+	"first aid kit": false,
+	"battery": false,
+	"flashlight": false,
+	"canned food": false,
+	"water bottle": false,
+	"medicine 3": false
+}
+
+# UI references for emergency items list
+var emergency_item_checkboxes = []
+var emergency_item_labels = []
+
 # Timer variables for third quest
 var quest_timer: Timer
 var timer_duration = 120.0  # 2 minutes
@@ -77,6 +94,22 @@ func _ready():
 						objective_labels.append(subchild)
 						print("Quest: Found label: ", subchild.name)
 	
+	# Initialize emergency items UI elements
+	var emergency_items_container = get_node_or_null("Quest UI/Quest Text Box/QuestContainer/EmergencyItems")
+	if emergency_items_container:
+		print("Quest: Found emergency items container")
+		for child in emergency_items_container.get_children():
+			if child is HBoxContainer:
+				for subchild in child.get_children():
+					if subchild is CheckBox:
+						emergency_item_checkboxes.append(subchild)
+					elif subchild is Label:
+						emergency_item_labels.append(subchild)
+		print("Quest: Emergency item checkboxes found: ", emergency_item_checkboxes.size())
+		print("Quest: Emergency item labels found: ", emergency_item_labels.size())
+	else:
+		print("Quest: Emergency items container not found")
+	
 	print("Quest: Total checkboxes found: ", objective_checkboxes.size())
 	print("Quest: Total labels found: ", objective_labels.size())
 	
@@ -112,6 +145,11 @@ func update_quest_ui():
 		if i < objective_labels.size() and objective_labels[i]:
 			objective_labels[i].visible = false
 	
+	# Hide emergency items container initially
+	var emergency_items_container = get_node_or_null("Quest UI/Quest Text Box/QuestContainer/EmergencyItems")
+	if emergency_items_container:
+		emergency_items_container.visible = false
+	
 	# Show only the current active objective
 	if current_objective_index < objective_texts.size() and current_objective_index < objective_labels.size() and current_objective_index < objective_checkboxes.size():
 		var current_label = objective_labels[current_objective_index]
@@ -121,9 +159,15 @@ func update_quest_ui():
 			current_label.visible = true
 			var current_text = objective_texts[current_objective_index]
 			
-			# Add progress for emergency items collection
+			# For emergency items objective, show list-style display
 			if current_objective_index == 2:  # Emergency items objective
+				# Show the main objective
 				current_text += " (" + str(emergency_items_collected) + "/" + str(total_emergency_items) + ")"
+				
+				# Show emergency items container with individual items
+				if emergency_items_container:
+					emergency_items_container.visible = true
+					update_emergency_items_list_ui()
 			
 			# Check if objective is completed
 			var objective_keys = ["check_television", "interact_fuse_box", "collect_emergency_items"]
@@ -156,6 +200,60 @@ func update_quest_ui():
 		progress_label.visible = true
 		progress_label.text = "Quest Progress: " + str(completed_count) + "/3"
 		print("Quest: Set progress text: ", progress_label.text)
+
+func update_emergency_items_list_ui():
+	"""Update the individual emergency items list display"""
+	print("Quest: Updating emergency items list UI")
+	
+	# Emergency item names in display order
+	var item_names = [
+		"powerbank",
+		"phone", 
+		"documents",
+		"first aid kit",
+		"battery",
+		"flashlight",
+		"canned food",
+		"water bottle",
+		"medicine 3"
+	]
+	
+	# Display names for better readability
+	var display_names = [
+		"Powerbank",
+		"Mobile Phone",
+		"Important Documents", 
+		"First Aid Kit",
+		"Battery",
+		"Flashlight",
+		"Canned Food",
+		"Water Bottle",
+		"Medicine"
+	]
+	
+	# Update each emergency item checkbox and label
+	for i in range(min(emergency_item_checkboxes.size(), emergency_item_labels.size(), item_names.size())):
+		var checkbox = emergency_item_checkboxes[i]
+		var label = emergency_item_labels[i]
+		var item_name = item_names[i]
+		var display_name = display_names[i]
+		
+		if checkbox and label:
+			# Set checkbox state
+			checkbox.button_pressed = emergency_items_status[item_name]
+			checkbox.visible = true
+			
+			# Set label text and color
+			if emergency_items_status[item_name]:
+				label.text = "✓ " + display_name
+				label.modulate = Color.GREEN
+			else:
+				label.text = display_name
+				label.modulate = Color.WHITE
+			
+			label.visible = true
+			
+			print("Quest: Updated item ", i, ": ", display_name, " - ", emergency_items_status[item_name])
 
 func animate_objective_completion(objective_index: int):
 	"""Animate the completion of an objective with smooth transitions"""
@@ -322,9 +420,22 @@ func on_fusebox_interaction():
 	complete_objective("interact_fuse_box")
 
 # Function to be called when player collects an emergency item
-func on_emergency_item_collected():
+func on_emergency_item_collected(item_name: String = ""):
 	emergency_items_collected += 1
 	print("Emergency item collected! Progress: ", emergency_items_collected, "/", total_emergency_items)
+	
+	# Update specific item status if item name is provided
+	if item_name != "":
+		# Normalize the item name to match our dictionary keys
+		var normalized_name = normalize_item_name(item_name)
+		print("Quest: Received item name: '", item_name, "' -> normalized: '", normalized_name, "'")
+		
+		if emergency_items_status.has(normalized_name):
+			emergency_items_status[normalized_name] = true
+			print("Quest: Marked specific item as collected: ", normalized_name)
+		else:
+			print("Quest: WARNING - Item name '", normalized_name, "' not found in emergency_items_status")
+			print("Quest: Available keys: ", emergency_items_status.keys())
 	
 	# Update the UI to show progress
 	update_emergency_items_ui()
@@ -425,6 +536,9 @@ func update_emergency_items_ui():
 		print("Updated objective label: ", progress_text)
 	else:
 		print("ERROR: Not enough objective labels (", objective_labels.size(), ")")
+	
+	# Update the individual emergency items list UI
+	update_emergency_items_list_ui()
 	
 	# Check if quest should be completed based on actual inventory count
 	if actual_count >= total_emergency_items:
@@ -674,3 +788,42 @@ func trigger_flood_animation():
 func is_timer_expired() -> bool:
 	"""Check if the quest timer has expired"""
 	return is_timer_active and time_remaining <= 0
+
+func normalize_item_name(item_name: String) -> String:
+	"""Normalize item names to match the emergency_items_status dictionary keys"""
+	var normalized = item_name.to_lower()
+	
+	# Handle specific mappings for items that don't match exactly
+	match normalized:
+		"first aid kit":
+			return "first aid kit"
+		"powerbank":
+			return "powerbank"
+		"flashlight":
+			return "flashlight"
+		"phone":
+			return "phone"
+		"documents":
+			return "documents"
+		"battery":
+			return "battery"
+		"canned food":
+			return "canned food"
+		"water bottle":
+			return "water bottle"
+		"medicine 3":
+			return "medicine 3"
+		_:
+			# For any other cases, just return lowercase
+			return normalized
+
+# Test function to advance to emergency items objective
+func advance_to_emergency_items_objective():
+	"""Manually advance to the emergency items objective for testing"""
+	print("Quest: Manually advancing to emergency items objective")
+	current_objective_index = 2
+	objectives["check_television"] = true
+	objectives["interact_fuse_box"] = true
+	update_quest_ui()
+	start_quest_timer()
+	show_quest_box_with_animation()

@@ -9,13 +9,13 @@ script = ExtResource("1_hhw1v")
 layer = 10
 
 [node name="Quest Text Box" type="Panel" parent="Quest UI"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -221.0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 11.0
 offset_top = 69.0
-offset_right = -11.0
-offset_bottom = 199.0
+offset_right = 261.0
+offset_bottom = 350.0
 grow_horizontal = 0
 
 [node name="QuestContainer" type="VBoxContainer" parent="Quest UI/Quest Text Box"]
@@ -97,6 +97,164 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 8
 text = "Collect all pickable emergency items"
 autowrap_mode = 2
+
+[node name="EmergencyItems" type="VBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer"]
+layout_mode = 2
+visible = false
+theme_override_constants/separation = 2
+
+[node name="EmergencyItem1" type="HBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="CheckBoxItem1" type="CheckBox" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems/EmergencyItem1"]
+layout_mode = 2
+custom_minimum_size = Vector2(16, 16)
+
+[node name="LabelItem1" type="Label" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems/EmergencyItem1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
+text = "Powerbank"
+autowrap_mode = 2
+vertical_alignment = 1
+
+[node name="EmergencyItem2" type="HBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="CheckBoxItem2" type="CheckBox" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems/EmergencyItem2"]
+layout_mode = 2
+custom_minimum_size = Vector2(16, 16)
+
+[node name="LabelItem2" type="Label" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems/EmergencyItem2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
+text = "Mobile Phone"
+autowrap_mode = 2
+vertical_alignment = 1
+
+[node name="EmergencyItem3" type="HBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="CheckBoxItem3" type="CheckBox" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems/EmergencyItem3"]
+layout_mode = 2
+custom_minimum_size = Vector2(16, 16)
+
+[node name="LabelItem3" type="Label" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems/EmergencyItem3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
+text = "Important Documents"
+autowrap_mode = 2
+vertical_alignment = 1
+
+[node name="EmergencyItem4" type="HBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="CheckBoxItem4" type="CheckBox" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems/EmergencyItem4"]
+layout_mode = 2
+custom_minimum_size = Vector2(16, 16)
+
+[node name="LabelItem4" type="Label" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems/EmergencyItem4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
+text = "First Aid Kit"
+autowrap_mode = 2
+vertical_alignment = 1
+
+[node name="EmergencyItem5" type="HBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="CheckBoxItem5" type="CheckBox" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems/EmergencyItem5"]
+layout_mode = 2
+custom_minimum_size = Vector2(16, 16)
+
+[node name="LabelItem5" type="Label" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems/EmergencyItem5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
+text = "Battery"
+autowrap_mode = 2
+vertical_alignment = 1
+
+[node name="EmergencyItem6" type="HBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="CheckBoxItem6" type="CheckBox" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems/EmergencyItem6"]
+layout_mode = 2
+custom_minimum_size = Vector2(16, 16)
+
+[node name="LabelItem6" type="Label" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems/EmergencyItem6"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
+text = "Flashlight"
+autowrap_mode = 2
+vertical_alignment = 1
+
+[node name="EmergencyItem7" type="HBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="CheckBoxItem7" type="CheckBox" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems/EmergencyItem7"]
+layout_mode = 2
+custom_minimum_size = Vector2(16, 16)
+
+[node name="LabelItem7" type="Label" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems/EmergencyItem7"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
+text = "Canned Food"
+autowrap_mode = 2
+vertical_alignment = 1
+
+[node name="EmergencyItem8" type="HBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="CheckBoxItem8" type="CheckBox" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems/EmergencyItem8"]
+layout_mode = 2
+custom_minimum_size = Vector2(16, 16)
+
+[node name="LabelItem8" type="Label" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems/EmergencyItem8"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
+text = "Water Bottle"
+autowrap_mode = 2
+vertical_alignment = 1
+
+[node name="EmergencyItem9" type="HBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="CheckBoxItem9" type="CheckBox" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems/EmergencyItem9"]
+layout_mode = 2
+custom_minimum_size = Vector2(16, 16)
+
+[node name="LabelItem9" type="Label" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems/EmergencyItem9"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
+text = "Medicine"
+autowrap_mode = 2
+vertical_alignment = 1
 
 [node name="ProgressLabel" type="Label" parent="Quest UI/Quest Text Box/QuestContainer"]
 layout_mode = 2
