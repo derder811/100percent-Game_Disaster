@@ -16,6 +16,9 @@ func _ready():
 	# Start with scale 0 for pop animation
 	scale = Vector2.ZERO
 	
+	# Allow this node to process input even when the game is paused
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	
 	# Create auto-hide timer
 	auto_hide_timer = Timer.new()
 	auto_hide_timer.wait_time = 2.0
@@ -48,6 +51,10 @@ func show_dialog(text: String, position: Vector2 = Vector2.ZERO, header: String 
 	visible = true
 	is_showing = true
 	
+	# Pause the game when showing the dialog
+	get_tree().paused = true
+	print("Game paused - SimpleDialog showing")
+	
 	# Pop animation
 	scale = Vector2.ZERO
 	if tween:
@@ -77,7 +84,9 @@ func hide_dialog():
 	tween.tween_callback(func(): 
 		visible = false
 		is_showing = false
-		print("Dialog hidden")
+		# Resume the game when hiding the dialog
+		get_tree().paused = false
+		print("Game resumed - SimpleDialog hidden")
 	)
 
 func _input(event):
