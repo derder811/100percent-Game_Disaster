@@ -54,7 +54,8 @@ var item_audio_paths := {
 	"tv": "res://retyphoon (2)/It’s raining nonstop… I’ll check the news to see if there’s a typhoon signal in our area.wav",
 	"bucket": "res://retyphoon (2)/Great… The bucket is full. At least I’ve got some clean water ready.wav",
 	"window": "res://retyphoon (2)/It’s raining hard… I should check the window.wav",
-	"flashlight": "res://retyphoon (2)/Flashlight. This should help.wav"
+	"flashlight": "res://retyphoon (2)/Flashlight. This should help.wav",
+	"meat_fridge": "res://retyphoon (2)/ReEarthquake/Meat looks fresh. Probably not grabbing any today, but noted.wav"
 }
 
 # New: Audio clips for timer-based self-talk (Typhoon movement-style lines)

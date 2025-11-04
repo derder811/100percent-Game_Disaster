@@ -14,7 +14,8 @@ var self_talk_messages = {
 		"ice_cream_fridge": "Hmm... kinda craving something sweet. Do I have room for ice cream though?",
 		"meat_fridge": "Meat looks fresh. Probably not grabbing any today, but noted.",
 		"hotdog_siopao": "Hotdog or siopao? Man, tough choice. Maybe HotPao?.",
-		"food_section": "Let's see what they've got here... canned stuff, quick bites. Pretty standard."
+		"food_section": "Let's see what they've got here... canned stuff, quick bites. Pretty standard.",
+		"cashier": "Do you accept Gcash payment?"
 	},
 	"movement_comments": [
 		"Let me check over here...",
@@ -379,7 +380,8 @@ var action_name_by_item_type: Dictionary = {
 	"ice_cream_fridge": "ice cream fridge",
 	"meat_fridge": "meat fridge",
 	"hotdog_siopao": "hotdog and siopao",
-	"food_section": "examine snacks"
+	"food_section": "examine snacks",
+	"cashier": "talk to cashier"
 }
 
 func _is_interacting_with_item(item_type: String) -> bool:
@@ -838,47 +840,53 @@ func _map_voice_path_for_message(message: String) -> String:
 	# Earthquake safety: Drop, Cover, Hold
 	var msg_l := msg.to_lower()
 	if msg_l.find("drop") != -1 and msg_l.find("cover") != -1 and msg_l.find("hold") != -1:
-		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/DROP COVER AND HOLD.mp3"
+		return "res://retyphoon (2)/ReEarthquake/It’s shaking! I need to hide under the table!.wav"
 	# Store entry messages
 	if msg.find("Oh hey, a convenience store") != -1:
-		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Store Entry) - Copy.mp3"
+		return "res://retyphoon (2)/ReEarthquake/Oh hey, a convenience store. Might as well take a look.wav"
 	elif msg.find("I'm in the store now") != -1 or msg.find("in the store now") != -1:
-		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Store Entry) - Copy.mp3"
+		return "res://retyphoon (2)/ReEarthquake/Oh hey, a convenience store. Might as well take a look.wav"
 	# Movement comments
 	elif msg.find("Let me check over here") != -1:
-		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Letmecheckoverhere.mp3"
+		return "res://retyphoon (2)/ReEarthquake/Let me check over here....wav"
 	elif msg.find("What's in this section") != -1:
-		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/whats in this section.mp3"
+		return ""
 	elif msg.find("I should look around") != -1:
-		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/i should look around.mp3"
+		return ""
 	elif msg.find("Maybe there's something useful here") != -1:
-		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/maybe there somethins useful.mp3"
+		return ""
 	elif msg.find("I need to cover all areas of the store") != -1:
-		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Store Entry) - Copy.mp3"
+		return ""
 	# Exit messages
 	elif msg.find("should head to the exit") != -1 or msg.find("time to leave") != -1:
-		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/i should head to the exit.mp3"
+		return "res://retyphoon (2)/ReEarthquake/I should head to the exit now!.wav"
 	# Food section messages
 	elif msg.find("food section") != -1:
-		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Food Section) - Copy.mp3"
+		return ""
 	# Snacks section messages
 	elif msg.find("snacks") != -1 or msg.find("chips") != -1:
-		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Snacks) - Copy.mp3"
+		return ""
 	# Ice cream fridge interactions
-	elif msg.find("Ice cream") != -1 or msg.find("frozen") != -1:
-		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Ice Cream) - Copy.mp3"
+	elif msg_l.find("ice cream") != -1 or msg_l.find("sweet") != -1:
+		return "res://retyphoon (2)/ReEarthquake/Hmm... kinda craving something sweet. Do I have room for ice cream though.wav"
 	# Meat fridge interactions
-	elif msg.find("meat") != -1 or msg.find("beef") != -1 or msg.find("pork") != -1:
-		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Meat) - Copy.mp3"
+	elif msg_l.find("meat") != -1 or msg_l.find("beef") != -1 or msg_l.find("pork") != -1:
+		return "res://retyphoon (2)/ReEarthquake/Meat looks fresh. Probably not grabbing any today, but noted.wav"
 	# Hotdog/Siopao interactions
 	elif msg.find("hotdog") != -1 or msg.find("siopao") != -1:
-		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (HotPao) (1).mp3"
+		return "res://retyphoon (2)/ReEarthquake/Hotdog or siopao Man, tough choice. Maybe HotPao.wav"
 	# General fridge interactions (fallback for other fridges)
 	elif msg.find("fridge") != -1 or msg.find("refrigerator") != -1:
-		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Fridge) (1).mp3"
+		return ""
 	# Slurpee interactions
 	elif msg.find("slurpee") != -1 or msg.find("drink") != -1:
-		return "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Slurpee) - Copy.mp3"
+		return ""
+	# Cashier payment
+	elif msg_l.find("gcash") != -1 or msg_l.find("accept gcash") != -1 or msg_l.find("payment") != -1:
+		return "res://retyphoon (2)/ReEarthquake/Do you accept Gcash payment.wav"
+	# Building collapse
+	elif msg_l.find("collapsing") != -1 or msg_l.find("building is collapsing") != -1 or msg_l.find("store is collapsing") != -1:
+		return "res://retyphoon (2)/ReEarthquake/The store is collapsing! I need to get out!.wav"
 	# No known voice asset
 	return ""
 
@@ -896,3 +904,24 @@ func _play_voice_for_message(message: String) -> bool:
 		audio_mgr.play_sfx(voice_path, 4.0)
 		return true
 	return false
+
+# Public helper: await until Player3 self-talk (text or audio) has fully finished
+func await_self_talk_finished() -> void:
+	# First, allow a short window for pending self-talk to actually start
+	var max_start_wait := 1.5
+	var elapsed := 0.0
+	while not _is_any_dialog_active() and (interaction_processing or is_currently_interacting or interaction_queue.size() > 0 or pending_interaction_self_talk != "") and elapsed < max_start_wait:
+		await _await_seconds(0.1)
+		elapsed += 0.1
+
+	# Next, wait until any visible dialog/bubble/textbox has ended
+	while _is_any_dialog_active():
+		await _await_seconds(0.1)
+
+	# Also ensure voice SFX has finished
+	if typeof(AudioManager) != TYPE_NIL and AudioManager.has_method("wait_sfx_finished"):
+		await AudioManager.wait_sfx_finished()
+
+	# Force-hide any lingering UI elements just in case
+	_hide_textbox()
+	_hide_bubble()

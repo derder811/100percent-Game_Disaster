@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var cashier_audio_player: AudioStreamPlayer = $CashierAudioPlayer
 var dialog_box_scene: PackedScene = preload("res://Scenes/dialog_box.tscn")
 var store_quest_activated: bool = false
+var current_dialog_box: Node = null
 
 func _ready():
 	if interaction_area != null:
@@ -14,6 +15,14 @@ func _ready():
 		print("Cashier NPC interaction configured")
 	else:
 		print("ERROR: InteractionArea not found on Cashier NPC")
+
+	# Ensure cashier audio uses ReEarthquake WAV
+	if cashier_audio_player != null:
+		var wav_path := "res://retyphoon (2)/ReEarthquake/Yes we accept Gcash payment.wav"
+		var stream: AudioStream = load(wav_path)
+		if stream != null:
+			cashier_audio_player.stream = stream
+			print("Cashier NPC: Loaded cashier audio stream:", wav_path)
 
 func _get_dialog_box() -> Node:
 	# Try to find an existing DialogSystem
@@ -25,11 +34,34 @@ func _get_dialog_box() -> Node:
 	get_tree().root.add_child(inst)
 	return inst
 
+
 func _on_interact() -> void:
-	# Play cashier message audio
+	# Trigger Player3 self-talk for cashier interaction first
+	var p3_self_talk = get_tree().get_first_node_in_group("player3_self_talk_system")
+	if p3_self_talk and p3_self_talk.has_method("trigger_after_item_interact_talk"):
+		p3_self_talk.trigger_after_item_interact_talk("cashier")
+
+	# Wait for Player3 self-talk to fully finish (text and audio)
+	if p3_self_talk and p3_self_talk.has_method("await_self_talk_finished"):
+		await p3_self_talk.await_self_talk_finished()
+	else:
+		# Fallback: wait for SFX, then poll until no dialog is active or timeout
+		if typeof(AudioManager) != TYPE_NIL and AudioManager and AudioManager.has_method("wait_sfx_finished"):
+			await AudioManager.wait_sfx_finished()
+		var max_wait := 4.0
+		var elapsed := 0.0
+		while p3_self_talk and p3_self_talk.has_method("_is_any_dialog_active") and p3_self_talk._is_any_dialog_active() and elapsed < max_wait:
+			await get_tree().create_timer(0.1).timeout
+			elapsed += 0.1
+
+	# Optionally hide Player3 textbox before NPC speaks
+	if p3_self_talk and p3_self_talk.has_method("_hide_textbox"):
+		p3_self_talk._hide_textbox()
+
+	# Now play cashier NPC response audio
 	if cashier_audio_player != null:
 		cashier_audio_player.play()
-		print("Cashier NPC: Playing cashier message audio")
+		print("Cashier NPC: Playing cashier response audio")
 	
 	# Hide any existing quest UI during dialogue to prevent overlap
 	_hide_existing_quest_ui()
@@ -40,6 +72,7 @@ func _on_interact() -> void:
 	# Prefer bottom DialogBox UI for conversation
 	var box = _get_dialog_box()
 	if box != null and box.has_method("show_dialog"):
+		current_dialog_box = box
 		# Connect both finished and closed to show StoreQuest UI
 		# Make sure we only connect once to avoid duplicate connections
 		if box.has_signal("dialog_finished") and not box.dialog_finished.is_connected(_on_cashier_dialog_finished):
@@ -47,6 +80,9 @@ func _on_interact() -> void:
 		if box.has_signal("dialog_closed") and not box.dialog_closed.is_connected(_on_cashier_dialog_finished):
 			box.dialog_closed.connect(_on_cashier_dialog_finished)
 		box.show_dialog("CASHIER", lines)
+
+		# Schedule auto-close: 2 seconds after cashier audio finishes
+		call_deferred("_schedule_auto_close_after_audio")
 		
 		# Safety timer as fallback in case signals don't work
 		var safety_timer := Timer.new()
@@ -69,6 +105,23 @@ func _on_interact() -> void:
 		t.timeout.connect(_on_cashier_dialog_finished)
 		add_child(t)
 		t.start()
+
+		# Also schedule auto-close after audio for bubble dialog
+		call_deferred("_schedule_auto_close_after_audio")
+
+func _schedule_auto_close_after_audio() -> void:
+	if cashier_audio_player == null:
+		return
+	# Wait until cashier audio finishes
+	await cashier_audio_player.finished
+	# Then wait 2 seconds before closing the dialog textbox
+	await get_tree().create_timer(2.0).timeout
+	# If using DialogSystem, close it to vanish the textbox
+	if current_dialog_box != null and current_dialog_box.has_method("close_dialog"):
+		current_dialog_box.close_dialog()
+	else:
+		# Fallback: trigger quest finish which hides bubble flows
+		_on_cashier_dialog_finished()
 
 func _hide_existing_quest_ui() -> void:
 	# Hide any existing quest UI to prevent overlap with dialogue

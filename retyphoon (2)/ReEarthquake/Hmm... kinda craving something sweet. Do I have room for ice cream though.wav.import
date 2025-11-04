@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://v3nj7n7rxtql"
+path="res://.godot/imported/Hmm... kinda craving something sweet. Do I have room for ice cream though.wav-67cf223937a221c75c972e9c19463cdf.sample"
+
+[deps]
+
+source_file="res://retyphoon (2)/ReEarthquake/Hmm... kinda craving something sweet. Do I have room for ice cream though.wav"
+dest_files=["res://.godot/imported/Hmm... kinda craving something sweet. Do I have room for ice cream though.wav-67cf223937a221c75c972e9c19463cdf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

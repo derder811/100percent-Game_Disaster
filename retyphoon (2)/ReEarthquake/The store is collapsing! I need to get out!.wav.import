@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ct4a3jlc4m78q"
+path="res://.godot/imported/The store is collapsing! I need to get out!.wav-3bbf1950a0881be218b0d88975041e4e.sample"
+
+[deps]
+
+source_file="res://retyphoon (2)/ReEarthquake/The store is collapsing! I need to get out!.wav"
+dest_files=["res://.godot/imported/The store is collapsing! I need to get out!.wav-3bbf1950a0881be218b0d88975041e4e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

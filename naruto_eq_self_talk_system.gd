@@ -294,13 +294,24 @@ func _hide_textbox():
 # Map known self-talk lines to available voice assets for Naruto
 func _map_voice_path_for_message(message: String) -> String:
 	var msg := String(message)
+	var msg_l := msg.to_lower()
 	# Convenience store entry and timer-based lines
 	if msg.find("Oh hey, a convenience store") != -1:
-		return "res://asset/button/Oh hey, a convenience store..mp3"
+		return "res://retyphoon (2)/ReEarthquake/Oh hey, a convenience store. Might as well take a look.wav"
 	elif msg.find("Might as well take a look") != -1:
-		return "res://asset/button/Oh hey, a convenience store..mp3"
+		return "res://retyphoon (2)/ReEarthquake/Oh hey, a convenience store. Might as well take a look.wav"
 	elif msg.find("Could use a quick break") != -1:
-		return "res://asset/button/Oh hey, a convenience store..mp3"
+		return "res://retyphoon (2)/ReEarthquake/Oh hey, a convenience store. Might as well take a look.wav"
+	# Movement comment coverage
+	elif msg.find("Let me check over here") != -1:
+		return "res://retyphoon (2)/ReEarthquake/Let me check over here....wav"
+	# Exit and collapse coverage
+	elif msg_l.find("should head to the exit") != -1 or msg_l.find("exit") != -1:
+		return "res://retyphoon (2)/ReEarthquake/I should head to the exit now!.wav"
+	elif msg_l.find("shaking") != -1 or (msg_l.find("drop") != -1 and msg_l.find("cover") != -1 and msg_l.find("hold") != -1):
+		return "res://retyphoon (2)/ReEarthquake/It’s shaking! I need to hide under the table!.wav"
+	elif msg_l.find("collapsing") != -1 or msg_l.find("store is collapsing") != -1:
+		return "res://retyphoon (2)/ReEarthquake/The store is collapsing! I need to get out!.wav"
 	# Fallback: no known voice asset
 	return ""
 

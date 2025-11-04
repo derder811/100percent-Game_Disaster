@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://coofhqm87ca30"
+path="res://.godot/imported/Let me check over here....wav-8739a8e0646ab1dbc7dcca9393c90af9.sample"
+
+[deps]
+
+source_file="res://retyphoon (2)/ReEarthquake/Let me check over here....wav"
+dest_files=["res://.godot/imported/Let me check over here....wav-8739a8e0646ab1dbc7dcca9393c90af9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

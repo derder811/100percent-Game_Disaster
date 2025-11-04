@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cnj1al6u77yvy"
+path="res://.godot/imported/It’s shaking! I need to hide under the table!.wav-df7de9217f646fb376eeb88e12c745b1.sample"
+
+[deps]
+
+source_file="res://retyphoon (2)/ReEarthquake/It’s shaking! I need to hide under the table!.wav"
+dest_files=["res://.godot/imported/It’s shaking! I need to hide under the table!.wav-df7de9217f646fb376eeb88e12c745b1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
