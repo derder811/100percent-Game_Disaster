@@ -580,13 +580,21 @@ func _show_textbox(message: String, seconds: float = 4.0, urgent: bool = false):
 	# Textbox is screen-anchored; disable follow so it won't move bubble
 	_follow_active = false
 	set_process(true)
-	# Play voice for this message once textbox becomes visible
-	_play_voice_for_message(message)
-	if _textbox_ttl_timer != null:
-		if seconds > 0.0:
-			_textbox_ttl_timer.start(seconds)
-		else:
+	# Play voice for this message once textbox becomes visible; if audio starts,
+	# keep the textbox visible until the audio finishes.
+	var audio_started := _play_voice_for_message(message)
+	if audio_started:
+		if _textbox_ttl_timer != null and not _textbox_ttl_timer.is_stopped():
 			_textbox_ttl_timer.stop()
+		if typeof(AudioManager) != TYPE_NIL and AudioManager.has_method("wait_sfx_finished"):
+			await AudioManager.wait_sfx_finished()
+		_hide_textbox()
+	else:
+		if _textbox_ttl_timer != null:
+			if seconds > 0.0:
+				_textbox_ttl_timer.start(seconds)
+			else:
+				_textbox_ttl_timer.stop()
 
 func _hide_textbox():
 	_textbox_active = false
@@ -875,10 +883,10 @@ func _map_voice_path_for_message(message: String) -> String:
 	return ""
 
 # Play a voice clip for the given message, if mapped
-func _play_voice_for_message(message: String) -> void:
+func _play_voice_for_message(message: String) -> bool:
 	var voice_path := _map_voice_path_for_message(message)
 	if voice_path == "":
-		return
+		return false
 	var audio_mgr = null
 	if typeof(AudioManager) != TYPE_NIL:
 		audio_mgr = AudioManager
@@ -886,3 +894,5 @@ func _play_voice_for_message(message: String) -> void:
 		audio_mgr = get_tree().get_root().get_node_or_null("/root/AudioManager")
 	if audio_mgr and audio_mgr.has_method("play_sfx"):
 		audio_mgr.play_sfx(voice_path, 4.0)
+		return true
+	return false

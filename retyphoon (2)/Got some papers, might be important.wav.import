@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cbsrof7limrb7"
+path="res://.godot/imported/Got some papers, might be important.wav-b5f70eb2aa4cacaa6360ff01175806a3.sample"
+
+[deps]
+
+source_file="res://retyphoon (2)/Got some papers, might be important.wav"
+dest_files=["res://.godot/imported/Got some papers, might be important.wav-b5f70eb2aa4cacaa6360ff01175806a3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

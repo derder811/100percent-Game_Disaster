@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dlcbobtwcumow"
+path="res://.godot/imported/It’s raining nonstop… I’ll check the news to see if there’s a typhoon signal in our area.wav-0e0f0d585b170c1865847e1b4e077d13.sample"
+
+[deps]
+
+source_file="res://retyphoon (2)/It’s raining nonstop… I’ll check the news to see if there’s a typhoon signal in our area.wav"
+dest_files=["res://.godot/imported/It’s raining nonstop… I’ll check the news to see if there’s a typhoon signal in our area.wav-0e0f0d585b170c1865847e1b4e077d13.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

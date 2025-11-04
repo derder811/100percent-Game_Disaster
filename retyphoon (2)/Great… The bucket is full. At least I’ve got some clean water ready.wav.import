@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cgkelm76a3pp4"
+path="res://.godot/imported/Great… The bucket is full. At least I’ve got some clean water ready.wav-e6103d24cd44aa807775d0ffd2f05f88.sample"
+
+[deps]
+
+source_file="res://retyphoon (2)/Great… The bucket is full. At least I’ve got some clean water ready.wav"
+dest_files=["res://.godot/imported/Great… The bucket is full. At least I’ve got some clean water ready.wav-e6103d24cd44aa807775d0ffd2f05f88.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

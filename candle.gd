@@ -35,9 +35,17 @@ func _on_interact():
 		var self_talk_system = get_tree().get_first_node_in_group("self_talk_system")
 		if self_talk_system and self_talk_system.has_method("trigger_item_pickup_self_talk"):
 			self_talk_system.trigger_item_pickup_self_talk("candle")
-		
-		# Show SimpleDialogManager safety tips after 3 seconds
-		await get_tree().create_timer(3.0).timeout
+
+		# Wait for self-talk audio to finish before showing the dialog box
+		# Fallback to a short delay if AudioManager isn't available
+		if typeof(AudioManager) != TYPE_NIL and AudioManager:
+			await AudioManager.wait_sfx_finished()
+		else:
+			await get_tree().create_timer(3.0).timeout
+
+		# Optionally hide any self-talk textbox to prevent overlap (if exposed)
+		if self_talk_system and self_talk_system.has_method("_hide_textbox"):
+			self_talk_system._hide_textbox()
 		SimpleDialogManager.show_safety_tips("candle", global_position)
 		
 		# Complete the quest objective for candle interaction

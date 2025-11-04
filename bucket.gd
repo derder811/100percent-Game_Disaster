@@ -4,7 +4,7 @@ extends StaticBody2D
 @onready var sprite = get_node_or_null("AnimatedSprite2D")
 
 const lines: Array[String] = [
-	"Water bucket is full. Better store drinking water in sealed containers.",
+	"Great… The bucket is full. At least I’ve got some clean water ready.",
 ]
 
 func _ready():
@@ -27,7 +27,7 @@ func _on_interact():
 		
 		# Play self-talk voice clip with boosted volume
 		if AudioManager:
-			AudioManager.play_sfx("res://PLayer insteraction Talking and pick up talking/Self Talk (Water Bucket).mp3", 4.0)
+			AudioManager.play_sfx("res://retyphoon (2)/Great… The bucket is full. At least I’ve got some clean water ready.wav", 4.0)
 		
 		# Show self-talk then safety tips
 		var sys = get_tree().get_first_node_in_group("self_talk_system")

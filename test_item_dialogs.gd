@@ -22,8 +22,7 @@ func test_all_item_dialogs():
 		"flashlight",
 		"documents",
 		"water_bottle",
-		"canned_food",
-		"medicine_2"
+		"canned_food"
 	]
 	
 	for item in items_to_test:

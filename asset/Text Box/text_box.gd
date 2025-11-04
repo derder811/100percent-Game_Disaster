@@ -62,9 +62,6 @@ var safety_tips = {
 	"first_aid_kit": [
 		"Keep a complete first aid kit in a waterproof container for injuries or emergencies if you have one."
 	] as Array[String],
-	"medicine_2": [
-		"Always keep antibiotics and prescribed medicines incase you need them during typhoon."
-	] as Array[String],
 	"medicine_3": [
 		"Always include basic medicine for pain, fever, or colds in your emergency supplies."
 	] as Array[String],

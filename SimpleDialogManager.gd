@@ -3,6 +3,23 @@ extends Node
 @onready var dialog_scene = preload("res://SimpleDialog.tscn")
 var current_dialog: Node
 
+# Helper: wait until any relevant audio (SFX or self-talk voice) finishes
+func _wait_any_audio_finished() -> void:
+	# Wait for global SFX via AudioManager
+	if typeof(AudioManager) != TYPE_NIL and AudioManager.has_method("wait_sfx_finished"):
+		await AudioManager.wait_sfx_finished()
+	# Also wait for self-talk voice playback, if present
+	var self_talk := get_tree().get_first_node_in_group("self_talk_system")
+	if self_talk:
+		var voice := self_talk.get_node_or_null("SelfTalkVoicePlayer")
+		if voice and voice.has_method("is_playing"):
+			if voice.is_playing():
+				await voice.finished
+		elif voice and voice.has_method("play"):
+			# AudioStreamPlayer API: use .playing property when available
+			if voice.playing:
+				await voice.finished
+
 var safety_tips = {
 	# Interactive assets (Scenario 1)
 	"window": "Close windows securely to prevent water and wind damage.",
@@ -27,7 +44,6 @@ var safety_tips = {
 	"bottled_water": "Store bottled water; aim for at least 3 liters per person per day.",
 	"first_aid_kit": "Keep a first-aid kit accessible for minor injuries.",
 	"medkit": "Keep a first-aid kit accessible for minor injuries.",
-	"medicine_2": "Secure maintenance meds and check expirations.",
 	"medicine_3": "Pack prescription meds and dosage instructions.",
 }
 
@@ -43,6 +59,8 @@ func show_safety_tips(asset_type: String, position: Vector2, header: String = "T
 	# Get safety tip for this asset
 	var tip = safety_tips.get(asset_type, "No safety information available for this item.")
 	
+	# Ensure audio is quiet before showing dialog
+	await _wait_any_audio_finished()
 	# Create and show dialog
 	current_dialog = dialog_scene.instantiate()
 	get_tree().root.add_child(current_dialog)
@@ -55,9 +73,8 @@ func show_item_dialog(item_name: String, position: Vector2):
 	# Get safety tip for this item
 	var tip = safety_tips.get(item_name, "No safety information available for this item.")
 	
-	# Wait for any ongoing self-talk SFX to finish before showing tips
-	if typeof(AudioManager) != TYPE_NIL and AudioManager.has_method("wait_sfx_finished"):
-		await AudioManager.wait_sfx_finished()
+	# Wait for any ongoing audio (pickup SFX or self-talk voice) to finish
+	await _wait_any_audio_finished()
 	
 	# Create and show dialog
 	current_dialog = dialog_scene.instantiate()
@@ -85,9 +102,8 @@ func start_dialog(position: Vector2, lines: Array[String], header: String = "TIP
 	if text == "":
 		text = ""
 	
-	# Wait for any ongoing self-talk SFX to finish before showing tips
-	if typeof(AudioManager) != TYPE_NIL and AudioManager.has_method("wait_sfx_finished"):
-		await AudioManager.wait_sfx_finished()
+	# Wait for any ongoing audio (pickup SFX or self-talk voice) to finish
+	await _wait_any_audio_finished()
 	
 	# Create and show dialog
 	current_dialog = dialog_scene.instantiate()

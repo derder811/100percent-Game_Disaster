@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://1mxetl7grmx6"
+path="res://.godot/imported/I can hear the rain hitting the roof….wav-0701d0549e0806638d91e026e2d0d6ac.sample"
+
+[deps]
+
+source_file="res://retyphoon (2)/I can hear the rain hitting the roof….wav"
+dest_files=["res://.godot/imported/I can hear the rain hitting the roof….wav-0701d0549e0806638d91e026e2d0d6ac.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

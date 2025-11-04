@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dfan2ud4i73md"
+path="res://.godot/imported/Good, my emergency bag’s here. I’ll start packing the essentials.wav-ddca380e94053e2703639b94fa026cc3.sample"
+
+[deps]
+
+source_file="res://retyphoon (2)/Good, my emergency bag’s here. I’ll start packing the essentials.wav"
+dest_files=["res://.godot/imported/Good, my emergency bag’s here. I’ll start packing the essentials.wav-ddca380e94053e2703639b94fa026cc3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

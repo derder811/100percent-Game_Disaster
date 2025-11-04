@@ -32,7 +32,7 @@ func _on_interact():
 		
 		# Play self-talk voice clip
 		if AudioManager:
-			AudioManager.play_sfx("res://PLayer insteraction Talking and pick up talking/Self Talk (TV).mp3", 4.0)
+			AudioManager.play_sfx("res://retyphoon (2)/It’s raining nonstop… I’ll check the news to see if there’s a typhoon signal in our area.wav", 4.0)
 		
 		# Show self-talk in bottom textbox via SelfTalkSystem
 		var sys = get_tree().get_first_node_in_group("self_talk_system")
