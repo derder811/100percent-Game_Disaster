@@ -46,6 +46,16 @@ layout_mode = 2
 [node name="Objectives" type="VBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer"]
 layout_mode = 2
 
+[node name="Objective0" type="HBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer/Objectives"]
+layout_mode = 2
+
+[node name="CheckBox0" type="CheckBox" parent="Quest UI/Quest Text Box/QuestContainer/Objectives/Objective0"]
+layout_mode = 2
+
+[node name="Label0" type="Label" parent="Quest UI/Quest Text Box/QuestContainer/Objectives/Objective0"]
+layout_mode = 2
+text = "Talk to the Cashier"
+
 [node name="Objective1" type="HBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer/Objectives"]
 layout_mode = 2
 
@@ -88,4 +98,4 @@ text = "Interact with the Slurpee Machine"
 
 [node name="ProgressLabel" type="Label" parent="Quest UI/Quest Text Box/QuestContainer"]
 layout_mode = 2
-text = "Quest Progress: 0/4"
+text = "Quest Progress: 0/5"

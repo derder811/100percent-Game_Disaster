@@ -7,6 +7,7 @@ extends Node
 # 4) Slurpee Machine (last)
 
 var objectives = {
+	"interact_cashier": false,
 	"interact_ice_cream_fridge": false,
 	"interact_meat_fridge": false,
 	"interact_hotdog_siopao": false,
@@ -46,10 +47,12 @@ func _ready():
 		print("StoreQuest: WARNING - Objectives container not found")
 	
 	update_quest_ui()
-	# Do not auto-start on mobile; quest should start via cashier interaction
+	# Auto-start the store quest when entering the store scene
+	call_deferred("start_quest")
 
 func update_quest_ui():
 	var objective_texts = [
+		"Talk to the Cashier",
 		"Interact with the Ice Cream Fridge",
 		"Interact with the Meat Fridge",
 		"Interact with the Hotdog & Siopao Fridge",
@@ -69,7 +72,7 @@ func update_quest_ui():
 		var current_checkbox: CheckBox = objective_checkboxes[current_objective_index]
 		if current_label:
 			current_label.visible = true
-			var keys = ["interact_ice_cream_fridge", "interact_meat_fridge", "interact_hotdog_siopao", "interact_slurpee"]
+			var keys = ["interact_cashier", "interact_ice_cream_fridge", "interact_meat_fridge", "interact_hotdog_siopao", "interact_slurpee"]
 			var text = objective_texts[current_objective_index]
 			var completed = objectives[keys[current_objective_index]]
 			if completed:
@@ -80,7 +83,7 @@ func update_quest_ui():
 				current_label.text = text
 		if current_checkbox:
 			current_checkbox.visible = true
-			var keys2 = ["interact_ice_cream_fridge", "interact_meat_fridge", "interact_hotdog_siopao", "interact_slurpee"]
+			var keys2 = ["interact_cashier", "interact_ice_cream_fridge", "interact_meat_fridge", "interact_hotdog_siopao", "interact_slurpee"]
 			current_checkbox.button_pressed = objectives[keys2[current_objective_index]]
 	
 	# Progress label
@@ -89,7 +92,7 @@ func update_quest_ui():
 		var done := 0
 		for v in objectives.values():
 			if v: done += 1
-		progress_label.text = "Quest Progress: %d/4" % done
+		progress_label.text = "Quest Progress: %d/5" % done
 
 func complete_objective(objective_name: String):
 	# Ignore interactions until cashier explicitly starts the quest
@@ -113,7 +116,7 @@ func complete_objective(objective_name: String):
 	animate_objective_completion(idx)
 	
 	await get_tree().create_timer(0.8).timeout
-	if current_objective_index < 3:
+	if current_objective_index < 4:
 		current_objective_index += 1
 		update_quest_ui()
 	else:
@@ -121,14 +124,16 @@ func complete_objective(objective_name: String):
 
 func _objective_index(name: String) -> int:
 	match name:
-		"interact_ice_cream_fridge":
+		"interact_cashier":
 			return 0
-		"interact_meat_fridge":
+		"interact_ice_cream_fridge":
 			return 1
-		"interact_hotdog_siopao":
+		"interact_meat_fridge":
 			return 2
-		"interact_slurpee":
+		"interact_hotdog_siopao":
 			return 3
+		"interact_slurpee":
+			return 4
 		_:
 			return -1
 
@@ -437,6 +442,9 @@ func show_quest_box_with_animation():
 		print("StoreQuest: ERROR - quest_box is null")
 
 # Entry points called by item scripts
+func on_cashier_interaction():
+	complete_objective("interact_cashier")
+
 func on_ice_cream_fridge_interaction():
 	complete_objective("interact_ice_cream_fridge")
 

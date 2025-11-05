@@ -165,9 +165,20 @@ func _show_store_quest_ui() -> void:
 		if store_quest.has_method("start_quest"):
 			store_quest.start_quest()
 			print("Cashier NPC: StoreQuest started")
+			# Ensure quest UI is re-shown after we hid it for dialogue
+			if store_quest.has_method("show_quest_ui"):
+				store_quest.show_quest_ui()
+				print("Cashier NPC: StoreQuest UI re-shown after dialogue")
+			# Complete the cashier objective upon finishing dialog
+			if store_quest.has_method("on_cashier_interaction"):
+				store_quest.on_cashier_interaction()
+				print("Cashier NPC: Cashier objective completed")
 		elif store_quest.has_method("show_quest_ui"):
 			store_quest.show_quest_ui()
 			print("Cashier NPC: StoreQuest UI shown (fallback)")
+			if store_quest.has_method("on_cashier_interaction"):
+				store_quest.on_cashier_interaction()
+				print("Cashier NPC: Cashier objective completed (UI-only fallback)")
 		else:
 			print("Cashier NPC: StoreQuest found but no start_quest/show_quest_ui methods")
 	else:
