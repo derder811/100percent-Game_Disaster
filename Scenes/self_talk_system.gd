@@ -82,6 +82,7 @@ var timer_self_talk_active = false
 var _textbox_layer: CanvasLayer = null
 var _textbox_panel: Panel = null
 var _textbox_label: Label = null
+var _textbox_header_label: Label = null
 var _textbox_active: bool = false
 var _textbox_ttl_timer: Timer = null
 
@@ -272,6 +273,22 @@ func _ensure_textbox_nodes():
 		# Allow bag clicks to pass through this overlay
 		_textbox_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		_textbox_layer.add_child(_textbox_panel)
+	if _textbox_header_label == null:
+		_textbox_header_label = Label.new()
+		_textbox_header_label.anchor_left = 0.0
+		_textbox_header_label.anchor_right = 1.0
+		_textbox_header_label.anchor_top = 0.0
+		_textbox_header_label.anchor_bottom = 0.0
+		_textbox_header_label.offset_left = 18
+		_textbox_header_label.offset_right = -18
+		_textbox_header_label.offset_top = 6
+		_textbox_header_label.offset_bottom = 34
+		_textbox_header_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		_textbox_header_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		_textbox_header_label.add_theme_color_override("font_color", Color(1,1,1,1))
+		_textbox_header_label.add_theme_font_size_override("font_size", 18)
+		_textbox_header_label.visible = false
+		_textbox_panel.add_child(_textbox_header_label)
 	if _textbox_label == null:
 		_textbox_label = Label.new()
 		_textbox_label.anchor_left = 0.0
@@ -311,6 +328,12 @@ func _update_textbox_style(is_urgent: bool):
 func _show_textbox(message: String, seconds: float = 4.0, urgent: bool = false):
 	_ensure_textbox_nodes()
 	_update_textbox_style(urgent)
+	# Ensure header is hidden for normal self-talk
+	if _textbox_header_label != null:
+		_textbox_header_label.visible = false
+		# Restore default content offsets when header hidden
+		_textbox_label.offset_top = 12
+		_textbox_label.offset_bottom = -12
 	_textbox_label.text = message
 	_textbox_panel.visible = true
 	_textbox_active = true
@@ -324,6 +347,27 @@ func _hide_textbox():
 	_textbox_active = false
 	if _textbox_panel != null:
 		_textbox_panel.visible = false
+	if _textbox_header_label != null:
+		_textbox_header_label.visible = false
+
+# Show tips using the same textbox format, with a "TIPS" header at the top
+func show_tips_textbox(text: String, seconds: float = 4.0):
+	_ensure_textbox_nodes()
+	_update_textbox_style(false)
+	if _textbox_header_label != null:
+		_textbox_header_label.text = "TIPS"
+		_textbox_header_label.visible = true
+		# Push content down slightly to make room for header
+		_textbox_label.offset_top = 42
+		_textbox_label.offset_bottom = -12
+	_textbox_label.text = text
+	_textbox_panel.visible = true
+	_textbox_active = true
+	if _textbox_ttl_timer != null:
+		if seconds > 0.0:
+			_textbox_ttl_timer.start(seconds)
+		else:
+			_textbox_ttl_timer.stop()
 
 # Dedicated voice playback to avoid interference from global SFX
 func _play_voice_and_wait(path: String, volume_db: float = 0.0) -> void:

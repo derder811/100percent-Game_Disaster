@@ -25,6 +25,7 @@
       <li><span class="ok">StoreQuest</span>: Auto-starts when any objective interaction occurs, so the quest UI appears even if the cashier start fails.</li>
       <li><span class="ok">EarthquakeQuest</span>: Fixed a runtime error in <code>_ready()</code> (missing <code>viewport_size</code>) that prevented the quest UI from showing after the Slurpee interaction.</li>
       <li><span class="ok">UI Positioning</span>: Both quest panels are nudged down by <code>80px</code> to avoid overlapping the top-right Settings button and eliminate perceived blinking/flicker.</li>
+      <li><span class="ok">Unified Tips Styling</span>: All tips in the first scenario now use the same compact textbox style as player self-talk, with a <strong>TIPS</strong> header at the top. Falls back to legacy dialog if the system is missing.</li>
       <li><span class="ok">Item Tips</span>: Fixed <code>SimpleDialogManager.show_item_dialog</code> null-check/indentation so pickup tips display correctly (e.g., battery, water, go bag). Added a fallback <code>start_dialog</code> and simple position helpers for compatibility.</li>
       <li><span class="ok">Interactive Asset Tips</span>: Added SimpleDialog safety tips for Scenario 1 assets: <code>window</code>, <code>fuse_box</code>, <code>candle</code>, <code>tv</code>, <code>e_fan</code>, <code>bucket</code>, <code>frying_pan</code>.</li>
       <li><span class="ok">Mobile Controls</span>: Switched joystick to arrow buttons (D-pad). Movement now uses <code>move_left/right/up/down</code> via button press/hold.</li>

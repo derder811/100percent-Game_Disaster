@@ -61,12 +61,18 @@ func show_safety_tips(asset_type: String, position: Vector2, header: String = "T
 	
 	# Ensure audio is quiet before showing dialog
 	await _wait_any_audio_finished()
-	# Create and show dialog
+	# Prefer unified self-talk textbox style for tips (Scenario 1)
+	var sys = get_tree().get_first_node_in_group("self_talk_system")
+	if sys and sys.has_method("show_tips_textbox"):
+		# Show as top-center textbox; ignore position for consistency
+		sys.show_tips_textbox(tip)
+		print("Safety tips shown via self_talk_system textbox")
+		return
+	# Fallback to legacy SimpleDialog if self-talk system not available
 	current_dialog = dialog_scene.instantiate()
 	get_tree().root.add_child(current_dialog)
 	current_dialog.show_dialog(tip, position, header, footer_hint)
-	
-	print("Safety tips dialog created and shown")
+	print("Safety tips dialog created and shown (fallback)")
 
 # Show item-specific tip dialog near given position
 func show_item_dialog(item_name: String, position: Vector2):
@@ -75,13 +81,17 @@ func show_item_dialog(item_name: String, position: Vector2):
 	
 	# Wait for any ongoing audio (pickup SFX or self-talk voice) to finish
 	await _wait_any_audio_finished()
-	
-	# Create and show dialog
+	# Prefer unified self-talk textbox style for item tips
+	var sys = get_tree().get_first_node_in_group("self_talk_system")
+	if sys and sys.has_method("show_tips_textbox"):
+		sys.show_tips_textbox(tip)
+		print("Item tip shown via self_talk_system textbox")
+		return
+	# Fallback to legacy SimpleDialog
 	current_dialog = dialog_scene.instantiate()
 	get_tree().root.add_child(current_dialog)
 	current_dialog.show_dialog(tip, position)
-	
-	print("Dialog created and shown")
+	print("Dialog created and shown (fallback)")
 
 func hide_current_dialog():
 	if current_dialog:
@@ -104,8 +114,12 @@ func start_dialog(position: Vector2, lines: Array[String], header: String = "TIP
 	
 	# Wait for any ongoing audio (pickup SFX or self-talk voice) to finish
 	await _wait_any_audio_finished()
-	
-	# Create and show dialog
+	# Prefer unified self-talk textbox style
+	var sys = get_tree().get_first_node_in_group("self_talk_system")
+	if sys and sys.has_method("show_tips_textbox"):
+		sys.show_tips_textbox(text)
+		return null
+	# Fallback to legacy SimpleDialog
 	current_dialog = dialog_scene.instantiate()
 	get_tree().root.add_child(current_dialog)
 	current_dialog.show_dialog(text, position, header, footer_hint)

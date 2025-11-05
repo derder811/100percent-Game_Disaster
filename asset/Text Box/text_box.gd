@@ -123,14 +123,20 @@ func _show_safety_tips_dialog():
 			queue_free()
 		return
 	
-	# Find the DialogBox node in the scene
-	var dialog_box = get_tree().get_first_node_in_group("dialog_system")
-	if dialog_box and dialog_box.has_method("show_dialog"):
-		var tips: Array[String] = safety_tips.get(current_asset_type, ["No safety tips available for this item."] as Array[String])
-		print("Safety tips found: ", tips)  # Debug print
-		dialog_box.show_dialog("TIPS", tips)
+	# Prefer the unified SelfTalkSystem textbox for tips
+	var sys = get_tree().get_first_node_in_group("self_talk_system")
+	var tips_arr: Array[String] = safety_tips.get(current_asset_type, ["No safety tips available for this item."] as Array[String])
+	var tips_text := "".join(tips_arr)
+	print("Safety tips found: ", tips_arr)
+	if sys and sys.has_method("show_tips_textbox"):
+		sys.show_tips_textbox(tips_text)
 	else:
-		print("DialogBox not found or doesn't have show_dialog method")
+		# Fallback: try legacy DialogBox if self-talk system unavailable
+		var dialog_box = get_tree().get_first_node_in_group("dialog_system")
+		if dialog_box and dialog_box.has_method("show_dialog"):
+			dialog_box.show_dialog("TIPS", tips_arr)
+		else:
+			print("DialogBox not found or doesn't have show_dialog method")
 	
 	# Close the text box after showing safety tips
 	if not is_being_freed:
