@@ -37,6 +37,14 @@ func _ready():
 		next_button.pressed.connect(_on_next_button_pressed)
 	if close_button:
 		close_button.pressed.connect(_on_close_button_pressed)
+		# Ensure the close button receives mouse/touch events directly
+		close_button.mouse_filter = Control.MOUSE_FILTER_STOP
+		# Also listen for raw GUI input to support both left-click and touch
+		close_button.gui_input.connect(_on_close_button_gui_input)
+
+	# Ensure the dialog container itself captures mouse/touch when visible
+	if dialog_control:
+		dialog_control.mouse_filter = Control.MOUSE_FILTER_STOP
 	
 	# Create tween for animations
 	tween = create_tween()
@@ -245,3 +253,22 @@ func _on_next_button_pressed():
 
 func _on_close_button_pressed():
 	close_dialog()
+
+# Support closing via direct mouse/touch on the Close button
+func _on_close_button_gui_input(event: InputEvent) -> void:
+	# Left mouse click
+	if event is InputEventMouseButton:
+		var mb: InputEventMouseButton = event as InputEventMouseButton
+		if mb.pressed and mb.button_index == MOUSE_BUTTON_LEFT:
+			# Stop auto-dismiss timer when user interacts
+			if auto_dismiss_timer and not auto_dismiss_timer.is_stopped():
+				auto_dismiss_timer.stop()
+			close_dialog()
+			return
+	# Touch tap
+	elif event is InputEventScreenTouch:
+		var touch: InputEventScreenTouch = event as InputEventScreenTouch
+		if touch.pressed:
+			if auto_dismiss_timer and not auto_dismiss_timer.is_stopped():
+				auto_dismiss_timer.stop()
+			close_dialog()
