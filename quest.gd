@@ -33,8 +33,8 @@ var emergency_item_labels = []
 
 # Timer variables for third quest
 var quest_timer: Timer
-var timer_duration = 120.0  # 2 minutes
-var time_remaining = 120.0
+var timer_duration = 180.0  # 3 minutes
+var time_remaining = 180.0
 var is_timer_active = false
 var timer_label: Label
 
@@ -624,31 +624,57 @@ func setup_quest_timer():
 
 func setup_timer_label():
 	"""Setup the timer label in the UI"""
-	if quest_box:
+	# Prefer attaching the timer label to the top-level Quest UI so it
+	# anchors to the top of the screen, not just the quest box.
+	var quest_ui = get_node_or_null("Quest UI")
+	if quest_ui:
 		# Try to find existing timer label or create one
-		timer_label = quest_box.find_child("TimerLabel", true, false)
+		timer_label = quest_ui.find_child("TimerLabel", true, false)
 		if not timer_label:
 			# Create timer label if it doesn't exist
 			timer_label = Label.new()
 			timer_label.name = "TimerLabel"
 			timer_label.text = ""
-			timer_label.add_theme_color_override("font_color", Color.RED)
+			# Default color white; dynamic coloring handled during updates
+			timer_label.add_theme_color_override("font_color", Color.WHITE)
 			timer_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-			
-			# Add to quest box
-			var quest_container = quest_box.find_child("QuestContainer", true, false)
-			if quest_container:
-				quest_container.add_child(timer_label)
-				# Move timer label to top
-				quest_container.move_child(timer_label, 0)
-			else:
-				quest_box.add_child(timer_label)
-			
-			print("Quest: Created timer label")
+			timer_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+			# Increase font size for visibility
+			timer_label.add_theme_font_size_override("font_size", 28)
+
+			# Add to Quest UI (CanvasLayer)
+			quest_ui.add_child(timer_label)
+
+			# Anchor across the top and center text
+			timer_label.set_anchors_preset(Control.PRESET_TOP_WIDE)
+			timer_label.offset_top = 8
+			timer_label.offset_bottom = 48
+
+			print("Quest: Created timer label at top of screen")
 		else:
-			print("Quest: Found existing timer label")
-		
-		timer_label.visible = false  # Hidden initially
+			print("Quest: Found existing timer label in Quest UI")
+		# Ensure it's hidden initially
+		timer_label.visible = false
+	else:
+		# Fallback: attach to quest_box if Quest UI is not found
+		if quest_box:
+			timer_label = quest_box.find_child("TimerLabel", true, false)
+			if not timer_label:
+				timer_label = Label.new()
+				timer_label.name = "TimerLabel"
+				timer_label.text = ""
+				timer_label.add_theme_color_override("font_color", Color.WHITE)
+				timer_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+				timer_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+				timer_label.add_theme_font_size_override("font_size", 28)
+				quest_box.add_child(timer_label)
+				timer_label.set_anchors_preset(Control.PRESET_TOP_WIDE)
+				timer_label.offset_top = 8
+				timer_label.offset_bottom = 48
+				print("Quest: Created timer label (fallback) at top of quest box")
+			else:
+				print("Quest: Found existing timer label in quest box")
+			timer_label.visible = false
 
 func start_quest_timer():
 	"""Start the timer for the third quest"""
@@ -662,7 +688,7 @@ func start_quest_timer():
 			timer_label.visible = true
 			update_timer_display()
 		
-		print("Quest: Timer started for emergency items collection (120 seconds)")
+		print("Quest: Timer started for emergency items collection (" + str(int(timer_duration)) + " seconds)")
 
 func stop_quest_timer():
 	"""Stop the quest timer"""

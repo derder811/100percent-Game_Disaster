@@ -28,6 +28,10 @@ var _camera_original_offset: Vector2 = Vector2.ZERO
 var _player_is_hiding: bool = false
 var _shake_paused_due_to_hiding: bool = false
 var _resume_shake_timer: Timer = null
+# UI: countdown timer label and 1-second updater
+var _timer_label: Label
+var _countdown_timer: Timer
+var _time_remaining: float = 0.0
 
 # Safe await helper to avoid get_tree() being null
 func _await_seconds(sec: float) -> void:
@@ -106,6 +110,10 @@ func _ready():
 		_quest_timer.timeout.connect(_on_quest_time_limit_reached)
 		add_child(_quest_timer)
 		_quest_timer.start()
+
+	# Setup and show centered countdown timer label at top of screen
+	_setup_timer_label()
+	_start_countdown_display()
 
 func _on_table_hidden(table_name: String):
 	if not tables_hidden.has(table_name) or tables_hidden[table_name]:
@@ -302,6 +310,7 @@ func _on_quake_duration_done():
 	# Stop ambient earthquake sound
 	AudioManager.stop_ambient()
 	_show_hint_dialog("The shaking subsides. Stay cautious and proceed carefully.")
+	# Optional: keep countdown running; do not auto-stop here
 
 # Helper to stop shakes when all objectives are done
 func _maybe_end_quake():
@@ -312,6 +321,8 @@ func _maybe_end_quake():
 		# Stop quest fail timer to avoid unintended game over
 		if _quest_timer:
 			_quest_timer.stop()
+		# Stop countdown label updates and hide label
+		_stop_countdown_display()
 		# Stop continuous camera shake when quest completes
 		_stop_continuous_camera_shake()
 		# Restore StoreQuest if objectives finished early
@@ -345,6 +356,8 @@ func _on_quest_time_limit_reached():
 	var done := (checkbox1 and checkbox1.button_pressed) and (checkbox2 and checkbox2.button_pressed)
 	if done:
 		return
+	# Hide timer label when failing
+	_stop_countdown_display()
 	_collapse_and_game_over()
 
 # New: collapse animation then load Game Over scene
@@ -357,6 +370,8 @@ func _collapse_and_game_over():
 		_shake_timer.stop()
 	if _quake_timer:
 		_quake_timer.stop()
+	# Stop countdown label updates
+	_stop_countdown_display()
 	# Stop ambient earthquake sound
 	AudioManager.stop_ambient()
 	# Hide StoreQuest UI during collapse
@@ -460,3 +475,65 @@ func _reposition_quest_box():
 		original_position = quest_box.position
 	else:
 		print("EarthquakeQuest: WARNING - Quest box not found during reposition")
+
+# ===== Countdown Timer UI =====
+func _setup_timer_label():
+	# Attach a label to the top-level Quest UI CanvasLayer, centered at the top
+	var quest_ui = get_node_or_null("Quest UI")
+	if quest_ui:
+		_timer_label = quest_ui.find_child("EarthquakeTimerLabel", true, false)
+		if not _timer_label:
+			_timer_label = Label.new()
+			_timer_label.name = "EarthquakeTimerLabel"
+			_timer_label.text = ""
+			_timer_label.add_theme_color_override("font_color", Color.WHITE)
+			_timer_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			_timer_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+			_timer_label.add_theme_font_size_override("font_size", 28)
+			quest_ui.add_child(_timer_label)
+			_timer_label.set_anchors_preset(Control.PRESET_TOP_WIDE)
+			_timer_label.offset_top = 8
+			_timer_label.offset_bottom = 48
+			print("EarthquakeQuest: Created EarthquakeTimerLabel at top of screen")
+		# Make visible by default during earthquake quest
+		_timer_label.visible = true
+	else:
+		print("EarthquakeQuest: WARNING - Quest UI not found; cannot create timer label")
+
+func _start_countdown_display():
+	_time_remaining = quest_time_limit_sec
+	_update_timer_display()
+	if _countdown_timer == null:
+		_countdown_timer = Timer.new()
+		_countdown_timer.wait_time = 1.0
+		_countdown_timer.timeout.connect(_on_countdown_tick)
+		add_child(_countdown_timer)
+	_countdown_timer.start()
+
+func _stop_countdown_display():
+	if _countdown_timer:
+		_countdown_timer.stop()
+	if _timer_label:
+		_timer_label.visible = false
+
+func _on_countdown_tick():
+	_time_remaining -= 1.0
+	_update_timer_display()
+	if _time_remaining <= 0.0:
+		# Ensure fail handler runs
+		if _quest_timer:
+			_quest_timer.stop()
+		_on_quest_time_limit_reached()
+
+func _update_timer_display():
+	if _timer_label:
+		var minutes = int(_time_remaining) / 60
+		var seconds = int(_time_remaining) % 60
+		_timer_label.text = "Time Remaining: %02d:%02d" % [minutes, seconds]
+		# Color shift as time runs low
+		if _time_remaining <= 10:
+			_timer_label.add_theme_color_override("font_color", Color.RED)
+		elif _time_remaining <= 20:
+			_timer_label.add_theme_color_override("font_color", Color.ORANGE)
+		else:
+			_timer_label.add_theme_color_override("font_color", Color.WHITE)
