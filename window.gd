@@ -44,8 +44,8 @@ func _on_interact():
 		await get_tree().create_timer(0.3).timeout
 		SimpleDialogManager.show_safety_tips("window", global_position)
 		
-		# Follow-up self-talk message
-		await get_tree().create_timer(2.0).timeout
+		# Follow-up self-talk message (wait longer so tips remain visible)
+		await get_tree().create_timer(6.0).timeout
 		var sys2 = get_tree().get_first_node_in_group("self_talk_system")
 		if sys2 and sys2.has_method("trigger_custom_self_talk"):
 			sys2.trigger_custom_self_talk("I have to check the TV… maybe there's news about the typhoon.")

@@ -351,7 +351,7 @@ func _hide_textbox():
 		_textbox_header_label.visible = false
 
 # Show tips using the same textbox format, with a "TIPS" header at the top
-func show_tips_textbox(text: String, seconds: float = 4.0):
+func show_tips_textbox(text: String, seconds: float = 8.0):
 	_ensure_textbox_nodes()
 	_update_textbox_style(false)
 	if _textbox_header_label != null:
