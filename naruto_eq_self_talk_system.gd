@@ -300,11 +300,15 @@ func _map_voice_path_for_message(message: String) -> String:
 		return "res://retyphoon (2)/ReEarthquake/Oh hey, a convenience store. Might as well take a look.wav"
 	elif msg.find("Might as well take a look") != -1:
 		return "res://retyphoon (2)/ReEarthquake/Oh hey, a convenience store. Might as well take a look.wav"
-	elif msg.find("Could use a quick break") != -1:
-		return "res://retyphoon (2)/ReEarthquake/Oh hey, a convenience store. Might as well take a look.wav"
+	elif msg.find("Could use a quick break") != -1 or msg_l.find("drink") != -1:
+		# Disable audio for this specific line per request
+		return ""
 	# Movement comment coverage
 	elif msg.find("Let me check over here") != -1:
 		return "res://retyphoon (2)/ReEarthquake/Let me check over here....wav"
+	elif msg_l.find("look more carefully") != -1 or msg_l.find("look around more carefully") != -1:
+		# Explicitly silence "I should look more carefully" variants
+		return ""
 	# Exit and collapse coverage
 	elif msg_l.find("should head to the exit") != -1 or msg_l.find("exit") != -1:
 		return "res://retyphoon (2)/ReEarthquake/I should head to the exit now!.wav"

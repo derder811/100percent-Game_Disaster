@@ -845,13 +845,17 @@ func _map_voice_path_for_message(message: String) -> String:
 	if msg.find("Oh hey, a convenience store") != -1:
 		return "res://retyphoon (2)/ReEarthquake/Oh hey, a convenience store. Might as well take a look.wav"
 	elif msg.find("I'm in the store now") != -1 or msg.find("in the store now") != -1:
-		return "res://retyphoon (2)/ReEarthquake/Oh hey, a convenience store. Might as well take a look.wav"
+		# Disable audio for the store-entry line per request
+		return ""
 	# Movement comments
 	elif msg.find("Let me check over here") != -1:
 		return "res://retyphoon (2)/ReEarthquake/Let me check over here....wav"
 	elif msg.find("What's in this section") != -1:
 		return ""
 	elif msg.find("I should look around") != -1:
+		return ""
+	elif msg_l.find("look more carefully") != -1 or msg_l.find("look around more carefully") != -1:
+		# Explicitly silence "I should look more carefully" variants
 		return ""
 	elif msg.find("Maybe there's something useful here") != -1:
 		return ""

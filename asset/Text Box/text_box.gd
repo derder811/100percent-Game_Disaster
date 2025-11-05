@@ -250,6 +250,20 @@ func _map_voice_for_text(msg: String) -> Dictionary:
 	var m := String(msg)
 	# Default mapping
 	var result := {"path": "", "category": ""}
+	# Disable audio for specific store-entry lines requested
+	if m.find("I'm in the store now") != -1:
+		result.path = ""
+		result.category = "store_entry"
+		return result
+	if (m.find("quick break") != -1 and m.find("drink") != -1):
+		result.path = ""
+		result.category = "store_entry"
+		return result
+	# Disable audio for movement line: "I should look more carefully"
+	if m.to_lower().find("look more carefully") != -1 or m.to_lower().find("look around more carefully") != -1:
+		result.path = ""
+		result.category = "movement"
+		return result
 	# Store entry
 	if m.find("Oh hey, a convenience store") != -1 or m.find("I need to cover all areas of the store") != -1 or m.find("Maybe there's something useful here") != -1:
 		result.path = "res://PLayer insteraction Talking and pick up talking/Music/earthquakeSOUND/Self Talk (Store Entry) - Copy.mp3"

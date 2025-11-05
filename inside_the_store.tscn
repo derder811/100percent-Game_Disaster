@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=4 uid="uid://dhhip6kurcl8k"]
+[gd_scene load_steps=70 format=4 uid="uid://dhhip6kurcl8k"]
 
 [ext_resource type="Texture2D" uid="uid://ce3mh38hfnjq4" path="res://earthquake Asset/Grocery Titeset.png" id="1_v2xvf"]
 [ext_resource type="Texture2D" uid="uid://ex6vuokpyrv4" path="res://asset/Wall.png" id="2_n3o6q"]
@@ -35,7 +35,6 @@
 [ext_resource type="PackedScene" uid="uid://dphjv3kh6kr78" path="res://game_settings.tscn" id="101_settings"]
 [ext_resource type="PackedScene" uid="uid://cn78s64y0du1h" path="res://Settings Button.tscn" id="102_settings_btn"]
 [ext_resource type="AudioStream" uid="uid://lfe4gg6labde" path="res://PLayer insteraction Talking and pick up talking/Music/INSIDE_THE_STORE_AUDIO.mp3" id="103_store_audio"]
-[ext_resource type="AudioStream" uid="uid://b0njpnjqttkxt" path="res://asset/button/I need to cover all areas of the store.mp3" id="104_store_self_talk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eky7a"]
 texture = ExtResource("1_v2xvf")
@@ -10920,7 +10919,3 @@ position = Vector2(987, 982)
 stream = ExtResource("103_store_audio")
 volume_db = -8.0
 autoplay = true
-
-[node name="StoreSelfTalkSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("104_store_self_talk")
-volume_db = -4.0
