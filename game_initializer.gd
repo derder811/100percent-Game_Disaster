@@ -49,9 +49,13 @@ func show_startup_message():
 		print("DialogBox not found for startup message")
 
 func _on_startup_dialog_finished():
-	# Show a brief self-talk message after the startup dialog
-	await get_tree().create_timer(2.0).timeout
-	show_self_talk_message()
+    # Show a brief self-talk message after the startup dialog
+    await get_tree().create_timer(2.0).timeout
+    # Notify quest system that welcome dialog has finished
+    var quest_system = get_tree().current_scene.find_child("Quest", true, false)
+    if quest_system and quest_system.has_method("on_welcome_dialog_finished"):
+        quest_system.on_welcome_dialog_finished()
+    show_self_talk_message()
 
 func show_self_talk_message():
 	# Get a random self-talk message

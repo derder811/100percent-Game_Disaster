@@ -2,6 +2,7 @@ extends Node
 
 # Quest objectives tracking - Sequential progression
 var objectives = {
+	"interact_window": false,
 	"check_television": false,
 	"interact_fuse_box": false,
 	"collect_go_bag": false,
@@ -47,6 +48,7 @@ var bag_inventory = null
 @onready var quest_box: Control
 var original_position: Vector2
 var is_quest_box_visible: bool = false
+var welcome_dialog_finished: bool = false
 
 func _ready():
 	print("Quest: _ready() called - initializing quest system")
@@ -124,8 +126,9 @@ func _ready():
 func update_quest_ui():
 	# Update the quest UI to show only the current active objective
 	var objective_texts = [
+		"Look out the window to assess the storm",
 		"Go downstairs and check the television",
-		"Find and interact with the fuse box", 
+		"Find and interact with the fuse box",
 		"Find and pick up the go bag",
 		"Collect all pickable emergency items"
 	]
@@ -155,14 +158,15 @@ func update_quest_ui():
 	if current_objective_index < objective_texts.size() and current_objective_index < objective_labels.size() and current_objective_index < objective_checkboxes.size():
 		var current_label = objective_labels[current_objective_index]
 		var current_checkbox = objective_checkboxes[current_objective_index]
+		var current_text = objective_texts[current_objective_index]
 		
 		if current_label:
 			current_label.visible = true
-			var current_text = objective_texts[current_objective_index]
+
 			
 			# For emergency items objective, show list-style display
-			if current_objective_index == 3:  # Emergency items objective (now index 3)
-				# Show the main objective
+			if current_objective_index == 4:  # Emergency items objective (index 4)
+				# Show the main objective with progress
 				current_text += " (" + str(emergency_items_collected) + "/" + str(total_emergency_items) + ")"
 				
 				# Show emergency items container with individual items
@@ -171,7 +175,7 @@ func update_quest_ui():
 					update_emergency_items_list_ui()
 			
 			# Check if objective is completed
-			var objective_keys = ["check_television", "interact_fuse_box", "collect_go_bag", "collect_emergency_items"]
+			var objective_keys = ["interact_window", "check_television", "interact_fuse_box", "collect_go_bag", "collect_emergency_items"]
 			if current_objective_index < objective_keys.size():
 				var is_completed = objectives[objective_keys[current_objective_index]]
 				
@@ -186,7 +190,7 @@ func update_quest_ui():
 		
 		if current_checkbox:
 			current_checkbox.visible = true
-			var objective_keys = ["check_television", "interact_fuse_box", "collect_go_bag", "collect_emergency_items"]
+			var objective_keys = ["interact_window", "check_television", "interact_fuse_box", "collect_go_bag", "collect_emergency_items"]
 			if current_objective_index < objective_keys.size():
 				current_checkbox.button_pressed = objectives[objective_keys[current_objective_index]]
 	
@@ -199,7 +203,7 @@ func update_quest_ui():
 				completed_count += 1
 		
 		progress_label.visible = true
-		progress_label.text = "Quest Progress: " + str(completed_count) + "/4"
+		progress_label.text = "Quest Progress: " + str(completed_count) + "/" + str(objectives.size())
 		print("Quest: Set progress text: ", progress_label.text)
 
 func update_emergency_items_list_ui():
@@ -309,14 +313,16 @@ func complete_objective(objective_name: String):
 		# Find the index of the completed objective for animation
 		var objective_index = -1
 		match objective_name:
-			"check_television":
+			"interact_window":
 				objective_index = 0
-			"interact_fuse_box":
+			"check_television":
 				objective_index = 1
-			"collect_go_bag":
+			"interact_fuse_box":
 				objective_index = 2
-			"collect_emergency_items":
+			"collect_go_bag":
 				objective_index = 3
+			"collect_emergency_items":
+				objective_index = 4
 		
 		print("Objective index: ", objective_index)
 		
@@ -333,19 +339,19 @@ func complete_objective(objective_name: String):
 			# Stop the timer when emergency items quest is completed
 			stop_quest_timer()
 			# Set current objective to this one if it's not already
-			if current_objective_index < 3:
-				current_objective_index = 3
-				print("Advanced current_objective_index to 3 for emergency items")
+			if current_objective_index < 4:
+				current_objective_index = 4
+				print("Advanced current_objective_index to 4 for emergency items")
 		
 		# Advance to next objective if not at the end
-		if objective_index == current_objective_index and current_objective_index < 3:
+		if objective_index == current_objective_index and current_objective_index < 4:
 			# Wait for animation to complete before advancing
 			await get_tree().create_timer(1.0).timeout
 			current_objective_index += 1
 			print("Quest: Advanced to objective index ", current_objective_index)
 			
-			# Start timer when advancing to the fourth quest (emergency items collection)
-			if current_objective_index == 3:
+			# Start timer when advancing to the emergency items collection objective
+			if current_objective_index == 4:
 				print("Quest: Starting timer for emergency items collection")
 				start_quest_timer()
 			
@@ -408,9 +414,22 @@ func all_objectives_complete() -> bool:
 # Function to be called when player interacts with window
 func on_window_interaction():
 	print("Quest: on_window_interaction() called!")
-	# Show the quest box when window is interacted with
+	# Gate quest activation until welcome dialog has finished
+	if not welcome_dialog_finished:
+		print("Quest: Welcome dialog not finished; delaying quest activation")
+		return
+	# Show the quest box when window is interacted with and complete window objective
 	show_quest_box_with_animation()
+	complete_objective("interact_window")
 	print("Quest system activated by window interaction!")
+
+# Mark that the welcome dialog has finished; quests may start
+func on_welcome_dialog_finished():
+	print("Quest: Welcome dialog finished; enabling quest triggers")
+	welcome_dialog_finished = true
+	# Show the quest box and initial objective immediately after welcome
+	update_quest_ui()
+	show_quest_box_with_animation()
 
 # Function to be called when player interacts with TV
 func on_tv_interaction():
@@ -533,13 +552,15 @@ func update_emergency_items_ui():
 	print("Current objective index: ", current_objective_index)
 	print("Objectives status: ", objectives)
 	
-	# Update the third objective label to show progress
-	if objective_labels.size() > 2:
+	# Update the emergency items objective label to show progress
+	var objective_keys = ["interact_window", "check_television", "interact_fuse_box", "collect_go_bag", "collect_emergency_items"]
+	var ei_index = objective_keys.find("collect_emergency_items")
+	if ei_index != -1 and objective_labels.size() > ei_index:
 		var progress_text = "Collect all pickable emergency items (" + str(actual_count) + "/" + str(total_emergency_items) + ")"
-		objective_labels[2].text = progress_text
+		objective_labels[ei_index].text = progress_text
 		print("Updated objective label: ", progress_text)
 	else:
-		print("ERROR: Not enough objective labels (", objective_labels.size(), ")")
+		print("ERROR: Emergency items objective label index not available (labels=", objective_labels.size(), ", ei_index=", ei_index, ")")
 	
 	# Update the individual emergency items list UI
 	update_emergency_items_list_ui()
@@ -849,7 +870,8 @@ func normalize_item_name(item_name: String) -> String:
 func advance_to_emergency_items_objective():
 	"""Manually advance to the emergency items objective for testing"""
 	print("Quest: Manually advancing to emergency items objective")
-	current_objective_index = 2
+	current_objective_index = 3
+	objectives["interact_window"] = true
 	objectives["check_television"] = true
 	objectives["interact_fuse_box"] = true
 	update_quest_ui()
