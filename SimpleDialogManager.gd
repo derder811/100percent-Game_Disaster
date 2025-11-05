@@ -47,7 +47,7 @@ var safety_tips = {
 	"medicine_3": "Pack prescription meds and dosage instructions.",
 }
 
-func show_safety_tips(asset_type: String, position: Vector2, header: String = "TIPS", footer_hint: String = "Close (Space / Interact)"):
+func show_safety_tips(asset_type: String, position: Vector2, header: String = "TIPS", footer_hint: String = "Loading.."):
 	print("SimpleDialogManager.show_safety_tips called for: ", asset_type)
 	
 	# Close existing dialog if any
@@ -101,7 +101,7 @@ func hide_current_dialog():
 		current_dialog = null
 
 # Optional: expose a start_dialog API for systems expecting DialogManager-like interface
-func start_dialog(position: Vector2, lines: Array[String], header: String = "TIPS", footer_hint: String = "Close (Space / Interact)") -> Node:
+func start_dialog(position: Vector2, lines: Array[String], header: String = "TIPS", footer_hint: String = "") -> Node:
 	# Close existing dialog if any
 	if current_dialog:
 		if is_instance_valid(current_dialog):

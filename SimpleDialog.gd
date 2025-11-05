@@ -30,7 +30,7 @@ func _ready():
 	)
 	add_child(auto_hide_timer)
 
-func show_dialog(text: String, position: Vector2 = Vector2.ZERO, header: String = "TIPS", footer_hint: String = "Close (Space / Interact)"):
+func show_dialog(text: String, position: Vector2 = Vector2.ZERO, header: String = "TIPS", footer_hint: String = ""):
 	print("SimpleDialog.show_dialog called with: ", text)
 	current_text = text
 	content_label.text = text

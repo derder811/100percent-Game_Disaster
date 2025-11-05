@@ -85,4 +85,4 @@ text = "Next"
 [node name="CloseButton" type="Button" parent="DialogControl/VBoxContainer/ButtonContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "Close (Interact)"
+text = "Loading.."

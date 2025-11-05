@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dh7d3kidc12qh"
+path="res://.godot/imported/Candle (1).wav-aa98aea4a75b7e7c68a7d0701200ac33.sample"
+
+[deps]
+
+source_file="res://asset/button/Candle (1).wav"
+dest_files=["res://.godot/imported/Candle (1).wav-aa98aea4a75b7e7c68a7d0701200ac33.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
