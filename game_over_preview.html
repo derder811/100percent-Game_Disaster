@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Over Button Preview</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    .screen {
+      width: 1200px;
+      height: 700px;
+      background: #000;
+      position: relative;
+      border: 2px solid #222;
+    }
+    .title {
+      position: absolute;
+      top: 140px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 96px;
+      letter-spacing: 4px;
+    }
+    .button {
+      position: absolute;
+      left: 50%;
+      top: 360px;
+      transform: translate(-50%, -50%);
+      width: 512px;
+      height: 160px;
+      background: url('asset/button/Menu Button (Updated).png') center/contain no-repeat;
+      filter: drop-shadow(0 4px 0 #8fc2df);
+    }
+  </style>
+  </head>
+  <body>
+    <div class="screen">
+      <div class="title">GAME OVER</div>
+      <div class="button" aria-label="Menu button"></div>
+    </div>
+  </body>
+</html>

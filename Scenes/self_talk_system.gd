@@ -43,7 +43,7 @@ var item_audio_paths := {
 	"go_bag": "res://retyphoon (2)/Good, my emergency bag’s here. I’ll start packing the essentials.wav",
 	"battery": "res://retyphoon (2)/Got a spare battery.wav",
 	"water_bottle": "res://retyphoon (2)/Bottled water secured.wav",
-	"candle": "res://PLayer insteraction Talking and pick up talking/Self Talk (Candle).mp3",
+	"candle": "res://asset/button/Candle (1).wav",
 	"canned_food": "res://retyphoon (2)/Canned food. This should last a while.wav",
 	"documents": "res://retyphoon (2)/Got some papers, might be important.wav",
 	"medkit": "res://retyphoon (2)/Got a med kit!.wav",
