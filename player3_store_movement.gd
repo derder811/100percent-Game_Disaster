@@ -125,7 +125,16 @@ func handle_movement(delta):
 	if Input.is_action_pressed("move_down") or (InputMap.has_action(WASD_DOWN) and Input.is_action_pressed(WASD_DOWN)):
 		input_vector.y += 1
 	
-	# Normalize for consistent diagonal movement
+	# Enforce 4-direction movement (cardinal only)
+	# If both axes are pressed, choose the dominant axis.
+	# On equal strength, prefer vertical movement.
+	if input_vector.x != 0 and input_vector.y != 0:
+		if abs(input_vector.x) > abs(input_vector.y):
+			input_vector.y = 0
+		else:
+			input_vector.x = 0
+
+	# Normalize for consistent movement speed
 	input_vector = input_vector.normalized()
 	
 	# Apply movement with smooth acceleration/deceleration

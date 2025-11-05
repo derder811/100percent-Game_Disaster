@@ -30,6 +30,11 @@ GlobalInteractionManager="*res://GlobalInteractionManager.gd"
 
 window/stretch/mode="canvas_items"
 
+[gui]
+
+theme/custom="res://asset/fonts/default_theme.tres"
+theme/use_embedded=false
+
 [input]
 
 Walk_Up={

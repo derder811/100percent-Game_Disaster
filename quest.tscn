@@ -256,6 +256,7 @@ vertical_alignment = 1
 [node name="EmergencyItem9" type="HBoxContainer" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems"]
 layout_mode = 2
 theme_override_constants/separation = 5
+visible = false
 
 [node name="CheckBoxItem9" type="CheckBox" parent="Quest UI/Quest Text Box/QuestContainer/EmergencyItems/EmergencyItem9"]
 layout_mode = 2

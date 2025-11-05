@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bd4mfqk6cudj4" path="res://asset/button/Option Button (Updated).png" id="4_m3mjq"]
 [ext_resource type="Script" uid="uid://cyn7saeyt1y2q" path="res://asset/button/Menu/main_menu.gd" id="4_script"]
 [ext_resource type="Texture2D" uid="uid://begm0ktid6gp5" path="res://asset/button/Exit Button (Updated).png" id="5_ohfq6"]
-[ext_resource type="SystemFont" path="res://asset/fonts/title_font.tres" id="5_title_font"]
+[ext_resource type="Texture2D" uid="uid://h8sxbft7xxb4" path="res://typoon timer sound/Title Image 3.png" id="6_ia5vl"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -74,19 +74,7 @@ texture_normal = ExtResource("5_ohfq6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 100.0
-offset_top = 50.0
-offset_right = 1050.0
-offset_bottom = 250.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 3
-theme_override_fonts/font = ExtResource("5_title_font")
-theme_override_font_sizes/font_size = 72
-text = "Interactive Learning Module
-For Disaster Situations"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="GameTittle" type="Sprite2D" parent="."]
+position = Vector2(568.001, 174.078)
+scale = Vector2(0.153345, 0.13836)
+texture = ExtResource("6_ia5vl")

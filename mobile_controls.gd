@@ -141,16 +141,25 @@ func _process(_delta):
 	Input.action_release("move_right")
 	Input.action_release("move_up")
 	Input.action_release("move_down")
-	# Apply presses based on vector
-	if v.x < -deadzone_x:
-		Input.action_press("move_left", clamp(-v.x, 0.0, 1.0))
-	elif v.x > deadzone_x:
-		Input.action_press("move_right", clamp(v.x, 0.0, 1.0))
-	if v.y < -deadzone_y:
-		# Up in screen-space is negative Y
-		Input.action_press("move_up", clamp(-v.y, 0.0, 1.0))
-	elif v.y > deadzone_y:
-		Input.action_press("move_down", clamp(v.y, 0.0, 1.0))
+	# Enforce dominant-axis-only presses for 4-direction movement
+	var ax: float = abs(v.x)
+	var ay: float = abs(v.y)
+	var x_active: bool = ax > deadzone_x
+	var y_active: bool = ay > deadzone_y
+	if x_active or y_active:
+		if ax > ay:
+			# Horizontal dominates; only press left/right
+			if v.x < -deadzone_x:
+				Input.action_press("move_left", clamp(-v.x, 0.0, 1.0))
+			elif v.x > deadzone_x:
+				Input.action_press("move_right", clamp(v.x, 0.0, 1.0))
+		else:
+			# Vertical dominates or tie; only press up/down
+			if v.y < -deadzone_y:
+				# Up in screen-space is negative Y
+				Input.action_press("move_up", clamp(-v.y, 0.0, 1.0))
+			elif v.y > deadzone_y:
+				Input.action_press("move_down", clamp(v.y, 0.0, 1.0))
 
 func _on_joystick_gui_input(event: InputEvent) -> void:
 	# Use consistent GLOBAL coordinates for all input types

@@ -40,10 +40,10 @@ texture_normal = ExtResource("5_v4yl2")
 
 [node name="Back Button" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 450.0
-offset_top = 414.0
-offset_right = 1425.0
-offset_bottom = 739.0
+offset_left = 452.0
+offset_top = 286.0
+offset_right = 1427.0
+offset_bottom = 611.0
 scale = Vector2(0.236522, 0.179277)
 texture_normal = ExtResource("4_c6ia3")
 

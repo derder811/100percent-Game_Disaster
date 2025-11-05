@@ -65,42 +65,6 @@ offset_bottom = 260.648
 focus_mode = 0
 text = "▼"
 
-[node name="UpLeft" type="Button" parent="UIRoot/ArrowButtons"]
-layout_mode = 2
-offset_left = -3.94313
-offset_top = 126.0
-offset_right = 37.0569
-offset_bottom = 171.0
-focus_mode = 0
-text = "↖"
-
-[node name="UpRight" type="Button" parent="UIRoot/ArrowButtons"]
-layout_mode = 2
-offset_left = 79.3553
-offset_top = 124.613
-offset_right = 119.355
-offset_bottom = 169.613
-focus_mode = 0
-text = "↗"
-
-[node name="DownLeft" type="Button" parent="UIRoot/ArrowButtons"]
-layout_mode = 2
-offset_left = -3.94313
-offset_top = 214.648
-offset_right = 37.0569
-offset_bottom = 260.648
-focus_mode = 0
-text = "↙"
-
-[node name="DownRight" type="Button" parent="UIRoot/ArrowButtons"]
-layout_mode = 2
-offset_left = 78.0284
-offset_top = 216.305
-offset_right = 119.028
-offset_bottom = 262.305
-focus_mode = 0
-text = "↘"
-
 [node name="InteractButton" type="Button" parent="UIRoot"]
 layout_mode = 1
 anchors_preset = 3

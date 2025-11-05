@@ -13,7 +13,7 @@ var current_objective_index = 0
 
 # Track emergency items collected
 var emergency_items_collected = 0
-var total_emergency_items = 9  # powerbank, phone, documents, first aid (medkit), battery, flashlight, canned food, water bottle, medicine 3
+var total_emergency_items = 8  # powerbank, phone, documents, first aid (medkit), battery, flashlight, canned food, water bottle
 
 # Individual emergency items tracking for list-style quest
 var emergency_items_status = {
@@ -24,8 +24,7 @@ var emergency_items_status = {
 	"battery": false,
 	"flashlight": false,
 	"canned food": false,
-	"water bottle": false,
-	"medicine 3": false
+	"water bottle": false
 }
 
 # UI references for emergency items list
@@ -216,8 +215,7 @@ func update_emergency_items_list_ui():
 		"battery",
 		"flashlight",
 		"canned food",
-		"water bottle",
-		"medicine 3"
+		"water bottle"
 	]
 	
 	# Display names for better readability
@@ -229,8 +227,7 @@ func update_emergency_items_list_ui():
 		"Battery",
 		"Flashlight",
 		"Canned Food",
-		"Water Bottle",
-		"Medicine"
+		"Water Bottle"
 	]
 	
 	# Update each emergency item checkbox and label
@@ -429,21 +426,22 @@ func on_go_bag_collected():
 
 # Function to be called when player collects an emergency item
 func on_emergency_item_collected(item_name: String = ""):
-	emergency_items_collected += 1
-	print("Emergency item collected! Progress: ", emergency_items_collected, "/", total_emergency_items)
-	
-	# Update specific item status if item name is provided
+	# Only count items that are part of the tracked emergency list
+	var counted := false
 	if item_name != "":
-		# Normalize the item name to match our dictionary keys
 		var normalized_name = normalize_item_name(item_name)
 		print("Quest: Received item name: '", item_name, "' -> normalized: '", normalized_name, "'")
-		
 		if emergency_items_status.has(normalized_name):
-			emergency_items_status[normalized_name] = true
-			print("Quest: Marked specific item as collected: ", normalized_name)
+			if not emergency_items_status[normalized_name]:
+				emergency_items_status[normalized_name] = true
+				emergency_items_collected += 1
+				counted = true
+				print("Quest: Marked and counted item: ", normalized_name)
 		else:
-			print("Quest: WARNING - Item name '", normalized_name, "' not found in emergency_items_status")
-			print("Quest: Available keys: ", emergency_items_status.keys())
+			print("Quest: Ignoring non-emergency item: ", normalized_name)
+	
+	if counted:
+		print("Emergency item collected! Progress: ", emergency_items_collected, "/", total_emergency_items)
 	
 	# Update the UI to show progress
 	update_emergency_items_ui()
@@ -507,8 +505,7 @@ func get_emergency_items_count():
 			"battery",
 			"flashlight",
 			"canned food",
-			"water bottle",
-			"medicine 3"
+			"water bottle"
 		]
 		var count = 0
 		for item in bag_inventory.items:
@@ -520,7 +517,6 @@ func get_emergency_items_count():
 					if item_name == emergency_name:
 						is_emergency = true
 						break
-				
 				if is_emergency:
 					count += 1
 		return count
@@ -819,8 +815,6 @@ func normalize_item_name(item_name: String) -> String:
 			return "canned food"
 		"water bottle":
 			return "water bottle"
-		"medicine 3":
-			return "medicine 3"
 		_:
 			# For any other cases, just return lowercase
 			return normalized

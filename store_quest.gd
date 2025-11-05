@@ -46,9 +46,7 @@ func _ready():
 		print("StoreQuest: WARNING - Objectives container not found")
 	
 	update_quest_ui()
-	# Mobile fallback: ensure quest UI starts on Android
-	if OS.has_feature("mobile"):
-		call_deferred("start_quest")
+	# Do not auto-start on mobile; quest should start via cashier interaction
 
 func update_quest_ui():
 	var objective_texts = [
@@ -94,10 +92,10 @@ func update_quest_ui():
 		progress_label.text = "Quest Progress: %d/4" % done
 
 func complete_objective(objective_name: String):
-	# Auto-start the quest if any interaction happens before the cashier starts it
+	# Ignore interactions until cashier explicitly starts the quest
 	if not quest_started:
-		print("StoreQuest: auto-starting quest due to interaction: ", objective_name)
-		start_quest()
+		print("StoreQuest: ignoring interaction before quest start: ", objective_name)
+		return
 	var idx := _objective_index(objective_name)
 	if idx == -1:
 		print("StoreQuest: Unknown objective", objective_name)

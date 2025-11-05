@@ -119,8 +119,17 @@ func handle_movement(delta):
 		input_vector.y -= 1
 	if Input.is_action_pressed(MOVE_DOWN):
 		input_vector.y += 1
-	
-	# Normalize for consistent diagonal movement
+
+	# Enforce 4-direction movement (cardinal only)
+	# If both axes are pressed, choose the dominant axis.
+	# On equal strength, prefer vertical movement.
+	if input_vector.x != 0 and input_vector.y != 0:
+		if abs(input_vector.x) > abs(input_vector.y):
+			input_vector.y = 0
+		else:
+			input_vector.x = 0
+
+	# Normalize for consistent movement speed
 	input_vector = input_vector.normalized()
 	
 	# Update animation direction based on movement
