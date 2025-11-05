@@ -25,16 +25,20 @@ func _ready():
 
 func _on_interact():
 	print("Candle: E key interaction triggered!")
-	# Safety check for overlapping bodies
+	# Optional: flip sprite if someone is nearby, but don't block interaction
 	var overlapping_bodies = interaction_area.get_overlapping_bodies()
-	if overlapping_bodies.size() > 0:
-		if sprite != null:
-			sprite.flip_h = overlapping_bodies[0].global_position.x < global_position.x
-		
-		# Trigger self-talk first using the self-talk system
-		var self_talk_system = get_tree().get_first_node_in_group("self_talk_system")
-		if self_talk_system and self_talk_system.has_method("trigger_item_pickup_self_talk"):
-			self_talk_system.trigger_item_pickup_self_talk("candle")
+	if overlapping_bodies.size() > 0 and sprite != null:
+		sprite.flip_h = overlapping_bodies[0].global_position.x < global_position.x
+
+	# Trigger self-talk first using the self-talk system (do NOT gate on overlap)
+	var self_talk_system = get_tree().get_first_node_in_group("self_talk_system")
+	if self_talk_system and self_talk_system.has_method("trigger_item_pickup_self_talk"):
+		self_talk_system.trigger_item_pickup_self_talk("candle")
+	else:
+		# Fallback: use InteractionUI's simple textbox if SelfTalkSystem is missing
+		var ui = get_tree().get_first_node_in_group("interaction_ui")
+		if ui and ui.has_method("show_self_talk"):
+			ui.show_self_talk("Candle could start a fire… I should grab the flashlight instead.")
 
 		# Wait for self-talk audio to finish before showing the dialog box
 		# Fallback to a short delay if AudioManager isn't available
@@ -43,15 +47,15 @@ func _on_interact():
 		else:
 			await get_tree().create_timer(3.0).timeout
 
-		# Optionally hide any self-talk textbox to prevent overlap (if exposed)
-		if self_talk_system and self_talk_system.has_method("_hide_textbox"):
-			self_talk_system._hide_textbox()
-		SimpleDialogManager.show_safety_tips("candle", global_position)
+	# Give the self-talk a moment to display before showing tips
+	await get_tree().create_timer(4.0).timeout
+	# Do NOT force-hide self-talk here; each system handles its own TTL
+	SimpleDialogManager.show_safety_tips("candle", global_position)
 		
-		# Complete the quest objective for candle interaction
-		var quest_node = get_node("../Quest")
-		if quest_node and quest_node.has_method("on_candle_interaction"):
-			quest_node.on_candle_interaction()
-			print("Candle: Quest objective completed!")
-		
-		print("Candle: Fire safety tip shown!")
+	# Complete the quest objective for candle interaction
+	var quest_node = get_node("../Quest")
+	if quest_node and quest_node.has_method("on_candle_interaction"):
+		quest_node.on_candle_interaction()
+		print("Candle: Quest objective completed!")
+	
+	print("Candle: Fire safety tip shown!")
