@@ -241,10 +241,19 @@ func _update_animation(input_vector: Vector2) -> void:
 	else:
 		if animation_tree:
 			animation_tree.active = false
+		# When idle, keep facing the last movement direction by setting a static frame
+		if sprite:
+			var dir_idle := last_move_dir
+			# Map last direction to a single standing frame from the spritesheet
+			# down: 0, left: 5, right: 9, up: 14
+			if dir_idle.y > 0.5:
+				sprite.frame = 0
+			elif dir_idle.y < -0.5:
+				sprite.frame = 14
+			elif dir_idle.x < -0.5:
+				sprite.frame = 5
+			elif dir_idle.x > 0.5:
+				sprite.frame = 9
 		if anim_player:
-			if anim_player.has_animation("idle"):
-				anim_player.play("idle")
-			elif anim_player.has_animation("RESET"):
-				anim_player.play("RESET")
-			else:
-				anim_player.stop()
+			# Stop any playing animation to avoid overriding the chosen idle frame
+			anim_player.stop()
