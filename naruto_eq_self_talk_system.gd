@@ -29,26 +29,26 @@ func _ready():
 	# Get reference to the player (parent node)
 	player = get_parent()
 	print("NarutoEQSelfTalkSystem: Player reference set to: ", player)
+	# Make discoverable via group for external triggers
+	add_to_group("naruto_self_talk_system")
 	
 	# Check if DialogManager is available
 	if DialogManager:
 		print("NarutoEQSelfTalkSystem: DialogManager found successfully")
 	else:
 		print("NarutoEQSelfTalkSystem: ERROR - DialogManager not found!")
-	
-	# Show first message after 5 seconds
-	await _await_seconds(5.0)
-	print("NarutoEQSelfTalkSystem: Showing first message...")
-	show_specific_message(0)  # Show first message
-	
-	# Show second message after 10 more seconds
+	# Do not auto-start messages in _ready; wait for external trigger
+	print("NarutoEQSelfTalkSystem: Ready without auto-start; awaiting external trigger")
+
+## Public: start intro sequence after welcome to avoid overlap
+func start_intro_self_talk():
+	print("NarutoEQSelfTalkSystem: start_intro_self_talk() invoked")
+	# Show first message right away
+	show_specific_message(0)
+	# Chain second message after a short delay, then start periodic self-talk
 	await _await_seconds(10.0)
-	print("NarutoEQSelfTalkSystem: Showing second message...")
-	show_specific_message(1)  # Show second message
-	
-	# Start regular timer-based self talk after that
+	show_specific_message(1)
 	await _await_seconds(2.0)
-	print("NarutoEQSelfTalkSystem: Starting timer self talk")
 	start_timer_self_talk()
 
 func start_timer_self_talk():

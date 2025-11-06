@@ -339,5 +339,16 @@ func _show_earthquake_welcome() -> void:
 		var lines: Array[String] = [welcome_text] as Array[String]
 		# Enable auto-dismiss for earthquake welcome dialog (2 seconds)
 		dialog_box.show_dialog("WELCOME", lines, true)
+		# After the welcome finishes, trigger Naruto self-talk to avoid overlap
+		if dialog_box.has_signal("dialog_finished") and not dialog_box.dialog_finished.is_connected(_on_welcome_dialog_finished):
+			dialog_box.dialog_finished.connect(_on_welcome_dialog_finished)
 	else:
 		print("DialogBox not found; cannot show earthquake welcome")
+
+# Handler: start Naruto self-talk after welcome dialog closes
+func _on_welcome_dialog_finished():
+	var sys = get_tree().get_first_node_in_group("naruto_self_talk_system")
+	if sys and sys.has_method("start_intro_self_talk"):
+		sys.start_intro_self_talk()
+	else:
+		print("Naruto self-talk system not found or start method missing")

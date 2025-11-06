@@ -307,6 +307,10 @@ func _show_dialog_above_player(message: String):
 	var random_shift := randf_range(-20, 20)
 	dialog_position.x += random_shift
 	_follow_random_x = random_shift
+	# When any self-talk is about to show, hide the store quest UI to prevent overlap
+	_set_store_quest_hidden(true)
+	# Also hide the earthquake quest UI (if active) to avoid overlap
+	_set_earthquake_quest_hidden(true)
 	# Use internal UI when not using manager
 	if not _use_manager_for_self_talk:
 		last_self_talk_ms = Time.get_ticks_msec()
@@ -499,6 +503,10 @@ func _show_follow_bubble(message: String):
 	_bubble_active = true
 	_follow_active = true
 	set_process(true)
+	# Hide StoreQuest UI while bubble is visible
+	_set_store_quest_hidden(true)
+	# Hide EarthquakeQuest UI while bubble is visible
+	_set_earthquake_quest_hidden(true)
 	# Auto-hide after a short delay
 	if _bubble_ttl_timer != null:
 		_bubble_ttl_timer.start(3.0)
@@ -507,6 +515,10 @@ func _hide_bubble():
 	_bubble_active = false
 	if _bubble_panel != null:
 		_bubble_panel.visible = false
+	# Restore StoreQuest UI when bubble hides
+	_set_store_quest_hidden(false)
+	# Restore EarthquakeQuest UI when bubble hides
+	_set_earthquake_quest_hidden(false)
 
 func _ensure_textbox_nodes():
 	if _textbox_layer == null:
@@ -579,6 +591,10 @@ func _show_textbox(message: String, seconds: float = 4.0, urgent: bool = false):
 	_textbox_label.text = message
 	_textbox_panel.visible = true
 	_textbox_active = true
+	# Hide StoreQuest UI while textbox is visible
+	_set_store_quest_hidden(true)
+	# Hide EarthquakeQuest UI while textbox is visible
+	_set_earthquake_quest_hidden(true)
 	# Textbox is screen-anchored; disable follow so it won't move bubble
 	_follow_active = false
 	set_process(true)
@@ -602,6 +618,10 @@ func _hide_textbox():
 	_textbox_active = false
 	if _textbox_panel != null:
 		_textbox_panel.visible = false
+	# Restore StoreQuest UI when textbox hides
+	_set_store_quest_hidden(false)
+	# Restore EarthquakeQuest UI when textbox hides
+	_set_earthquake_quest_hidden(false)
 
 # Restyle active manager dialogs to match bottom textbox UI
 func _extract_dialog_text(node: Node) -> String:
@@ -929,3 +949,35 @@ func await_self_talk_finished() -> void:
 	# Force-hide any lingering UI elements just in case
 	_hide_textbox()
 	_hide_bubble()
+	# Ensure StoreQuest UI is restored after self-talk fully finishes
+	_set_store_quest_hidden(false)
+	# Ensure EarthquakeQuest UI is restored after self-talk fully finishes
+	_set_earthquake_quest_hidden(false)
+
+# Helper: hide or show StoreQuest UI from Player 3 self-talk
+func _set_store_quest_hidden(hidden: bool) -> void:
+	var store_quest = get_tree().current_scene.find_child("StoreQuest", true, false)
+	if store_quest == null:
+		return
+
+	# If earthquake quest is active, keep StoreQuest hidden regardless
+	var eq = get_tree().current_scene.find_child("EarthquakeQuest", true, false)
+	var earthquake_active := false
+	if eq and eq.has_method("is_active"):
+		earthquake_active = eq.is_active()
+
+	if hidden or earthquake_active:
+		if store_quest.has_method("hide_quest_ui"):
+			store_quest.hide_quest_ui()
+	else:
+		if store_quest.has_method("show_quest_ui"):
+			store_quest.show_quest_ui()
+
+# Helper: hide or show EarthquakeQuest UI (quest box) from Player 3 self-talk
+func _set_earthquake_quest_hidden(hidden: bool) -> void:
+	var eq = get_tree().current_scene.find_child("EarthquakeQuest", true, false)
+	if eq == null:
+		return
+	var eq_box = eq.get_node_or_null("Quest UI/Earthquake Quest Box")
+	if eq_box and eq_box is Control:
+		eq_box.visible = not hidden

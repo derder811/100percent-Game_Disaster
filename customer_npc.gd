@@ -39,7 +39,7 @@ func _get_dialog_box() -> Node:
 
 func _on_interact() -> void:
 	# Merge lines into a single message to avoid Next progression
-	var merged_text: String = "Hi. Can I buy this?\nnoted!"
+	var merged_text: String = "Do you think they have my favorite snacks here?"
 	var lines: Array[String] = [merged_text]
 	# Prefer bottom DialogBox UI for conversation
 	var box = _get_dialog_box()
