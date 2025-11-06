@@ -171,6 +171,12 @@ func go_to_main_menu():
 	print("GameSettings: Going to main menu")
 	# Unpause the game first
 	get_tree().paused = false
+	# Restore overlays in case Settings had them blocked
+	_get_mobile_controls_blocking(false)
+	_get_interaction_ui_blocking(false)
+	_get_dialog_box_blocking(false)
+	# Hide this settings panel to avoid lingering UI across scene changes
+	visible = false
 	
 	# Change to main menu scene
 	if ResourceLoader.exists("res://asset/button/Menu/main_menu.tscn"):

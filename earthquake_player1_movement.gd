@@ -61,6 +61,13 @@ func ensure_mobile_overlay():
 				var ui_instance = ui_scene.instantiate()
 				ui_instance.name = "InteractionUI"
 				root.add_child(ui_instance)
+		# Always ensure InteractionUI is visible and responsive
+		var interaction_ui_node := root.get_node_or_null("InteractionUI")
+		if interaction_ui_node:
+			var iu_root := interaction_ui_node.get_node_or_null("UIRoot")
+			if iu_root:
+				iu_root.visible = true
+				iu_root.mouse_filter = Control.MOUSE_FILTER_STOP
 		if not root.get_node_or_null("MobileControls"):
 			print("Earthquake: Adding MobileControls overlay to root")
 			var mc_scene: PackedScene = load("res://MobileControls.tscn")
@@ -68,6 +75,36 @@ func ensure_mobile_overlay():
 				var mc_instance = mc_scene.instantiate()
 				mc_instance.name = "MobileControls"
 				root.add_child(mc_instance)
+		# Always ensure MobileControls are visible and responsive
+		var mobile_controls_node := root.get_node_or_null("MobileControls")
+		if mobile_controls_node:
+			var mc_root := mobile_controls_node.get_node_or_null("UIRoot")
+			if mc_root:
+				mc_root.visible = true
+				mc_root.mouse_filter = Control.MOUSE_FILTER_STOP
+				# Ensure key controls are interactive after restarts
+				var arrows := mc_root.get_node_or_null("ArrowButtons")
+				if arrows:
+					arrows.visible = true
+					arrows.mouse_filter = Control.MOUSE_FILTER_STOP
+					for name in ["Up", "Down", "Left", "Right", "UpLeft", "UpRight", "DownLeft", "DownRight"]:
+						var btn := arrows.get_node_or_null(name)
+						if btn and btn is Control:
+							btn.mouse_filter = Control.MOUSE_FILTER_STOP
+							if btn.has_method("set_disabled"):
+								btn.disabled = false
+				var interact_btn := mc_root.get_node_or_null("InteractButton")
+				if interact_btn and interact_btn is Control:
+					interact_btn.mouse_filter = Control.MOUSE_FILTER_STOP
+					interact_btn.visible = interact_btn.visible  # keep visibility state
+					if interact_btn.has_method("set_disabled"):
+						interact_btn.disabled = false
+				var pickup_btn := mc_root.get_node_or_null("PickupButton")
+				if pickup_btn and pickup_btn is Control:
+					pickup_btn.mouse_filter = Control.MOUSE_FILTER_STOP
+					pickup_btn.visible = pickup_btn.visible  # keep visibility state
+					if pickup_btn.has_method("set_disabled"):
+						pickup_btn.disabled = false
 	# Update reference for enhanced UI
 	interaction_ui = root.get_node_or_null("InteractionUI")
 	print("Earthquake: InteractionUI present on root:", interaction_ui != null)

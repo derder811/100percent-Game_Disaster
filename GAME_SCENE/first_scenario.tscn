@@ -2429,6 +2429,7 @@ position = Vector2(195, 18)
 position = Vector2(337, 87)
 
 [node name="Medicine1" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(186, 14)
 scale = Vector2(0.0154546, 0.0108333)
 texture = ExtResource("44_6jkof")

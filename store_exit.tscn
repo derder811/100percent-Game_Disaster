@@ -10,7 +10,8 @@ size = Vector2(248, 82)
 script = ExtResource("1_whq5w")
 
 [node name="InteractionArea" parent="." instance=ExtResource("2_b3mbn")]
-position = Vector2(836, 939)
+position = Vector2(838, 972)
+scale = Vector2(5.01887, 0.899168)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(836, 989)
