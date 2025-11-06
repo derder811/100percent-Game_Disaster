@@ -5,11 +5,11 @@ class_name NarutoEQSelfTalkSystem
 var self_talk_messages = {
 	"convenience_store": [
 		"Oh hey, a convenience store. Might as well take a look.",
-		"Could use a quick break… maybe grab a drink or something."
+		# Removed per request: "Could use a quick break… maybe grab a drink or something."
 	] as Array[String],
 	"timer_based": [
 		"Oh hey, a convenience store. Might as well take a look.",
-		"Could use a quick break… maybe grab a drink or something."
+		# Removed per request: "Could use a quick break… maybe grab a drink or something."
 	] as Array[String]
 }
 
@@ -47,7 +47,12 @@ func start_intro_self_talk():
 	show_specific_message(0)
 	# Chain second message after a short delay, then start periodic self-talk
 	await _await_seconds(10.0)
-	show_specific_message(1)
+	var messages = self_talk_messages["timer_based"]
+	if messages.size() > 1:
+		show_specific_message(1)
+	else:
+		# No second message after removal; skip gracefully
+		pass
 	await _await_seconds(2.0)
 	start_timer_self_talk()
 

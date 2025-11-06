@@ -4,7 +4,7 @@ class_name Player3SelfTalkSystem
 # Self-talk messages for Player 3 in the store
 var self_talk_messages = {
 	"store_entry": [
-		"Alright, I'm in the store now. Let me look around and see what I can find.",
+		"INSIDE THE STORE",
 
 	] as Array[String],
 	"after_item_interact": {
@@ -18,16 +18,11 @@ var self_talk_messages = {
 		"cashier": "Do you accept Gcash payment?"
 	},
 	"movement_comments": [
-		"Let me check over here...",
-		"What's in this section?",
-		"I should look around more carefully.",
-		"Maybe there's something useful here.",
-		"I need to cover all areas of the store."
+		"Let me check over here...",		
+		# Removed per request: "I need to cover all areas of the store."
 	] as Array[String],
 	"go_to_exit": [
 		"I should head to the exit now.",
-		"Time to get out—make for the exit!",
-		"The exit's my best bet. Let's move."
 	] as Array[String],
 	"building_collapse": [
 		"The building is collapsing! Get to the exit!"
