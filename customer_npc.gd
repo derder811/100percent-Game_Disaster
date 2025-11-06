@@ -41,14 +41,55 @@ func _on_interact() -> void:
 	# Merge lines into a single message to avoid Next progression
 	var merged_text: String = "Do you think they have my favorite snacks here?"
 	var lines: Array[String] = [merged_text]
+
+	# Hide StoreQuest UI during interaction to prevent overlap
+	_hide_existing_quest_ui()
 	# Prefer bottom DialogBox UI for conversation
 	var box = _get_dialog_box()
 	if box != null and box.has_method("show_dialog"):
+		# Connect dialog finish/close to restore StoreQuest UI (avoid duplicate connections)
+		if box.has_signal("dialog_finished") and not box.dialog_finished.is_connected(_on_customer_dialog_finished):
+			box.dialog_finished.connect(_on_customer_dialog_finished)
+		if box.has_signal("dialog_closed") and not box.dialog_closed.is_connected(_on_customer_dialog_finished):
+			box.dialog_closed.connect(_on_customer_dialog_finished)
 		box.show_dialog("CUSTOMER", lines)
 	else:
 		# Fallback bubble dialog near the customer
 		var pos = global_position + Vector2(0, -100)
 		DialogManager.start_dialog(pos, lines)
+		# As fallback, restore StoreQuest after a short delay
+		var t := Timer.new()
+		t.one_shot = true
+		t.wait_time = 4.0
+		t.timeout.connect(_on_customer_dialog_finished)
+		add_child(t)
+		t.start()
+
+func _on_customer_dialog_finished() -> void:
+	# Show StoreQuest UI again after customer interaction ends
+	var store_quest = _find_store_quest()
+	if store_quest != null and store_quest.has_method("show_quest_ui"):
+		store_quest.show_quest_ui()
+
+func _hide_existing_quest_ui() -> void:
+	# Hide any existing quest UI to prevent overlap with dialogue
+	var store_quest = _find_store_quest()
+	if store_quest != null and store_quest.has_method("hide_quest_ui"):
+		store_quest.hide_quest_ui()
+
+func _find_store_quest() -> Node:
+	# Helper method to find the StoreQuest node
+	var store_quest = get_tree().current_scene.find_child("StoreQuest", true, false)
+	if store_quest == null:
+		store_quest = get_tree().root.find_child("StoreQuest", true, false)
+	if store_quest == null:
+		# Search all top-levels for a child named StoreQuest
+		for c in get_tree().root.get_children():
+			var f = c.find_child("StoreQuest", true, false)
+			if f != null:
+				store_quest = f
+				break
+	return store_quest
 
 func face_towards(dir: Vector2, moving: bool = false) -> void:
 	if anim_player == null:
