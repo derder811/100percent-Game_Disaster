@@ -28,6 +28,10 @@ var _camera_original_offset: Vector2 = Vector2.ZERO
 var _player_is_hiding: bool = false
 var _shake_paused_due_to_hiding: bool = false
 var _resume_shake_timer: Timer = null
+# Continuous shake magnitude control for smooth pause/resume
+var _base_shake_magnitude: float = 10.0
+var _shake_magnitude: float = 10.0
+var _pause_deceleration_sec: float = 1.0
 # UI: countdown timer label and 1-second updater
 var _timer_label: Label
 var _countdown_timer: Timer
@@ -86,7 +90,7 @@ func _ready():
 	
 	# Initialize resume shake timer
 	_resume_shake_timer = Timer.new()
-	_resume_shake_timer.wait_time = 1.5  # 1.5 second delay
+	_resume_shake_timer.wait_time = 3.0  # 3-second delay before resuming after leaving table
 	_resume_shake_timer.one_shot = true
 	_resume_shake_timer.timeout.connect(_on_resume_shake_timer_timeout)
 	add_child(_resume_shake_timer)
@@ -410,6 +414,9 @@ func _start_continuous_camera_shake(magnitude: float = 10.0):
 	var camera = get_viewport().get_camera_2d()
 	if camera:
 		_camera_original_offset = camera.offset
+	# Initialize magnitude controls
+	_base_shake_magnitude = magnitude
+	_shake_magnitude = magnitude
 	call_deferred("_run_continuous_camera_shake", magnitude)
 
 func _run_continuous_camera_shake(magnitude: float):
@@ -424,14 +431,22 @@ func _run_continuous_camera_shake(magnitude: float):
 		var done := (checkbox1 and checkbox1.button_pressed) and (checkbox2 and checkbox2.button_pressed)
 		if done or _collapse_started:
 			break
-		
-		# Only shake if player is not hiding
+
+		# Smoothly handle shaking based on hiding state
 		if not _shake_paused_due_to_hiding:
-			camera.offset = Vector2(rng.randf_range(-magnitude, magnitude), rng.randf_range(-magnitude, magnitude))
+			# Restore magnitude instantly when not hiding
+			_shake_magnitude = _base_shake_magnitude
+			camera.offset = Vector2(rng.randf_range(-_shake_magnitude, _shake_magnitude), rng.randf_range(-_shake_magnitude, _shake_magnitude))
 		else:
-			# Keep camera steady when player is hiding
-			camera.offset = _camera_original_offset
-		
+			# Gradually reduce magnitude to zero over _pause_deceleration_sec
+			if _shake_magnitude > 0.0:
+				var decel_step := _base_shake_magnitude * (0.02 / _pause_deceleration_sec)
+				_shake_magnitude = max(0.0, _shake_magnitude - decel_step)
+				camera.offset = Vector2(rng.randf_range(-_shake_magnitude, _shake_magnitude), rng.randf_range(-_shake_magnitude, _shake_magnitude))
+			else:
+				# Fully stopped
+				camera.offset = _camera_original_offset
+
 		await _await_seconds(0.02)
 	_stop_continuous_camera_shake()
 
@@ -448,15 +463,14 @@ func _pause_shaking():
 	if not _shake_paused_due_to_hiding:
 		_shake_paused_due_to_hiding = true
 		print("EarthquakeQuest: Shaking paused - player is hiding")
-		# Restore camera to original position when pausing
-		var camera = get_viewport().get_camera_2d()
-		if camera:
-			camera.offset = _camera_original_offset
+		# Let continuous shake loop handle smooth deceleration
 
 func _resume_shaking():
 	if _shake_paused_due_to_hiding:
 		_shake_paused_due_to_hiding = false
 		print("EarthquakeQuest: Shaking resumed - player came out of hiding")
+		# Restore shake magnitude immediately to base
+		_shake_magnitude = _base_shake_magnitude
 
 func _reposition_quest_box():
 	if quest_box:

@@ -2,3 +2,13 @@ root = true
 
 [*]
 charset = utf-8
+
+[*.gd]
+# Enforce tabs for GDScript files to avoid parser issues
+indent_style = tab
+indent_size = 4
+
+[*.tscn]
+# Godot scenes use tabs by convention
+indent_style = tab
+indent_size = 4
