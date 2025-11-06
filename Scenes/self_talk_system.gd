@@ -74,6 +74,7 @@ var timer_audio_map := {
 }
 
 var has_shown_startup_message = false
+var has_shown_raining_hard_once: bool = false
 var timer_self_talk_active = false
 @onready var player = get_parent()
 @onready var voice_player: AudioStreamPlayer = AudioStreamPlayer.new()
@@ -125,9 +126,17 @@ func _timer_self_talk_loop():
 			show_timer_self_talk()
 
 func show_timer_self_talk():
-	var messages = self_talk_messages["timer_based"]
-	var idx = randi() % messages.size()
-	var message = messages[idx]
+	var messages: Array = self_talk_messages["timer_based"]
+	# Filter out the "raining hard" line once it has already been shown
+	var candidate_messages: Array = []
+	for m in messages:
+		if has_shown_raining_hard_once and _is_raining_hard_line(m):
+			continue
+		candidate_messages.append(m)
+	if candidate_messages.size() == 0:
+		return
+	var idx = randi() % candidate_messages.size()
+	var message = candidate_messages[idx]
 	print("TimerSelfTalk: showing message idx=", idx, " text=", message)
 	_show_textbox(message, 0.0)
 	# Play the voice line mapped to the shown text; fallback to index mapping
@@ -143,6 +152,9 @@ func show_timer_self_talk():
 		await _play_voice_and_wait(voice_path, 4.0)
 		# After audio completes (or if none), simply hide the textbox without pausing the game
 		_hide_textbox()
+	# Mark the raining hard line as shown to avoid future repeats
+	if _is_raining_hard_line(message):
+		has_shown_raining_hard_once = true
 
 func show_startup_message():
 	if has_shown_startup_message:
@@ -168,6 +180,10 @@ func _on_startup_dialog_finished():
 func show_self_talk_message():
 	# Use a mapped timer-based line and play its audio
 	var first_message = "It’s raining hard… I should check the window."
+	# Only show once per gameplay session
+	if has_shown_raining_hard_once:
+		return
+	has_shown_raining_hard_once = true
 	_show_textbox(first_message, 0.0)
 	# Attempt to play matching audio for this line
 	var voice_path: String = ""
@@ -185,7 +201,14 @@ func show_self_talk_message():
 		await get_tree().create_timer(1.0).timeout
 		# No follow-up dialog; keep gameplay uninterrupted
 
+func _is_raining_hard_line(text: String) -> bool:
+	var t := String(text).to_lower()
+	return t.find("raining hard") != -1
+
 func trigger_custom_self_talk(custom_message: String):
+	# Prevent repeating "raining hard" line across triggers
+	if _is_raining_hard_line(custom_message) and has_shown_raining_hard_once:
+		return
 	# Show text and try to play audio if the line is mapped
 	_show_textbox(custom_message, 0.0)
 	var voice_path: String = ""
@@ -197,10 +220,20 @@ func trigger_custom_self_talk(custom_message: String):
 	else:
 		await get_tree().create_timer(4.0).timeout
 		_hide_textbox()
+	if _is_raining_hard_line(custom_message):
+		has_shown_raining_hard_once = true
 
 func trigger_self_talk(message_type: String = "timer_based"):
 	if message_type in self_talk_messages:
-		var messages = self_talk_messages[message_type]
+		var messages: Array = self_talk_messages[message_type]
+		# Filter out raining hard if already shown for timer-based type
+		if message_type == "timer_based" and has_shown_raining_hard_once:
+			var filtered: Array = []
+			for m in messages:
+				if _is_raining_hard_line(m):
+					continue
+				filtered.append(m)
+			messages = filtered if filtered.size() > 0 else messages
 		var idx = randi() % messages.size()
 		var random_message = messages[idx]
 		print("SelfTalk trigger: type=", message_type, " idx=", idx, " text=", random_message)
@@ -220,6 +253,8 @@ func trigger_self_talk(message_type: String = "timer_based"):
 			else:
 				await get_tree().create_timer(4.0).timeout
 				_hide_textbox()
+		if _is_raining_hard_line(random_message):
+			has_shown_raining_hard_once = true
 
 func trigger_item_pickup_self_talk(item_name: String):
 	if "item_pickup" in self_talk_messages and item_name in self_talk_messages["item_pickup"]:

@@ -40,7 +40,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 91.0
+"speed": 0.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nj8df"]
@@ -60,6 +60,8 @@ scale = Vector2(0.031467, 0.0208899)
 sprite_frames = SubResource("SpriteFrames_cwhbi")
 
 [node name="InteractionArea" parent="." instance=ExtResource("2_1irgj")]
+visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionArea"]
+visible = false
 shape = SubResource("CircleShape2D_nj8df")
