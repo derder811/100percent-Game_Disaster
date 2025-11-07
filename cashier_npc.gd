@@ -24,6 +24,12 @@ func _ready():
 			cashier_audio_player.stream = stream
 			print("Cashier NPC: Loaded cashier audio stream:", wav_path)
 
+	# Ensure idle animation when gameplay starts (no cutscene)
+	if anim_player != null:
+		anim_player.play("idle")
+	if anim_tree != null:
+		anim_tree.active = false
+
 func _get_dialog_box() -> Node:
 	# Try to find an existing DialogSystem
 	var existing = get_tree().get_first_node_in_group("dialog_system")
@@ -269,5 +275,6 @@ func _physics_process(delta):
 		face_towards(dir, true)
 		move_and_slide()
 	else:
-		# Idle when not following a path
+		# Not following a path; keep velocity zero but don't override animation.
+		# Cutscene tweens will drive face_exit_walk() updates.
 		velocity = Vector2.ZERO

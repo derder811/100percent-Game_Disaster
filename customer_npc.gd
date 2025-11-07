@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var anim_tree: AnimationTree = $AnimationTree
 @onready var player2: CharacterBody2D = null
 var _player_was_moving: bool = false
+var _current_anim: String = ""
 
 var dialog_box_scene: PackedScene = preload("res://Scenes/dialog_box.tscn")
 
@@ -17,17 +18,18 @@ func _ready():
 		print("ERROR: InteractionArea not found on Customer NPC")
 	# Cache Player 3 reference via Player2 group
 	player2 = get_tree().get_first_node_in_group("Player2") as CharacterBody2D
+	# Ensure up-facing idle (static) when gameplay starts and no cutscene
+	if anim_player != null:
+		anim_player.speed_scale = 0.0
+		anim_player.play("walk_up")
+		_current_anim = "walk_up"
+	if anim_tree != null:
+		anim_tree.active = false
 
 func _process(delta):
-	# Resolve player ref if not yet cached
+	# Remain idle when cutscene is not active; no auto-facing/moving
 	if player2 == null:
 		player2 = get_tree().get_first_node_in_group("Player2") as CharacterBody2D
-	# When player starts moving, face the exit once
-	if player2 != null:
-		var moving := player2.velocity.length() > 0.1
-		if moving and not _player_was_moving:
-			face_exit()
-		_player_was_moving = moving
 
 func _get_dialog_box() -> Node:
 	var existing = get_tree().get_first_node_in_group("dialog_system")
@@ -94,31 +96,21 @@ func _find_store_quest() -> Node:
 func face_towards(dir: Vector2, moving: bool = false) -> void:
 	if anim_player == null:
 		return
-	var anim_name := ""
-	if abs(dir.x) > abs(dir.y):
-		if dir.x >= 0:
-			if moving:
-				anim_name = "walk_right"
-			else:
-				anim_name = "idle_right"
+	var anim_name := "walk_up"
+	if moving:
+		if abs(dir.x) > abs(dir.y):
+			anim_name = "walk_right" if dir.x >= 0 else "walk_left"
 		else:
-			if moving:
-				anim_name = "walk_left"
-			else:
-				anim_name = "idle_left"
-	else:
-		if dir.y >= 0:
-			if moving:
-				anim_name = "walk_down"
-			else:
-				anim_name = "idle_down"
-		else:
-			if moving:
-				anim_name = "walk_up"
-			else:
-				anim_name = "idle"
-	anim_player.play(anim_name)
-	# Ensure AnimationTree does not override AnimationPlayer during cutscenes
+			anim_name = "walk_down" if dir.y >= 0 else "walk_up"
+	# Avoid restarting the same animation every frame to keep it continuous
+	if _current_anim != anim_name:
+		anim_player.play(anim_name)
+		_current_anim = anim_name
+	# Freeze on first frame when idle; run normally when moving
+	var target_speed := 1.0 if moving else 0.0
+	if anim_player.speed_scale != target_speed:
+		anim_player.speed_scale = target_speed
+	# Ensure AnimationTree does not override AnimationPlayer during cutscenes or idle
 	if anim_tree != null:
 		anim_tree.active = false
 		# Guarded: only set blend if path exists

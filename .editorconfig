@@ -4,11 +4,16 @@ root = true
 charset = utf-8
 
 [*.gd]
-# Enforce tabs for GDScript files to avoid parser issues
+# Default GDScript indentation
 indent_style = tab
 indent_size = 4
 
 [*.tscn]
 # Godot scenes use tabs by convention
 indent_style = tab
+indent_size = 4
+
+[game_over.gd]
+# Ensure this file uses spaces consistently to avoid mixed indentation errors
+indent_style = space
 indent_size = 4

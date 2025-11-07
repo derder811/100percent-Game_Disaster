@@ -6,6 +6,7 @@
 size = Vector2(50, 86)
 
 [node name="InteractionArea" type="Area2D" groups=["interactable"]]
+position = Vector2(25, 1)
 collision_layer = 0
 collision_mask = 3
 script = ExtResource("1_1xqix")

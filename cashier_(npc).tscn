@@ -14,7 +14,7 @@ height = 368.047
 
 [sub_resource type="Curve2D" id="Curve2D_jej64"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 36, 0, 0, 0, 0, 418.909, 45.3334, 0, 0, 0, 0, 421.818, 276, 0, 0, 0, 0, 551.273, 276, 0, 0, 0, 0, 619.636, 277.333, 0, 0, 0, 0, 676.364, 280, 0, 0, 0, 0, 676.364, 385.333, 0, 0, 0, 0, 683.636, 492, 0, 0, 0, 0, 670.545, 526.667, 0, 0, 0, 0, 680.727, 610.667, 0, 0, 0, 0, 788.364, 625.333, 0, 0, 0, 0, 922.182, 626.667, 0, 0, 0, 0, 971.636, 633.333, 0, 0, 0, 0, 930.909, 713.333, 0, 0, 0, 0, 958.545, 748, 0, 0, 0, 0, 962.909, 768, 0, 0, 0, 0, 958.545, 793.333, 0, 0, 0, 0, 0, 36)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 36, 0, 0, 0, 0, 418.909, 45.3334, 0, 0, 0, 0, 421.818, 276, 0, 0, 0, 0, 551.273, 276, 0, 0, 0, 0, 619.636, 277.333, 0, 0, 0, 0, 676.364, 280, 0, 0, 0, 0, 676.364, 385.333, 0, 0, 0, 0, 683.636, 492, 0, 0, 0, 0, 670.545, 526.667, 0, 0, 0, 0, 680.727, 610.667, 0, 0, 0, 0, 788.364, 625.333, 0, 0, 0, 0, 922.182, 626.667, 0, 0, 0, 0, 971.636, 633.333, 0, 0, 0, 0, 930.909, 713.333, 0, 0, 0, 0, 958.545, 748, 0, 0, 0, 0, 959.296, 733.278, 0, 0, 0, 0, 904.009, 715.625, 0, 0, 0, 0, 0, 36)
 }
 point_count = 18
 
@@ -35,6 +35,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_kb75v"]
 resource_name = "idle"
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -51,6 +52,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_suotf"]
 resource_name = "walk_down"
 length = 0.853
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -67,6 +69,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_1rxg2"]
 resource_name = "walk_left"
 length = 0.853
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -83,6 +86,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_pul74"]
 resource_name = "walk_right"
 length = 0.853
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -99,6 +103,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_fnyjl"]
 resource_name = "walk_up"
 length = 0.853
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -182,6 +187,7 @@ texture = ExtResource("1_w8lub")
 hframes = 20
 
 [node name="Path2D" type="Path2D" parent="Sprite2D"]
+scale = Vector2(0.973442, 0.981892)
 curve = SubResource("Curve2D_jej64")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Sprite2D/Path2D"]
@@ -192,7 +198,6 @@ rotation = 0.0222766
 libraries = {
 &"": SubResource("AnimationLibrary_mkmae")
 }
-autoplay = "idle"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_iwum0")

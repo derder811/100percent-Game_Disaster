@@ -8,7 +8,7 @@
 size = Vector2(1095.74, 1447.33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1rxg2"]
-size = Vector2(136, 210)
+size = Vector2(169, 233.5)
 
 [node name="Ice Cream Fridge" type="Area2D"]
 script = ExtResource("1_7oci1")
@@ -31,5 +31,5 @@ shape = SubResource("RectangleShape2D_1rxg2")
 [node name="InteractionArea" parent="." instance=ExtResource("3_o8rqc")]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionArea"]
-position = Vector2(6, 8)
+position = Vector2(-17, 14)
 shape = SubResource("RectangleShape2D_1rxg2")

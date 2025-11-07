@@ -205,9 +205,9 @@ func _is_raining_hard_line(text: String) -> bool:
 	var t := String(text).to_lower()
 	return t.find("raining hard") != -1
 
-func trigger_custom_self_talk(custom_message: String):
-	# Prevent repeating "raining hard" line across triggers
-	if _is_raining_hard_line(custom_message) and has_shown_raining_hard_once:
+func trigger_custom_self_talk(custom_message: String, force: bool = false):
+	# Allow forced display to bypass the "raining hard" dedupe
+	if not force and _is_raining_hard_line(custom_message) and has_shown_raining_hard_once:
 		return
 	# Show text and try to play audio if the line is mapped
 	_show_textbox(custom_message, 0.0)
