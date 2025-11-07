@@ -384,8 +384,68 @@ func _show_earthquake_welcome() -> void:
 
 # Handler: start Naruto self-talk after welcome dialog closes
 func _on_welcome_dialog_finished():
+	# After welcome, focus camera on the store entrance and trigger self-talk
+	await _play_store_focus_cutscene()
+	# Start periodic self-talk after the cutscene to avoid duplicates
 	var sys = get_tree().get_first_node_in_group("naruto_self_talk_system")
-	if sys and sys.has_method("start_intro_self_talk"):
-		sys.start_intro_self_talk()
+	if sys and sys.has_method("start_timer_self_talk"):
+		sys.start_timer_self_talk()
 	else:
 		print("Naruto self-talk system not found or start method missing")
+
+# --- Cutscene camera helpers for focusing on store entrance ---
+func _ensure_cutscene_camera(scene: Node) -> Camera2D:
+	var existing := scene.get_node_or_null("CutsceneCamera")
+	if existing and existing is Camera2D:
+		(existing as Camera2D).make_current()
+		return existing as Camera2D
+	var cam := Camera2D.new()
+	cam.name = "CutsceneCamera"
+	cam.position = (self as Node2D).global_position
+	cam.zoom = Vector2(1.0, 1.0)
+	scene.add_child(cam)
+	cam.make_current()
+	return cam
+
+func _focus_camera(cam: Camera2D, target_pos: Vector2, zoom: Vector2, dur: float) -> void:
+	if cam == null:
+		return
+	var tween := create_tween()
+	tween.tween_property(cam, "global_position", target_pos, dur)
+	tween.tween_property(cam, "zoom", zoom, dur)
+	await tween.finished
+
+func _cleanup_cutscene_camera(scene: Node, cut_cam: Camera2D, player_cam: Camera2D) -> void:
+	if player_cam:
+		player_cam.global_position = (self as Node2D).global_position
+		player_cam.make_current()
+	if cut_cam and is_instance_valid(cut_cam):
+		cut_cam.queue_free()
+
+func _play_store_focus_cutscene() -> void:
+	var scene := get_tree().current_scene
+	if scene == null:
+		return
+	# Keep a reference to the gameplay camera to restore later
+	var player_cam: Camera2D = get_viewport().get_camera_2d()
+	# Create/activate a cutscene camera we fully control
+	var cam := _ensure_cutscene_camera(scene)
+	# Find the store entrance in the scene
+	var entrance := scene.find_child("Entrance to Store", true, false)
+	var target_pos: Vector2 = (self as Node2D).global_position
+	if entrance and entrance is Node2D:
+		target_pos = (entrance as Node2D).global_position
+	# Focus on the store entrance
+	await _focus_camera(cam, target_pos, Vector2(1.0, 1.0), 0.8)
+	# Trigger the convenience store self-talk line
+	var sys = get_tree().get_first_node_in_group("naruto_self_talk_system")
+	if sys and sys.has_method("trigger_convenience_store_self_talk"):
+		sys.trigger_convenience_store_self_talk()
+	# Give the line a moment; if AudioManager is present, prefer waiting on SFX
+	if has_node("/root/AudioManager") and get_node("/root/AudioManager").has_method("wait_sfx_finished"):
+		await get_node("/root/AudioManager").wait_sfx_finished()
+	else:
+		await get_tree().create_timer(2.0).timeout
+	# Return camera to player and restore gameplay camera
+	await _focus_camera(cam, (self as Node2D).global_position, Vector2(1.0, 1.0), 0.6)
+	_cleanup_cutscene_camera(scene, cam, player_cam)

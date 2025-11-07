@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var interaction_area: InteractionArea = $InteractionArea
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var anim_tree: AnimationTree = $AnimationTree
+@onready var customer_audio_player: AudioStreamPlayer2D = $CustomerAudioPlayer
 @onready var player2: CharacterBody2D = null
 var _player_was_moving: bool = false
 var _current_anim: String = ""
@@ -26,6 +27,25 @@ func _ready():
 	if anim_tree != null:
 		anim_tree.active = false
 
+	# Configure customer voice audio stream
+	if customer_audio_player != null:
+		# Prefer project-relative path for portability
+		var stream: AudioStream = load("res://asset/button/CUSTOMER.mp3")
+		if stream != null:
+			customer_audio_player.stream = stream
+			customer_audio_player.bus = "SFX"
+			print("Customer NPC: Loaded voice stream res://asset/button/CUSTOMER.mp3")
+		else:
+			# Fallback: try absolute path provided by user (Windows)
+			var abs_path := "c:/Users/xande/Music/Disaster_2.0-main/asset/button/CUSTOMER.mp3"
+			var abs_stream: AudioStream = load(abs_path)
+			if abs_stream != null:
+				customer_audio_player.stream = abs_stream
+				customer_audio_player.bus = "SFX"
+				print("Customer NPC: Loaded voice stream via absolute path:", abs_path)
+			else:
+				push_warning("Customer NPC: Could not load CUSTOMER.mp3 from either res:// or absolute path")
+
 func _process(delta):
 	# Remain idle when cutscene is not active; no auto-facing/moving
 	if player2 == null:
@@ -40,6 +60,11 @@ func _get_dialog_box() -> Node:
 	return inst
 
 func _on_interact() -> void:
+	# Play customer voice line when interacting
+	if customer_audio_player != null and customer_audio_player.stream != null:
+		customer_audio_player.play()
+		print("Customer NPC: Playing voice line")
+
 	# Merge lines into a single message to avoid Next progression
 	var merged_text: String = "Do you think they have my favorite snacks here?"
 	var lines: Array[String] = [merged_text]

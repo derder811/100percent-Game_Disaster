@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://dcu7sodrqumrr"]
+[gd_scene load_steps=22 format=3 uid="uid://dcu7sodrqumrr"]
 
 [ext_resource type="Texture2D" uid="uid://cmcklqrghoc0a" path="res://earthquake Asset/Kid Female sprites.png" id="1_a7gql"]
 [ext_resource type="Script" uid="uid://bx21va8686o4h" path="res://asset/Interaction/Interaction Area/interaction_area.gd" id="2_exmd2"]
 [ext_resource type="Script" uid="uid://dfl3i204jgc0h" path="res://customer_npc.gd" id="3_customer_npc"]
+[ext_resource type="AudioStream" uid="uid://dfimy3e6ksbuc" path="res://asset/button/CUSTOMER.mp3" id="4_customer_audio"]
 
 [sub_resource type="Animation" id="Animation_ctmct"]
 length = 0.001
@@ -201,3 +202,6 @@ shape = SubResource("CircleShape2D_altbl")
 tree_root = SubResource("AnimationNodeStateMachine_hj0ap")
 anim_player = NodePath("../AnimationPlayer")
 parameters/walk/blend_position = Vector2(0.0315599, 0.103587)
+
+[node name="CustomerAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_customer_audio")

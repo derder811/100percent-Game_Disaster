@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=4 uid="uid://dm8t7wtfh4fs6"]
+[gd_scene load_steps=89 format=4 uid="uid://dm8t7wtfh4fs6"]
 
 [ext_resource type="Texture2D" uid="uid://dt10x42mxphse" path="res://asset/Concrete.png" id="1_nj8df"]
 [ext_resource type="Texture2D" uid="uid://ex6vuokpyrv4" path="res://asset/Wall.png" id="2_1fdyj"]
@@ -35,7 +35,6 @@
 [ext_resource type="PackedScene" uid="uid://tkrb31hi2pki" path="res://Scenes/toilet_2_0.tscn" id="36_ugwfr"]
 [ext_resource type="PackedScene" uid="uid://cg5dh7380mxix" path="res://Scenes/faucet_3_0.tscn" id="38_5mqhu"]
 [ext_resource type="PackedScene" uid="uid://mdjtillbwfr8" path="res://Scenes/ref.tscn" id="41_rqcv2"]
-[ext_resource type="Texture2D" uid="uid://crkdhbfiaoum6" path="res://asset/Furnitures/Medicine 3.png" id="42_on40a"]
 [ext_resource type="PackedScene" uid="uid://bki4fy74oohd3" path="res://bucket.tscn" id="42_ymkvi"]
 [ext_resource type="Texture2D" uid="uid://dlel13gvii1x7" path="res://asset/Furnitures/Table.png" id="43_a1e6s"]
 [ext_resource type="PackedScene" uid="uid://cj4q0wlj47qeo" path="res://frying_pan.tscn" id="43_ymkvi"]
@@ -61,7 +60,6 @@
 [ext_resource type="Script" uid="uid://6bn127b5xfm7" path="res://battery_pickup.gd" id="60_battery"]
 [ext_resource type="Script" uid="uid://caxxk6g75lr1u" path="res://documents.gd" id="61_documents"]
 [ext_resource type="Texture2D" uid="uid://bivwi22cmbctx" path="res://asset/Furnitures/Power Bank (New).png" id="61_g8avo"]
-[ext_resource type="Script" uid="uid://6iatfis6b7q5" path="res://medicine_3.gd" id="62_medicine3"]
 [ext_resource type="Script" uid="uid://ptmj7wtu8n5s" path="res://powerbank.gd" id="63_powerbank"]
 [ext_resource type="Script" uid="uid://dm4uqsk03uoco" path="res://water_bottle.gd" id="64_waterbottle"]
 [ext_resource type="Script" uid="uid://daft2qdx3cqdd" path="res://canned_i_tem.gd" id="65_cannedfood"]
@@ -2252,10 +2250,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7sog6"]
 size = Vector2(1215.25, 544.361)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7sog6"]
-radius = 3.38962
-height = 49.9524
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0enws"]
 radius = 6.44025
 height = 63.1474
@@ -2479,21 +2473,6 @@ texture = ExtResource("43_a1e6s")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Table/StaticBody2D"]
 position = Vector2(5.57446, -50.6379)
 shape = SubResource("RectangleShape2D_7sog6")
-
-[node name="Medicine 3" type="Area2D" parent="."]
-visible = false
-position = Vector2(186.089, 25.9187)
-collision_mask = 2
-script = ExtResource("62_medicine3")
-
-[node name="Sprite2D" type="Sprite2D" parent="Medicine 3"]
-position = Vector2(0.677933, 0.471258)
-scale = Vector2(0.0189422, 0.0261567)
-texture = ExtResource("42_on40a")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Medicine 3"]
-position = Vector2(0.338961, 17.9075)
-shape = SubResource("CapsuleShape2D_7sog6")
 
 [node name="Battery" type="Area2D" parent="."]
 position = Vector2(288.455, 325.162)
